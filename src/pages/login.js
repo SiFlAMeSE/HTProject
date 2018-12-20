@@ -45,11 +45,6 @@ class login extends Component {
                                 </a>
                             </div>
 
-                            <div className="text-center">
-                                <a href="/signup" className="txt2 hov1">
-                                    Sign Up
-					</a>
-                            </div>
                         </form>
 
 

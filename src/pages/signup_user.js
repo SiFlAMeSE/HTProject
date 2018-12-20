@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import locationBG from '../img/BG_bl.jpg';
 
-class signup extends Component {
+class signupuser extends Component {
     render() {
         const divStyle = {
             color: 'blue',
@@ -15,7 +15,7 @@ class signup extends Component {
                             <div className="col-md-7 probootstrap-intro-text">
                                 <h1 className="probootstrap-animate" data-animate-effect="fadeIn">Register</h1>
                                 <div className="probootstrap-subtitle probootstrap-animate" data-animate-effect="fadeIn">
-                                    <h2>For admin and User</h2>
+                                    <h2>For User</h2>
                                 </div>
                             </div>
                         </div>
@@ -32,35 +32,43 @@ class signup extends Component {
                                     <div className="row">
                                         <div className="col-md-6">
                                             <div className="form-group">
-                                                <label for="fname">First Name</label>
-                                                <input type="text" className="form-control" id="fname" name="fname" />
+                                                <label for="Username">Username</label>
+                                                <input type="text" className="form-control" />
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-group">
-                                                <label for="lname">Last Name</label>
-                                                <input type="text" className="form-control" id="lname" name="lname" />
+                                                <label for="Password">Password</label>
+                                                <input type="password" className="form-control" />
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <label for="Fname">Name</label>
+                                                <input type="text" className="form-control" />
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <label for="lname">Surname</label>
+                                                <input type="text" className="form-control" />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="email" className="form-control" id="email" name="email" />
+                                        <label for="Phone">Phone</label>
+                                        <input type="text" className="form-control" />
                                     </div>
                                     <div className="form-group">
-                                        <label for="subject">Subject</label>
-                                        <input type="text" className="form-control" id="subject" name="subject" />
+                                        <label for="message">Address</label>
+                                        <textarea cols="30" rows="10" className="form-control"></textarea>
                                     </div>
                                     <div className="form-group">
-                                        <label for="message">Message</label>
-                                        <textarea cols="30" rows="10" className="form-control" id="message" name="message"></textarea>
-                                    </div>
-                                    <div className="form-group">
-                                        <input type="submit" className="btn btn-primary" id="submit" name="submit" value="Send Message" />
+                                        <input type="submit" className="btn btn-primary" id="submit" name="submit" value="Submit" />
                                     </div>
                                 </form>
                             </div>
-                            <div className="col-md-5 col-md-push-1">
+                            {/* <div className="col-md-5 col-md-push-1">
                                 <h3 className="mt0">Contact</h3>
                                 <ul className="probootstrap-contact-info">
                                     <li><span>Mr. Sirasak Sunthonthuam  5802041610089</span></li>
@@ -71,7 +79,7 @@ class signup extends Component {
 
                                 <h3>ข้อเสนอ</h3>
                                 <p>คำอธิบายเพิ่มเติม</p>
-                            </div>
+                            </div> */}
                         </div>
                     </section>
 
@@ -81,4 +89,4 @@ class signup extends Component {
     }
 }
 
-export default signup;
+export default signupuser;

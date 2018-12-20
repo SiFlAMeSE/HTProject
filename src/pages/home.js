@@ -38,7 +38,11 @@ class home extends Component {
                   <h2 className="probootstrap-heading">Log in</h2>
                   <p>เข้าระบบด้วย admin จะสามารถจัดการกับระบบได้</p>
                   <p>เข้าระบบด้วย user จะสามารถดูรายละเอียดได้อย่างเดียว</p>
-                  <NavLink to="/login" className="btn btn-primary">Click to Login</NavLink>
+                  <NavLink to="/login" className="btn btn-primary">Login</NavLink>
+                  &nbsp;&nbsp;
+                  <a href="/signup_user" className="btn btn-primary">Register User</a>
+                  &nbsp;&nbsp;
+                  <a href="/signup_admin" className="btn btn-primary">Register admin</a>
                 </div>
               </div>
             </div>
