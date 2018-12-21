@@ -1,11 +1,36 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
+// import Sidebar from "react-sidebar";
+
 
 class header extends Component {
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //       sidebarOpen: true
+    //     };
+    //     this.onSetSidebarOpen = this.onSetSidebarOpen.bind(this);
+    //   }
+     
+    //   onSetSidebarOpen(open) {
+    //     this.setState({ sidebarOpen: open });
+    //   }
     render() {
-        return (
+         return (
             <header role="banner" className="probootstrap-header">
                 <div className="container-fluid">
+
+                {/* <Sidebar
+        sidebar={<b>Sidebar content</b>}
+        open={this.state.sidebarOpen}
+        onSetOpen={this.onSetSidebarOpen}
+        styles={{ sidebar: { background: "white" } }}
+      >
+        <button onClick={() => this.onSetSidebarOpen(true)}>
+          Open sidebar
+        </button>
+      </Sidebar> */}
+
                     <a href="/" className="probootstrap-logo">Monitor<span>.</span></a>
 
                     <a href="#" className="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
@@ -35,6 +60,8 @@ class header extends Component {
                         </div>
                     </nav>
                 </div>
+
+
             </header>
         );
     }
