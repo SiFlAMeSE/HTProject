@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table , Button } from 'reactstrap';
+import { Table, Button, Input, FormGroup, Form, Container, Row, Col } from 'reactstrap';
 import locationBG from '../../img/BG_bl.jpg';
 
 export default class dashboard extends React.Component {
@@ -22,10 +22,44 @@ export default class dashboard extends React.Component {
                 </section>
                 <div>
                     <section id="next-section" className="probootstrap-section">
-                        <div className="container">
-                            
-                        <Button color="success">ตกลง</Button>{' '}
-                                <br/><br/>
+                        <Container>
+                            <FormGroup>
+                                <Row align="center">
+                                    <Col>
+                                        <Input type="select" name="select">
+                                            <option>Workplace</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                        </Input>
+                                    </Col>
+
+                                    <Col>
+                                        <Input type="select" name="select" >
+                                            <option>Department</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                        </Input>
+                                    </Col>
+
+                                    <Col>
+                                        <Input
+                                            type="date"
+                                            name="date"
+                                            id="exampleDate"
+                                            placeholder="date placeholder"
+                                        />
+                                    </Col>
+
+                                    <Col>
+                                        <Button color="success">ตกลง</Button>{' '}
+                                    </Col>
+                                </Row>
+                            </FormGroup>
+                            <Form>
                                 <Table bordered>
                                     <thead>
                                         <tr>
@@ -47,8 +81,8 @@ export default class dashboard extends React.Component {
                                         </tr>
                                     </tbody>
                                 </Table>
-                           
-                        </div>
+                            </Form>
+                        </Container>
                     </section>
                 </div>
             </div>
