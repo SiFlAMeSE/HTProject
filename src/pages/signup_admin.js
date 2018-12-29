@@ -32,35 +32,41 @@ class signupuser extends Component {
                                     <div className="row">
                                         <div className="col-md-6">
                                             <div className="form-group">
-                                                <label for="Username">Username</label>
+                                                <label for="Username">ชื่อผู้ใช้งาน</label>
                                                 <input type="text" className="form-control" />
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-group">
-                                                <label for="Password">Password</label>
+                                                <label for="Password">รหัสผ่าน</label>
                                                 <input type="password" className="form-control" />
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-group">
-                                                <label for="Fname">Name</label>
+                                                <label for="Password">ยืนยันรหัสผ่าน</label>
+                                                <input type="password" className="form-control" />
+                                            </div>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <div className="form-group">
+                                                <label for="Fname">ชื่อ</label>
                                                 <input type="text" className="form-control" />
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-group">
-                                                <label for="lname">Surname</label>
+                                                <label for="lname">นามสกุล</label>
                                                 <input type="text" className="form-control" />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="form-group">
-                                        <label for="Phone">Phone</label>
+                                        <label for="Phone">เบอร์โทรศัพท์</label>
                                         <input type="text" className="form-control" />
                                     </div>
                                     <div className="form-group">
-                                        <label for="message">Address</label>
+                                        <label for="message">ที่อยู่</label>
                                         <textarea cols="30" rows="10" className="form-control"></textarea>
                                     </div>
                                     <div className="form-group">
