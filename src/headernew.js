@@ -52,7 +52,7 @@ export default class headernew extends React.Component {
         return (
             <div>
                 <Navbar color="light" light expand="md">
-                    <NavbarBrand href="/">reactstrap</NavbarBrand>
+                    <NavbarBrand href="/">LOGO</NavbarBrand>
                     <CheeseburgerMenu
                         isOpen={this.state.menuOpen}
                         closeCallback={this.closeMenu.bind(this)}>
@@ -73,12 +73,23 @@ export default class headernew extends React.Component {
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/components/">Components</NavLink>
+                                <NavLink href="/">หน้าหลัก</NavLink>
                             </NavItem>
                             <NavItem>
-                                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                                <NavLink href="/howto">วิธีการใช้งาน</NavLink>
                             </NavItem>
-                            <UncontrolledDropdown nav inNavbar>
+                            <NavItem>
+                                <NavLink href="/infor">ข้อมูลอุปกรณ์</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="/contact">ติดต่อ</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="/test">ทดสอบ</NavLink>
+                            </NavItem>
+
+
+                            {/* <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
                                     Options
                 </DropdownToggle>
@@ -94,7 +105,7 @@ export default class headernew extends React.Component {
                                         Reset
                   </DropdownItem>
                                 </DropdownMenu>
-                            </UncontrolledDropdown>
+                            </UncontrolledDropdown> */}
                         </Nav>
                     </Collapse>
                 </Navbar>
