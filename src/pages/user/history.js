@@ -1,29 +1,84 @@
 import React, { Component } from 'react';
-import { Form, Input, Button } from 'reactstrap';
-
+import { Table, Button, Input, FormGroup, Form, Container, Row, Col } from 'reactstrap';
+import locationBG from '../../img/BG_bl.jpg';
 class history extends Component {
     render() {
+        const divStyle = {
+            color: 'blue',
+            backgroundImage: 'url(' + locationBG + ')',
+        };
         return (
-            <div className="container">
+            <div>
+                <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
+                    <br /><br /><br /><br /><br /><br /><br /><br />
+                    <center>
+                        <h1>ประวัติย้อนหลัง</h1>
+                    </center>
 
-                <br /><br /><br /><br />
+                    <span className="probootstrap-animate">
+                        <a className="probootstrap-scroll-down js-next" href="#next-section">คลิกเลื่อน
+                        <i className="icon-chevron-down"></i></a></span>
+                </section>
+                <div>
+                    <section id="next-section" className="probootstrap-section">
+                    <Container>
+                            <FormGroup>
+                                <Row align="center">
+                                    <Col>
+                                        <Input type="select" name="select">
+                                            <option>ชั้น</option>
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                        </Input>
+                                    </Col>
 
-                <table>
-                    <tr>
-                        <td>
+                                    <Col>
+                                        <Input
+                                            type="date"
+                                            name="date"
+                                            id="exampleDate"
+                                            placeholder="ระบุวันเดือนปี"
+                                        />
+                                    </Col>
+
+                                    <Col>
+                                        <Button color="success">ตกลง</Button>{' '}
+                                    </Col>
+                                </Row>
+                            </FormGroup>
                             <Form>
-                                <Input type="text" placeholder="Search"></Input>
+                                <Table bordered>
+                                    <thead>
+                                        <tr>
+                                            <th>สถานที่</th>
+                                            <th>การตั้งค่า</th>
+                                            <th>การแจ้งเตือน</th>
+                                            <th>วัน/เดือน/ปี</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>รายละเอียด1</td>
+                                            <td>รายละเอียด1</td>
+                                            <td>รายละเอียด1</td>
+                                            <td>รายละเอียด1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>รายละเอียด2</td>
+                                            <td>รายละเอียด2</td>
+                                            <td>รายละเอียด2</td>
+                                            <td>รายละเอียด2</td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
                             </Form>
-                        </td>
-                        <td>
-                            &nbsp;&nbsp;
-                            <Button color="success">Enter</Button>{' '}
-                        </td>
-                    </tr>
-                </table>
-
-
+                        </Container>
+                </section>
             </div>
+            <br /> <br /> <br />
+            </div >
         );
     }
 }

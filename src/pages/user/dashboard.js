@@ -50,7 +50,7 @@ export default class dashboard extends React.Component {
                                             type="date"
                                             name="date"
                                             id="exampleDate"
-                                            placeholder="date placeholder"
+                                            placeholder="ระบุวันเดือนปี"
                                         />
                                     </Col>
 
