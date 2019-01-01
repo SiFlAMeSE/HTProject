@@ -13,7 +13,7 @@ export default class setting extends React.Component {
                 <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
                     <br /><br /><br /><br /><br /><br /><br /><br />
                     <center>
-                        <h1>รายงาน</h1>
+                        <h1>ตั้งค่าอุปกรณ์</h1>
                     </center>
 
                     <span className="probootstrap-animate">
@@ -23,50 +23,59 @@ export default class setting extends React.Component {
                 <div>
                     <section id="next-section" className="probootstrap-section">
                         <Container>
-                            <FormGroup>
-                                <Row><Label for="exampleSelect">Total All Reports in system : value in Database</Label></Row>
-                                <Row align="center">
+                            <Table>
+                                <Row>
                                     <Col>
-                                        <Input type="select" name="select">
-                                            <option>ประเภทรายงาน</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
-                                        </Input>
+                                        <Input type="text" name="location" placeholder="ใส่ชื่อสถานที่"></Input>
                                     </Col>
-
                                     <Col>
                                         <Button color="success">ตกลง</Button>{' '}
                                     </Col>
+                                    <Col span="2"></Col>
                                 </Row>
-                            </FormGroup>
-                            <Form>
-                                <Table bordered>
-                                    <thead>
-                                        <tr>
-                                            <th>ประเภท</th>
-                                            <th>รายงาน</th>
-                                            <th>ข้อมูลที่ตรวจวัด</th>
-                                            <th>โหลด</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Detail1</td>
-                                            <td>Detail1</td>
-                                            <td>Detail1</td>
-                                            <td><Button color="success">โหลด</Button>{' '}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Detail2</td>
-                                            <td>Detail2</td>
-                                            <td>Detail2</td>
-                                            <td><Button color="success">โหลด</Button>{' '}</td>
-                                        </tr>
-                                    </tbody>
-                                </Table>
-                            </Form>
+                                <Row>
+                                    <Col>
+                                        <Label>Key Room</Label>
+                                        <Input type="text" name="key" placeholder="ละทะเบียนคีย์ที่ต้องการ"></Input>
+                                    </Col>
+                                    <Col span="3"></Col>
+                                </Row>
+                                <Row>
+                                    <Col span="3"></Col>
+                                    <Col>
+                                        <Label>จุดที่ตั้ง</Label>
+                                        <Input type="text" name="name" placeholder="ตำแหน่ง"></Input>
+                                        <Label>รหัสอุปกรณ์</Label>
+                                        <Input type="text" name="mac" placeholder="Mac Address"></Input>
+
+                                        <Table>
+                                            <Row>
+                                                <Col>
+                                                    <Label>ค่าอุณหภูมิต่ำสุด</Label>
+                                                    <Input type="text" name="mintem" placeholder="ค่าน้อยสุด"></Input>
+                                                </Col>
+                                                <Col>
+                                                    <Label>ค่าอุณหภูมิสูงสุด</Label>
+                                                    <Input type="text" name="maxtem" placeholder="ค่ามากสุด"></Input>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col>
+                                                    <Label>ค่าความชื้นต่ำสุด</Label>
+                                                    <Input type="text" name="minhum" placeholder="ค่าน้อยสุด"></Input>
+                                                </Col>
+                                                <Col>
+                                                    <Label>ค่าความชื้นสูงสุด</Label>
+                                                    <Input type="text" name="maxhum" placeholder="ค่ามากสุด"></Input>
+                                                </Col>
+                                            </Row>
+                                        </Table>
+
+                                    </Col>
+
+                                </Row>
+                            </Table>
+
                         </Container>
                     </section>
                 </div>
