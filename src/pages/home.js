@@ -16,15 +16,15 @@ class home extends Component {
           <div className="container" >
             <div className="row">
               <div className="col-md-7 probootstrap-intro-text">
-                <h1 className="probootstrap-animate" data-animate-effect="fadeIn"><span>Monitoring</span>Temperature And Huminity</h1>
+                <h1 className="probootstrap-animate" data-animate-effect="fadeIn"><span>Monitoring</span>อุณหภูมิและความชื้น</h1>
                 <div className="probootstrap-subtitle probootstrap-animate" data-animate-effect="fadeIn">
-                  <h2>Welcome</h2>
+                  <h2>ยินดีต้อนรับ</h2>
                 </div>
               </div>
             </div>
           </div>
           <span className="probootstrap-animate">
-            <a className="probootstrap-scroll-down js-next" href="#next-section">Scroll down to Login <i className="icon-chevron-down"></i></a></span>
+            <a className="probootstrap-scroll-down js-next" href="#next-section">คลิกเลื่อนเพื่อเข้าสู่ระบบ<i className="icon-chevron-down"></i></a></span>
         </div>
 
         <main>
@@ -35,14 +35,14 @@ class home extends Component {
                   <figure><img src={require('../img/login.jpg')} width="450px" height="240" lt="Free Bootstrap Template by uicookies.com" className="img-responsive" /></figure>
                 </div>
                 <div className="col-md-6">
-                  <h2 className="probootstrap-heading">Log in</h2>
-                  <p>เข้าระบบด้วย admin จะสามารถจัดการกับระบบได้</p>
-                  <p>เข้าระบบด้วย user จะสามารถดูรายละเอียดได้อย่างเดียว</p>
-                  <NavLink to="/login" className="btn btn-primary">Login</NavLink>
+                  <h2 className="probootstrap-heading">เข้าสู่ระบบ</h2>
+                  <p>admin จะสามารถจัดการกับระบบได้</p>
+                  <p>user จะสามารถดูรายละเอียดได้อย่างเดียว</p>
+                  <NavLink to="/login" className="btn btn-primary">เข้าสู่ระบบ</NavLink>
                   &nbsp;&nbsp;
-                  <a href="/signup_user" className="btn btn-primary">Register User</a>
+                  <a href="/signup_user">ลงทะเบียนสมาชิก</a>
                   &nbsp;&nbsp;
-                  <a href="/signup_admin" className="btn btn-primary">Register admin</a>
+                  <a href="/signup_admin">ลงทะเบียนผู้ดูแลระบบ</a>
                 </div>
               </div>
             </div>
