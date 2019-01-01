@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
 
 import './menuContent.css'
 
@@ -27,12 +28,12 @@ class MenuContent extends Component {
         <p className="hint">Click outside the menu to close it, or swipe it closed on touch device</p> */}
         <br/><br/><br/><br/>
         <div className="menu-item">
-        
-        <a href="https://github.com/Middlerun/cheeseburger-menu"
-            onClick={this.props.closeCallback}
-            target="_blank">
-            Dashboard
-          </a>
+        <NavLink to="/monitoring" onClick={this.props.closeCallback}>Monitering</NavLink>
+        <NavLink to="/dashboard" onClick={this.props.closeCallback}>Dashboard</NavLink>
+        <NavLink to="/notification" onClick={this.props.closeCallback}>Notification</NavLink>
+        <NavLink to="/history" onClick={this.props.closeCallback}>History</NavLink>
+        <NavLink to="/report" onClick={this.props.closeCallback}>Reports</NavLink>
+        <NavLink to="/setting" onClick={this.props.closeCallback}>Setting</NavLink>
         </div>
          
       </div>
