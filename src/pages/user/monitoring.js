@@ -28,7 +28,7 @@ export default class monitoring extends React.Component {
               <Col>
                 <Form>
                   <Input type="select">
-                    <option>Location Select</option>
+                    <option>สถานที่</option>
                     <option>Loca 1</option>
                     <option>Loca 2</option>
                     <option>Loca 3</option>
@@ -38,7 +38,7 @@ export default class monitoring extends React.Component {
               </Col>
               <Col>
                 &nbsp;&nbsp;
-              <Button color="success">success</Button>{' '}
+              <Button color="success">ตกลง</Button>{' '}
               </Col>
             </Row>
           </Table>
