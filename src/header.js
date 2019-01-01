@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
 
+
 class header extends Component {
+
     render() {
         return (
+
             <header role="banner" className="probootstrap-header">
-                <div className="container-fluid">
                     <a href="/" className="probootstrap-logo">Monitor<span>.</span></a>
 
                     <a href="#" className="probootstrap-burger-menu visible-xs" ><i>Menu</i></a>
@@ -19,6 +21,7 @@ class header extends Component {
                             <li><NavLink to="/howto">How to use</NavLink></li>
                             <li><NavLink to="/infor">Information</NavLink></li>
                             <li><NavLink to="/contact">Contact</NavLink></li>
+                            <li><NavLink to="/test">ทดสอบ</NavLink></li>
 
                         </ul>
                         <ul className="probootstrap-header-social hidden-xs">
@@ -34,9 +37,13 @@ class header extends Component {
                             </ul>
                         </div>
                     </nav>
-                </div>
-            </header>
+                
+
+
+            </header >
         );
+
     }
+
 }
 export default header;

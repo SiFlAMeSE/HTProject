@@ -1,12 +1,14 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 
 class howto extends Component {
-    render () {
+    render() {
         return (
             <div>
-                <br/><br/><br/>
+                <br /><br /><br />
                 วิธีการใช้งาน
+                
             </div>
+
         );
     }
 }
