@@ -42,12 +42,7 @@ class signupuser extends Component {
                                                 <input type="password" className="form-control" />
                                             </div>
                                         </div>
-                                        <div className="col-md-6">
-                                            <div className="form-group">
-                                                <label for="Password">ยืนยันรหัสผ่าน</label>
-                                                <input type="password" className="form-control" />
-                                            </div>
-                                        </div>
+                                        
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Fname">ชื่อ</label>
