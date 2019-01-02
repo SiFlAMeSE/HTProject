@@ -84,6 +84,10 @@ export default class headernew extends React.Component {
                             <NavItem>
                                 <NavLink href="/contact">ติดต่อ</NavLink>
                             </NavItem>
+                            <NavItem>
+                                <NavLink href="/test">ทดสอบ</NavLink>
+                            </NavItem>
+
 
 
                             {/* <UncontrolledDropdown nav inNavbar>
