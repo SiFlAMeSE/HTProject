@@ -50,7 +50,7 @@ export default class dashboard extends React.Component {
                                             type="date"
                                             name="date"
                                             id="exampleDate"
-                                            placeholder="date placeholder"
+                                            placeholder="ระบุวันเดือนปี"
                                         />
                                     </Col>
 
@@ -63,21 +63,21 @@ export default class dashboard extends React.Component {
                                 <Table bordered>
                                     <thead>
                                         <tr>
-                                            <th>Location</th>
-                                            <th>Location Statistic</th>
-                                            <th>Actions</th>
+                                            <th>สถานที่</th>
+                                            <th>การตั้งค่า</th>
+                                            <th>สถานะปัจจุบัน</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td>Detail1</td>
-                                            <td>Detail1</td>
-                                            <td>Detail1</td>
+                                            <td>รายละเอียด1</td>
+                                            <td>รายละเอียด1</td>
+                                            <td>รายละเอียด1</td>
                                         </tr>
                                         <tr>
-                                            <td>Detail2</td>
-                                            <td>Detail2</td>
-                                            <td>Detail2</td>
+                                            <td>รายละเอียด2</td>
+                                            <td>รายละเอียด2</td>
+                                            <td>รายละเอียด2</td>
                                         </tr>
                                     </tbody>
                                 </Table>
@@ -85,6 +85,7 @@ export default class dashboard extends React.Component {
                         </Container>
                     </section>
                 </div>
+                <br /><br /><br />
             </div>
         );
     }
