@@ -1,7 +1,87 @@
 import React, { Component } from 'react';
 import locationBG from '../img/BG_bl.jpg';
+import axios from 'axios';
 
-class signupuser extends Component {
+export default class signupuser extends Component {
+    constructor(props){
+        super(props);
+        this.onchangeUserName = this.onchangeUserName.bind(this);
+        this.onchangePassword = this.onchangePassword.bind(this);
+        this.onchangeFname = this.onchangeFname.bind(this);
+        this.onchangeLname = this.onchangeLname.bind(this);
+        this.onchangeAddress = this.onchangeAddress.bind(this);
+        this.onchangePhonenumber = this.onchangePhonenumber.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+
+        this.state = {
+            User_g: '',
+            Password: '',
+            Fname: '',
+            Lname: '',
+            Address: '',
+            Phonenumber: ''
+        }
+    }
+    onchangeUserName(e){
+        this.setState({
+            User_g: e.target.value
+        });
+    }
+    onchangePassword(e){
+        this.setState({
+            Password: e.target.value
+        });
+    }
+    onchangeFname(e){
+        this.setState({
+            Fname: e.target.value
+        });
+    }
+    onchangeLname(e){
+        this.setState({
+            Lname: e.target.value
+        });
+    }
+    onchangeAddress(e){
+        this.setState({
+            Address: e.target.value
+        });
+    }
+    onchangePhonenumber(e){
+        this.setState({
+            Phonenumber: e.target.value
+        });
+    }
+    onSubmit(e){
+        e.preventDefault();
+        const UserGen = {
+            User_g: this.state.User_g,
+            Password: this.state.Password,
+            Fname: this.state.Fname,
+            Lname: this.state.Lname,
+            Address: this.state.Address,
+            Phonenumber: this.state.Phonenumber
+        }
+        axios.post('http://localhost:5000/users/add', UserGen)
+        // .then(res => console.log(res.data));
+        .then(function(res){
+            if(res.data == 'Server added successfully'){
+                window.location = "/login"
+            }
+        })
+        .catch(function(err){
+            console.log('error');
+        })
+
+        this.setState({
+            User_g: '',
+            Password: '',
+            Fname: '',
+            Lname: '',
+            Address: '',
+            Phonenumber: ''
+        });
+    }
     render() {
         const divStyle = {
             color: 'blue',
@@ -28,44 +108,44 @@ class signupuser extends Component {
                     <section id="next-section" className="probootstrap-section">
                         <div className="container">
                             <div className="col-md-6">
-                                <form action="#" method="post" className="probootstrap-form">
+                                <form className="probootstrap-form" onSubmit={this.onSubmit}>
                                     <div className="row">
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Username">ชื่อผู้ใช้งาน</label>
-                                                <input type="text" className="form-control" />
+                                                <input type="text" className="form-control" onChange={this.onchangeUserName}/>
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Password">รหัสผ่าน</label>
-                                                <input type="password" className="form-control" />
+                                                <input type="text" className="form-control" onChange={this.onchangePassword}/>
                                             </div>
                                         </div>
                                        
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Fname">ชื่อ</label>
-                                                <input type="text" className="form-control" />
+                                                <input type="text" className="form-control" onChange={this.onchangeFname}/>
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="lname">นามสกุล</label>
-                                                <input type="text" className="form-control" />
+                                                <input type="text" className="form-control" onChange={this.onchangeLname}/>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <label for="Phone">เบอร์โทรศัพท์</label>
-                                        <input type="text" className="form-control" />
+                                        <input type="text" className="form-control" onChange={this.onchangePhonenumber}/>
                                     </div>
                                     <div className="form-group">
                                         <label for="message">ที่อยู่</label>
-                                        <textarea cols="30" rows="10" className="form-control"></textarea>
+                                        <textarea cols="30" rows="10" className="form-control" onChange={this.onchangeAddress}></textarea>
                                     </div>
                                     <div className="form-group">
-                                        <input type="submit" className="btn btn-primary" id="submit" name="submit" value="Submit" />
+                                        <input type="submit" className="btn btn-primary" value="ลงทะเบียน" />
                                     </div>
                                 </form>
                             </div>
@@ -89,5 +169,3 @@ class signupuser extends Component {
         );
     }
 }
-
-export default signupuser;

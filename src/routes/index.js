@@ -18,7 +18,7 @@ import history from "../pages/user/history";
 import monitoring from "../pages/user/monitoring";
 import notification from "../pages/user/notification";
 
-// import test from "../test";
+ import test from "../pages/testHTPPSget";
 
 
 export default () => (
@@ -40,7 +40,7 @@ export default () => (
         <Route exact path="/notification" component={notification} />
 
 
-        {/* <Route exact path="/test" component={test} /> */}
+        <Route exact path="/test" component={test} />
 
     </Switch>
 )
