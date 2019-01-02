@@ -4,8 +4,6 @@ import Header from "./header";
 import Headernew from "./headernew";
 import Footer from "./footer";
 
-
-
 class App extends Component {
   render() {
     return (

@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@trendmicro/react-sidenav": "^0.4.5",
+    "axios": "^0.18.0",
     "bootstrap": "^4.2.1",
     "cheeseburger-menu": "0.0.13",
     "mdbreact": "^4.8.6",
@@ -26,6 +27,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:5000",
   "eslintConfig": {
     "extends": "react-app"
   },
