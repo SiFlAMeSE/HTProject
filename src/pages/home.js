@@ -11,7 +11,7 @@ class home extends Component {
     };
 
     return (
-      <div>
+      <div class="conbody">
         <div className="probootstrap-intro" style={divStyle} data-stellar-background-ratio="0.5" >
           <div className="container" >
             <div className="row">

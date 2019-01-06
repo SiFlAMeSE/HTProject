@@ -18,6 +18,7 @@ html {
   font-size: 1em;
 }
 
+/* ปรับเปลี่ยน ตำแหน่ง */
 body {
   background: #ffffff;
   font-size: 18px;
@@ -25,6 +26,7 @@ body {
   font-family: "Inconsolata", monospace;
   line-height: 1.8;
   color: #7e8890;
+  
 }
 
 ::-moz-selection {
@@ -329,105 +331,6 @@ a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active {
 .probootstrap-mobile-menu-active .probootstrap-main-nav li {
   display: block;
 }
-
-/* สร้างเอง แทบข้าง */
-.probootstrap-main-nav1 {
-  margin: 0;
-  padding: 0;
-}
-
-.probootstrap-mobile-menu-active .probootstrap-main-nav1 {
-  float: left;
-  margin-top: 40px;
-  width: 100%;
-}
-
-.probootstrap-main-nav1 li {
-  margin: 0;
-  padding: 0 10px;
-  list-style: none;
-  display: inline;
-  font-size: 18px;
-}
-
-.probootstrap-mobile-menu-active .probootstrap-main-nav1 li {
-  margin-bottom: 10px;
-  display: block;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.probootstrap-main-nav1 li a {
-  text-transform: uppercase;
-  padding: 10px 0;
-  color: #ffffff;
-  font-size: 14px;
-  letter-spacing: .2em;
-  border-bottom: 2px solid transparent;
-}
-
-.probootstrap-mobile-menu-active .probootstrap-main-nav1 li a {
-  margin-bottom: 10px;
-  padding: 5px 0;
-  display: block;
-}
-
-.probootstrap-main-nav1 li a:hover {
-  border-bottom: 2px solid #ffffff;
-}
-
-.probootstrap-mobile-menu-active .probootstrap-main-nav1 li a {
-  border-bottom: none !important;
-}
-
-.probootstrap-mobile-menu-active .probootstrap-main-nav1 li a:hover {
-  color: #96c7f5;
-}
-
-.probootstrap-main-nav1 li.probootstrap-cta {
-  margin-left: 20px;
-}
-
-.probootstrap-main-nav1 li.probootstrap-cta a {
-  border: 2px solid #ffffff;
-  padding-right: 20px;
-  padding-left: 20px;
-  border-radius: 4px;
-}
-
-.probootstrap-main-nav1 li.probootstrap-cta a:hover {
-  background: #ffffff;
-  color: #96c7f5;
-}
-
-.probootstrap-mobile-menu-active .probootstrap-main-nav1 li.probootstrap-cta {
-  margin-left: 0px;
-  margin-top: 20px;
-}
-
-.probootstrap-mobile-menu-active .probootstrap-main-nav1 li.probootstrap-cta a {
-  padding-top: 2px;
-  padding-bottom: 2px;
-}
-
-.probootstrap-main-nav1 li.active a {
-  border-bottom: 2px solid #ffffff;
-}
-
-.probootstrap-main-nav1 li.active a:hover {
-  border-bottom: 2px solid #ffffff;
-}
-
-.probootstrap-mobile-menu-active .probootstrap-main-nav1 li.active a {
-  border-bottom: none !important;
-  color: #96c7f5;
-}
-
-.probootstrap-mobile-menu-active .probootstrap-main-nav1 li {
-  display: block;
-}
-
-/* จบตรงนี้ */
 
 .probootstrap-header-social {
   position: absolute;
@@ -755,80 +658,6 @@ a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active {
   top: 30px;
   right: 20px;
 }
-/* ส่วนเพิ่มเติมแรก */
-.probootstrap-burger-menu1 {
-  display: inline-block;
-  width: 18px;
-  height: 18px;
-  cursor: pointer;
-  text-decoration: none;
-  position: relative;
-}
-
-.probootstrap-burger-menu1 i {
-  position: relative;
-  display: inline-block;
-  width: 18px;
-  height: 2px;
-  color: #ffffff;
-  font: bold 14px/.4 Helvetica, arial;
-  text-transform: uppercase;
-  text-indent: -55px;
-  background: #ffffff;
-  -webkit-transition: all .2s ease-out;
-  transition: all .2s ease-out;
-}
-
-.probootstrap-burger-menu1 i::before, .probootstrap-burger-menu1 i::after {
-  content: '';
-  width: 18px;
-  height: 2px;
-  background: #ff0000;
-  position: absolute;
-  left: 0;
-  -webkit-transition: all .2s ease-out;
-  transition: all .2s ease-out;
-}
-
-.probootstrap-burger-menu1 i::before {
-  top: -7px;
-}
-
-.probootstrap-burger-menu1 i::after {
-  bottom: -7px;
-}
-
-.probootstrap-burger-menu1:hover i::before {
-  top: -10px;
-}
-
-.probootstrap-burger-menu1:hover i::after {
-  bottom: -10px;
-}
-
-.probootstrap-burger-menu1.active i {
-  background: transparent;
-}
-
-.probootstrap-burger-menu1.active i::before {
-  top: 0;
-  -webkit-transform: rotateZ(45deg);
-  transform: rotateZ(45deg);
-}
-
-.probootstrap-burger-menu1.active i::after {
-  bottom: 0;
-  -webkit-transform: rotateZ(-45deg);
-  transform: rotateZ(-45deg);
-}
-
-.probootstrap-burger-menu1 {
-  position: absolute;
-  top: 28px;
-  left: 20px;
-}
-
-
 
 .btn {
   border: none;
@@ -1171,11 +1000,13 @@ a.hover-reverse:hover, a.hover-reverse:focus, a.hover-reverse:active {
   line-height: 1.65;
 }
 
+/* ปรับเปลี่ยน footer */
+
 .probootstrap-footer {
   padding: 2em 0 2em 0;
   background: #96c7f5;
   position: relative;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.7);  
 }
 
 .probootstrap-footer .probootstrap-backtotop {

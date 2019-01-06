@@ -35,8 +35,8 @@ export default class setting extends React.Component {
                                 </Row>
                                 <Row>
                                     <Col>
-                                        <Label>Key Room</Label>
-                                        <Input type="text" name="key" placeholder="ละทะเบียนคีย์ที่ต้องการ"></Input>
+                                        <Label>รหัสสถานที่</Label>
+                                        <Input type="text" name="key" placeholder="ลงทะเบียนคีย์ที่ต้องการ"></Input>
                                     </Col>
                                     <Col span="3"></Col>
                                 </Row>

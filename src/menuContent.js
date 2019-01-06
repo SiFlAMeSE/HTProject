@@ -28,12 +28,12 @@ class MenuContent extends Component {
         <p className="hint">Click outside the menu to close it, or swipe it closed on touch device</p> */}
         <br/><br/><br/><br/>
         <div className="menu-item">
-        <NavLink to="/monitoring" onClick={this.props.closeCallback}>Monitering</NavLink>
-        <NavLink to="/dashboard" onClick={this.props.closeCallback}>Dashboard</NavLink>
-        <NavLink to="/notification" onClick={this.props.closeCallback}>Notification</NavLink>
-        <NavLink to="/history" onClick={this.props.closeCallback}>History</NavLink>
-        <NavLink to="/report" onClick={this.props.closeCallback}>Reports</NavLink>
-        <NavLink to="/setting" onClick={this.props.closeCallback}>Setting</NavLink>
+        <NavLink to="/monitoring" onClick={this.props.closeCallback}>การตรวจสอบ</NavLink>
+        <NavLink to="/dashboard" onClick={this.props.closeCallback}>แผงควบคุม</NavLink>
+        <NavLink to="/notification" onClick={this.props.closeCallback}>ระบบแจ้งเตือน</NavLink>
+        <NavLink to="/history" onClick={this.props.closeCallback}>ประวัติย้อนหลัง</NavLink>
+        <NavLink to="/report" onClick={this.props.closeCallback}>รายงาน</NavLink>
+        <NavLink to="/setting" onClick={this.props.closeCallback}>ตั้งค่าอุปกรณ์</NavLink>
         </div>
          
       </div>
