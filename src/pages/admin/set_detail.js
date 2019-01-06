@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Button, Input, FormGroup, Form, Container, Row, Col, Label } from 'reactstrap';
 import locationBG from '../../img/BG_bl.jpg';
 
-export default class setting extends React.Component {
+export default class set_detail extends React.Component {
     render() {
         const divStyle = {
             color: 'blue',
@@ -25,23 +25,6 @@ export default class setting extends React.Component {
                         <Container>
                             <Table>
                                 <Row>
-                                    <Col>
-                                        <Input type="text" name="location" placeholder="ใส่ชื่อสถานที่"></Input>
-                                    </Col>
-                                    <Col>
-                                        <Button color="success">ตกลง</Button>{' '}
-                                    </Col>
-                                    <Col span="2"></Col>
-                                </Row>
-                                <Row>
-                                    <Col>
-                                        <Label>รหัสสถานที่</Label>
-                                        <Input type="text" name="key" placeholder="ลงทะเบียนคีย์ที่ต้องการ"></Input>
-                                    </Col>
-                                    <Col span="3"></Col>
-                                </Row>
-                                <Row>
-                                    <Col span="3"></Col>
                                     <Col>
                                         <Label>จุดที่ตั้ง</Label>
                                         <Input type="text" name="name" placeholder="ตำแหน่ง"></Input>
@@ -67,6 +50,11 @@ export default class setting extends React.Component {
                                                 <Col>
                                                     <Label>ค่าความชื้นสูงสุด</Label>
                                                     <Input type="text" name="maxhum" placeholder="ค่ามากสุด"></Input>
+                                                </Col>
+                                            </Row>
+                                            <Row>
+                                                <Col>
+                                                    <Button color="success">ตกลง</Button>{' '}
                                                 </Col>
                                             </Row>
                                         </Table>

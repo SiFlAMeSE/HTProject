@@ -33,7 +33,7 @@ class MenuContent extends Component {
         <NavLink to="/notification" onClick={this.props.closeCallback}>ระบบแจ้งเตือน</NavLink>
         <NavLink to="/history" onClick={this.props.closeCallback}>ประวัติย้อนหลัง</NavLink>
         <NavLink to="/report" onClick={this.props.closeCallback}>รายงาน</NavLink>
-        <NavLink to="/setting" onClick={this.props.closeCallback}>ตั้งค่าอุปกรณ์</NavLink>
+        <NavLink to="/setlocation" onClick={this.props.closeCallback}>ตั้งค่าอุปกรณ์</NavLink>
         </div>
          
       </div>

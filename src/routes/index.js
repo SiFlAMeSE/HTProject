@@ -11,7 +11,11 @@ import signupadmin from "../pages/signup_admin";
 
 
 import report from "../pages/admin/report";
-import setting from "../pages/admin/setting";
+import set_build from "../pages/admin/set_build";
+import set_detail from "../pages/admin/set_detail";
+import set_location from "../pages/admin/set_location";
+import set_main from "../pages/admin/set_main";
+
 
 import dashboard from "../pages/user/dashboard";
 import history from "../pages/user/history";
@@ -32,7 +36,10 @@ export default () => (
         <Route exact path="/signup_admin" component={signupadmin} />
 
         <Route exact path="/report" component={report} />
-        <Route exact path="/setting" component={setting} />
+        {/* <Route exact path="/setmain" component={set_main} /> */}
+        <Route exact path="/setbuild" component={set_build} />
+        <Route exact path="/setdetail" component={set_detail} />
+        <Route exact path="/setlocation" component={set_location} />
 
         <Route exact path="/dashboard" component={dashboard} />
         <Route exact path="/history" component={history} />
