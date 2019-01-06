@@ -119,7 +119,7 @@ export default class signupuser extends Component {
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Password">รหัสผ่าน</label>
-                                                <input type="text" className="form-control" onChange={this.onchangePassword}/>
+                                                <input type="password" className="form-control" onChange={this.onchangePassword}/>
                                             </div>
                                         </div>
                                        
