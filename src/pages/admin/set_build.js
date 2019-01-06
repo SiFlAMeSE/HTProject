@@ -28,17 +28,11 @@ export default class set_build extends React.Component {
                                 <Row>
                                     <Col>
                                         <Label>ชื่ออาคาร</Label>
-                                        <Input type="text" name="location" placeholder="ใส่ชื่ออาคาร"></Input>
+                                        <Input type="text" name="bulid" placeholder="ใส่ชื่ออาคาร"></Input>
                                     </Col>
                                 </Row>
                                 <br/>
-                                <Row>
-                                    <Col>
-                                        <Label>ที่อยู่</Label>
-                                        <Input type="textarea" cols="30" rows="10"></Input>
-                                    </Col>
-                                </Row>
-                                <br/>
+                                
                                 <Row>
                                     <Col>
                                         <Button color="success">ตกลง</Button>{' '}

@@ -13,7 +13,7 @@ export default class set_location extends React.Component {
                 <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
                     <br /><br /><br /><br /><br /><br /><br /><br />
                     <center>
-                        <h1>ลงทะเบียนสถานที่</h1>
+                        <h1>ลงทะเบียนอาคาร</h1>
                     </center>
 
                     <span className="probootstrap-animate">
@@ -21,22 +21,33 @@ export default class set_location extends React.Component {
                         <i className="icon-chevron-down"></i></a></span>
                 </section>
                 <div>
-                    
-                        <section id="next-section" className="probootstrap-section">
-                            <Container>
-                                <Table>
-                                    <Row align="center">
-                                        <Col>
-                                            <Input type="text" name="location" placeholder="ใส่ชื่อสถานที่"></Input>
-                                        </Col>
-                                        <Col>
-                                            <Button color="success">ตกลง</Button>{''}
-                                        </Col>
-                                    </Row>
-                                </Table>
-                            </Container>
-                        </section>
-                    
+
+                    <section id="next-section" className="probootstrap-section">
+                        <Container>
+                            <Table>
+                                <Row>
+                                    <Col>
+                                        <Label>ชื่อสถานที่</Label>
+                                        <Input type="text" name="location" placeholder="ใส่ชื่อสถานที่"></Input>
+                                    </Col>
+                                </Row>
+                                <br/>
+                                <Row>
+                                    <Col>
+                                        <Label>ที่อยู่</Label>
+                                        <Input type="textarea" cols="30" rows="10"></Input>
+                                    </Col>
+                                </Row>
+                                <br/>
+                                <Row>
+                                    <Col>
+                                        <Button color="success">ตกลง</Button>{' '}
+                                    </Col>
+                                </Row>
+                            </Table>
+                        </Container>
+                    </section>
+
 
                 </div>
             </div>
