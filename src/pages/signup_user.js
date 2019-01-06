@@ -113,32 +113,32 @@ export default class signupuser extends Component {
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Username">ชื่อผู้ใช้งาน</label>
-                                                <input type="text" className="form-control" onChange={this.onchangeUserName}/>
+                                                <input type="text" className="form-control" onChange={this.onchangeUserName} required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" noEmpty title="ต้องมีตัวอักษรภาษาอังกฤษทั้งเล็กและใหญ่และตัวเลข มากกว่า 5 ตัวขึ้นไป"/>
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Password">รหัสผ่าน</label>
-                                                <input type="text" className="form-control" onChange={this.onchangePassword}/>
+                                                <input type="text" className="form-control" onChange={this.onchangePassword} required/>
                                             </div>
                                         </div>
                                        
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Fname">ชื่อ</label>
-                                                <input type="text" className="form-control" onChange={this.onchangeFname}/>
+                                                <input type="text" className="form-control" onChange={this.onchangeFname} required/>
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="lname">นามสกุล</label>
-                                                <input type="text" className="form-control" onChange={this.onchangeLname}/>
+                                                <input type="text" className="form-control" onChange={this.onchangeLname} required/>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <label for="Phone">เบอร์โทรศัพท์</label>
-                                        <input type="text" className="form-control" onChange={this.onchangePhonenumber}/>
+                                        <input type="text" className="form-control" onChange={this.onchangePhonenumber} required/>
                                     </div>
                                     <div className="form-group">
                                         <label for="message">ที่อยู่</label>
