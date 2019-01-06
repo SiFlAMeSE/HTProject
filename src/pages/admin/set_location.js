@@ -24,27 +24,29 @@ export default class set_location extends React.Component {
 
                     <section id="next-section" className="probootstrap-section">
                         <Container>
-                            <Table>
-                                <Row>
-                                    <Col>
-                                        <Label>ชื่อสถานที่</Label>
-                                        <Input type="text" name="location" placeholder="ใส่ชื่อสถานที่"></Input>
-                                    </Col>
-                                </Row>
-                                <br/>
-                                <Row>
-                                    <Col>
-                                        <Label>ที่อยู่</Label>
-                                        <Input type="textarea" cols="30" rows="10"></Input>
-                                    </Col>
-                                </Row>
-                                <br/>
-                                <Row>
-                                    <Col>
-                                        <Button color="success">ตกลง</Button>{' '}
-                                    </Col>
-                                </Row>
-                            </Table>
+                            <form action="/setbuild">
+                                <Table>
+                                    <Row>
+                                        <Col>
+                                            <Label>ชื่อสถานที่</Label>
+                                            <Input type="text" name="location" placeholder="ใส่ชื่อสถานที่"></Input>
+                                        </Col>
+                                    </Row>
+                                    <br />
+                                    <Row>
+                                        <Col>
+                                            <Label>ที่อยู่</Label>
+                                            <Input type="textarea" cols="30" rows="10"></Input>
+                                        </Col>
+                                    </Row>
+                                    <br />
+                                    <Row>
+                                        <Col>
+                                            <Button color="success">ตกลง</Button>{' '}
+                                        </Col>
+                                    </Row>
+                                </Table>
+                            </form>
                         </Container>
                     </section>
 
