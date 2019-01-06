@@ -65,29 +65,31 @@ export default class set_location extends React.Component {
                 </section>
                 <div>
 
-                    <section id="next-section" className="probootstrap-section" onSubmit={this.onSubmit}>
+                    <section id="next-section" className="probootstrap-section" >
                         <Container>
-                            <Table>
-                                <Row>
-                                    <Col>
-                                        <Label>ชื่อสถานที่</Label>
-                                        <Input type="text" name="location" placeholder="ใส่ชื่อสถานที่" onChange={this.onchangeNameLocation}></Input>
-                                    </Col>
-                                </Row>
-                                <br/>
-                                <Row>
-                                    <Col>
-                                        <Label>ที่อยู่</Label>
-                                        <Input type="textarea" cols="30" rows="10" onChange={this.onchangeAddress}></Input>
-                                    </Col>
-                                </Row>
-                                <br/>
-                                <Row>
-                                    <Col>
-                                        <Button color="success">ตกลง</Button>{' '}
-                                    </Col>
-                                </Row>
-                            </Table>
+                            <form onSubmit={this.onSubmit}>
+                                <Table>
+                                    <Row>
+                                        <Col>
+                                            <Label>ชื่อสถานที่</Label>
+                                            <Input type="text" name="location" placeholder="ใส่ชื่อสถานที่" onChange={this.onchangeNameLocation}></Input>
+                                        </Col>
+                                    </Row>
+                                    <br />
+                                    <Row>
+                                        <Col>
+                                            <Label>ที่อยู่</Label>
+                                            <Input type="textarea" cols="30" rows="10" onChange={this.onchangeAddress}></Input>
+                                        </Col>
+                                    </Row>
+                                    <br />
+                                    <Row>
+                                        <Col>
+                                            <Button type="submit" color="success">ตกลง</Button>{' '}
+                                        </Col>
+                                    </Row>
+                                </Table>
+                            </form>
                         </Container>
                     </section>
 

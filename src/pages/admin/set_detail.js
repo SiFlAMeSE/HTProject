@@ -23,47 +23,48 @@ export default class set_detail extends React.Component {
                 <div>
                     <section id="next-section" className="probootstrap-section">
                         <Container>
-                            <Table>
-                                <Row>
-                                    <Col>
-                                        <Label>จุดที่ตั้ง</Label>
-                                        <Input type="text" name="name" placeholder="ตำแหน่ง"></Input>
-                                        <Label>รหัสอุปกรณ์</Label>
-                                        <Input type="text" name="mac" placeholder="Mac Address"></Input>
+                            <form action="/setlocation">
+                                <Table>
+                                    <Row>
+                                        <Col>
+                                            <Label>จุดที่ตั้ง</Label>
+                                            <Input type="text" name="name" placeholder="ตำแหน่ง"></Input>
+                                            <Label>รหัสอุปกรณ์</Label>
+                                            <Input type="text" name="mac" placeholder="Mac Address"></Input>
 
-                                        <Table>
-                                            <Row>
-                                                <Col>
-                                                    <Label>ค่าอุณหภูมิต่ำสุด</Label>
-                                                    <Input type="text" name="mintem" placeholder="ค่าน้อยสุด"></Input>
-                                                </Col>
-                                                <Col>
-                                                    <Label>ค่าอุณหภูมิสูงสุด</Label>
-                                                    <Input type="text" name="maxtem" placeholder="ค่ามากสุด"></Input>
-                                                </Col>
-                                            </Row>
-                                            <Row>
-                                                <Col>
-                                                    <Label>ค่าความชื้นต่ำสุด</Label>
-                                                    <Input type="text" name="minhum" placeholder="ค่าน้อยสุด"></Input>
-                                                </Col>
-                                                <Col>
-                                                    <Label>ค่าความชื้นสูงสุด</Label>
-                                                    <Input type="text" name="maxhum" placeholder="ค่ามากสุด"></Input>
-                                                </Col>
-                                            </Row>
-                                            <Row>
-                                                <Col>
-                                                    <Button color="success">ตกลง</Button>{' '}
-                                                </Col>
-                                            </Row>
-                                        </Table>
+                                            <Table>
+                                                <Row>
+                                                    <Col>
+                                                        <Label>ค่าอุณหภูมิต่ำสุด</Label>
+                                                        <Input type="text" name="mintem" placeholder="ค่าน้อยสุด"></Input>
+                                                    </Col>
+                                                    <Col>
+                                                        <Label>ค่าอุณหภูมิสูงสุด</Label>
+                                                        <Input type="text" name="maxtem" placeholder="ค่ามากสุด"></Input>
+                                                    </Col>
+                                                </Row>
+                                                <Row>
+                                                    <Col>
+                                                        <Label>ค่าความชื้นต่ำสุด</Label>
+                                                        <Input type="text" name="minhum" placeholder="ค่าน้อยสุด"></Input>
+                                                    </Col>
+                                                    <Col>
+                                                        <Label>ค่าความชื้นสูงสุด</Label>
+                                                        <Input type="text" name="maxhum" placeholder="ค่ามากสุด"></Input>
+                                                    </Col>
+                                                </Row>
+                                                <Row>
+                                                    <Col>
+                                                        <Button color="success">ตกลง</Button>{' '}
+                                                    </Col>
+                                                </Row>
+                                            </Table>
 
-                                    </Col>
+                                        </Col>
 
-                                </Row>
-                            </Table>
-
+                                    </Row>
+                                </Table>
+                            </form>
                         </Container>
                     </section>
                 </div>

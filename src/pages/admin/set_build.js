@@ -24,21 +24,23 @@ export default class set_build extends React.Component {
 
                     <section id="next-section" className="probootstrap-section">
                         <Container>
-                            <Table>
-                                <Row>
-                                    <Col>
-                                        <Label>ชื่ออาคาร</Label>
-                                        <Input type="text" name="bulid" placeholder="ใส่ชื่ออาคาร"></Input>
-                                    </Col>
-                                </Row>
-                                <br/>
-                                
-                                <Row>
-                                    <Col>
-                                        <Button color="success">ตกลง</Button>{' '}
-                                    </Col>
-                                </Row>
-                            </Table>
+                            <form action="/setdetail">
+                                <Table>
+                                    <Row>
+                                        <Col>
+                                            <Label>ชื่ออาคาร</Label>
+                                            <Input type="text" name="bulid" placeholder="ใส่ชื่ออาคาร"></Input>
+                                        </Col>
+                                    </Row>
+                                    <br />
+
+                                    <Row>
+                                        <Col>
+                                            <Button color="success">ตกลง</Button>{' '}
+                                        </Col>
+                                    </Row>
+                                </Table>
+                            </form>
                         </Container>
                     </section>
 

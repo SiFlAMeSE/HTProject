@@ -113,7 +113,7 @@ export default class signupuser extends Component {
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Username">ชื่อผู้ใช้งาน</label>
-                                                <input type="text" className="form-control" onChange={this.onchangeUserName} required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" noEmpty title="ต้องมีตัวอักษรภาษาอังกฤษทั้งเล็กและใหญ่และตัวเลข มากกว่า 5 ตัวขึ้นไป"/>
+                                                <input type="text" className="form-control" onChange={this.onchangeUserName} required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="ต้องมีตัวอักษรภาษาอังกฤษทั้งเล็กและใหญ่และตัวเลข มากกว่า 8 ตัวขึ้นไป"/>
                                             </div>
                                         </div>
                                         <div className="col-md-6">
