@@ -10,12 +10,15 @@ import {
     UncontrolledDropdown,
     DropdownToggle,
     DropdownMenu,
-    DropdownItem
+    DropdownItem,
+    Button
 } from 'reactstrap';
 
 import CheeseburgerMenu from 'cheeseburger-menu'
 import HamburgerMenu from 'react-hamburger-menu'
 import MenuContent from './menuContent'
+
+import { Link, withRouter } from 'react-router-dom'
 
 const contentStyles = {
     fontFamily: 'sans-serif',
@@ -28,6 +31,7 @@ export default class headernew extends React.Component {
 
         this.state = {
             menuOpen: false,
+            test: "sdfljk"
         }
 
         this.toggle = this.toggle.bind(this);
@@ -48,10 +52,75 @@ export default class headernew extends React.Component {
     closeMenu() {
         this.setState({ menuOpen: false })
     }
+
+    logOut = (e) => {
+        console.log(e.target)
+        // e.preventDefault()
+        // localStorage.removeItem('usertoken')
+        // window.location = "/"
+
+        sessionStorage.clear();
+
+    }
+
+
+
     render() {
+        const loginRegLink = (
+            <ul className="navbar-nav">
+                <li className="nav-item">
+                    <Link to="/login" className="nav-link">
+                        Login
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <Link to="/signup_user" className="nav-link">
+                        Register
+                    </Link>
+                </li>
+            </ul>
+        )
+
+        const userLink = (
+            <ul className="navbar-nav">
+                <li className="nav-item">
+                    <Link to="/test" className="nav-link">
+                        User
+                    </Link>
+                </li>
+                <li className="nav-item">
+                    <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+                        Logout
+                    </a>
+                </li>
+            </ul>
+        )
         return (
             <div>
-                <Navbar color="light" light expand="md">
+                <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded">
+                    <button className="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbar1"
+                        aria-controls="navbar1"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span className="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div className="collapse navbar-collapse justigy-contert-md-center" id="navbar1">
+                        <ul className="navbar-nav">
+                            <li className="nav-item">
+                                <Link to="/" className="nav-link">
+                                    Home
+                            </Link>
+                                <Button onClick={this.logOut} ref={this.test} >ออกจากระบบ</Button>
+                            </li>
+                        </ul>
+                        {localStorage.usertoken ? userLink : loginRegLink}
+                    </div>
+                </nav>
+                {/* <Navbar color="light" light expand="md">
                     <NavbarBrand href="/">LOGO</NavbarBrand>
                     <CheeseburgerMenu
                         isOpen={this.state.menuOpen}
@@ -88,9 +157,7 @@ export default class headernew extends React.Component {
                                 <NavLink href="/test">ทดสอบ</NavLink>
                             </NavItem>
 
-
-
-                            {/* <UncontrolledDropdown nav inNavbar>
+                            <UncontrolledDropdown nav inNavbar>
                                 <DropdownToggle nav caret>
                                     Options
                 </DropdownToggle>
@@ -106,10 +173,10 @@ export default class headernew extends React.Component {
                                         Reset
                   </DropdownItem>
                                 </DropdownMenu>
-                            </UncontrolledDropdown> */}
+                            </UncontrolledDropdown>
                         </Nav>
                     </Collapse>
-                </Navbar>
+                </Navbar> */}
             </div>
         );
     }

@@ -29,7 +29,6 @@ class header extends Component {
         return (
 
             <header role="banner" className="probootstrap-header">
-                <a href="/" className="probootstrap-logo">LOGO<span>.</span></a>
 
                 {/* ---------------------------------------------------------------------------------------------------- */}
                 <CheeseburgerMenu

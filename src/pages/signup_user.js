@@ -2,57 +2,28 @@ import React, { Component } from 'react';
 import locationBG from '../img/BG_bl.jpg';
 import axios from 'axios';
 
-export default class signupuser extends Component {
-    constructor(props){
-        super(props);
-        this.onchangeUserName = this.onchangeUserName.bind(this);
-        this.onchangePassword = this.onchangePassword.bind(this);
-        this.onchangeFname = this.onchangeFname.bind(this);
-        this.onchangeLname = this.onchangeLname.bind(this);
-        this.onchangeAddress = this.onchangeAddress.bind(this);
-        this.onchangePhonenumber = this.onchangePhonenumber.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
+import { register } from './Functions'
 
+export default class signupuser extends Component {
+    constructor() {
+        super()
         this.state = {
             User_g: '',
             Password: '',
             Fname: '',
             Lname: '',
             Address: '',
-            Phonenumber: ''
+            Phonenumber: '',
         }
+        this.onChange = this.onChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
     }
-    onchangeUserName(e){
-        this.setState({
-            User_g: e.target.value
-        });
+
+    onChange(e) {
+        this.setState({ [e.target.name]: e.target.value })
     }
-    onchangePassword(e){
-        this.setState({
-            Password: e.target.value
-        });
-    }
-    onchangeFname(e){
-        this.setState({
-            Fname: e.target.value
-        });
-    }
-    onchangeLname(e){
-        this.setState({
-            Lname: e.target.value
-        });
-    }
-    onchangeAddress(e){
-        this.setState({
-            Address: e.target.value
-        });
-    }
-    onchangePhonenumber(e){
-        this.setState({
-            Phonenumber: e.target.value
-        });
-    }
-    onSubmit(e){
+
+    onSubmit(e) {
         e.preventDefault();
         const UserGen = {
             User_g: this.state.User_g,
@@ -63,24 +34,15 @@ export default class signupuser extends Component {
             Phonenumber: this.state.Phonenumber
         }
         axios.post('http://localhost:5000/users/add', UserGen)
-        // .then(res => console.log(res.data));
-        .then(function(res){
-            if(res.data == 'Server added successfully'){
-                window.location = "/login"
-            }
-        })
-        .catch(function(err){
-            console.log('error');
-        })
-
-        this.setState({
-            User_g: '',
-            Password: '',
-            Fname: '',
-            Lname: '',
-            Address: '',
-            Phonenumber: ''
-        });
+            // .then(res => console.log(res.data));
+            .then(function (res) {
+                if (res.data == 'Server added successfully') {
+                    window.location = "/login"
+                }
+            })
+            .catch(function (err) {
+                console.log('error');
+            })
     }
     render() {
         const divStyle = {
@@ -108,59 +70,90 @@ export default class signupuser extends Component {
                     <section id="next-section" className="probootstrap-section">
                         <div className="container">
                             <div className="col-md-6">
-                                <form className="probootstrap-form" onSubmit={this.onSubmit}>
+                                <form className="probootstrap-form" noValidate onSubmit={this.onSubmit}>
                                     <div className="row">
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Username">ชื่อผู้ใช้งาน</label>
-                                                <input type="text" className="form-control" onChange={this.onchangeUserName} required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="ต้องมีตัวอักษรภาษาอังกฤษทั้งเล็กและใหญ่และตัวเลข มากกว่า 8 ตัวขึ้นไป"/>
+                                                <input type="User_g"
+                                                    className="form-control"
+                                                    name="User_g"
+                                                    placeholder="ชื่อผู้ใช้"
+                                                    // pattern="(\d)([a-z])([A-Z]).{8,}"
+                                                    // required title="ต้องมีตัวอักษรภาษาอังกฤษทั้งเล็กและใหญ่และตัวเลข มากกว่า 8 ตัวขึ้นไป"
+                                                    value={this.state.User_g}
+                                                    onChange={this.onChange} />
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Password">รหัสผ่าน</label>
-                                                <input type="password" className="form-control" onChange={this.onchangePassword} required/>
+                                                <input type="Password"
+                                                    className="form-control"
+                                                    name="Password"
+                                                    placeholder="รหัส"
+                                                    // pattern="(\d).{8,}"
+                                                    // required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
+                                                    value={this.state.Password}
+                                                    onChange={this.onChange} />
                                             </div>
                                         </div>
-                                       
+
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Fname">ชื่อ</label>
-                                                <input type="text" className="form-control" onChange={this.onchangeFname} required/>
+                                                <input type="Fname"
+                                                    className="form-control"
+                                                    name="Fname"
+                                                    placeholder="ชื่อ"
+                                                    pattern="([a-z]).{3,}"
+                                                    required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
+                                                    value={this.state.Fname}
+                                                    onChange={this.onChange} />
                                             </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-group">
-                                                <label for="lname">นามสกุล</label>
-                                                <input type="text" className="form-control" onChange={this.onchangeLname} required/>
+                                                <label for="Lname">นามสกุล</label>
+                                                <input type="Lname"
+                                                    className="form-control"
+                                                    name="Lname"
+                                                    placeholder="นามสกุล"
+                                                    pattern="([a-z]).{3,}"
+                                                    required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
+                                                    value={this.state.Lname}
+                                                    onChange={this.onChange} />
                                             </div>
                                         </div>
                                     </div>
                                     <div className="form-group">
                                         <label for="Phone">เบอร์โทรศัพท์</label>
-                                        <input type="text" className="form-control" onChange={this.onchangePhonenumber} required/>
+                                        <input type="Phonenumber"
+                                            className="form-control"
+                                            name="Phonenumber"
+                                            placeholder="รหัส"
+                                            pattern="(/d.{3,}"
+                                            required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
+                                            value={this.state.Phonenumber}
+                                            onChange={this.onChange} />
                                     </div>
                                     <div className="form-group">
                                         <label for="message">ที่อยู่</label>
-                                        <textarea cols="30" rows="10" className="form-control" onChange={this.onchangeAddress}></textarea>
+                                        <textarea cols="30"
+                                            rows="10"
+                                            className="form-control"
+                                            name="Address"
+                                            value={this.state.Address}
+                                            onChange={this.onChange}
+                                            >                                            
+                                        </textarea>
+
                                     </div>
                                     <div className="form-group">
                                         <input type="submit" className="btn btn-primary" value="ลงทะเบียน" />
                                     </div>
                                 </form>
                             </div>
-                            {/* <div className="col-md-5 col-md-push-1">
-                                <h3 className="mt0">Contact</h3>
-                                <ul className="probootstrap-contact-info">
-                                    <li><span>Mr. Sirasak Sunthonthuam  5802041610089</span></li>
-                                    <li><i className="icon-phone2"></i>&nbsp;<span>094-931-2638</span></li>
-                                    <li><span>Mr. Sompot Satongngak  5802041620203</span></li>
-                                    <li><i className="icon-phone2"></i>&nbsp;<span>092-493-6145</span></li>
-                                </ul>
-
-                                <h3>ข้อเสนอ</h3>
-                                <p>คำอธิบายเพิ่มเติม</p>
-                            </div> */}
                         </div>
                     </section>
 

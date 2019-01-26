@@ -4,12 +4,27 @@ import locationBG from '../img/BG_bl.jpg';
 
 class home extends Component {
 
+  constructor() {
+    super()
+    this.state = {
+      data: {}
+    }
+  }
+  componentWillMount() {
+    const test = sessionStorage.getItem('Login')
+    this.setState({ data: JSON.parse(test) });
+  }
   render() {
+    const { data } = this.state
+    console.log(data);
+
     const divStyle = {
       color: 'blue',
       backgroundImage: 'url(' + locationBG + ')',
     };
 
+    // alert(data.Fname)
+    
     return (
       <div class="conbody">
         <div className="probootstrap-intro" style={divStyle} data-stellar-background-ratio="0.5" >

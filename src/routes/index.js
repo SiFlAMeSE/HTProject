@@ -5,7 +5,7 @@ import home from "../pages/home";
 import howto from "../pages/howto";
 import infor from "../pages/information";
 import contact from "../pages/contact";
-import login from "../pages/login";
+import loginp from "../pages/login";
 import signupuser from "../pages/signup_user";
 import signupadmin from "../pages/signup_admin";
 
@@ -23,6 +23,7 @@ import monitoring from "../pages/user/monitoring";
 import notification from "../pages/user/notification";
 
  import test from "../pages/testHTPPSget";
+ import outbox from "../outbox";
 
 
 export default () => (
@@ -31,7 +32,7 @@ export default () => (
         <Route exact path="/howto" component={howto} />
         <Route exact path="/infor" component={infor} />
         <Route exact path="/contact" component={contact} />
-        <Route exact path="/login" component={login} />
+        <Route exact path="/login" component={loginp} />
         <Route exact path="/signup_user" component={signupuser} />
         <Route exact path="/signup_admin" component={signupadmin} />
 
@@ -48,6 +49,8 @@ export default () => (
 
 
         <Route exact path="/test" component={test} />
+        <Route exact path="/outbox" component={outbox} />
+        
 
     </Switch>
 )

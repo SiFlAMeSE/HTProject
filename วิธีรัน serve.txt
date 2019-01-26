@@ -1,0 +1,17 @@
+﻿วิธีเปิด server
+
+=== CMD1 ===
+เข้าไปรันที่ D:\MongoDB\Server\4.0\bin
+> mongod --dbpath "D\WORK\Project\database"
+
+
+=== CMD2 ===
+รันที่ D:\MongoDB\Server\4.0\bin
+> mongo
+
+=== รันใน HTBackend ===
+> nodemon server.js
+
+
+
+
