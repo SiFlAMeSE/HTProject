@@ -25,6 +25,11 @@ class header extends Component {
     closeMenu() {
         this.setState({ menuOpen: false })
     }
+
+    logOut = (e) => {
+        console.log(e.target)
+        sessionStorage.clear();
+    }
     render() {
         return (
 

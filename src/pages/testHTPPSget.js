@@ -9,6 +9,7 @@ export default class testHTPPSget extends Component {
     this.state = { UserGen: [] };
   }
 
+  //check login
   componentWillMount() {
     if (!sessionStorage.getItem('Login')) {
       this.props.history.push('/')
@@ -18,6 +19,8 @@ export default class testHTPPSget extends Component {
 
     }
   }
+
+  
   componentDidMount() {
     axios.get('http://localhost:5000/users/user_list')
       .then(response => {

@@ -24,26 +24,22 @@ class loginp extends Component {
             Password: this.state.Password
         }
         axios.post('http://localhost:5000/users/login', UserGen)
-            // .then(function (res) {
-            //     console.log(res.data)
-            // }
-            // )
-
             .then(function (res) {
                 if (res.data.status == 'Success') {
-                    console.log('Ok', res.data.data);
+                    // console.log('Ok', res.data.data);
                     sessionStorage.setItem('Login', JSON.stringify(res.data.data))
-                    // window.location = "/outbox"
+                    // window.location = "/test"
                 }
                 else {
-                    alert("ไปสมัคร")
-                    // console.log('Ok', res.data.data);
-                    // window.location = "/outbox"
+                    alert("ไม่มีชื่อผู้ใช้งาน : " + UserGen.User_g + " ในระบบ")
+                    console.log('relogin', res.data.data);
+                    // window.location = "/signup_user"
                 }
             })
-        // .catch(function (err) {
-        //     console.log('error loopfront2')
-        // })
+            // .catch(function (err) {
+            //     alert("มีปัญหาด้านเทคนิค")
+            //     console.log('error loopfront2')
+            // })
         // login(user).then(res => {
         //     if (res) {
         //         console.log("ok_fronlogin" , res)
