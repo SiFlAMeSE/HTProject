@@ -8,8 +8,6 @@ const AppWithRouter = () => (
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  )
-
-  
+  )  
   
   ReactDOM.render(<AppWithRouter />, document.getElementById('root'))

@@ -1,14 +1,13 @@
 import React, { Component } from 'react';
 import Routing from "./routes";
-// import Header from "./header";
-import Headernew from "./headernew";
+import Header from "./header";
 import Footer from "./footer";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Headernew />
+        <Header />
         <Routing />
         <Footer />
       </div>

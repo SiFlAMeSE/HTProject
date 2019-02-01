@@ -39,11 +39,11 @@ class loginp extends Component {
                     if(data.Positions === 'admin') {
                         sessionStorage.setItem('Login_add', JSON.stringify(res.data.data))
                     window.location = "/"
-                    }else {
-                        sessionStorage.setItem('Login', JSON.stringify(res.data.data))
+                    }
+                    if(data.Positions === 'user') {
+                        sessionStorage.setItem('Login_user', JSON.stringify(res.data.data))
                         window.location = "/"
                     }
-                    
                 }
                 else {
                     alert("ไม่มีชื่อผู้ใช้งาน : " + UserGen.User_g + " ในระบบ")
