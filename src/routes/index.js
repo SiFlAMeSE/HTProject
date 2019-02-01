@@ -23,7 +23,7 @@ import monitoring from "../pages/user/monitoring";
 import notification from "../pages/user/notification";
 
  import test from "../pages/testHTPPSget";
- import outbox from "../outbox";
+
 
 
 export default () => (
@@ -50,7 +50,7 @@ export default () => (
 
 
         <Route exact path="/test" component={test} />
-        <Route exact path="/outbox" component={outbox} />
+
         
 
     </Switch>
