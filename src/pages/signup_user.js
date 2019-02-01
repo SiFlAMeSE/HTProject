@@ -14,6 +14,7 @@ export default class signupuser extends Component {
             Lname: '',
             Address: '',
             Phonenumber: '',
+            Positions: '',
         }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
@@ -31,13 +32,15 @@ export default class signupuser extends Component {
             Fname: this.state.Fname,
             Lname: this.state.Lname,
             Address: this.state.Address,
-            Phonenumber: this.state.Phonenumber
+            Phonenumber: this.state.Phonenumber,
+            Positions: this.state.Positions
+
         }
         axios.post('http://localhost:5000/users/add', UserGen)
             // .then(res => console.log(res.data));
             .then(function (res) {
                 if (res.data == 'Server added successfully') {
-                    window.location = "/login"
+                    window.location = "/signup_user"
                 }
             })
             .catch(function (err) {
@@ -75,7 +78,7 @@ export default class signupuser extends Component {
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Username">ชื่อผู้ใช้งาน</label>
-                                                <input type="User_g"
+                                                <input type="text"
                                                     className="form-control"
                                                     name="User_g"
                                                     placeholder="ชื่อผู้ใช้"
@@ -102,7 +105,7 @@ export default class signupuser extends Component {
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Fname">ชื่อ</label>
-                                                <input type="Fname"
+                                                <input type="text"
                                                     className="form-control"
                                                     name="Fname"
                                                     placeholder="ชื่อ"
@@ -115,7 +118,7 @@ export default class signupuser extends Component {
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Lname">นามสกุล</label>
-                                                <input type="Lname"
+                                                <input type="text"
                                                     className="form-control"
                                                     name="Lname"
                                                     placeholder="นามสกุล"
@@ -128,7 +131,7 @@ export default class signupuser extends Component {
                                     </div>
                                     <div className="form-group">
                                         <label for="Phone">เบอร์โทรศัพท์</label>
-                                        <input type="Phonenumber"
+                                        <input type="text"
                                             className="form-control"
                                             name="Phonenumber"
                                             placeholder="รหัส"
@@ -136,6 +139,28 @@ export default class signupuser extends Component {
                                             required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
                                             value={this.state.Phonenumber}
                                             onChange={this.onChange} />
+                                    </div>
+                                    <label for="Positions">หน้าที่</label>
+                                    <div className="form-check">
+                                        <div class="form-check-inline">
+                                            <label class="form-check-label" for="user">
+                                                <input type="radio"
+                                                    class="form-check-input"
+                                                    name="Positions"
+                                                    value="user"
+                                                    onChange={this.onChange} />ผู้ใช้งาน
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <label class="form-check-label" for="admin">
+                                                <input type="radio"
+                                                    class="form-check-input"
+                                                    value="admin"
+                                                    name="Positions"
+                                                    onChange={this.onChange} />ผู้ดูแลระบบ
+                                            </label>
+                                        </div>
+
                                     </div>
                                     <div className="form-group">
                                         <label for="message">ที่อยู่</label>
@@ -145,7 +170,7 @@ export default class signupuser extends Component {
                                             name="Address"
                                             value={this.state.Address}
                                             onChange={this.onChange}
-                                            >                                            
+                                        >
                                         </textarea>
 
                                     </div>

@@ -28,7 +28,7 @@ class loginp extends Component {
                 if (res.data.status == 'Success') {
                     // console.log('Ok', res.data.data);
                     sessionStorage.setItem('Login', JSON.stringify(res.data.data))
-                    // window.location = "/test"
+                    window.location = "/"
                 }
                 else {
                     alert("ไม่มีชื่อผู้ใช้งาน : " + UserGen.User_g + " ในระบบ")

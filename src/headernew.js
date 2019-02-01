@@ -47,25 +47,21 @@ export default class headernew extends React.Component {
                     <HamburgerMenu
                         isOpen={this.state.menuOpen}
                         menuClicked={this.openMenu.bind(this)}
-                        width={32}
-                        height={24}
-                        strokeWidth={3}
-                        rotate={0}
-                        color='black'
-                        borderRadius={0}
-                        animationDuration={0.5}
+                    // // width={32}
+                    // // height={24}
+                    // strokeWidth={3}
+                    // rotate={0}
+                    // color='white'
+                    // borderRadius={0}
+                    // animationDuration={0.5}
                     /></li>
+        
                 <li><a href="/">หน้าหลัก</a></li>
                 <li><NavLink to="/howto">วิธีการใช้งาน</NavLink></li>
                 <li><NavLink to="/infor">ข้อมูลอุปกรณ์</NavLink></li>
                 <li><NavLink to="/contact">ติดต่อ</NavLink></li>
                 <li><NavLink to="/test">ทดสอบ</NavLink></li>
-
-                <li className="nav-item">
-                    <a href="" onClick={this.logOut.bind(this)} className="nav-link">
-                        Logout
-                    </a>
-                </li>
+                <li><NavLink to="" onClick={this.logOut.bind(this)}>ออกจากระบบ</NavLink></li>
             </ul>
         )
         const userLink = (
