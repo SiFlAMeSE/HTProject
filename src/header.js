@@ -4,10 +4,10 @@ import CheeseburgerMenu from 'cheeseburger-menu'
 import HamburgerMenu from 'react-hamburger-menu'
 import MenuContent from './menuContent'
 
-const contentStyles = {
-    fontFamily: 'sans-serif',
-    textAlign: 'center',
-}
+// const contentStyles = {
+//     fontFamily: 'sans-serif',
+//     textAlign: 'center',
+// }
 
 class header extends Component {
     constructor(props) {
@@ -42,7 +42,7 @@ class header extends Component {
                     <MenuContent closeCallback={this.closeMenu.bind(this)} />
                 </CheeseburgerMenu>
 
-                <a href="#" className="probootstrap-burger-menu visible-xs" ><i>เมนู</i></a>
+                <a href="/" className="probootstrap-burger-menu visible-xs" ><i>เมนู</i></a>
                 <div className="mobile-menu-overlay"></div>
                 <nav role="navigation" className="probootstrap-nav hidden-xs">
                     <ul className="probootstrap-main-nav">
@@ -70,7 +70,7 @@ class header extends Component {
                         <li><a target="_blank" href="https://www.instagram.com/"><i className="icon-instagram2"></i></a></li>
                     </ul>
                     <div className="extra-text visible-xs">
-                        <a href="#" className="probootstrap-burger-menu"><i>เมนู</i></a>
+                        <a href="/" className="probootstrap-burger-menu"><i>เมนู</i></a>
                     </div>
                 </nav>
 

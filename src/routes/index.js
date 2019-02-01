@@ -7,15 +7,11 @@ import infor from "../pages/information";
 import contact from "../pages/contact";
 import loginp from "../pages/login";
 import signup from "../pages/signup";
-import signupadmin from "../pages/signup_admin";
-
 
 import report from "../pages/admin/report";
 import set_build from "../pages/admin/set_build";
 import set_detail from "../pages/admin/set_detail";
 import set_location from "../pages/admin/set_location";
-import set_main from "../pages/admin/set_main";
-
 
 import dashboard from "../pages/user/dashboard";
 import history from "../pages/user/history";

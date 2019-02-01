@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button, Input, FormGroup, Form, Container, Row, Col, Label } from 'reactstrap';
+import { Table, Button, Input,  Container, Row, Col, Label } from 'reactstrap';
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 
@@ -33,7 +33,7 @@ export default class set_location extends React.Component {
         }
         axios.post('http://localhost:5000/locations/add', Locations)
         .then(function(res){
-            if(res.data == 'Server added successfully'){
+            if(res.data === 'Server added successfully'){
                 window.location = "/setlocation"
             }
         })
@@ -56,7 +56,7 @@ export default class set_location extends React.Component {
                 <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
                     <br /><br /><br /><br /><br /><br /><br /><br />
                     <center>
-                        <h1>ลงทะเบียนอาคาร</h1>
+                        <h1>ลงทะเบียนสถานที่</h1>
                     </center>
 
                     <span className="probootstrap-animate">

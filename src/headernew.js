@@ -1,17 +1,8 @@
 import React from 'react';
 import {
-    Collapse,
-    Navbar,
-    NavbarToggler,
-    NavbarBrand,
-    Nav,
-    NavItem,
+
     NavLink,
-    UncontrolledDropdown,
-    DropdownToggle,
-    DropdownMenu,
-    DropdownItem,
-    Button
+
 } from 'react-router-dom';
 
 import CheeseburgerMenu from 'cheeseburger-menu'
@@ -47,13 +38,13 @@ export default class headernew extends React.Component {
                     <HamburgerMenu
                         isOpen={this.state.menuOpen}
                         menuClicked={this.openMenu.bind(this)}
-                    // // width={32}
-                    // // height={24}
-                    // strokeWidth={3}
-                    // rotate={0}
-                    // color='white'
-                    // borderRadius={0}
-                    // animationDuration={0.5}
+                    width={32}
+                    height={24}
+                    strokeWidth={3}
+                    rotate={0}
+                    color='white'
+                    borderRadius={0}
+                    animationDuration={0.5}
                     /></li>
         
                 <li><a href="/">หน้าหลัก</a></li>
@@ -86,14 +77,14 @@ export default class headernew extends React.Component {
                     <nav role="navigation" className="probootstrap-nav hidden-xs">
 
 
-                        {!sessionStorage.getItem('Login') ? userLink : adminLink}
+                        {!sessionStorage.getItem('Login_add') ? userLink : adminLink}
 
                         <ul className="probootstrap-header-social hidden-xs">
-                            <li><a target="_blank" href="https://www.facebook.com"><i className="icon-facebook2"></i></a></li>
-                            <li><a target="_blank" href="https://www.instagram.com/"><i className="icon-instagram2"></i></a></li>
+                            <li><a href="https://www.facebook.com"><i className="icon-facebook2"></i></a></li>
+                            <li><a href="https://www.instagram.com/"><i className="icon-instagram2"></i></a></li>
                         </ul>
                         <div className="extra-text visible-xs">
-                            <a href="#" className="probootstrap-burger-menu"><i>เมนู</i></a>
+                            <a href="/" className="probootstrap-burger-menu"><i>เมนู</i></a>
                         </div>
 
                     </nav>

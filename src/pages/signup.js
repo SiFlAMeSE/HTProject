@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import locationBG from '../img/BG_bl.jpg';
 import axios from 'axios';
 
-import { register } from './Functions'
-
 export default class signup extends Component {
     constructor() {
         super()
@@ -39,7 +37,7 @@ export default class signup extends Component {
         axios.post('http://localhost:5000/users/add', UserGen)
             // .then(res => console.log(res.data));
             .then(function (res) {
-                if (res.data == 'Server added successfully') {
+                if (res.data === 'Server added successfully') {
                     window.location = "/signup_user"
                 }
             })

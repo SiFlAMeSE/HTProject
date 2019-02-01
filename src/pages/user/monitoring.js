@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button, Input, FormGroup, Form, Container, Row, Col } from 'reactstrap';
+import { Table, Button, Input,  Form, Container, Row, Col } from 'reactstrap';
 import locationBG from '../../img/BG_bl.jpg';
 
 export default class monitoring extends React.Component {

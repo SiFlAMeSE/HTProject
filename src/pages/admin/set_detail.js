@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button, Input, FormGroup, Form, Container, Row, Col, Label } from 'reactstrap';
+import { Table, Button, Input,  Container, Row, Col, Label } from 'reactstrap';
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 
@@ -65,7 +65,7 @@ export default class set_detail extends React.Component {
         }
         axios.post('http://localhost:5000/sensers/add', Senser)
         .then(function(res){
-            if(res.data == 'Server added successfully'){
+            if(res.data === 'Server added successfully'){
                 window.location = "/setdetail"
             }
         })

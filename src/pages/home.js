@@ -39,7 +39,7 @@ class home extends Component {
             </div>
           </div>
           <span className="probootstrap-animate">
-            <a className="probootstrap-scroll-down js-next" href="#next-section">คลิกเลื่อนเพื่อเข้าสู่ระบบ<i className="icon-chevron-down"></i></a></span>
+            <a className="probootstrap-scroll-down js-next" href="/next-section">คลิกเลื่อนเพื่อเข้าสู่ระบบ<i className="icon-chevron-down"></i></a></span>
         </div>
 
         <main>
@@ -47,7 +47,7 @@ class home extends Component {
             <div className="container">
               <div className="row probootstrap-gutter60 mb50">
                 <div className="col-md-6">
-                  <figure><img src={require('../img/login.jpg')} width="450px" height="240" lt="Free Bootstrap Template by uicookies.com" className="img-responsive" /></figure>
+                  <figure><img src={require('../img/login.jpg')} width="450px" height="240" alt="Free Bootstrap Template by uicookies.com" className="img-responsive" /></figure>
                 </div>
                 <div className="col-md-6">
                   <h2 className="probootstrap-heading">เข้าสู่ระบบ</h2>
@@ -67,8 +67,8 @@ class home extends Component {
                 <div className="col-md-12 probootstrap-relative">
                   <h2 className="probootstrap-heading mt0 mb50">คุณสมบัติของระบบ</h2>
                   <ul className="probootstrap-owl-navigation absolute right">
-                    <li><a href="#" className="probootstrap-owl-prev"><i className="icon-chevron-left"></i></a></li>
-                    <li><a href="#" className="probootstrap-owl-next"><i className="icon-chevron-right"></i></a></li>
+                    <li><a href="/" className="probootstrap-owl-prev"><i className="icon-chevron-left"></i></a></li>
+                    <li><a href="/" className="probootstrap-owl-next"><i className="icon-chevron-right"></i></a></li>
                   </ul>
                 </div>
               </div>
@@ -77,7 +77,7 @@ class home extends Component {
                   <div className="owl-carousel owl-carousel-carousel">
                     <div className="item">
                       <div className="probootstrap-program">
-                        <a href="#"><img src="img/img_1.jpg" alt="Free Bootstrap Template by uicookies.com" className="img-responsive img-rounded" /></a>
+                        <a href="/"><img src="img/img_1.jpg" alt="Free Bootstrap Template by uicookies.com" className="img-responsive img-rounded" /></a>
                         <h3>ตรวจสอบอุณหภูมิ</h3>
                         <p>Sets: 3, Reps: 8-10, Rest: 30 sec.</p>
                         <p>She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
@@ -85,7 +85,7 @@ class home extends Component {
                     </div>
                     <div className="item">
                       <div className="probootstrap-program">
-                        <a href="#"><img src="img/img_2.jpg" alt="Free Bootstrap Template by uicookies.com" className="img-responsive img-rounded" /></a>
+                        <a href="/"><img src="img/img_2.jpg" alt="Free Bootstrap Template by uicookies.com" className="img-responsive img-rounded" /></a>
                         <h3>เพิ่ม / ลบ / แก้ไข</h3>
                         <p>Sets: 3, Reps: 8-10, Rest: 30 sec.</p>
                         <p>She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
@@ -93,7 +93,7 @@ class home extends Component {
                     </div>
                     <div className="item">
                       <div className="probootstrap-program">
-                        <a href="#"><img src="img/img_3.jpg" alt="Free Bootstrap Template by uicookies.com" className="img-responsive img-rounded" /></a>
+                        <a href="/"><img src="img/img_3.jpg" alt="Free Bootstrap Template by uicookies.com" className="img-responsive img-rounded" /></a>
                         <h3>เห็นภาพรวมของระบบ</h3>
                         <p>Sets: 3, Reps: 8-10, Rest: 30 sec.</p>
                         <p>She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
@@ -101,7 +101,7 @@ class home extends Component {
                     </div>
                     <div className="item">
                       <div className="probootstrap-program">
-                        <a href="#"><img src="img/img_4.jpg" alt="Free Bootstrap Template by uicookies.com" className="img-responsive img-rounded" /></a>
+                        <a href="/"><img src="img/img_4.jpg" alt="Free Bootstrap Template by uicookies.com" className="img-responsive img-rounded" /></a>
                         <h3>หลากหลายสถานที่</h3>
                         <p>Sets: 3, Reps: 8-10, Rest: 30 sec.</p>
                         <p>She packed her seven versalia, put her initial into the belt and made herself on the way.</p>
@@ -109,7 +109,7 @@ class home extends Component {
                     </div>
                     <div className="item">
                       <div className="probootstrap-program">
-                        <a href="#"><img src="img/img_5.jpg" alt="Free Bootstrap Template by uicookies.com" className="img-responsive img-rounded" /></a>
+                        <a href="/"><img src="img/img_5.jpg" alt="Free Bootstrap Template by uicookies.com" className="img-responsive img-rounded" /></a>
                         <h3>เชื่อมต่อทุกจุดเข้าด้วยกัน</h3>
                         <p>Sets: 3, Reps: 8-10, Rest: 30 sec.</p>
                         <p>She packed her seven versalia, put her initial into the belt and made herself on the way.</p>

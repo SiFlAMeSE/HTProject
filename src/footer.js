@@ -5,7 +5,7 @@ class footer extends Component {
         return (
             <footer className="probootstrap-footer">
                 <div className="probootstrap-backtotop">
-                <a href="#" className="js-backtotop">
+                <a href="/" className="js-backtotop">
                 <i className="icon-chevron-thin-up"></i></a></div>
                 <div className="container">
                     <div className="row">

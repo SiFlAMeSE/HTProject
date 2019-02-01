@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { login } from './Functions'
+// import { login } from './Functions'
 import axios from 'axios';
 
 class loginp extends Component {
@@ -8,6 +8,7 @@ class loginp extends Component {
         this.state = {
             User_g: '',
             Password: '',
+            // data: {}
         }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
@@ -21,14 +22,28 @@ class loginp extends Component {
         e.preventDefault()
         const UserGen = {
             User_g: this.state.User_g,
-            Password: this.state.Password
+            Password: this.state.Password,
+
+            Positions: this.state.Positions
         }
+        // const { data } = this.state
         axios.post('http://localhost:5000/users/login', UserGen)
             .then(function (res) {
-                if (res.data.status == 'Success') {
-                    // console.log('Ok', res.data.data);
-                    sessionStorage.setItem('Login', JSON.stringify(res.data.data))
+                const data = res.data.data
+                if (res.data.status === 'Success') {
+                    // console.log('Ok', data);
+                    // console.log(data.Positions);
+                    // alert(data.Fname)
+                    // console.log('kkkk');
+
+                    if(data.Positions === 'admin') {
+                        sessionStorage.setItem('Login_add', JSON.stringify(res.data.data))
                     window.location = "/"
+                    }else {
+                        sessionStorage.setItem('Login', JSON.stringify(res.data.data))
+                        window.location = "/"
+                    }
+                    
                 }
                 else {
                     alert("ไม่มีชื่อผู้ใช้งาน : " + UserGen.User_g + " ในระบบ")
@@ -36,19 +51,7 @@ class loginp extends Component {
                     // window.location = "/signup_user"
                 }
             })
-            // .catch(function (err) {
-            //     alert("มีปัญหาด้านเทคนิค")
-            //     console.log('error loopfront2')
-            // })
-        // login(user).then(res => {
-        //     if (res) {
-        //         console.log("ok_fronlogin" , res)
-        //         // window.location = "/outbox"
-        //     }
-        // })
     }
-
-
     render() {
         return (
             <div>
@@ -63,10 +66,10 @@ class loginp extends Component {
 
                             <div className="wrap-input100 validate-input m-b-20">
                                 {/* <input className="input100" id="inputl" type="text" name="username" placeholder="ชื่อผู้ใช้งาน" /> */}
-                                <input type="User_g"
+                                <input type="text"
                                     className="input100"
                                     name="User_g"
-                                    type="text"
+                                    // type="text"
                                     id="inputl"
                                     placeholder="ชื่อผู้ใช้งาน"
                                     value={this.state.User_g}
@@ -79,14 +82,13 @@ class loginp extends Component {
                                 <input type="password"
                                     className="input100"
                                     name="Password"
-                                    type="Password"
+                                    // type="Password"
                                     id="inputl"
                                     placeholder="รหัสเข้าใช้งาน"
                                     value={this.state.Password}
                                     onChange={this.onChange} />
                                 <span className="focus-input100"></span>
                             </div>
-
 
                             <div className="container-login100-form-btn">
                                 <button className="login100-form-btn" id="inputl">
@@ -105,7 +107,7 @@ class loginp extends Component {
                                     <i className="fa fa-facebook-f"></i>
                                 </a> */}
 
-                                <a href="#" className="login100-social-item">
+                                <a href="/" className="login100-social-item">
                                     <img src={require('../img/icon-google.png')} alt="GOOGLE" />
                                 </a>
                             </div>
