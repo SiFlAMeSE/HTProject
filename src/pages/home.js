@@ -4,26 +4,12 @@ import locationBG from '../img/BG_bl.jpg';
 
 class home extends Component {
 
-  constructor() {
-    super()
-    this.state = {
-      data: {}
-    }
-  }
-  componentWillMount() {
-    const test = sessionStorage.getItem('Login')
-    this.setState({ data: JSON.parse(test) });
-  }
   render() {
-    const { data } = this.state
-    console.log(data);
 
     const divStyle = {
       color: 'blue',
       backgroundImage: 'url(' + locationBG + ')',
     };
-
-    // alert(data.Fname)
     
     return (
       <div class="conbody">
@@ -39,7 +25,7 @@ class home extends Component {
             </div>
           </div>
           <span className="probootstrap-animate">
-            <a className="probootstrap-scroll-down js-next" href="/next-section">คลิกเลื่อนเพื่อเข้าสู่ระบบ<i className="icon-chevron-down"></i></a></span>
+            <a className="probootstrap-scroll-down js-next" href="#next-section">คลิกเลื่อนเพื่อเข้าสู่ระบบ<i className="icon-chevron-down"></i></a></span>
         </div>
 
         <main>

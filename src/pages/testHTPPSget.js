@@ -11,11 +11,13 @@ export default class testHTPPSget extends Component {
 
   //check login
   componentWillMount() {
-    if (!sessionStorage.getItem('Login')) {
-      this.props.history.push('/')
+    if (sessionStorage.getItem('Login_add')) {
+      // alert('ยินดีตอนรับ ผู้ดูแลระบบ'+ res.data.data.Fname)
+      this.props.history.push('/test')
     }
     else {
-      this.props.history.push('/dashboard')
+      alert('จำเป็นต้องเป็น ผู้ดูแลระบบเท่านั้น')
+      this.props.history.push('/login')
 
     }
   }
@@ -52,6 +54,7 @@ export default class testHTPPSget extends Component {
               <td>Address</td>
               <td>Phone Number</td>
               <td>Data</td>
+              <td>Position</td>
             </tr>
           </thead>
           <tbody>

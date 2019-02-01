@@ -8,7 +8,6 @@ class loginp extends Component {
         this.state = {
             User_g: '',
             Password: '',
-            // data: {}
         }
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
