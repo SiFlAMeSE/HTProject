@@ -66,7 +66,7 @@ export default class headernew extends React.Component {
         )
         const userLink = (
             <ul className="probootstrap-main-nav">
-                <li><NavLink to="/">หน้าหลัก</NavLink></li>
+                <li><a href="/">หน้าหลัก</a></li>
                 <li><NavLink to="/howto">วิธีการใช้งาน</NavLink></li>
                 <li><NavLink to="/infor">ข้อมูลอุปกรณ์</NavLink></li>
                 <li><NavLink to="/contact">ติดต่อ</NavLink></li>

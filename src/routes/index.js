@@ -6,7 +6,7 @@ import howto from "../pages/howto";
 import infor from "../pages/information";
 import contact from "../pages/contact";
 import loginp from "../pages/login";
-import signupuser from "../pages/signup_user";
+import signup from "../pages/signup";
 import signupadmin from "../pages/signup_admin";
 
 
@@ -33,8 +33,9 @@ export default () => (
         <Route exact path="/infor" component={infor} />
         <Route exact path="/contact" component={contact} />
         <Route exact path="/login" component={loginp} />
-        <Route exact path="/signup_user" component={signupuser} />
-        <Route exact path="/signup_admin" component={signupadmin} />
+        <Route exact path="/signup" component={signup} />
+
+        {/* <Route exact path="/signup_admin" component={signupadmin} /> */}
 
         <Route exact path="/report" component={report} />
         {/* <Route exact path="/setmain" component={set_main} /> */}

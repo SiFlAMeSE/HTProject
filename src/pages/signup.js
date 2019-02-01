@@ -4,7 +4,7 @@ import axios from 'axios';
 
 import { register } from './Functions'
 
-export default class signupuser extends Component {
+export default class signup extends Component {
     constructor() {
         super()
         this.state = {

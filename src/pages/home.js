@@ -55,9 +55,7 @@ class home extends Component {
                   <p>user จะสามารถดูรายละเอียดได้อย่างเดียว</p>
                   <NavLink to="/login" className="btn btn-primary">เข้าสู่ระบบ</NavLink>
                   &nbsp;&nbsp;
-                  <a href="/signup_user">ลงทะเบียนสมาชิก</a>
-                  &nbsp;&nbsp;
-                  <a href="/signup_admin">ลงทะเบียนผู้ดูแลระบบ</a>
+                  <a href="/signup">ลงทะเบียน</a>
                 </div>
               </div>
             </div>
