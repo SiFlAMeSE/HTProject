@@ -9,6 +9,7 @@ class App extends Component {
       <div>
         <Header />
         <Routing />
+        <br/><br/><br/><br/>
         <Footer />
       </div>
     );

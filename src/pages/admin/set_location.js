@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button, Input, Container, Row, Col, Label, ButtonToolbar, Modal } from 'reactstrap';
+import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 
@@ -14,8 +14,19 @@ export default class set_location extends React.Component {
             Name_Lo: '',
             Address: ''
         }
-        // this.state = { modalShow: false };
+        // เปิดปิด modal
+        this.state = {
+            modal: false
+        };
+        this.toggle = this.toggle.bind(this);
     }
+
+    toggle() {
+        this.setState({
+            modal: !this.state.modal
+        });
+    }
+
     onchangeNameLocation(e) {
         this.setState({
             Name_Lo: e.target.value
@@ -55,7 +66,6 @@ export default class set_location extends React.Component {
             backgroundImage: 'url(' + locationBG + ')',
         };
 
-        let modalClose = () => this.setState({ modalShow: false });
         return (
             <div>
                 <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
@@ -69,58 +79,56 @@ export default class set_location extends React.Component {
                         <i className="icon-chevron-down"></i></a></span>
                 </section>
                 <div>
-                    {/* <ButtonToolbar>
-                        <div id="mybutton">
-                            <Button class="feedback" onClick={() => this.setState({ modalShow: true })}>เพิ่มตำแหน่ง</Button>
-                        </div>
-                        <Modal
-                            size="lg"
-                            aria-labelledby="contained-modal-title-vcenter"
-                            centered
-                            show={this.state.modalShow}
-                            onHide={modalClose}
-                        >
-                            <Modal.Header closeButton>
-                                <Modal.Title id="contained-modal-title-vcenter">
-                                    Modal heading
-                                </Modal.Title>
-                            </Modal.Header>
-                            <Modal.Body> */}
-                                <section id="next-section" className="probootstrap-section" >
-                                    <Container>
-                                        <form onSubmit={this.onSubmit}>
-                                            <Table>
-                                                <Row>
-                                                    <Col>
-                                                        <Label>ชื่อสถานที่</Label>
-                                                        <Input type="text" name="location" placeholder="ใส่ชื่อสถานที่" onChange={this.onchangeNameLocation}></Input>
-                                                    </Col>
-                                                </Row>
-                                                <br />
-                                                <Row>
-                                                    <Col>
-                                                        <Label>ที่อยู่</Label>
-                                                        <Input type="textarea" cols="30" rows="10" onChange={this.onchangeAddress}></Input>
-                                                    </Col>
-                                                </Row>
-                                                <br />
-                                                <Row>
-                                                    <Col>
-                                                        <Button type="submit" color="success">ตกลง</Button>{' '}
-                                                    </Col>
-                                                </Row>
-                                            </Table>
-                                        </form>
-                                    </Container>
-                                </section>
-                            {/* </Modal.Body>
-                            <Modal.Footer>
-                                <Button onClick={this.props.onHide}>Close</Button>
-                            </Modal.Footer>
-                        </Modal >
+                    <section id="next-section" className="probootstrap-section" >
 
-                    </ButtonToolbar> */}
+                        <Modal isOpen={this.state.modal}
+                            toggle={this.toggle}
+                            className={this.props.className}>
 
+                            <ModalHeader toggle={this.toggle}>พื้นที่</ModalHeader>
+                            <ModalBody>
+                                <Container>
+                                    <form onSubmit={this.onSubmit}>
+                                        <Table>
+                                            <Row>
+                                                <Col>
+                                                    <Label>ชื่อสถานที่</Label>
+                                                    <Input type="text" name="location" placeholder="ใส่ชื่อสถานที่" onChange={this.onchangeNameLocation}></Input>
+                                                </Col>
+                                            </Row>
+                                            <br />
+                                            <Row>
+                                                <Col>
+                                                    <Label>ที่อยู่</Label>
+                                                    <Input type="textarea" cols="30" rows="10" onChange={this.onchangeAddress}></Input>
+                                                </Col>
+                                            </Row>
+                                            <br />
+                                        </Table>
+                                    </form>
+                                </Container>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button color="primary" onClick={this.toggle}>ตกลง</Button>{' '}
+                                <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                            </ModalFooter>
+
+                        </Modal>
+
+                    </section>
+                    
+                        <Table>
+                            <Row align="right">
+                                <Col>
+                                    <div>
+                                        <button type="button" onClick={this.toggle} class="btn btn-danger btn-lg" > เพิ่มตำแหน่ง </button>
+                                    </div>
+                                </Col>
+
+                            </Row>
+
+                        </Table>
+                   
                 </div>
             </div>
         );
