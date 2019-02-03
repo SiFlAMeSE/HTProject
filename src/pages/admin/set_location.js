@@ -56,7 +56,11 @@ export default class set_location extends React.Component {
         this.setState({
             Name_Lo: '',
             Address: ''
-        });
+        });   
+    }
+
+    createcard(e) {
+
     }
 
 
@@ -117,7 +121,7 @@ export default class set_location extends React.Component {
 
                     </section>
                     
-                        <Table>
+                        <Container>
                             <Row align="right">
                                 <Col>
                                     <div>
@@ -127,7 +131,7 @@ export default class set_location extends React.Component {
 
                             </Row>
 
-                        </Table>
+                        </Container>
                    
                 </div>
             </div>
