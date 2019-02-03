@@ -38,7 +38,7 @@ export default class signup extends Component {
             // .then(res => console.log(res.data));
             .then(function (res) {
                 if (res.data === 'Server added successfully') {
-                    window.location = "/signup_user"
+                    window.location = "/login"
                 }
             })
             .catch(function (err) {
