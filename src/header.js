@@ -35,7 +35,7 @@ export default class header extends React.Component {
         const adminLink = (
             <ul className="probootstrap-main-nav">
                 <li>
-                    <HamburgerMenu 
+                    <HamburgerMenu
                         isOpen={this.state.menuOpen}
                         menuClicked={this.openMenu.bind(this)}
                         width={32}
@@ -61,7 +61,9 @@ export default class header extends React.Component {
                 <li><NavLink to="/howto">วิธีการใช้งาน</NavLink></li>
                 <li><NavLink to="/infor">ข้อมูลอุปกรณ์</NavLink></li>
                 <li><NavLink to="/contact">ติดต่อ</NavLink></li>
-                <li><NavLink to="/test">ทดสอบ</NavLink></li>
+                <li><NavLink to="/monitoring">การตรวจสอบ</NavLink></li>
+                <li><NavLink to="/notification">ระบบแจ้งเตือน</NavLink></li>
+                <li><NavLink to="/history">ประวัติย้อนหลัง</NavLink></li>
                 <li><NavLink to="" onClick={this.logOut.bind(this)}>ออกจากระบบ</NavLink></li>
             </ul>
         )
@@ -82,11 +84,11 @@ export default class header extends React.Component {
                         <MenuContent closeCallback={this.closeMenu.bind(this)} />
                     </CheeseburgerMenu>
 
-                   
+
                     <nav role="navigation" className="probootstrap-nav hidden-xs">
 
                         {sessionStorage.getItem('Login_add') ? adminLink : sessionStorage.getItem('Login_user') ? userLink : Link}
-                        
+
                         {/* <div className="extra-text visible-xs">
                             <a href="/" className="probootstrap-burger-menu"><i>เมนู</i></a>
                         </div> */}
