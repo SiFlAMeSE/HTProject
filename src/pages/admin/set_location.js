@@ -2,6 +2,7 @@ import React from 'react';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
+import TabLoca from './TabRowLocation';
 
 export default class set_location extends React.Component {
     constructor(props) {
@@ -19,6 +20,8 @@ export default class set_location extends React.Component {
             modal: false
         };
         this.toggle = this.toggle.bind(this);
+
+        this.state = { Location: [] };
     }
 
     toggle() {
@@ -56,13 +59,29 @@ export default class set_location extends React.Component {
         this.setState({
             Name_Lo: '',
             Address: ''
-        });   
+        });
     }
 
     createcard(e) {
 
     }
 
+    componentDidMount() {
+        axios.get('http://localhost:5000/locations/location_list')
+            .then(response => {
+                const Location = response.data;
+                this.setState({ Location });
+                console.log(Location);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+    tabRow() {
+        return this.state.Location.map(function (object, i) {
+            return <TabLoca obj={object} key={i} />;
+        });
+    }
 
     render() {
         const divStyle = {
@@ -90,9 +109,9 @@ export default class set_location extends React.Component {
                             className={this.props.className}>
 
                             <ModalHeader toggle={this.toggle}>พื้นที่</ModalHeader>
-                            <ModalBody>
-                                <Container>
-                                    <form onSubmit={this.onSubmit}>
+                            <form onSubmit={this.onSubmit}>
+                                <ModalBody>
+                                    <Container>
                                         <Table>
                                             <Row>
                                                 <Col>
@@ -109,30 +128,43 @@ export default class set_location extends React.Component {
                                             </Row>
                                             <br />
                                         </Table>
-                                    </form>
-                                </Container>
-                            </ModalBody>
-                            <ModalFooter>
-                                <Button color="primary" onClick={this.toggle}>ตกลง</Button>{' '}
-                                <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-                            </ModalFooter>
-
+                                    </Container>
+                                </ModalBody>
+                                <ModalFooter>
+                                    <Button type="submit" color="primary" onClick={this.toggle}>ตกลง</Button>{' '}
+                                    <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                                </ModalFooter>
+                            </form>
                         </Modal>
 
                     </section>
-                    
-                        <Container>
-                            <Row align="right">
-                                <Col>
-                                    <div>
-                                        <button type="button" onClick={this.toggle} class="btn btn-danger btn-lg" > เพิ่มตำแหน่ง </button>
-                                    </div>
-                                </Col>
+                    <Container>
+                        <table className="table table-striped">
+                            <thead>
+                                <tr>
+                                    <td>ID</td>
+                                    <td>Name Location</td>
+                                    <td>Address</td>
+                                    <td>Data</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.tabRow()}
+                            </tbody>
+                        </table>
+                    </Container>
+                    <Container>
+                        <Row align="right">
+                            <Col>
+                                <div>
+                                    <button type="button" onClick={this.toggle} class="btn btn-danger btn-lg" > เพิ่มตำแหน่ง </button>
+                                </div>
+                            </Col>
 
-                            </Row>
+                        </Row>
 
-                        </Container>
-                   
+                    </Container>
+
                 </div>
             </div>
         );
