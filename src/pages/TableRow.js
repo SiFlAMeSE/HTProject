@@ -26,6 +26,9 @@ class TableRow extends Component {
             {this.props.obj.Phonenumber}
           </td>
           <td>
+            {this.props.obj.Positions}
+          </td>
+          <td>
             {this.props.obj.date}
           </td>
         </tr>

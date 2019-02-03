@@ -52,8 +52,8 @@ export default class testHTPPSget extends Component {
               <td>Last Name</td>
               <td>Address</td>
               <td>Phone Number</td>
-              <td>Data</td>
               <td>Position</td>
+              <td>Data</td>
             </tr>
           </thead>
           <tbody>
