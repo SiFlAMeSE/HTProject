@@ -37,10 +37,12 @@ class loginp extends Component {
                     //console.log('kkkk');
                     //console.log(data._id)
                     if(data.Positions === 'admin') {
+                        sessionStorage.clear();
                         sessionStorage.setItem('Login_add', JSON.stringify(res.data.data))
                         window.location = "/"
                     }
                     if(data.Positions === 'user') {
+                        sessionStorage.clear();
                         sessionStorage.setItem('Login_user', JSON.stringify(res.data.data))
                         window.location = "/"
                     }
