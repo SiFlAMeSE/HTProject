@@ -20,6 +20,7 @@ class loginp extends Component {
     onSubmit(e) {
         e.preventDefault()
         const UserGen = {
+            _id: this.state._id,
             User_g: this.state.User_g,
             Password: this.state.Password,
 
@@ -33,11 +34,11 @@ class loginp extends Component {
                     // console.log('Ok', data);
                     // console.log(data.Positions);
                     // alert(data.Fname)
-                    // console.log('kkkk');
-
+                    //console.log('kkkk');
+                    //console.log(data._id)
                     if(data.Positions === 'admin') {
                         sessionStorage.setItem('Login_add', JSON.stringify(res.data.data))
-                    window.location = "/"
+                        window.location = "/"
                     }
                     if(data.Positions === 'user') {
                         sessionStorage.setItem('Login_user', JSON.stringify(res.data.data))

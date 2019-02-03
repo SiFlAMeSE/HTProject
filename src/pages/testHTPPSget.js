@@ -22,7 +22,6 @@ export default class testHTPPSget extends Component {
     }
   }
 
-  
   componentDidMount() {
     axios.get('http://localhost:5000/users/user_list')
       .then(response => {
