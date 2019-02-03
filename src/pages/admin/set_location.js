@@ -32,7 +32,7 @@ export default class set_location extends React.Component {
         ss = JSON.parse(sessionStorage.getItem('Login_add'))
         this.setState({ data: ss })
         //console.log(ss._id)
-      }
+    }
 
     toggle() {
         this.setState({
@@ -60,7 +60,7 @@ export default class set_location extends React.Component {
         }
         axios.post('http://localhost:5000/locations/add', Locations)
             .then(function (res) {
-                    if (res.data === 'Server added successfully') {
+                if (res.data === 'Server added successfully') {
                     window.location = "/setlocation"
                     //console.log(item);
                     // console.log('OK');
@@ -75,8 +75,6 @@ export default class set_location extends React.Component {
             Address: ''
         });
     }
-
-    
 
     createcard(e) {
 
@@ -93,6 +91,7 @@ export default class set_location extends React.Component {
                 console.log(error);
             })
     }
+
     tabRow() {
         return this.state.Location.map(function (object, i) {
             return <TabLoca obj={object} key={i} />;
@@ -155,24 +154,9 @@ export default class set_location extends React.Component {
 
                     </section>
                     <Container>
-                        <table className="table table-striped">
-                            <thead>
-                                <tr>
-                                    <td>ID</td>
-                                    <td>Name Location</td>
-                                    <td>Address</td>
-                                    <td>Data</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.tabRow()}
-                            </tbody>
-                        </table>
-
-                        {this.createcard()}
+                        {this.tabRow()}
                     </Container>
 
-                     
                     <Container>
                         <Row align="right">
                             <Col>
