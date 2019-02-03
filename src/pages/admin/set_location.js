@@ -20,7 +20,6 @@ export default class set_location extends React.Component {
             modal: false
         };
         this.toggle = this.toggle.bind(this);
-
         this.state = { Location: [] };
     }
 
@@ -40,6 +39,7 @@ export default class set_location extends React.Component {
             Address: e.target.value
         });
     }
+
     onSubmit(e) {
         e.preventDefault();
         const Locations = {
@@ -48,8 +48,11 @@ export default class set_location extends React.Component {
         }
         axios.post('http://localhost:5000/locations/add', Locations)
             .then(function (res) {
-                if (res.data === 'Server added successfully') {
-                    window.location = "/setlocation"
+                let item = JSON.stringify(sessionStorage);
+                    if (res.data === 'Server added successfully') {
+                    //window.location = "/setlocation"
+                    console.log(item);
+                    // console.log('OK');
                 }
             })
             .catch(function (err) {
