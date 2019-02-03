@@ -3,7 +3,7 @@ import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, M
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import TabLoca from './TabRowLocation';
-
+var ss;
 export default class set_location extends React.Component {
     constructor(props) {
         super(props);
@@ -13,7 +13,8 @@ export default class set_location extends React.Component {
 
         this.state = {
             Name_Lo: '',
-            Address: ''
+            Address: '',
+            Id_Admin: ''
         }
         // เช็คสถานะ
         this.state = {
@@ -24,14 +25,13 @@ export default class set_location extends React.Component {
             modal: false
         };
         this.toggle = this.toggle.bind(this);
-
         this.state = { Location: [] };
     }
 
     componentWillMount() {
-        var ss = JSON.parse(sessionStorage.getItem('Login_add'))
+        ss = JSON.parse(sessionStorage.getItem('Login_add'))
         this.setState({ data: ss })
-        console.log(ss.Positions)
+        //console.log(ss._id)
       }
 
     toggle() {
@@ -50,16 +50,20 @@ export default class set_location extends React.Component {
             Address: e.target.value
         });
     }
+
     onSubmit(e) {
         e.preventDefault();
         const Locations = {
             Name_Lo: this.state.Name_Lo,
-            Address: this.state.Address
+            Address: this.state.Address,
+            Id_Admin: ss._id
         }
         axios.post('http://localhost:5000/locations/add', Locations)
             .then(function (res) {
-                if (res.data === 'Server added successfully') {
+                    if (res.data === 'Server added successfully') {
                     window.location = "/setlocation"
+                    //console.log(item);
+                    // console.log('OK');
                 }
             })
             .catch(function (err) {
