@@ -15,6 +15,10 @@ export default class set_location extends React.Component {
             Name_Lo: '',
             Address: ''
         }
+        // เช็คสถานะ
+        this.state = {
+            data: {}
+        }
         // เปิดปิด modal
         this.state = {
             modal: false
@@ -22,6 +26,12 @@ export default class set_location extends React.Component {
         this.toggle = this.toggle.bind(this);
         this.state = { Location: [] };
     }
+
+    componentWillMount() {
+        var ss = JSON.parse(sessionStorage.getItem('Login_add'))
+        this.setState({ data: ss })
+        console.log(ss.Positions)
+      }
 
     toggle() {
         this.setState({
@@ -64,6 +74,8 @@ export default class set_location extends React.Component {
             Address: ''
         });
     }
+
+    
 
     createcard(e) {
 
@@ -155,7 +167,11 @@ export default class set_location extends React.Component {
                                 {this.tabRow()}
                             </tbody>
                         </table>
+
+                        {this.createcard()}
                     </Container>
+
+                     
                     <Container>
                         <Row align="right">
                             <Col>
@@ -163,11 +179,8 @@ export default class set_location extends React.Component {
                                     <button type="button" onClick={this.toggle} class="btn btn-danger btn-lg" > เพิ่มตำแหน่ง </button>
                                 </div>
                             </Col>
-
                         </Row>
-
                     </Container>
-
                 </div>
             </div>
         );
