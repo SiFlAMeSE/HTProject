@@ -33,9 +33,9 @@ class home extends Component {
             <div className="container">
               <div className="row probootstrap-gutter60 mb50">
                 <div className="col-md-6">
-                  <figure><img src={require('../img/login.jpg')} width="450px" height="240" alt="Free Bootstrap Template by uicookies.com" className="img-responsive" /></figure>
+                  <figure><img src={require('../img/login.jpg')} width="400px" height="600" alt="Free Bootstrap Template by uicookies.com" className="img-responsive" /></figure>
                 </div>
-                <div className="col-md-6">
+                <div className="col-6">
                   <h2 className="probootstrap-heading">เข้าสู่ระบบ</h2>
                   <p>admin จะสามารถจัดการกับระบบได้</p>
                   <p>user จะสามารถดูรายละเอียดได้อย่างเดียว</p>

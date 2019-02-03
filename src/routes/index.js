@@ -18,8 +18,8 @@ import history from "../pages/user/history";
 import monitoring from "../pages/user/monitoring";
 import notification from "../pages/user/notification";
 
- import test from "../pages/testHTPPSget";
-
+import test from "../pages/testHTPPSget";
+import testcode from "../testcode";
 
 
 export default () => (
@@ -46,6 +46,7 @@ export default () => (
 
 
         <Route exact path="/test" component={test} />
+        <Route exact path="/testcode" component={testcode} />
 
         
 

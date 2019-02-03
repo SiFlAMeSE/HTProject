@@ -35,7 +35,7 @@ export default class header extends React.Component {
         const adminLink = (
             <ul className="probootstrap-main-nav">
                 <li>
-                    <HamburgerMenu
+                    <HamburgerMenu 
                         isOpen={this.state.menuOpen}
                         menuClicked={this.openMenu.bind(this)}
                         width={32}
@@ -82,18 +82,14 @@ export default class header extends React.Component {
                         <MenuContent closeCallback={this.closeMenu.bind(this)} />
                     </CheeseburgerMenu>
 
-                    <div className="mobile-menu-overlay"></div>
+                   
                     <nav role="navigation" className="probootstrap-nav hidden-xs">
 
                         {sessionStorage.getItem('Login_add') ? adminLink : sessionStorage.getItem('Login_user') ? userLink : Link}
                         
-                        <ul className="probootstrap-header-social hidden-xs">
-                            <li><a href="https://www.facebook.com"><i className="icon-facebook2"></i></a></li>
-                            <li><a href="https://www.instagram.com/"><i className="icon-instagram2"></i></a></li>
-                        </ul>
-                        <div className="extra-text visible-xs">
+                        {/* <div className="extra-text visible-xs">
                             <a href="/" className="probootstrap-burger-menu"><i>เมนู</i></a>
-                        </div>
+                        </div> */}
 
                     </nav>
                 </div>
