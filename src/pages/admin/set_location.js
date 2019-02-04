@@ -3,7 +3,7 @@ import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, M
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import TabLoca from './TabRowLocation';
-var ss;
+var id_admin;
 export default class set_location extends React.Component {
     constructor(props) {
         super(props);
@@ -29,8 +29,8 @@ export default class set_location extends React.Component {
     }
 
     componentWillMount() {
-        ss = JSON.parse(sessionStorage.getItem('Login_add'))
-        this.setState({ data: ss })
+        id_admin = JSON.parse(sessionStorage.getItem('Login_add'))
+        this.setState({ data: id_admin })
         //console.log(ss._id)
       }
 
@@ -56,7 +56,7 @@ export default class set_location extends React.Component {
         const Locations = {
             Name_Lo: this.state.Name_Lo,
             Address: this.state.Address,
-            Id_Admin: ss._id
+            Id_Admin: id_admin._id
         }
         axios.post('http://localhost:5000/locations/add', Locations)
             .then(function (res) {
@@ -76,8 +76,6 @@ export default class set_location extends React.Component {
         });
     }
 
-    
-
     createcard(e) {
 
     }
@@ -85,18 +83,21 @@ export default class set_location extends React.Component {
     componentDidMount() {
         axios.get('http://localhost:5000/locations/location_list')
             .then(response => {
-                const Location = response.data;
-                this.setState({ Location });
-                console.log(Location);
+                const location = response.data;
+                this.setState({ location });
+                console.log(location);
             })
             .catch(function (error) {
                 console.log(error);
             })
     }
     tabRow() {
-        return this.state.Location.map(function (object, i) {
-            return <TabLoca obj={object} key={i} />;
-        });
+        // const checkidlo = JSON.stringify(this.state.location.data)
+        // console.log(checkidlo)
+            return this.state.Location.map(function (object, i) {
+                
+                return <TabLoca obj={object} key={i} />;
+            });
     }
 
     render() {
