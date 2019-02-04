@@ -82,7 +82,7 @@ export default class set_location extends React.Component {
             .then(response => {
                 const Location = response.data;
                 this.setState({ Location });
-                console.log(Location);
+                // console.log(Location);
             })
             .catch(function (error) {
                 console.log(error);
@@ -158,7 +158,7 @@ export default class set_location extends React.Component {
                         <Row align="right">
                             <Col>
                                 <div>
-                                    <button type="button" onClick={this.toggle} class="btn btn-danger btn-lg" > เพิ่มตำแหน่ง </button>
+                                    <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มตำแหน่ง </button>
                                 </div>
                             </Col>
                         </Row>
