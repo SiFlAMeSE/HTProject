@@ -140,13 +140,8 @@ class TabRowLocation extends Component {
               </Container>
             </ModalBody>
             <ModalFooter>
-<<<<<<< HEAD
-              <Button color="info" onClick={this.Updatelocation}>แก้ไขข้อมูล</Button>{' '}
-              <Button color="danger" onClick={this.Deletelocation}>ลบข้อมูล</Button>
-=======
-              <Button color="info" onClick={this.toggle}>แก้ไขข้อมูล</Button>{' '}
+              <Button color="info" onClick={this.Updatelocation}>แก้ไขข้อมูล</Button>
               <Button color="danger" onClick={() => { if (window.confirm('คุณต้องการลบ : '+ this.props.obj.Name_Lo + ' ใช่ไหม')) {this.Deletelocation()} } }>ลบข้อมูล</Button>
->>>>>>> 1262093318eff6059027dbd39243740ea79ece51
               <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
             </ModalFooter>
           </form>
