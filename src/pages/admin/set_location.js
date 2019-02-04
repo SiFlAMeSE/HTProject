@@ -3,7 +3,7 @@ import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, M
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import TabLoca from './TabRowLocation';
-var id_admin;
+var data_ss;
 export default class set_location extends React.Component {
     constructor(props) {
         super(props);
@@ -29,10 +29,10 @@ export default class set_location extends React.Component {
     }
 
     componentWillMount() {
-        id_admin = JSON.parse(sessionStorage.getItem('Login_add'))
-        this.setState({ data: id_admin })
+        data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
+        this.setState({ data: data_ss })
         //console.log(ss._id)
-      }
+    }
 
     toggle() {
         this.setState({
@@ -56,11 +56,11 @@ export default class set_location extends React.Component {
         const Locations = {
             Name_Lo: this.state.Name_Lo,
             Address: this.state.Address,
-            Id_Admin: id_admin._id
+            Id_Admin: data_ss._id
         }
         axios.post('http://localhost:5000/locations/add', Locations)
             .then(function (res) {
-                    if (res.data === 'Server added successfully') {
+                if (res.data === 'Server added successfully') {
                     window.location = "/setlocation"
                     //console.log(item);
                     // console.log('OK');
@@ -76,28 +76,23 @@ export default class set_location extends React.Component {
         });
     }
 
-    createcard(e) {
-
-    }
 
     componentDidMount() {
         axios.get('http://localhost:5000/locations/location_list')
             .then(response => {
-                const location = response.data;
-                this.setState({ location });
-                console.log(location);
+                const Location = response.data;
+                this.setState({ Location });
+                console.log(Location);
             })
             .catch(function (error) {
                 console.log(error);
             })
     }
-    tabRow() {
-        // const checkidlo = JSON.stringify(this.state.location.data)
-        // console.log(checkidlo)
-            return this.state.Location.map(function (object, i) {
-                
-                return <TabLoca obj={object} key={i} />;
-            });
+
+    createcard() {
+        return this.state.Location.map(function (object, i) {
+            return <TabLoca obj={object} key={i} />;
+        });
     }
 
     render() {
@@ -156,24 +151,9 @@ export default class set_location extends React.Component {
 
                     </section>
                     <Container>
-                        <table className="table table-striped">
-                            <thead>
-                                <tr>
-                                    <td>ID</td>
-                                    <td>Name Location</td>
-                                    <td>Address</td>
-                                    <td>Data</td>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {this.tabRow()}
-                            </tbody>
-                        </table>
-
                         {this.createcard()}
                     </Container>
 
-                     
                     <Container>
                         <Row align="right">
                             <Col>
