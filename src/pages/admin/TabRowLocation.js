@@ -35,7 +35,8 @@ class TabRowLocation extends Component {
                 <CardTitle>{this.props.obj.Name_Lo}</CardTitle>
                 <CardText>{this.props.obj.Address}</CardText>
                 <CardText>{this.props.obj.date}</CardText>
-                <Button onClick={this.toggle}>รายละเอียด</Button>
+                <Button a href="/setbuild" color="primary">เพิ่มอาคาร</Button>
+                <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
               </Card>
             </Col>
           </Row>
