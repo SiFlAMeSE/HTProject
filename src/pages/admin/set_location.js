@@ -82,13 +82,12 @@ export default class set_location extends React.Component {
             .then(response => {
                 const Location = response.data;
                 this.setState({ Location });
-                // console.log(Location);
+                 console.log(Location);
             })
             .catch(function (error) {
                 console.log(error);
             })
     }
-
     createcard() {
         return this.state.Location.map(function (object, i) {
             return <TabLoca obj={object} key={i} />;
