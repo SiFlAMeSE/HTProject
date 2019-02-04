@@ -144,7 +144,7 @@ export default class set_location extends React.Component {
                                 </ModalBody>
                                 <ModalFooter>
                                     <Button type="submit" color="primary" onClick={this.toggle}>ตกลง</Button>{' '}
-                                    <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+                                    <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
                                 </ModalFooter>
                             </form>
                         </Modal>
