@@ -3,7 +3,7 @@ import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, M
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import TabLoca from './TabRowLocation';
-var ss;
+var data_ss;
 export default class set_location extends React.Component {
     constructor(props) {
         super(props);
@@ -29,8 +29,8 @@ export default class set_location extends React.Component {
     }
 
     componentWillMount() {
-        ss = JSON.parse(sessionStorage.getItem('Login_add'))
-        this.setState({ data: ss })
+        data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
+        this.setState({ data: data_ss })
         //console.log(ss._id)
     }
 
@@ -56,7 +56,7 @@ export default class set_location extends React.Component {
         const Locations = {
             Name_Lo: this.state.Name_Lo,
             Address: this.state.Address,
-            Id_Admin: ss._id
+            Id_Admin: data_ss._id
         }
         axios.post('http://localhost:5000/locations/add', Locations)
             .then(function (res) {
@@ -76,9 +76,6 @@ export default class set_location extends React.Component {
         });
     }
 
-    createcard(e) {
-
-    }
 
     componentDidMount() {
         axios.get('http://localhost:5000/locations/location_list')
@@ -92,7 +89,7 @@ export default class set_location extends React.Component {
             })
     }
 
-    tabRow() {
+    createcard() {
         return this.state.Location.map(function (object, i) {
             return <TabLoca obj={object} key={i} />;
         });
@@ -154,7 +151,7 @@ export default class set_location extends React.Component {
 
                     </section>
                     <Container>
-                        {this.tabRow()}
+                        {this.createcard()}
                     </Container>
 
                     <Container>
