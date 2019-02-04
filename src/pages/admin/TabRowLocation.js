@@ -35,7 +35,8 @@ class TabRowLocation extends Component {
                 <CardTitle>{this.props.obj.Name_Lo}</CardTitle>
                 <CardText>{this.props.obj.Address}</CardText>
                 <CardText>{this.props.obj.date}</CardText>
-                <Button onClick={this.toggle}>รายละเอียด</Button>
+                <Button a href="/setbuild" color="primary">เพิ่มอาคาร</Button>
+                <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
               </Card>
             </Col>
           </Row>
@@ -75,8 +76,8 @@ class TabRowLocation extends Component {
                 </Container>
               </ModalBody>
               <ModalFooter>
-                <Button type="delete" color="info" onClick={this.toggle}>แก้ไขข้อมูล</Button>{' '}
-                <Button color="danger" onClick={this.toggle}>ลบข้อมูล</Button>
+                <Button color="info" onClick={this.toggle}>แก้ไขข้อมูล</Button>{' '}
+                <Button color="danger" type="delete" onClick={this.toggle}>ลบข้อมูล</Button>
                 <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
               </ModalFooter>
             </form>
