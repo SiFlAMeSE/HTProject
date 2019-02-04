@@ -33,7 +33,6 @@ class TabRowLocation extends Component {
       .then(function (res) {
         if (res.data === 'Location has been Deleted') {
           window.location = "/setlocation"
-          //console.log(item);
           console.log('OK');
         }
       })
@@ -95,7 +94,7 @@ class TabRowLocation extends Component {
             </ModalBody>
             <ModalFooter>
               <Button color="info" onClick={this.toggle}>แก้ไขข้อมูล</Button>{' '}
-              <Button color="danger" onClick={this.Deletelocation}>ลบข้อมูล</Button>
+              <Button color="danger" onClick={() => { if (window.confirm('คุณต้องการลบ : '+ this.props.obj.Name_Lo + ' ใช่ไหม')) {this.Deletelocation()} } }>ลบข้อมูล</Button>
               <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
             </ModalFooter>
           </form>
