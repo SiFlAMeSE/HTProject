@@ -76,8 +76,8 @@ class TabRowLocation extends Component {
                 </Container>
               </ModalBody>
               <ModalFooter>
-                <Button type="delete" color="info" onClick={this.toggle}>แก้ไขข้อมูล</Button>{' '}
-                <Button color="danger" onClick={this.toggle}>ลบข้อมูล</Button>
+                <Button color="info" onClick={this.toggle}>แก้ไขข้อมูล</Button>{' '}
+                <Button color="danger" type="delete" onClick={this.toggle}>ลบข้อมูล</Button>
                 <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
               </ModalFooter>
             </form>
