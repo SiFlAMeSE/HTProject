@@ -14,17 +14,47 @@ class TabRowLocation extends Component {
       data: {}
     };
     this.toggle = this.toggle.bind(this);
+
+    this.onchangeNameLocation = this.onchangeNameLocation.bind(this);
+    this.onchangeAddress = this.onchangeAddress.bind(this);
+    this.Updatelocation = this.Updatelocation.bind(this);
+
+    this.state = {
+      Name_Lo: '',
+      Address: ''
+    }
+
   }
 
   componentWillMount() {
     data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
     this.setState({ data: data_ss })
-    // console.log(data_ss.Fname)
   }
 
   toggle() {
     this.setState({
       modal: !this.state.modal
+    });
+    axios.get('http://localhost:5000/locations/location/' + this.props.obj._id)
+      .then(response => {
+        this.setState({
+          Name_Lo: response.data.Name_Lo,
+          Address: response.data.Address
+        })
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
+
+  onchangeNameLocation(e) {
+    this.setState({
+      Name_Lo: e.target.value
+    });
+  }
+  onchangeAddress(e) {
+    this.setState({
+      Address: e.target.value
     });
   }
 
@@ -41,6 +71,23 @@ class TabRowLocation extends Component {
       })
   }
 
+  Updatelocation(e) {
+    e.preventDefault();
+    const obj = {
+      Name_Lo: this.state.Name_Lo,
+      Address: this.state.Address
+    };
+    axios.post('http://localhost:5000/locations/update/' + this.props.obj._id, obj)
+      .then(function (res) {
+        if (res.data === 'Updated!') {
+          console.log(res.data);
+          window.location = "/setlocation"
+        }
+      })
+      .catch(function (err) {
+        console.log('error');
+      })
+  }
 
 
   render() {
@@ -72,14 +119,14 @@ class TabRowLocation extends Component {
                   <Row>
                     <Col>
                       <Label>ชื่อสถานที่</Label>
-                      <Input className="form-control" name="location" value={this.props.obj.Name_Lo} onChange={this.onchangeNameLocation}></Input>
+                      <Input className="form-control" name="location" value={this.state.Name_Lo} onChange={this.onchangeNameLocation}></Input>
                     </Col>
                   </Row>
                   <br />
                   <Row>
                     <Col>
                       <Label>ที่อยู่</Label>
-                      <Input type="textarea" cols="30" rows="10" value={this.props.obj.Address} onChange={this.onchangeAddress}></Input>
+                      <Input type="textarea" cols="30" rows="10" value={this.state.Address} onChange={this.onchangeAddress}></Input>
                     </Col>
                   </Row>
                   <Row>
@@ -93,7 +140,7 @@ class TabRowLocation extends Component {
               </Container>
             </ModalBody>
             <ModalFooter>
-              <Button color="info" onClick={this.toggle}>แก้ไขข้อมูล</Button>{' '}
+              <Button color="info" onClick={this.Updatelocation}>แก้ไขข้อมูล</Button>
               <Button color="danger" onClick={() => { if (window.confirm('คุณต้องการลบ : '+ this.props.obj.Name_Lo + ' ใช่ไหม')) {this.Deletelocation()} } }>ลบข้อมูล</Button>
               <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
             </ModalFooter>
