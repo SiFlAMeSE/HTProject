@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardTitle, CardText } from 'reactstrap';
+import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardTitle, CardText, CardImg } from 'reactstrap';
 var data_ss
 
 class TabRowLocation extends Component {
@@ -94,11 +94,11 @@ class TabRowLocation extends Component {
     return (
       <div>
         <Row>
-          <Col xs="6" sm="4">
+          <Col xs="15" style={{ paddingRight: "50px" }}>
             <Card>
+              <CardImg width="150px" height="150px" src={require('../../../img/location.gif')} />
               <CardTitle>{this.props.obj.Name_Lo}</CardTitle>
               <CardText>{this.props.obj.Address}</CardText>
-              <CardText>{this.props.obj.date}</CardText>
               <Button href="/setbuild" color="primary">เพิ่มอาคาร</Button>
               <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
             </Card>
@@ -141,7 +141,7 @@ class TabRowLocation extends Component {
             </ModalBody>
             <ModalFooter>
               <Button color="info" onClick={this.Updatelocation}>แก้ไขข้อมูล</Button>
-              <Button color="danger" onClick={() => { if (window.confirm('คุณต้องการลบ : '+ this.props.obj.Name_Lo + ' ใช่ไหม')) {this.Deletelocation()} } }>ลบข้อมูล</Button>
+              <Button color="danger" onClick={() => { if (window.confirm('คุณต้องการลบ : ' + this.props.obj.Name_Lo + ' ใช่ไหม')) { this.Deletelocation() } }}>ลบข้อมูล</Button>
               <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
             </ModalFooter>
           </form>
