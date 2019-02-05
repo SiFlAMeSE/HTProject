@@ -90,7 +90,12 @@ export default class set_location extends React.Component {
     }
     createcard() {
         return this.state.Location.map(function (object, i) {
-            return <TabLoca obj={object} key={i} />;
+            console.log(data_ss._id);
+            console.log(object.Id_Admin);
+            if(data_ss._id === object.Id_Admin)
+            {
+                return <TabLoca obj={object} key={i} />;
+            }
         });
     }
 
