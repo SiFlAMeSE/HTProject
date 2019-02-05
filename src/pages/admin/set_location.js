@@ -157,9 +157,7 @@ export default class set_location extends React.Component {
                     <Container>
                         <Row align="right">
                             <Col>
-                                <div>
-                                    <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มตำแหน่ง </button>
-                                </div>
+                                <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มตำแหน่ง </button>
                             </Col>
                         </Row>
                     </Container>
