@@ -1,12 +1,11 @@
 import React from 'react';
-import { Table, Button, Input, 
-    // FormGroup, Form
-     Container, Row, Col, Label } from 'reactstrap';
+import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
+import TabBuild from './Detail_Back/TabRowBuild';
 
 export default class set_build extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.onchangeNameBuild = this.onchangeNameBuild.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
@@ -14,32 +13,47 @@ export default class set_build extends React.Component {
         this.state = {
             Name_Build: ''
         }
+        this.state = {
+            modal: false
+        };
+        this.toggle = this.toggle.bind(this);
     }
-    onchangeNameBuild(e){
+
+    toggle() {
+        this.setState({
+            modal: !this.state.modal
+        });
+    }
+    onchangeNameBuild(e) {
         this.setState({
             Name_Build: e.target.value
         });
     }
-    onSubmit(e){
+    onSubmit(e) {
         e.preventDefault();
-        const Build ={
+        const Build = {
             Name_Build: this.state.Name_Build
         }
         axios.post('http://localhost:5000/build/add', Build)
-        .then(function(res){
-            if(res.data === 'Server added successfully'){
-                window.location = "/setbuild"
-            }
-        })
-        .catch(function(err){
-            console.log('error');
-        })
+            .then(function (res) {
+                if (res.data === 'Server added successfully') {
+                    window.location = "/setbuild"
+                }
+            })
+            .catch(function (err) {
+                console.log('error');
+            })
 
         this.setState({
             Name_Build: ''
         });
-
     }
+    createcardbuild() {
+        return this.state.Build.map(function (object, i) {
+            return <TabBuild obj={object} key={i} />
+        });
+    }
+
     render() {
         const divStyle = {
             color: 'blue',
@@ -58,29 +72,41 @@ export default class set_build extends React.Component {
                         <i className="icon-chevron-down"></i></a></span>
                 </section>
                 <div>
+                    <section id="next-section" className="probootstrap-section" >
 
-                    <section id="next-section" className="probootstrap-section">
-                        <Container>
+                        <Modal isOpen={this.state.modal}
+                            toggle={this.toggle}
+                            className={this.props.className}>
+
+                            <ModalHeader toggle={this.toggle}>ระบุชื่ออาคาร</ModalHeader>
                             <form onSubmit={this.onSubmit}>
-                                <Table>
-                                    <Row>
-                                        <Col>
-                                            <Label>ชื่ออาคาร</Label>
-                                            <Input type="text" name="bulid" placeholder="ใส่ชื่ออาคาร" onChange={this.onchangeNameBuild}></Input>
-                                        </Col>
-                                    </Row>
-                                    <br />
-
-                                    <Row>
-                                        <Col>
-                                            <Button type="submit" color="success">ตกลง</Button>{' '}
-                                        </Col>
-                                    </Row>
-                                </Table>
+                                <ModalBody>
+                                    <Container>
+                                        <Table>
+                                            <Row>
+                                                <Col>
+                                                    <Label>ชื่ออาคาร</Label>
+                                                    <Input type="text" name="location" placeholder="ใส่ชื่ออาคาร" onChange={this.onchangeNameLocation}></Input>
+                                                </Col>
+                                            </Row>
+                                            <br />
+                                        </Table>
+                                    </Container>
+                                </ModalBody>
+                                <ModalFooter>
+                                    <Button type="submit" color="primary" onClick={this.toggle}>ตกลง</Button>{' '}
+                                    <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
+                                </ModalFooter>
                             </form>
-                        </Container>
+                        </Modal>
                     </section>
-
+                    <Container>
+                        <Row align="right">
+                            <Col>
+                                <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มอาคาร </button>
+                            </Col>
+                        </Row>
+                    </Container>
 
                 </div>
             </div>

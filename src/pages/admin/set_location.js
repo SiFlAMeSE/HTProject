@@ -2,7 +2,7 @@ import React from 'react';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
-import TabLoca from './TabRowLocation';
+import TabLoca from './Detail_Back/TabRowLocation';
 var data_ss;
 export default class set_location extends React.Component {
     constructor(props) {
@@ -82,7 +82,7 @@ export default class set_location extends React.Component {
             .then(response => {
                 const Location = response.data;
                 this.setState({ Location });
-                 console.log(Location);
+                console.log(Location);
             })
             .catch(function (error) {
                 console.log(error);
@@ -155,15 +155,14 @@ export default class set_location extends React.Component {
 
                     </section>
                     <Container>
-                        {this.createcard()}
+                        <div className="container row">
+                            {this.createcard()}
+                        </div>
                     </Container>
-
                     <Container>
                         <Row align="right">
                             <Col>
-                                <div>
-                                    <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มตำแหน่ง </button>
-                                </div>
+                                <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มตำแหน่ง </button>
                             </Col>
                         </Row>
                     </Container>
