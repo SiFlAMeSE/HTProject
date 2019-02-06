@@ -20,7 +20,8 @@ class TabRowBuild extends Component {
         this.Updatebuild = this.Updatebuild.bind(this);
 
         this.state = {
-            Name_Build: ''
+            Name_Build: '',
+            Id_Loca: ''
         }
 
     }
@@ -40,6 +41,7 @@ class TabRowBuild extends Component {
             .then(response => {
                 this.setState({
                     Name_Build: response.data.Name_Build
+                    
                 })
             })
             .catch(function (error) {

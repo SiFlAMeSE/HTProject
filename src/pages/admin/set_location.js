@@ -62,8 +62,6 @@ export default class set_location extends React.Component {
             .then(function (res) {
                 if (res.data === 'Server added successfully') {
                     window.location = "/setlocation"
-                    //console.log(item);
-                    // console.log('OK');
                 }
             })
             .catch(function (err) {

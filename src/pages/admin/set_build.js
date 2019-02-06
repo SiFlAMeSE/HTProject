@@ -12,7 +12,9 @@ export default class set_build extends React.Component {
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
-            Name_Build: ''
+            Name_Build: '',
+            Id_Loca: '',
+            path: ''
         }
         this.state = {
             modal: false
@@ -20,8 +22,10 @@ export default class set_build extends React.Component {
         this.toggle = this.toggle.bind(this);
         this.state = { Build: [] };
     }
-
-
+    
+    componentWillMount() {
+        this.setState({ path: this.props.params })
+    }
 
     toggle() {
         this.setState({
@@ -38,12 +42,18 @@ export default class set_build extends React.Component {
     onSubmit(e) {
         e.preventDefault();
         const Build = {
-            Name_Build: this.state.Name_Build
+            Name_Build: this.state.Name_Build,
+            Id_Loca: this.props.match.params.id
         }
         axios.post('http://localhost:5000/build/add', Build)
             .then(function (res) {
                 if (res.data === 'Server added successfully') {
-                    window.location = "/setbuild"
+                    window.location = '/setbuild/' + this.props.match.params.id
+                    // Redirect = ('/setbuild/${this.props.match.params.id}')
+                    // console.log(this.state.path);
+                    // return <Redirect to={'/setbuild/'+ this.props.match.params.id} />;
+                    // window.location.reload("/setbuild/");
+                    // console.log('sent pass');
                 }
             })
             .catch(function (err) {
@@ -51,7 +61,8 @@ export default class set_build extends React.Component {
             })
 
         this.setState({
-            Name_Build: ''
+            Name_Build: '',
+            Id_Loca: ''
         });
     }
 
@@ -69,15 +80,20 @@ export default class set_build extends React.Component {
 
     // createcard() {
     //     return this.state.Build.map(function (object, i) {
-    //         return <TabBuild obj={object} key={i} params={this.props.match.params.id} />
+    //         return <TabBuild obj={object} key={i} 
+    //         // params={this.props.match.params.id} 
+    //         />
     //     });
+    // }
+    // createcardBuild() {
+    //     this.state.Build.map((object,i)=><TabBuild obj={object} key={i} params={this.props.match.params.id}/>)
     // }
 
     render() {
         const divStyle = {
             color: 'blue',
             backgroundImage: 'url(' + locationBG + ')',
-            backgroundSize: 'cover',
+            backgroundSize: 'cover'
         };
         return (
             <div>
@@ -97,7 +113,6 @@ export default class set_build extends React.Component {
 
                         <Modal isOpen={this.state.modal}
                             toggle={this.toggle}
-                        // className={this.props.className}
                         >
 
                             <ModalHeader toggle={this.toggle}>ระบุชื่ออาคาร</ModalHeader>
@@ -116,7 +131,7 @@ export default class set_build extends React.Component {
                                     </Container>
                                 </ModalBody>
                                 <ModalFooter>
-                                    <Button type="submit" color="primary" onClick={this.toggle}>ตกลง</Button>{' '}
+                                    <Button type="submit" color="primary" onClick={this.toggle}>ตกลง</Button>
                                     <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
                                 </ModalFooter>
                             </form>
@@ -124,10 +139,9 @@ export default class set_build extends React.Component {
                     </section>
                     <Container>
                         <div className="justify-content-md-center">
-                            {/* {this.createcard()} */}
+                            {/* {this.createcardBuild()} */}
                             {
-                                this.state.Build.map((object,i)=> <TabBuild obj={object} key={i} params={this.props.match.params.id} />)
-        
+                                this.state.Build.map((object, i) => <TabBuild obj={object} key={i} params={this.props.match.params.id} />)
                             }
                         </div>
                     </Container>

@@ -21,13 +21,18 @@ export default class set_detail extends React.Component {
             Temp_Low: '',
             Temp_Hight: '',
             Humdi_Low: '',
-            Humdi_Hight: ''
+            Humdi_Hight: '',
+            Id_Loca: '',
+            path: ''
         }
         this.state = {
             modal: false
         };
         this.toggle = this.toggle.bind(this);
         this.state = { Senser: [] };
+    }
+    componentWillMount() {
+        this.setState({ path: this.props.params })
     }
     toggle() {
         this.setState({
@@ -72,12 +77,13 @@ export default class set_detail extends React.Component {
             Temp_Low: this.state.Temp_Low,
             Temp_Hight: this.state.Temp_Hight,
             Humdi_Low: this.state.Humdi_Low,
-            Humdi_Hight: this.state.Humdi_Hight
+            Humdi_Hight: this.state.Humdi_Hight,
+            Id_Loca: this.props.match.params.id
         }
         axios.post('http://localhost:5000/sensers/add', Senser)
             .then(function (res) {
                 if (res.data === 'Server added successfully') {
-                    window.location = "/setdetail"
+                    window.location = "/setdetail/" + this.state.path
                 }
             })
             .catch(function (err) {
@@ -90,7 +96,8 @@ export default class set_detail extends React.Component {
             Temp_Low: '',
             Temp_Hight: '',
             Humdi_Low: '',
-            Humdi_Hight: ''
+            Humdi_Hight: '',
+            Id_Loca: ''
         });
     }
 
@@ -116,6 +123,7 @@ export default class set_detail extends React.Component {
         const divStyle = {
             color: 'blue',
             backgroundImage: 'url(' + locationBG + ')',
+            backgroundSize: 'cover'
         };
         return (
             <div>
@@ -132,8 +140,7 @@ export default class set_detail extends React.Component {
                 <div>
                     <section id="next-section" className="probootstrap-section">
                         <Modal isOpen={this.state.modal}
-                            toggle={this.toggle}
-                            className={this.props.className}>
+                            toggle={this.toggle}>
 
                             <ModalHeader toggle={this.toggle}>รายละเอียดอุปกรณ์</ModalHeader>
                             <form onSubmit={this.onSubmit}>
@@ -175,7 +182,7 @@ export default class set_detail extends React.Component {
                                     </Container>
                                 </ModalBody>
                                 <ModalFooter>
-                                    <Button type="submit" color="primary" onClick={this.toggle}>ตกลง</Button>{' '}
+                                    <Button type="submit" color="primary" onClick={this.toggle}>ตกลง</Button>
                                     <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
                                 </ModalFooter>
                             </form>
@@ -183,7 +190,10 @@ export default class set_detail extends React.Component {
                     </section>
                     <Container>
                         <div className="container row">
-                            {this.createcardDetail()}
+                            {/* {this.createcardDetail()} */}
+                            {
+                                 this.state.Senser.map((object, i) => <TabDetail obj={object} key={i} params={this.props.match.params.id} />)
+                            }
                         </div>
                     </Container>
                     <Container>

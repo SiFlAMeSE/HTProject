@@ -29,7 +29,8 @@ class TabRowBuild extends Component {
             Temp_Low: '',
             Temp_Hight: '',
             Humdi_Low: '',
-            Humdi_Hight: ''
+            Humdi_Hight: '',
+            Id_Loca: ''
         }
 
     }
