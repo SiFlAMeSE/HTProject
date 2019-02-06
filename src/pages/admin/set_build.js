@@ -17,6 +17,7 @@ export default class set_build extends React.Component {
             modal: false
         };
         this.toggle = this.toggle.bind(this);
+        this.state = { Build: [] };
     }
 
     toggle() {
@@ -24,11 +25,13 @@ export default class set_build extends React.Component {
             modal: !this.state.modal
         });
     }
+
     onchangeNameBuild(e) {
         this.setState({
             Name_Build: e.target.value
         });
     }
+
     onSubmit(e) {
         e.preventDefault();
         const Build = {
@@ -48,7 +51,20 @@ export default class set_build extends React.Component {
             Name_Build: ''
         });
     }
-    createcardbuild() {
+
+    componentDidMount(){
+        axios.get('http://localhost:5000/build/build_list')
+            .then(response => {
+                const Build = response.data;
+                this.setState({ Build });
+                console.log(Build);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+    createcard() {
         return this.state.Build.map(function (object, i) {
             return <TabBuild obj={object} key={i} />
         });
@@ -86,7 +102,7 @@ export default class set_build extends React.Component {
                                             <Row>
                                                 <Col>
                                                     <Label>ชื่ออาคาร</Label>
-                                                    <Input type="text" name="location" placeholder="ใส่ชื่ออาคาร" onChange={this.onchangeNameLocation}></Input>
+                                                    <Input type="text" name="location" placeholder="ใส่ชื่ออาคาร" onChange={this.onchangeNameBuild}></Input>
                                                 </Col>
                                             </Row>
                                             <br />
@@ -100,6 +116,11 @@ export default class set_build extends React.Component {
                             </form>
                         </Modal>
                     </section>
+                    <Container>
+                        <div className="container row">
+                            {this.createcard()}
+                        </div>
+                    </Container>
                     <Container>
                         <Row align="right">
                             <Col>
