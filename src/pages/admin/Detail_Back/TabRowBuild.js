@@ -15,14 +15,12 @@ class TabRowBuild extends Component {
         };
         this.toggle = this.toggle.bind(this);
 
-        // this.onchangeNameLocation = this.onchangeNameLocation.bind(this);
-        // this.onchangeAddress = this.onchangeAddress.bind(this);
-        // this.Updatelocation = this.Updatelocation.bind(this);
+        this.onchangeNameBuild = this.onchangeNameBuild.bind(this);
+        this.Updatebuild = this.Updatebuild.bind(this);
 
-        // this.state = {
-        //   Name_Lo: '',
-        //   Address: ''
-        // }
+        this.state = {
+          Name_Build: ''
+        }
 
     }
 
@@ -35,60 +33,52 @@ class TabRowBuild extends Component {
         this.setState({
             modal: !this.state.modal
         });
-        //     axios.get('http://localhost:5000/locations/location/' + this.props.obj._id)
-        //       .then(response => {
-        //         this.setState({
-        //           Name_Lo: response.data.Name_Lo,
-        //           Address: response.data.Address
-        //         })
-        //       })
-        //       .catch(function (error) {
-        //         console.log(error);
-        //       })
-        //   }
-
-        //   onchangeNameLocation(e) {
-        //     this.setState({
-        //       Name_Lo: e.target.value
-        //     });
-        //   }
-        //   onchangeAddress(e) {
-        //     this.setState({
-        //       Address: e.target.value
-        //     });
-        //   }
-
-        //   Deletelocation() {
-        //     axios.post('http://localhost:5000/locations/Removelocation')
-        //       .then(function (res) {
-        //         if (res.data === 'Location has been Deleted') {
-        //           window.location = "/setlocation"
-        //           console.log('OK');
-        //         }
-        //       })
-        //       .catch(function (err) {
-        //         console.log('error');
-        //       })
-        //   }
-
-        //   Updatelocation(e) {
-        //     e.preventDefault();
-        //     const obj = {
-        //       Name_Lo: this.state.Name_Lo,
-        //       Address: this.state.Address
-        //     };
-        //     axios.post('http://localhost:5000/locations/update/' + this.props.obj._id, obj)
-        //       .then(function (res) {
-        //         if (res.data === 'Updated!') {
-        //           console.log(res.data);
-        //           window.location = "/setlocation"
-        //         }
-        //       })
-        //       .catch(function (err) {
-        //         console.log('error');
-        //       })
+            axios.get('http://localhost:5000/build/build/' + this.props.obj._id)
+              .then(response => {
+                this.setState({
+                    Name_Build: response.data.Name_Build
+                })
+              })
+              .catch(function (error) {
+                console.log(error);
+              })
     }
 
+    onchangeNameBuild(e) {
+    this.setState({
+        Name_Build: e.target.value
+    });
+    }
+
+    Deletebuild() {
+    axios.post('http://localhost:5000/build/Removebuild/' + this.props.obj._id)
+        .then(function (res) {
+        if (res.data === 'Build has been Deleted') {
+            window.location = "/setbuild"
+            console.log('OK');
+        }
+        })
+        .catch(function (err) {
+        console.log('error');
+        })
+    }
+
+    Updatebuild(e) {
+    e.preventDefault();
+    const obj = {
+        Name_Build: this.state.Name_Build
+    };
+    axios.post('http://localhost:5000/build/update/' + this.props.obj._id, obj)
+        .then(function (res) {
+        if (res.data === 'Updated!') {
+            console.log(res.data);
+            window.location = "/setbuild"
+        }
+        })
+        .catch(function (err) {
+        console.log('error');
+        })
+}
 
     render() {
         return (
@@ -97,34 +87,13 @@ class TabRowBuild extends Component {
                     <Col xs="15" style={{ paddingRight: "50px" }}>
                         <Card>
                             <CardImg width="150px" height="150px" src={require('../../../img/location.gif')} />
-                            {/* <CardTitle>{this.props.obj.Name_Lo}</CardTitle> */}
-                            {/* <CardText>{this.props.obj.Address}</CardText> */}
+                            <CardTitle>{this.props.obj.Name_Build}</CardTitle>
                             <Button href="/setdetail" color="primary">เพิ่มอุปกรณ์</Button>
                             <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
                         </Card>
                     </Col>
                 </Row>
                 <br /><br />
-
-                <Container>
-                    <form onSubmit={this.onSubmit}>
-                        <Table>
-                            <Row>
-                                <Col>
-                                    <Label>ชื่ออาคาร</Label>
-                                    <Input type="text" name="bulid" placeholder="ใส่ชื่ออาคาร" onChange={this.onchangeNameBuild}></Input>
-                                </Col>
-                            </Row>
-                            <br />
-
-                            <Row>
-                                <Col>
-                                    <Button type="submit" color="success">ตกลง</Button>{' '}
-                                </Col>
-                            </Row>
-                        </Table>
-                    </form>
-                </Container>
 
                 {/* เมนูตัวเลือกด้านใน */}
                 <Modal isOpen={this.state.modal}
@@ -139,7 +108,7 @@ class TabRowBuild extends Component {
                                     <Row>
                                         <Col>
                                             <Label>ชื่ออาคาร</Label>
-                                            <Input className="form-control" name="location" ></Input>
+                                            <Input className="form-control" name="location" value={this.state.Name_Build} onChange={this.onchangeNameBuild}></Input>
                                         </Col>
                                     </Row>
                                     <br />
@@ -147,15 +116,9 @@ class TabRowBuild extends Component {
                             </Container>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="info"
-                            //   onClick={this.Updatelocation}
-                            >แก้ไขข้อมูล</Button>
-                            <Button color="danger"
-                            //   onClick={() => { if (window.confirm('คุณต้องการลบ : ' + this.props.obj.Name_Lo + ' ใช่ไหม')) { this.Deletelocation() } }}
-                            >ลบข้อมูล</Button>
-                            <Button color="secondary"
-                            //   onClick={this.toggle}
-                            >ยกเลิก</Button>
+                            <Button color="info" onClick={this.Updatebuild}>แก้ไขข้อมูล</Button>
+                            <Button color="danger" onClick={() => { if (window.confirm('คุณต้องการลบ : ' + this.props.obj.Name_Build + ' ใช่ไหม')) { this.Deletebuild() } }}>ลบข้อมูล</Button>
+                            <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
                         </ModalFooter>
                     </form>
                 </Modal>

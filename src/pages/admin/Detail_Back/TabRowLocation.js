@@ -21,7 +21,8 @@ class TabRowLocation extends Component {
 
     this.state = {
       Name_Lo: '',
-      Address: ''
+      Address: '',
+      _id:''
     }
 
   }
@@ -47,6 +48,10 @@ class TabRowLocation extends Component {
       })
   }
 
+  sentid() {
+    console.log(this.state._id);
+  }
+
   onchangeNameLocation(e) {
     this.setState({
       Name_Lo: e.target.value
@@ -59,7 +64,7 @@ class TabRowLocation extends Component {
   }
 
   Deletelocation() {
-    axios.post('http://localhost:5000/locations/Removelocation')
+    axios.post('http://localhost:5000/locations/Removelocation/' + this.props.obj._id)
       .then(function (res) {
         if (res.data === 'Location has been Deleted') {
           window.location = "/setlocation"
@@ -99,7 +104,9 @@ class TabRowLocation extends Component {
               <CardImg width="150px" height="150px" src={require('../../../img/location.gif')} />
               <CardTitle>{this.props.obj.Name_Lo}</CardTitle>
               <CardText>{this.props.obj.Address}</CardText>
-              <Button href="/setbuild" color="primary">เพิ่มอาคาร</Button>
+              <Button 
+              // href="/setbuild" 
+              onClick={this.sentid} color="primary">เพิ่มอาคาร</Button>
               <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
             </Card>
           </Col>
