@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Routing from "./routes";
 import Header from "./header";
 import Footer from "./footer";
+import Header1 from "./header1";
 
 class App extends Component {
   render() {

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardTitle, CardText, CardImg } from 'reactstrap';
+import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardTitle, CardImg } from 'reactstrap';
 var data_ss
 
 class TabRowBuild extends Component {
@@ -8,7 +8,8 @@ class TabRowBuild extends Component {
         super(props);
 
         this.state = {
-            modal: false
+            modal: false,
+            path: ''
         };
         this.state = {
             data: {}
@@ -19,7 +20,7 @@ class TabRowBuild extends Component {
         this.Updatebuild = this.Updatebuild.bind(this);
 
         this.state = {
-          Name_Build: ''
+            Name_Build: ''
         }
 
     }
@@ -27,58 +28,60 @@ class TabRowBuild extends Component {
     componentWillMount() {
         data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
         this.setState({ data: data_ss })
+
+        this.setState({ path: this.props.params })
     }
 
     toggle() {
         this.setState({
             modal: !this.state.modal
         });
-            axios.get('http://localhost:5000/build/build/' + this.props.obj._id)
-              .then(response => {
+        axios.get('http://localhost:5000/build/build/' + this.props.obj._id)
+            .then(response => {
                 this.setState({
                     Name_Build: response.data.Name_Build
                 })
-              })
-              .catch(function (error) {
+            })
+            .catch(function (error) {
                 console.log(error);
-              })
+            })
     }
 
     onchangeNameBuild(e) {
-    this.setState({
-        Name_Build: e.target.value
-    });
+        this.setState({
+            Name_Build: e.target.value
+        });
     }
 
     Deletebuild() {
-    axios.post('http://localhost:5000/build/Removebuild/' + this.props.obj._id)
-        .then(function (res) {
-        if (res.data === 'Build has been Deleted') {
-            window.location = "/setbuild"
-            console.log('OK');
-        }
-        })
-        .catch(function (err) {
-        console.log('error');
-        })
+        axios.post('http://localhost:5000/build/Removebuild/' + this.props.obj._id)
+            .then(function (res) {
+                if (res.data === 'Build has been Deleted') {
+                    window.location = "/setbuild"
+                    console.log('OK');
+                }
+            })
+            .catch(function (err) {
+                console.log('error');
+            })
     }
 
     Updatebuild(e) {
-    e.preventDefault();
-    const obj = {
-        Name_Build: this.state.Name_Build
-    };
-    axios.post('http://localhost:5000/build/update/' + this.props.obj._id, obj)
-        .then(function (res) {
-        if (res.data === 'Updated!') {
-            console.log(res.data);
-            window.location = "/setbuild"
-        }
-        })
-        .catch(function (err) {
-        console.log('error');
-        })
-}
+        e.preventDefault();
+        const obj = {
+            Name_Build: this.state.Name_Build
+        };
+        axios.post('http://localhost:5000/build/update/' + this.props.obj._id, obj)
+            .then(function (res) {
+                if (res.data === 'Updated!') {
+                    console.log(res.data);
+                    window.location = "/setbuild"
+                }
+            })
+            .catch(function (err) {
+                console.log('error');
+            })
+    }
 
     render() {
         return (
@@ -88,7 +91,7 @@ class TabRowBuild extends Component {
                         <Card>
                             <CardImg width="150px" height="150px" src={require('../../../img/location.gif')} />
                             <CardTitle>{this.props.obj.Name_Build}</CardTitle>
-                            <Button href="/setdetail" color="primary">เพิ่มอุปกรณ์</Button>
+                            <Button href={"/setdetail/" + this.state.path} color="primary">เพิ่มอุปกรณ์</Button>
                             <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
                         </Card>
                     </Col>

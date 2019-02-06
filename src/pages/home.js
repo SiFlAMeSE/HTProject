@@ -30,7 +30,7 @@ class home extends Component {
 
     return (
 
-      <div class="conbody">
+      <div className="conbody">
         <div className="probootstrap-intro" style={divStyle} data-stellar-background-ratio="0.5" >
           <div className="container" >
             <div className="row">

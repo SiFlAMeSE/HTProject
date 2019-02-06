@@ -3,7 +3,9 @@ import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, M
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import TabBuild from './Detail_Back/TabRowBuild';
-export default class Set_build extends React.Component {
+
+
+export default class set_build extends React.Component {
     constructor(props) {
         super(props);
         this.onchangeNameBuild = this.onchangeNameBuild.bind(this);
@@ -19,13 +21,7 @@ export default class Set_build extends React.Component {
         this.state = { Build: [] };
     }
 
-    componentWillMount() {
-    }
 
-    componentWillReceiveProps(nextProps){
-        console.log(this.props.testid);
-
-    }
 
     toggle() {
         this.setState({
@@ -59,7 +55,7 @@ export default class Set_build extends React.Component {
         });
     }
 
-    componentDidMount(){
+    componentDidMount() {
         axios.get('http://localhost:5000/build/build_list')
             .then(response => {
                 const Build = response.data;
@@ -71,18 +67,18 @@ export default class Set_build extends React.Component {
             })
     }
 
-    createcard() {
-        return this.state.Build.map(function (object, i) {
-            return <TabBuild obj={object} key={i} />
-        });
-    }
+    // createcard() {
+    //     return this.state.Build.map(function (object, i) {
+    //         return <TabBuild obj={object} key={i} params={this.props.match.params.id} />
+    //     });
+    // }
 
     render() {
         const divStyle = {
             color: 'blue',
             backgroundImage: 'url(' + locationBG + ')',
+            backgroundSize: 'cover',
         };
-        console.log(this.props.match.params.id)
         return (
             <div>
                 <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
@@ -101,7 +97,8 @@ export default class Set_build extends React.Component {
 
                         <Modal isOpen={this.state.modal}
                             toggle={this.toggle}
-                            className={this.props.className}>
+                        // className={this.props.className}
+                        >
 
                             <ModalHeader toggle={this.toggle}>ระบุชื่ออาคาร</ModalHeader>
                             <form onSubmit={this.onSubmit}>
@@ -127,7 +124,11 @@ export default class Set_build extends React.Component {
                     </section>
                     <Container>
                         <div className="justify-content-md-center">
-                            {this.createcard()}
+                            {/* {this.createcard()} */}
+                            {
+                                this.state.Build.map((object,i)=> <TabBuild obj={object} key={i} params={this.props.match.params.id} />)
+        
+                            }
                         </div>
                     </Container>
                     <Container>
