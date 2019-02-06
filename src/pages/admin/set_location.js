@@ -82,7 +82,7 @@ export default class set_location extends React.Component {
             .then(response => {
                 const Location = response.data;
                 this.setState({ Location });
-                console.log(Location);
+                // console.log(Location);
             })
             .catch(function (error) {
                 console.log(error);
@@ -90,8 +90,8 @@ export default class set_location extends React.Component {
     }
     createcard() {
         return this.state.Location.map(function (object, i) {
-            console.log(data_ss._id);
-            console.log(object.Id_Admin);
+            // console.log(data_ss._id);
+            // console.log(object.Id_Admin);
             if(data_ss._id === object.Id_Admin)
             {
                 return <TabLoca obj={object} key={i} />;

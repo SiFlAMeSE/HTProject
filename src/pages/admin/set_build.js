@@ -3,6 +3,7 @@ import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, M
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import TabBuild from './Detail_Back/TabRowBuild';
+import TabLoca from './Detail_Back/TabRowLocation';
 
 export default class set_build extends React.Component {
     constructor(props) {
@@ -17,6 +18,13 @@ export default class set_build extends React.Component {
             modal: false
         };
         this.toggle = this.toggle.bind(this);
+    }
+
+    componentWillMount() {
+        console.log(TabLoca.sentid);
+        // idcard = JSON.parse(getItem('Login_add'))
+        // this.setState({ data: data_ss })
+        // //console.log(ss._id)
     }
 
     toggle() {

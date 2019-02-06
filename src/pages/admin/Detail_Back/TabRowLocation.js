@@ -88,9 +88,15 @@ class TabRowLocation extends Component {
         console.log('error');
       })
   }
-
+  sentid(e){
+    var idcard = this.props.obj._id
+  }
 
   render() {
+    // var sentid = {
+    //   idcard : this.props.obj._id
+    // };
+    // console.log(sentid);
     return (
       <div>
         <Row>
@@ -99,7 +105,8 @@ class TabRowLocation extends Component {
               <CardImg width="150px" height="150px" src={require('../../../img/location.gif')} />
               <CardTitle>{this.props.obj.Name_Lo}</CardTitle>
               <CardText>{this.props.obj.Address}</CardText>
-              <Button href="/setbuild" color="primary">เพิ่มอาคาร</Button>
+              <CardText>{this.props.obj._id}</CardText>
+              <Button href="/setbuild" color="primary" onClick={() => this.sentid(Location._id)}>เพิ่มอาคาร</Button>
               <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
             </Card>
           </Col>
