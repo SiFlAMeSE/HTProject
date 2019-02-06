@@ -1,7 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardTitle, CardText, CardImg } from 'reactstrap';
+import Set_build from '../set_build';
 var data_ss
+
+export const IDlocation = () => {
+  return
+  // this.state._id
+
+}
 
 class TabRowLocation extends Component {
   constructor(props) {
@@ -22,7 +29,7 @@ class TabRowLocation extends Component {
     this.state = {
       Name_Lo: '',
       Address: '',
-      _id:''
+      _id: ''
     }
 
   }
@@ -46,10 +53,6 @@ class TabRowLocation extends Component {
       .catch(function (error) {
         console.log(error);
       })
-  }
-
-  sentid() {
-    console.log(this.state._id);
   }
 
   onchangeNameLocation(e) {
@@ -93,26 +96,29 @@ class TabRowLocation extends Component {
         console.log('error');
       })
   }
-  sentid(e){
-    var idcard = this.props.obj._id
+
+  sentid = (e) => {
+    window.location.replace('/setbuild/' + e.target.value)
+    // console.log(e.target.value)
+    // console.log("go build" + this.state._id);
   }
 
   render() {
-    // var sentid = {
-    //   idcard : this.props.obj._id
-    // };
-    // console.log(sentid);
+    // console.log(this.state._id)
     return (
       <div>
+
+        {/* <Set_build testid={this.props.obj._id} /> */}
+
         <Row>
           <Col xs="15" style={{ paddingRight: "50px" }}>
             <Card>
               <CardImg width="150px" height="150px" src={require('../../../img/location.gif')} />
               <CardTitle>{this.props.obj.Name_Lo}</CardTitle>
               <CardText>{this.props.obj.Address}</CardText>
-              <Button 
-              // href="/setbuild" 
-              onClick={this.sentid} color="primary">เพิ่มอาคาร</Button>
+              <CardText>{this.props.obj._id}</CardText>
+              {/* เรียกส่งค่า */}
+              <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentid(e)} >เพิ่มอาคาร</Button>
               <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
             </Card>
           </Col>

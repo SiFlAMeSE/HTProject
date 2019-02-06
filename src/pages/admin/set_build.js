@@ -3,9 +3,7 @@ import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, M
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import TabBuild from './Detail_Back/TabRowBuild';
-import TabLoca from './Detail_Back/TabRowLocation';
-
-export default class set_build extends React.Component {
+export default class Set_build extends React.Component {
     constructor(props) {
         super(props);
         this.onchangeNameBuild = this.onchangeNameBuild.bind(this);
@@ -22,10 +20,11 @@ export default class set_build extends React.Component {
     }
 
     componentWillMount() {
-        console.log(TabLoca.sentid);
-        // idcard = JSON.parse(getItem('Login_add'))
-        // this.setState({ data: data_ss })
-        // //console.log(ss._id)
+    }
+
+    componentWillReceiveProps(nextProps){
+        console.log(this.props.testid);
+
     }
 
     toggle() {
@@ -65,7 +64,7 @@ export default class set_build extends React.Component {
             .then(response => {
                 const Build = response.data;
                 this.setState({ Build });
-                console.log(Build);
+                // console.log(Build);
             })
             .catch(function (error) {
                 console.log(error);
@@ -83,12 +82,14 @@ export default class set_build extends React.Component {
             color: 'blue',
             backgroundImage: 'url(' + locationBG + ')',
         };
+        console.log(this.props.match.params.id)
         return (
             <div>
                 <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
                     <br /><br /><br /><br /><br /><br /><br /><br />
                     <center>
                         <h1>ลงทะเบียนอาคาร</h1>
+                        <h3>{this.props.match.params.id}</h3>
                     </center>
 
                     <span className="probootstrap-animate">
@@ -125,7 +126,7 @@ export default class set_build extends React.Component {
                         </Modal>
                     </section>
                     <Container>
-                        <div className="container row">
+                        <div className="justify-content-md-center">
                             {this.createcard()}
                         </div>
                     </Container>

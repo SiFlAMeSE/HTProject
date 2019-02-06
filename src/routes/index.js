@@ -9,7 +9,7 @@ import loginp from "../pages/login";
 import signup from "../pages/signup";
 
 import report from "../pages/admin/report";
-import set_build from "../pages/admin/set_build";
+import Set_build from "../pages/admin/set_build";
 import set_detail from "../pages/admin/set_detail";
 import set_location from "../pages/admin/set_location";
 
@@ -35,7 +35,7 @@ export default () => (
 
         <Route exact path="/report" component={report} />
         {/* <Route exact path="/setmain" component={set_main} /> */}
-        <Route exact path="/setbuild" component={set_build} />
+        <Route exact path="/setbuild/:id" component={Set_build} />
         <Route exact path="/setdetail" component={set_detail} />
         <Route exact path="/setlocation" component={set_location} />
 
