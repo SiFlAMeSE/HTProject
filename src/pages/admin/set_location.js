@@ -76,7 +76,6 @@ export default class set_location extends React.Component {
         });
     }
 
-
     componentDidMount() {
         axios.get('http://localhost:5000/locations/location_list')
             .then(response => {
@@ -88,10 +87,9 @@ export default class set_location extends React.Component {
                 console.log(error);
             })
     }
+
     createcard() {
         return this.state.Location.map(function (object, i) {
-            // console.log(data_ss._id);
-            // console.log(object.Id_Admin);
             if(data_ss._id === object.Id_Admin)
             {
                 return <TabLoca obj={object} key={i} />;
