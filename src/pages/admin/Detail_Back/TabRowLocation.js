@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardTitle, CardText, CardImg } from 'reactstrap';
-import Set_build from '../set_build';
 var data_ss
-
-export const IDlocation = () => {
-  return
-  // this.state._id
-
-}
 
 class TabRowLocation extends Component {
   constructor(props) {
     super(props);
-
+    this.myref = React.createRef()
     this.state = {
       modal: false
     };
@@ -103,12 +96,12 @@ class TabRowLocation extends Component {
     // console.log("go build" + this.state._id);
   }
 
+
   render() {
     // console.log(this.state._id)
     return (
       <div>
 
-        {/* <Set_build testid={this.props.obj._id} /> */}
 
         <Row>
           <Col xs="15" style={{ paddingRight: "50px" }}>

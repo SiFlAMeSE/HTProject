@@ -15,14 +15,22 @@ class TabRowBuild extends Component {
         };
         this.toggle = this.toggle.bind(this);
 
-        // this.onchangeNameLocation = this.onchangeNameLocation.bind(this);
-        // this.onchangeAddress = this.onchangeAddress.bind(this);
-        // this.Updatelocation = this.Updatelocation.bind(this);
+        this.onchangePosition = this.onchangePosition.bind(this);
+        this.onchangeMacaddress = this.onchangeMacaddress.bind(this);
+        this.onchangeTemp_Low = this.onchangeTemp_Low.bind(this);
+        this.onchangeTemp_Hight = this.onchangeTemp_Hight.bind(this);
+        this.onchangeHumdi_Low = this.onchangeHumdi_Low.bind(this);
+        this.onchangeHumdi_Hight = this.onchangeHumdi_Hight.bind(this);
+        this.UpdateSenser = this.UpdateSenser.bind(this);
 
-        // this.state = {
-        //   Name_Lo: '',
-        //   Address: ''
-        // }
+        this.state = {
+            Position: '',
+            Macaddress: '',
+            Temp_Low: '',
+            Temp_Hight: '',
+            Humdi_Low: '',
+            Humdi_Hight: ''
+        }
 
     }
 
@@ -35,61 +43,88 @@ class TabRowBuild extends Component {
         this.setState({
             modal: !this.state.modal
         });
-        //     axios.get('http://localhost:5000/locations/location/' + this.props.obj._id)
-        //       .then(response => {
-        //         this.setState({
-        //           Name_Lo: response.data.Name_Lo,
-        //           Address: response.data.Address
-        //         })
-        //       })
-        //       .catch(function (error) {
-        //         console.log(error);
-        //       })
-        //   }
-
-        //   onchangeNameLocation(e) {
-        //     this.setState({
-        //       Name_Lo: e.target.value
-        //     });
-        //   }
-        //   onchangeAddress(e) {
-        //     this.setState({
-        //       Address: e.target.value
-        //     });
-        //   }
-
-        //   Deletelocation() {
-        //     axios.post('http://localhost:5000/locations/Removelocation')
-        //       .then(function (res) {
-        //         if (res.data === 'Location has been Deleted') {
-        //           window.location = "/setlocation"
-        //           console.log('OK');
-        //         }
-        //       })
-        //       .catch(function (err) {
-        //         console.log('error');
-        //       })
-        //   }
-
-        //   Updatelocation(e) {
-        //     e.preventDefault();
-        //     const obj = {
-        //       Name_Lo: this.state.Name_Lo,
-        //       Address: this.state.Address
-        //     };
-        //     axios.post('http://localhost:5000/locations/update/' + this.props.obj._id, obj)
-        //       .then(function (res) {
-        //         if (res.data === 'Updated!') {
-        //           console.log(res.data);
-        //           window.location = "/setlocation"
-        //         }
-        //       })
-        //       .catch(function (err) {
-        //         console.log('error');
-        //       })
+        axios.get('http://localhost:5000/sensers/senser/' + this.props.obj._id)
+             .then(response => {
+             this.setState({
+                Position: response.data.Position,
+                Macaddress: response.data.Macaddress,
+                Temp_Low: response.data.Temp_Low,
+                Temp_Hight: response.data.Temp_Hight,
+                Humdi_Low: response.data.Humdi_Low,
+                Humdi_Hight: response.data.Humdi_Hight
+             })
+           })
+             .catch(function (error) {
+                console.log(error);
+            })
     }
 
+        onchangePosition(e) {
+            this.setState({
+                Position: e.target.value
+            });
+        }
+        onchangeMacaddress(e) {
+            this.setState({
+                Macaddress: e.target.value
+            });
+        }
+        onchangeTemp_Low(e) {
+            this.setState({
+                Temp_Low: e.target.value
+            });
+        }
+        onchangeTemp_Hight(e) {
+            this.setState({
+                Temp_Hight: e.target.value
+            });
+        }
+        onchangeHumdi_Low(e) {
+            this.setState({
+                Humdi_Low: e.target.value
+            });
+        }
+        onchangeHumdi_Hight(e) {
+            this.setState({
+                Humdi_Hight: e.target.value
+            });
+        }
 
+        Deletesenser() {
+        axios.post('http://localhost:5000/sensers/Removesenser/'+ this.props.obj._id)
+            .then(function (res) {
+            if (res.data === 'Senser has been Deleted') {
+                window.location = "/setdetail"
+                console.log('OK');
+            }
+            })
+            .catch(function (err) {
+            console.log('error');
+            })
+        }
+
+        UpdateSenser(e) {
+        e.preventDefault();
+        const obj = {
+            Position: this.state.Position,
+            Macaddress: this.state.Macaddress,
+            Temp_Low: this.state.Temp_Low,
+            Temp_Hight: this.state.Temp_Hight,
+            Humdi_Low: this.state.Humdi_Low,
+            Humdi_Hight: this.state.Humdi_Hight
+        };
+        axios.post('http://localhost:5000/sensers/update/' + this.props.obj._id, obj)
+            .then(function (res) {
+            if (res.data === 'Updated!') {
+                console.log(res.data);
+                window.location = "/setdetail"
+            }
+            })
+            .catch(function (err) {
+            console.log('error');
+            })
+        }
+    
     render() {
         return (
             <div>
@@ -97,8 +132,12 @@ class TabRowBuild extends Component {
                     <Col xs="15" style={{ paddingRight: "50px" }}>
                         <Card>
                             <CardImg width="150px" height="150px" src={require('../../../img/location.gif')} />
-                            {/* <CardTitle>{this.props.obj.Name_Lo}</CardTitle> */}
-                            {/* <CardText>{this.props.obj.Address}</CardText> */}
+                             <CardTitle>{this.props.obj.Position}</CardTitle>
+                             <CardText>{this.props.obj.Macaddress}</CardText>
+                             <CardText>{this.props.obj.Temp_Low}</CardText>
+                             <CardText>{this.props.obj.Temp_Hight}</CardText>
+                             <CardText>{this.props.obj.Humdi_Low}</CardText>
+                             <CardText>{this.props.obj.Humdi_Hight}</CardText>
                             <Button href="/monitoring" color="primary">ตรวจสอบ</Button>
                             <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
                         </Card>
@@ -112,31 +151,54 @@ class TabRowBuild extends Component {
                     toggle={this.toggle}
                     className={this.props.className}>
 
-                    <ModalHeader toggle={this.toggle}>พื้นที่</ModalHeader>
+                    <ModalHeader toggle={this.toggle}>เซ็นเซอร์</ModalHeader>
                     <form onSubmit={this.onSubmit}>
                         <ModalBody>
                             <Container>
                                 <Table>
                                     <Row>
                                         <Col>
-                                            <Label>ชื่ออาคาร</Label>
-                                            <Input className="form-control" name="location" ></Input>
+                                            <Label>จุดที่ตั้ง</Label>
+                                            <Input className="form-control" name="Name" value={this.state.Position} onChange={this.onchangePosition}></Input>
                                         </Col>
                                     </Row>
                                     <br />
+                                    <Row>
+                                        <Col>
+                                            <Label>รหัสอุปกรณ์</Label>
+                                            <Input className="form-control" name="mac" value={this.state.Macaddress} onChange={this.onchangeMacaddress}></Input>
+                                        </Col>
+                                    </Row>
+                                    <br />
+                                    <Table>
+                                        <Row>
+                                            <Col>
+                                                <Label>ค่าอุณหภูมิต่ำสุด</Label>
+                                                <Input className="form-control" name="mintem" value={this.state.Temp_Low} onChange={this.onchangeTemp_Low}></Input>
+                                            </Col>
+                                            <Col>
+                                                <Label>ค่าอุณหภูมิสูงสุด</Label>
+                                                <Input className="form-control" name="maxtem" value={this.state.Temp_Hight} onChange={this.onchangeTemp_Hight}></Input>
+                                            </Col>
+                                        </Row>
+                                        <Row>
+                                            <Col>
+                                                <Label>ค่าความชื้นต่ำสุด</Label>
+                                                <Input className="form-control" name="minhum" value={this.state.Humdi_Low} onChange={this.onchangeHumdi_Low}></Input>
+                                            </Col>
+                                            <Col>
+                                                <Label>ค่าความชื้นสูงสุด</Label>
+                                                <Input className="form-control" name="maxhum" value={this.state.Humdi_Hight} onChange={this.onchangeHumdi_Hight}></Input>
+                                            </Col>
+                                        </Row>
+                                    </Table>
                                 </Table>
                             </Container>
                         </ModalBody>
                         <ModalFooter>
-                            <Button color="info"
-                            //   onClick={this.Updatelocation}
-                            >แก้ไขข้อมูล</Button>
-                            <Button color="danger"
-                            //   onClick={() => { if (window.confirm('คุณต้องการลบ : ' + this.props.obj.Name_Lo + ' ใช่ไหม')) { this.Deletelocation() } }}
-                            >ลบข้อมูล</Button>
-                            <Button color="secondary"
-                            //   onClick={this.toggle}
-                            >ยกเลิก</Button>
+                            <Button color="info" onClick={this.UpdateSenser}>แก้ไขข้อมูล</Button>
+                            <Button color="danger" onClick={() => { if (window.confirm('คุณต้องการลบ : ' + this.props.obj.Position + ' ใช่ไหม')) { this.Deletesenser() } }}>ลบข้อมูล</Button>
+                            <Button color="secondary" onClick={this.toggle} >ยกเลิก</Button>
                         </ModalFooter>
                     </form>
                 </Modal>

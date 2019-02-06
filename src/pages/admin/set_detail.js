@@ -27,6 +27,7 @@ export default class set_detail extends React.Component {
             modal: false
         };
         this.toggle = this.toggle.bind(this);
+        this.state = { Senser: [] };
     }
     toggle() {
         this.setState({
@@ -91,6 +92,18 @@ export default class set_detail extends React.Component {
             Humdi_Low: '',
             Humdi_Hight: ''
         });
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:5000/sensers/senser_list')
+            .then(response => {
+                const Senser = response.data;
+                this.setState({ Senser });
+                 //console.log(Senser);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
 
     createcardDetail() {
@@ -168,11 +181,11 @@ export default class set_detail extends React.Component {
                             </form>
                         </Modal>
                     </section>
-                    {/* <Container>
+                    <Container>
                         <div className="container row">
                             {this.createcardDetail()}
                         </div>
-                    </Container> */}
+                    </Container>
                     <Container>
                         <Row align="right">
                             <Col>
