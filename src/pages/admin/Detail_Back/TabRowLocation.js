@@ -93,9 +93,9 @@ class TabRowLocation extends Component {
         console.log('error');
       })
   }
-  sentid(e){
-    var idcard = this.props.obj._id
-  }
+  // sentid(e){
+  //   var idcard = this.props.obj._id
+  // }
 
   render() {
     // var sentid = {
