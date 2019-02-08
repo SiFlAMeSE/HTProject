@@ -12,26 +12,26 @@ class TabRowBuild extends Component {
             path: ''
         };
         this.state = {
-            data: {}
+            data: {},
         };
         this.toggle = this.toggle.bind(this);
-
         this.onchangeNameBuild = this.onchangeNameBuild.bind(this);
         this.Updatebuild = this.Updatebuild.bind(this);
 
         this.state = {
             Name_Build: '',
-            Id_Loca: ''
+            Id_Loca: '',
+
         }
-
     }
-
     componentWillMount() {
         data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
-        this.setState({ data: data_ss })
-
-        this.setState({ path: this.props.params })
+        this.setState({
+            data: data_ss,
+            path: this.props.params
+        })
     }
+
 
     toggle() {
         this.setState({
@@ -41,7 +41,6 @@ class TabRowBuild extends Component {
             .then(response => {
                 this.setState({
                     Name_Build: response.data.Name_Build
-                    
                 })
             })
             .catch(function (error) {
@@ -57,14 +56,13 @@ class TabRowBuild extends Component {
 
     Deletebuild() {
         axios.post('http://localhost:5000/build/Removebuild/' + this.props.obj._id)
-            .then(function (res) {
+            .then((res) => {
                 if (res.data === 'Build has been Deleted') {
-                    window.location = "/setbuild"
-                    console.log('OK');
+                    window.location.replace('/setbuild/' + this.props.params)
+                    // console.log(this.state.path);
+                } else {
+                    console.log("error");
                 }
-            })
-            .catch(function (err) {
-                console.log('error');
             })
     }
 
@@ -74,14 +72,14 @@ class TabRowBuild extends Component {
             Name_Build: this.state.Name_Build
         };
         axios.post('http://localhost:5000/build/update/' + this.props.obj._id, obj)
-            .then(function (res) {
+            .then((res) => {
                 if (res.data === 'Updated!') {
-                    console.log(res.data);
-                    window.location = "/setbuild"
+                    // console.log(res.data);
+                    console.log(this.state.path);
+                    window.location.replace('/setbuild/' + this.props.params)
+                } else {
+                    console.log('error');
                 }
-            })
-            .catch(function (err) {
-                console.log('error');
             })
     }
 

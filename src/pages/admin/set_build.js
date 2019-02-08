@@ -14,7 +14,8 @@ export default class set_build extends React.Component {
         this.state = {
             Name_Build: '',
             Id_Loca: '',
-            path: ''
+            path: '',
+            reload: ''
         }
         this.state = {
             modal: false
@@ -22,9 +23,14 @@ export default class set_build extends React.Component {
         this.toggle = this.toggle.bind(this);
         this.state = { Build: [] };
     }
-    
+
     componentWillMount() {
-        this.setState({ path: this.props.params })
+        this.setState({
+            path: this.props.params,
+            reload: this.props.match.params.id
+        })
+        // console.log(this.state.reload);
+        // console.log(this.state.path);
     }
 
     toggle() {
@@ -46,20 +52,14 @@ export default class set_build extends React.Component {
             Id_Loca: this.props.match.params.id
         }
         axios.post('http://localhost:5000/build/add', Build)
-            .then(function (res) {
-                if (res.data === 'Server added successfully') {
-                    window.location = '/setbuild/' + this.props.match.params.id
-                    // Redirect = ('/setbuild/${this.props.match.params.id}')
-                    // console.log(this.state.path);
-                    // return <Redirect to={'/setbuild/'+ this.props.match.params.id} />;
-                    // window.location.reload("/setbuild/");
-                    // console.log('sent pass');
+            .then((res) => {
+                if (res) {
+                    window.location.replace('/setbuild/' + this.state.path)
+                }
+                else {
+                    console.log("error")
                 }
             })
-            .catch(function (err) {
-                console.log('error');
-            })
-
         this.setState({
             Name_Build: '',
             Id_Loca: ''
@@ -77,7 +77,6 @@ export default class set_build extends React.Component {
                 console.log(error);
             })
     }
-
     // createcard() {
     //     return this.state.Build.map(function (object, i) {
     //         return <TabBuild obj={object} key={i} 
@@ -138,7 +137,7 @@ export default class set_build extends React.Component {
                         </Modal>
                     </section>
                     <Container>
-                        <div className="justify-content-md-center">
+                        <div className="container row">
                             {/* {this.createcardBuild()} */}
                             {
                                 this.state.Build.map((object, i) => <TabBuild obj={object} key={i} params={this.props.match.params.id} />)

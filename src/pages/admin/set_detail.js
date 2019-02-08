@@ -32,7 +32,10 @@ export default class set_detail extends React.Component {
         this.state = { Senser: [] };
     }
     componentWillMount() {
-        this.setState({ path: this.props.params })
+        this.setState({
+            path: this.props.params,
+            // reload: this.props.match.params.id
+        })
     }
     toggle() {
         this.setState({
@@ -81,7 +84,7 @@ export default class set_detail extends React.Component {
             Id_Loca: this.props.match.params.id
         }
         axios.post('http://localhost:5000/sensers/add', Senser)
-            .then(function (res) {
+            .then((res) => {
                 if (res.data === 'Server added successfully') {
                     window.location = "/setdetail/" + this.state.path
                 }
@@ -106,18 +109,18 @@ export default class set_detail extends React.Component {
             .then(response => {
                 const Senser = response.data;
                 this.setState({ Senser });
-                 //console.log(Senser);
+                //console.log(Senser);
             })
             .catch(function (error) {
                 console.log(error);
             })
     }
 
-    createcardDetail() {
-        return this.state.Senser.map(function (object, i) {
-            return <TabDetail obj={object} key={i} />
-        });
-    }
+    // createcardDetail() {
+    //     return this.state.Senser.map(function (object, i) {
+    //         return <TabDetail obj={object} key={i} />
+    //     });
+    // }
 
     render() {
         const divStyle = {
@@ -192,7 +195,7 @@ export default class set_detail extends React.Component {
                         <div className="container row">
                             {/* {this.createcardDetail()} */}
                             {
-                                 this.state.Senser.map((object, i) => <TabDetail obj={object} key={i} params={this.props.match.params.id} />)
+                                this.state.Senser.map((object, i) => <TabDetail obj={object} key={i} params={this.props.match.params.id} />)
                             }
                         </div>
                     </Container>

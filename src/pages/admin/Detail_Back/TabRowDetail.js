@@ -8,10 +8,8 @@ class TabRowBuild extends Component {
         super(props);
 
         this.state = {
-            modal: false
-        };
-        this.state = {
-            data: {}
+            modal: false,
+            data: {},
         };
         this.toggle = this.toggle.bind(this);
 
@@ -37,7 +35,10 @@ class TabRowBuild extends Component {
 
     componentWillMount() {
         data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
-        this.setState({ data: data_ss })
+        this.setState({
+            data: data_ss
+        })
+
     }
 
     toggle() {
@@ -45,66 +46,66 @@ class TabRowBuild extends Component {
             modal: !this.state.modal
         });
         axios.get('http://localhost:5000/sensers/senser/' + this.props.obj._id)
-             .then(response => {
-             this.setState({
-                Position: response.data.Position,
-                Macaddress: response.data.Macaddress,
-                Temp_Low: response.data.Temp_Low,
-                Temp_Hight: response.data.Temp_Hight,
-                Humdi_Low: response.data.Humdi_Low,
-                Humdi_Hight: response.data.Humdi_Hight
-             })
-           })
-             .catch(function (error) {
+            .then(response => {
+                this.setState({
+                    Position: response.data.Position,
+                    Macaddress: response.data.Macaddress,
+                    Temp_Low: response.data.Temp_Low,
+                    Temp_Hight: response.data.Temp_Hight,
+                    Humdi_Low: response.data.Humdi_Low,
+                    Humdi_Hight: response.data.Humdi_Hight
+                })
+            })
+            .catch(function (error) {
                 console.log(error);
             })
     }
 
-        onchangePosition(e) {
-            this.setState({
-                Position: e.target.value
-            });
-        }
-        onchangeMacaddress(e) {
-            this.setState({
-                Macaddress: e.target.value
-            });
-        }
-        onchangeTemp_Low(e) {
-            this.setState({
-                Temp_Low: e.target.value
-            });
-        }
-        onchangeTemp_Hight(e) {
-            this.setState({
-                Temp_Hight: e.target.value
-            });
-        }
-        onchangeHumdi_Low(e) {
-            this.setState({
-                Humdi_Low: e.target.value
-            });
-        }
-        onchangeHumdi_Hight(e) {
-            this.setState({
-                Humdi_Hight: e.target.value
-            });
-        }
+    onchangePosition(e) {
+        this.setState({
+            Position: e.target.value
+        });
+    }
+    onchangeMacaddress(e) {
+        this.setState({
+            Macaddress: e.target.value
+        });
+    }
+    onchangeTemp_Low(e) {
+        this.setState({
+            Temp_Low: e.target.value
+        });
+    }
+    onchangeTemp_Hight(e) {
+        this.setState({
+            Temp_Hight: e.target.value
+        });
+    }
+    onchangeHumdi_Low(e) {
+        this.setState({
+            Humdi_Low: e.target.value
+        });
+    }
+    onchangeHumdi_Hight(e) {
+        this.setState({
+            Humdi_Hight: e.target.value
+        });
+    }
 
-        Deletesenser() {
-        axios.post('http://localhost:5000/sensers/Removesenser/'+ this.props.obj._id)
-            .then(function (res) {
-            if (res.data === 'Senser has been Deleted') {
-                window.location = "/setdetail"
-                console.log('OK');
-            }
+    Deletesenser() {
+        axios.post('http://localhost:5000/sensers/Removesenser/' + this.props.obj._id)
+            .then((res) => {
+                if (res.data === 'Senser has been Deleted') {
+                    // window.location = "/setdetail"
+                    window.location.replace('/setdetail/' + this.props.params)
+                    console.log('OK');
+                } else {
+                    console.log('error');
+                }
             })
-            .catch(function (err) {
-            console.log('error');
-            })
-        }
+    }
 
-        UpdateSenser(e) {
+    UpdateSenser(e) {
         e.preventDefault();
         const obj = {
             Position: this.state.Position,
@@ -115,17 +116,16 @@ class TabRowBuild extends Component {
             Humdi_Hight: this.state.Humdi_Hight
         };
         axios.post('http://localhost:5000/sensers/update/' + this.props.obj._id, obj)
-            .then(function (res) {
-            if (res.data === 'Updated!') {
-                console.log(res.data);
-                window.location = "/setdetail"
-            }
+            .then((res) => {
+                if (res.data === 'Updated!') {
+                    console.log(res.data);
+                    window.location.replace('/setdetail/' + this.props.params)
+                } else {
+                    console.log('error');
+                }
             })
-            .catch(function (err) {
-            console.log('error');
-            })
-        }
-    
+    }
+
     render() {
         return (
             <div>
@@ -133,12 +133,12 @@ class TabRowBuild extends Component {
                     <Col xs="15" style={{ paddingRight: "50px" }}>
                         <Card>
                             <CardImg width="150px" height="150px" src={require('../../../img/location.gif')} />
-                             <CardTitle>{this.props.obj.Position}</CardTitle>
-                             <CardText>{this.props.obj.Macaddress}</CardText>
-                             <CardText>{this.props.obj.Temp_Low}</CardText>
-                             <CardText>{this.props.obj.Temp_Hight}</CardText>
-                             <CardText>{this.props.obj.Humdi_Low}</CardText>
-                             <CardText>{this.props.obj.Humdi_Hight}</CardText>
+                            <CardTitle>{this.props.obj.Position}</CardTitle>
+                            <CardText>{this.props.obj.Macaddress}</CardText>
+                            <CardText>{this.props.obj.Temp_Low}</CardText>
+                            <CardText>{this.props.obj.Temp_Hight}</CardText>
+                            <CardText>{this.props.obj.Humdi_Low}</CardText>
+                            <CardText>{this.props.obj.Humdi_Hight}</CardText>
                             <Button href="/monitoring" color="primary">ตรวจสอบ</Button>
                             <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
                         </Card>
