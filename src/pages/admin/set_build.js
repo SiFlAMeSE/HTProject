@@ -54,7 +54,7 @@ export default class set_build extends React.Component {
         axios.post('http://localhost:5000/build/add', Build)
             .then((res) => {
                 if (res) {
-                    window.location.replace('/setbuild/' + this.state.path)
+                    window.location.replace('/setbuild/' + this.state.reload)
                 }
                 else {
                     console.log("error")
