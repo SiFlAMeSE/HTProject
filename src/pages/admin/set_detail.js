@@ -34,7 +34,7 @@ export default class set_detail extends React.Component {
     componentWillMount() {
         this.setState({
             path: this.props.params,
-            // reload: this.props.match.params.id
+            reload: this.props.match.params.id
         })
     }
     toggle() {
@@ -86,7 +86,7 @@ export default class set_detail extends React.Component {
         axios.post('http://localhost:5000/sensers/add', Senser)
             .then((res) => {
                 if (res.data === 'Server added successfully') {
-                    window.location = "/setdetail/" + this.state.path
+                    window.location = "/setdetail/" + this.state.reload
                 }
             })
             .catch(function (err) {

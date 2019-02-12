@@ -83,6 +83,10 @@ class TabRowBuild extends Component {
             })
     }
 
+    sentidlo = (e) => {
+        window.location.replace('/setdetail/' + e.target.value)
+    }
+
     render() {
         return (
             <div>
@@ -91,7 +95,7 @@ class TabRowBuild extends Component {
                         <Card>
                             <CardImg width="150px" height="150px" src={require('../../../img/location.gif')} />
                             <CardTitle>{this.props.obj.Name_Build}</CardTitle>
-                            <Button href={"/setdetail/" + this.state.path} color="primary">เพิ่มอุปกรณ์</Button>
+                            <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentidlo(e)}>เพิ่มอุปกรณ์</Button>
                             <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
                         </Card>
                     </Col>
