@@ -9,10 +9,9 @@ class TabRowBuild extends Component {
 
         this.state = {
             modal: false,
-            path: ''
         };
         this.state = {
-            data: {},
+            data: {}
         };
         this.toggle = this.toggle.bind(this);
         this.onchangeNameBuild = this.onchangeNameBuild.bind(this);
@@ -20,7 +19,7 @@ class TabRowBuild extends Component {
 
         this.state = {
             Name_Build: '',
-            Id_Loca: '',
+            Id_Loca: ''
 
         }
     }
@@ -28,8 +27,9 @@ class TabRowBuild extends Component {
         data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
         this.setState({
             data: data_ss,
-            path: this.props.params
+            reload: this.props.params
         })
+        console.log(this.state.reload);
     }
 
 
@@ -58,8 +58,8 @@ class TabRowBuild extends Component {
         axios.post('http://localhost:5000/build/Removebuild/' + this.props.obj._id)
             .then((res) => {
                 if (res.data === 'Build has been Deleted') {
-                    window.location.replace('/setbuild/' + this.props.params)
-                    // console.log(this.state.path);
+                    window.location.replace('/setbuild/' + this.props.obj.Id_Loca)
+                    // console.log(this.state.reload);
                 } else {
                     console.log("error");
                 }
@@ -76,7 +76,7 @@ class TabRowBuild extends Component {
                 if (res.data === 'Updated!') {
                     // console.log(res.data);
                     console.log(this.state.path);
-                    window.location.replace('/setbuild/' + this.props.params)
+                    window.location.replace('/setbuild/' + this.props.obj.Id_Loca)
                 } else {
                     console.log('error');
                 }
