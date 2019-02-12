@@ -9,7 +9,7 @@ class TabRowBuild extends Component {
 
         this.state = {
             modal: false,
-            data: {},
+            data: {}
         };
         this.toggle = this.toggle.bind(this);
 
@@ -28,7 +28,7 @@ class TabRowBuild extends Component {
             Temp_Hight: '',
             Humdi_Low: '',
             Humdi_Hight: '',
-            Id_Loca: ''
+            Id_Build: ''
         }
 
     }
@@ -97,7 +97,7 @@ class TabRowBuild extends Component {
             .then((res) => {
                 if (res.data === 'Senser has been Deleted') {
                     // window.location = "/setdetail"
-                    window.location.replace('/setdetail/' + this.props.params)
+                    window.location.replace('/setdetail/' + this.props.obj.Id_Build)
                     console.log('OK');
                 } else {
                     console.log('error');
@@ -119,7 +119,7 @@ class TabRowBuild extends Component {
             .then((res) => {
                 if (res.data === 'Updated!') {
                     console.log(res.data);
-                    window.location.replace('/setdetail/' + this.props.params)
+                    window.location.replace('/setdetail/' + this.props.obj.Id_Build)
                 } else {
                     console.log('error');
                 }

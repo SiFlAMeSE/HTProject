@@ -3,7 +3,7 @@ import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, M
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import TabBuild from './Detail_Back/TabRowBuild';
-
+var _id;
 
 export default class set_build extends React.Component {
     constructor(props) {
@@ -29,6 +29,7 @@ export default class set_build extends React.Component {
             path: this.props.params,
             reload: this.props.match.params.id
         })
+        _id = this.props.match.params.id
         // console.log(this.state.reload);
         // console.log(this.state.path);
     }
@@ -77,15 +78,16 @@ export default class set_build extends React.Component {
                 console.log(error);
             })
     }
-    // createcard() {
-    //     return this.state.Build.map(function (object, i) {
-    //         return <TabBuild obj={object} key={i} 
-    //         // params={this.props.match.params.id} 
-    //         />
-    //     });
-    // }
+    createcard() {
+        return this.state.Build.map(function (object, i) {
+            if (_id === object.Id_Loca)
+            {
+                return <TabBuild obj={object} key={i} />
+            }
+        });
+    }
     // createcardBuild() {
-    //     this.state.Build.map((object,i)=><TabBuild obj={object} key={i} params={this.props.match.params.id}/>)
+    //     return this.state.Build.map((object,i)=> if(object.Id_Loca === this.props.match.params.id) <TabBuild obj={object} key={i} params={this.props.match.params.id}/>)
     // }
 
     render() {
@@ -138,16 +140,16 @@ export default class set_build extends React.Component {
                     </section>
                     <Container>
                         <div className="container row">
-                            {/* {this.createcardBuild()} */}
-                            {
-                                this.state.Build.map((object, i) => <TabBuild obj={object} key={i} params={this.props.match.params.id} />)
-                            }
+                            {this.createcard()}
+                            {/* {
+                                this.state.Build.map((object, i) => {object.Id_Loca === this.props.match.params.id ? <TabBuild obj={object} key={i} params={this.props.match.params.id}/>} )
+                            } */}
                         </div>
                     </Container>
                     <Container>
                         <Row align="right">
                             <Col>
-                                <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มอาคาร </button>
+                                <button type="button" onClick={this.toggle}  className="btn btn-danger btn-lg" > เพิ่มอาคาร </button>
                             </Col>
                         </Row>
                     </Container>

@@ -3,6 +3,7 @@ import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, M
 import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import TabDetail from './Detail_Back/TabRowDetail';
+var _id;
 
 export default class set_detail extends React.Component {
     constructor(props) {
@@ -22,8 +23,7 @@ export default class set_detail extends React.Component {
             Temp_Hight: '',
             Humdi_Low: '',
             Humdi_Hight: '',
-            Id_Loca: '',
-            path: ''
+            Id_Build: '',
         }
         this.state = {
             modal: false
@@ -36,6 +36,7 @@ export default class set_detail extends React.Component {
             path: this.props.params,
             reload: this.props.match.params.id
         })
+        _id = this.props.match.params.id
     }
     toggle() {
         this.setState({
@@ -81,7 +82,7 @@ export default class set_detail extends React.Component {
             Temp_Hight: this.state.Temp_Hight,
             Humdi_Low: this.state.Humdi_Low,
             Humdi_Hight: this.state.Humdi_Hight,
-            Id_Loca: this.props.match.params.id
+            Id_Build: this.props.match.params.id
         }
         axios.post('http://localhost:5000/sensers/add', Senser)
             .then((res) => {
@@ -100,7 +101,7 @@ export default class set_detail extends React.Component {
             Temp_Hight: '',
             Humdi_Low: '',
             Humdi_Hight: '',
-            Id_Loca: ''
+            Id_Build: ''
         });
     }
 
@@ -116,11 +117,14 @@ export default class set_detail extends React.Component {
             })
     }
 
-    // createcardDetail() {
-    //     return this.state.Senser.map(function (object, i) {
-    //         return <TabDetail obj={object} key={i} />
-    //     });
-    // }
+    createcardDetail() {
+        return this.state.Senser.map(function (object, i) {
+            if (_id === object.Id_Build)
+            {
+                return <TabDetail obj={object} key={i} />
+            }
+        });
+    }
 
     render() {
         const divStyle = {
@@ -193,10 +197,10 @@ export default class set_detail extends React.Component {
                     </section>
                     <Container>
                         <div className="container row">
-                            {/* {this.createcardDetail()} */}
-                            {
+                            {this.createcardDetail()}
+                            {/* {
                                 this.state.Senser.map((object, i) => <TabDetail obj={object} key={i} params={this.props.match.params.id} />)
-                            }
+                            } */}
                         </div>
                     </Container>
                     <Container>
