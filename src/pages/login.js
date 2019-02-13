@@ -2,6 +2,11 @@ import React, { Component } from 'react';
 // import { login } from './Functions'
 import axios from 'axios';
 
+var stylebg = {
+    backgroundImage: `url(${require('../img/BGlog.png')})`,
+    backgroundSize: 'cover',
+    // backgroundRepeat: 'repeat'
+}
 class loginp extends Component {
     constructor() {
         super()
@@ -59,11 +64,8 @@ class loginp extends Component {
     
     
     render() {
-        const bg = {
-            backgroundImage: `linear-gradient(to bottom, rgba(205, 169, 157, 0.7), rgba(205, 169, 157, 0.7))`
-          };
     return(
-            <login>
+            <div style={ stylebg }>
             <div className="container-login100">
                 {/* <div className="container-login100" style="background-image: url('images/bg-01.jpg');"> */}
                 <div className="wrap-login100 p-l-55 p-r-55 p-t-80 p-b-30">
@@ -125,7 +127,7 @@ class loginp extends Component {
 
                 </div>
             </div>
-            </login>
+            </div>
 
         );
     }
