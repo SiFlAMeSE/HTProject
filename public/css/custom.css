@@ -1,3 +1,5 @@
 body {
-    font-family: 'Athiti', sans-serif;
+    font-family: 'Athiti';
+    font-size: 48px;
+    text-shadow: 2px 2px 2px #aaa;
 }
