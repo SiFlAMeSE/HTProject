@@ -11,7 +11,8 @@ class footer extends Component {
                     <div className="row">
                         <ul className="probootstrap-footer-widget">
                         <center>
-                        <h4>ติดต่อ</h4>
+                            ติดต่อ
+                        <br/>
                         <span>นายสิรศักดิ์  สุนทรท้วม  5802041610089</span> &nbsp;&nbsp; 
                         <i className="icon-phone2"></i>&nbsp;<span>094-931-2638</span>
                         <br/>
