@@ -6,3 +6,19 @@ html,body {
   text-shadow: 2px 2px 2px rgb(200, 255, 0);
   color : red
 }
+
+.header {
+  font-family: 'Athiti';
+  font-size: 18px;
+  color : white
+}
+
+.Site {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.Site-content {
+  flex: 1;
+}

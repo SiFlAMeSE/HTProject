@@ -6,7 +6,6 @@ import Header1 from "./header1";
 import Header2 from "./header2";
 
 
-
 class App extends Component {
   render() {
     return (
