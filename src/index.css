@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Athiti'); 
 
+#content {
+  /* padding-top: 70px; */
+  min-height:  calc(100vh - 92px);
+}
+
 html,body {
   font-family: 'Athiti';
   font-size: 20px;
@@ -13,12 +18,3 @@ html,body {
   color : white
 }
 
-.Site {
-  display: flex;
-  min-height: 100vh;
-  flex-direction: column;
-}
-
-.Site-content {
-  flex: 1;
-}

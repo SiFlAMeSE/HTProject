@@ -9,11 +9,15 @@ import Header2 from "./header2";
 class App extends Component {
   render() {
     return (
-      <body>
+      <div>
         <Header2 />
+        
+        <div id="content">
         <Routing />
+        </div>
         <Footer />
-      </body>
+
+      </div>
     );
   }
 }

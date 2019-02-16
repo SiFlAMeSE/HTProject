@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-
 class footer extends Component {
     render() {
         return (
+            
             <footer>
                 {/* <div className="probootstrap-backtotop">
                 <a href="/" className="js-backtotop">
@@ -24,6 +24,7 @@ class footer extends Component {
                         <i className="icon-phone2"></i>&nbsp;<span>092-493-6145</span>
                 </center>
             </footer>
+
 
         );
     }
