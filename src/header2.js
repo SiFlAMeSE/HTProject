@@ -12,12 +12,11 @@ export default class header2 extends Component {
     }
 
     logOut = (e) => {
-        console.log(e.target)
+        // console.log(e.target)
         sessionStorage.clear();
     }
 
     state = { visible: false }
-
     handleItemClick = (e, { name }) => this.setState({ activeItem: name })
 
     handleHideClick = () => this.setState({ visible: false })
@@ -37,13 +36,16 @@ export default class header2 extends Component {
                 <NavLink to="/">
                     <Menu.Item name='หน้าหลัก'
                         active={activeItem === 'หน้าหลัก'}
-                        onClick={this.handleItemClick} />
+                        onClick={this.handleItemClick}
+                        className="header"
+                    />
                 </NavLink>
                 <NavLink to="/howto">
                     <Menu.Item
                         name='วิธีการใช้งาน'
                         active={activeItem === 'วิธีการใช้งาน'}
                         onClick={this.handleItemClick}
+                        className="header"
                     />
                 </NavLink>
                 <NavLink to="/infor">
@@ -51,6 +53,7 @@ export default class header2 extends Component {
                         name='ข้อมูลอุปกรณ์'
                         active={activeItem === 'ข้อมูลอุปกรณ์'}
                         onClick={this.handleItemClick}
+                        className="header"
                     />
                 </NavLink>
 
@@ -60,20 +63,23 @@ export default class header2 extends Component {
                         name='ตั้งค่าอุปกรณ์'
                         active={activeItem === 'ตั้งค่าอุปกรณ์'}
                         onClick={this.handleItemClick}
+                        className="header"
                     />
                 </NavLink>
 
                 <Menu.Item
                     name='Profile : admin'
                     position='right'
+                    className="header"
                 />
                 {/* ออกจากระบบ */}
-                <NavLink to="#">
+                <NavLink to="/">
                     <Menu.Item
                         name='ออกจากระบบ'
                         active={activeItem === 'ออกจากระบบ'}
                         onClick={this.logOut.bind(this)}
                         position='right'
+                        className="header"
                     />
                 </NavLink>
             </Menu>
@@ -87,13 +93,16 @@ export default class header2 extends Component {
                 <NavLink to="/">
                     <Menu.Item name='หน้าหลัก'
                         active={activeItem === 'หน้าหลัก'}
-                        onClick={this.handleItemClick} />
+                        onClick={this.handleItemClick}
+                        className="header"
+                    />
                 </NavLink>
                 <NavLink to="/howto">
                     <Menu.Item
                         name='วิธีการใช้งาน'
                         active={activeItem === 'วิธีการใช้งาน'}
                         onClick={this.handleItemClick}
+                        className="header"
                     />
                 </NavLink>
                 <NavLink to="/infor">
@@ -101,6 +110,7 @@ export default class header2 extends Component {
                         name='ข้อมูลอุปกรณ์'
                         active={activeItem === 'ข้อมูลอุปกรณ์'}
                         onClick={this.handleItemClick}
+                        className="header"
                     />
                 </NavLink>
                 <NavLink to="/contact">
@@ -108,6 +118,7 @@ export default class header2 extends Component {
                         name='ติดต่อ'
                         active={activeItem === 'ติดต่อ'}
                         onClick={this.handleItemClick}
+                        className="header"
                     />
                 </NavLink>
                 <NavLink to="/monitoring">
@@ -115,6 +126,7 @@ export default class header2 extends Component {
                         name='การตรวจสอบ'
                         active={activeItem === 'การตรวจสอบ'}
                         onClick={this.handleItemClick}
+                        className="header"
                     />
                 </NavLink>
                 <NavLink to="/notification">
@@ -122,6 +134,7 @@ export default class header2 extends Component {
                         name='ระบบแจ้งเตือน'
                         active={activeItem === 'ระบบแจ้งเตือน'}
                         onClick={this.handleItemClick}
+                        className="header"
                     />
                 </NavLink>
                 <NavLink to="/history">
@@ -129,19 +142,21 @@ export default class header2 extends Component {
                         name='ประวัติย้อนหลัง'
                         active={activeItem === 'ประวัติย้อนหลัง'}
                         onClick={this.handleItemClick}
+                        className="header"
                     />
                 </NavLink>
-
                 <Menu.Item
                     name='Profile : user'
                     position='right'
+                    className="header"
                 />
                 {/* ออกจากระบบ */}
-                <NavLink to="#">
+                <NavLink to="/">
                     <Menu.Item
                         name='ออกจากระบบ'
                         active={activeItem === 'ออกจากระบบ'}
                         onClick={this.logOut.bind(this)}
+                        className="header"
                     />
                 </NavLink>
             </Menu>
@@ -155,13 +170,17 @@ export default class header2 extends Component {
                 <NavLink to="/">
                     <Menu.Item name='หน้าหลัก'
                         active={activeItem === 'หน้าหลัก'}
-                        onClick={this.handleItemClick} />
+                        onClick={this.handleItemClick}
+                        className="header"
+                    />
+
                 </NavLink>
                 <NavLink to="/howto">
                     <Menu.Item
                         name='วิธีการใช้งาน'
                         active={activeItem === 'วิธีการใช้งาน'}
                         onClick={this.handleItemClick}
+                        className="header"
                     />
                 </NavLink>
                 <NavLink to="/infor">
@@ -169,6 +188,7 @@ export default class header2 extends Component {
                         name='ข้อมูลอุปกรณ์'
                         active={activeItem === 'ข้อมูลอุปกรณ์'}
                         onClick={this.handleItemClick}
+                        className="header"
                     />
                 </NavLink>
                 <NavLink to="/contact">
@@ -176,16 +196,18 @@ export default class header2 extends Component {
                         name='ติดต่อ'
                         active={activeItem === 'ติดต่อ'}
                         onClick={this.handleItemClick}
+                        className="header"
                     />
                 </NavLink>
                 <Menu.Item
                     position='right'
+                    className="header"
                 />
                 <NavLink to="/login">
                     <Menu.Item
                         name='เข้าสู่ระบบ'
                         active={activeItem === 'เข้าสู่ระบบ'}
-                        onClick={this.logOut.bind(this)}
+                        className="header"
                     />
                 </NavLink>
             </Menu>
@@ -220,7 +242,7 @@ export default class header2 extends Component {
 
                     <Sidebar.Pusher dimmed={visible}>
                         {/* <Segment basic> */}
-                        <Segment inverted>
+                        <Segment inverted >
                             {sessionStorage.getItem('Login_add') ? adminLink : sessionStorage.getItem('Login_user') ? userLink : Link}
                         </Segment>
                         {/* </Segment> */}
