@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Athiti'); 
+@import url('https://fonts.googleapis.com/css?family=Prompt:400');
 
 #content {
   /* padding-top: 70px; */
@@ -6,15 +6,35 @@
 }
 
 html,body {
-  font-family: 'Athiti';
+  font-family: 'Prompt', sans-serif;
   font-size: 20px;
-  text-shadow: 2px 2px 2px rgb(200, 255, 0);
-  color : red
+  /* text-shadow: 2px 2px 2px rgb(200, 255, 0); */
+  color : LightSlateGray
 }
 
-.header {
-  font-family: 'Athiti';
-  font-size: 18px;
-  color : white
+.fonthead {
+  color: #778899;
+  font-family: 'Prompt', sans-serif;
+  font-size: 16px;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 15px;
 }
 
+.buthead{
+  color: #FFFFFF;
+  font-family: 'Prompt', sans-serif;
+  font-size: 16px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+/* .headerCus a:visited {color: #00FF00} */
+
+
+Menu.Item {
+  color: #000080;
+  font-family: 'Prompt', sans-serif;
+  font-size: 16px;
+}
