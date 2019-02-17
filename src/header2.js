@@ -215,8 +215,8 @@ export default class header2 extends Component {
                     /> */}
                     เข้าสู่ระบบ
                 </NavLink>
-                <Button color='blue' size="sm">
-                <NavLink to="/signup" className="buthead">
+                <Button color='blue' className="buttomregis">
+                <NavLink to="/signup" className="buthead" >
                     {/* <Menu.Item
                         name='สมัครเข้าใช้งาน'
                         active={activeItem === 'สมัครเข้าใช้งาน'}
