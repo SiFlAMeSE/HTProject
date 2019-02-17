@@ -11,7 +11,6 @@ class App extends Component {
     return (
       <div>
         <Header2 />
-        
         <div id="content">
         <Routing />
         </div>

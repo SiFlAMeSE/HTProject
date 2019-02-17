@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import locationBG from '../img/BG_bl.jpg';
 import axios from 'axios';
 
 export default class signup extends Component {
@@ -46,31 +45,24 @@ export default class signup extends Component {
             })
     }
     render() {
-        const divStyle = {
-            color: 'blue',
-            backgroundImage: 'url(' + locationBG + ')',
-        };
         return (
             <div>
-                <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
+                <section>
                     <div className="container">
-                        <div className="row">
-                            <div className="col-md-7 probootstrap-intro-text">
-                                <h1 className="probootstrap-animate" data-animate-effect="fadeIn">Register</h1>
-                                <div className="probootstrap-subtitle probootstrap-animate" data-animate-effect="fadeIn">
+                        <div>
+                            <div>
+                                <center>
+                                    <h1 >Register</h1>
                                     <h2>For User</h2>
-                                </div>
+                                </center>
                             </div>
                         </div>
                     </div>
-                    <span className="probootstrap-animate">
-                        <a className="probootstrap-scroll-down js-next" href="#next-section">Scroll down
-                    <i className="icon-chevron-down"></i></a></span>
                 </section>
                 <div>
-                    <section id="next-section" className="probootstrap-section">
+                    <section>
                         <div className="container">
-                            <div className="col-md-6">
+                            <div className="col-auto">
                                 <form className="probootstrap-form" noValidate onSubmit={this.onSubmit}>
                                     <div className="row">
                                         <div className="col-md-6">
