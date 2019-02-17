@@ -1,7 +1,75 @@
 import React, { Component } from 'react';
 import { Table, Button, Input, FormGroup, Form, Container, Row, Col } from 'reactstrap';
 import locationBG from '../../img/BG_bl.jpg';
+import axios from 'axios';
+import Tablehistory from './Tabalhistory';
+import SenserChoice from './SenserChoice';
+var _id , mac , date;
+
 class history extends Component {
+    constructor(props) {
+        super(props);
+
+        this.state = { History: [], Senser: [] };
+
+    }
+
+    componentWillMount() {
+        _id = this.props.match.params.id
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:5000/history')
+            .then(response => {
+                const History = response.data;
+                this.setState({ History });
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+
+        axios.get('http://localhost:5000/sensers/senser_list')
+            .then(response => {
+                const Senser = response.data;
+                this.setState({ Senser });
+                //console.log(Senser);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+
+    onchangeMAC(e) {
+            mac = e.target.value
+    }
+
+    onchangeDate(e) {
+            date = e.target.value
+            console.log(date)
+    }
+
+    // onSubmit(e) {
+    //     window.location.replace('/history/' + this.state.mac)
+    //     console.log(this.state.mac)
+    // }
+
+    sentid = (e) => {
+        window.location.replace('/history/' + mac)
+    }
+
+    tabRow() {
+        return this.state.History.map(function (object, i) {
+            if (_id === object.mac || date === object.date)
+                return <Tablehistory obj={object} key={i} />;
+        });
+    }
+
+    choice() {
+        return this.state.Senser.map(function (object, i) {
+            return <SenserChoice obj={object} key={i} />;
+        });
+    }
+
     render() {
         const divStyle = {
             color: 'blue',
@@ -21,16 +89,13 @@ class history extends Component {
                 </section>
                 <div>
                     <section id="next-section" className="probootstrap-section">
-                    <Container>
-                            <FormGroup>
+                        <Container>
+                            <Form>
                                 <Row align="center">
                                     <Col>
-                                        <Input type="select" name="select">
-                                            <option>ชั้น</option>
-                                            <option>1</option>
-                                            <option>2</option>
-                                            <option>3</option>
-                                            <option>4</option>
+                                        <Input type="select" name="select" onChange={this.onchangeMAC}>
+                                            <option>เลือกเซนเซอร์</option>
+                                            {this.choice()}
                                         </Input>
                                     </Col>
 
@@ -40,44 +105,34 @@ class history extends Component {
                                             name="date"
                                             id="exampleDate"
                                             placeholder="ระบุวันเดือนปี"
+                                            onChange={this.onchangeDate}
                                         />
                                     </Col>
 
                                     <Col>
-                                        <Button color="success">ตกลง</Button>{' '}
+                                        <Button color="success" onClick={(e) => this.sentid(e)}>ตกลง</Button>
                                     </Col>
                                 </Row>
-                            </FormGroup>
+                            </Form>
                             <Form>
                                 <Table bordered>
                                     <thead>
                                         <tr>
-                                            <th>สถานที่</th>
-                                            <th>การตั้งค่า</th>
-                                            <th>การแจ้งเตือน</th>
-                                            <th>วัน/เดือน/ปี</th>
+                                            <td>อุณหภูมิ</td>
+                                            <td>ความชื้น</td>
+                                            <td>รหัสเครื่อง</td>
+                                            <td>วันที่และเวลา</td>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>รายละเอียด1</td>
-                                            <td>รายละเอียด1</td>
-                                            <td>รายละเอียด1</td>
-                                            <td>รายละเอียด1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>รายละเอียด2</td>
-                                            <td>รายละเอียด2</td>
-                                            <td>รายละเอียด2</td>
-                                            <td>รายละเอียด2</td>
-                                        </tr>
+                                        {this.tabRow()}
                                     </tbody>
                                 </Table>
                             </Form>
                         </Container>
-                </section>
-            </div>
-            <br /> <br /> <br />
+                    </section>
+                </div>
+                <br /> <br /> <br />
             </div >
         );
     }
