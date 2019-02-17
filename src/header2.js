@@ -28,7 +28,7 @@ export default class header2 extends Component {
         const { visible } = this.state
 
         const adminLink = (
-            <Menu inverted pointing secondary>
+            <Menu pointing secondary>
                 {/* <Menu.Item name='sidebar'
                     active={activeItem === 'sidebar'}
                     onClick={this.handleShowClick} /> */}
@@ -85,7 +85,7 @@ export default class header2 extends Component {
             </Menu>
         )
         const userLink = (
-            <Menu inverted pointing secondary>
+            <Menu pointing secondary>
                 {/* <Menu.Item name='sidebar'
                     active={activeItem === 'sidebar'}
                     onClick={this.handleShowClick} /> */}
@@ -162,7 +162,7 @@ export default class header2 extends Component {
             </Menu>
         )
         const Link = (
-            <Menu inverted pointing secondary>
+            <Menu pointing secondary>
                 {/* <Menu.Item name='sidebar'
                     active={activeItem === 'sidebar'}
                     onClick={this.handleShowClick} /> */}
@@ -215,7 +215,7 @@ export default class header2 extends Component {
 
         return (
             <div>
-                <Sidebar.Pushable as={Segment}>
+                {/* <Sidebar.Pushable as={Segment}>
                     <Sidebar
                         as={Menu}
                         animation='overlay'
@@ -241,13 +241,14 @@ export default class header2 extends Component {
                     </Sidebar>
 
                     <Sidebar.Pusher dimmed={visible}>
-                        {/* <Segment basic> */}
-                        <Segment inverted >
-                            {sessionStorage.getItem('Login_add') ? adminLink : sessionStorage.getItem('Login_user') ? userLink : Link}
+                        <Segment basic>
+
                         </Segment>
-                        {/* </Segment> */}
                     </Sidebar.Pusher>
-                </Sidebar.Pushable>
+                </Sidebar.Pushable> */}
+
+                {sessionStorage.getItem('Login_add') ? adminLink : sessionStorage.getItem('Login_user') ? userLink : Link}
+
             </div>
         )
     }
