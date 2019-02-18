@@ -38,6 +38,7 @@ class homenew extends Component {
                         <span className="carousel-control-next-icon" aria-hidden="true"></span>
                         <span className="sr-only">Next</span>
                     </a>
+
                 </div>
             </div>
         );
