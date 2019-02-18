@@ -80,15 +80,11 @@ export default class set_build extends React.Component {
     }
     createcard() {
         return this.state.Build.map(function (object, i) {
-            if (_id === object.Id_Loca)
-            {
+            if (_id === object.Id_Loca) {
                 return <TabBuild obj={object} key={i} />
             }
         });
     }
-    // createcardBuild() {
-    //     return this.state.Build.map((object,i)=> if(object.Id_Loca === this.props.match.params.id) <TabBuild obj={object} key={i} params={this.props.match.params.id}/>)
-    // }
 
     render() {
         const divStyle = {
@@ -149,7 +145,7 @@ export default class set_build extends React.Component {
                     <Container>
                         <Row align="right">
                             <Col>
-                                <button type="button" onClick={this.toggle}  className="btn btn-danger btn-lg" > เพิ่มอาคาร </button>
+                                <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มอาคาร </button>
                             </Col>
                         </Row>
                     </Container>

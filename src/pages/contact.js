@@ -1,15 +1,10 @@
 import React, { Component } from 'react';
 import { Table, Container, Row, Col } from 'reactstrap';
-import locationBG from '../img/BG_bl.jpg';
+
 
 class contact extends Component {
 
     render() {
-        const divStyle = {
-            color: 'blue',
-            backgroundImage: 'url(' + locationBG + ')',
-        };
-
         return (
             <div >
                 <section>

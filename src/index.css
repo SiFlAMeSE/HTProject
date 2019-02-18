@@ -48,5 +48,19 @@ html,body {
   height: 35px;
   background-color: #1582ff;
   border-radius: 25px;
+}
 
+.logout-btn {
+  color: #FFFFFF;
+  text-align: center;
+  font-family: 'Prompt', sans-serif;
+  font-size: 16px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 120px;
+  height: 35px;
+  background-color: #801111;
+  border-radius: 25px;
 }

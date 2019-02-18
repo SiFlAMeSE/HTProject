@@ -1,101 +1,131 @@
-import React from 'react';
-import {
+import React, { Component } from 'react'
+import { NavLink } from 'react-router-dom'
+import { Menu } from 'semantic-ui-react'
+var data_ss;
+export default class header2 extends Component {
+constructor(props) {
+    super(props);
 
-    NavLink,
-
-} from 'react-router-dom';
-
-import CheeseburgerMenu from 'cheeseburger-menu'
-import HamburgerMenu from 'react-hamburger-menu'
-import MenuContent from './menuContent'
-
-export default class header extends React.Component {
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            menuOpen: false,
+    this.state ={
+        data: {}
+    }
+}
+    componentWillMount() {
+        if(sessionStorage.getItem('Login_add'))
+        {
+            data_ss = JSON.parse(sessionStorage.getItem("Login_add"))
+            this.setState({ data: data_ss })
+        }else if(sessionStorage.getItem('Login_user'))
+        {
+            data_ss = JSON.parse(sessionStorage.getItem("Login_user"))
+            this.setState({ data: data_ss })
         }
-    }
-
-    openMenu() {
-        this.setState({ menuOpen: true })
-    }
-
-    closeMenu() {
-        this.setState({ menuOpen: false })
+        console.log(data_ss);
     }
 
     logOut = (e) => {
-        console.log(e.target)
         sessionStorage.clear();
     }
-
     render() {
         const adminLink = (
-            <ul className="probootstrap-main-nav">
-                <li>
-                    <HamburgerMenu
-                        isOpen={this.state.menuOpen}
-                        menuClicked={this.openMenu.bind(this)}
-                        width={32}
-                        height={24}
-                        strokeWidth={3}
-                        rotate={0}
-                        color='white'
-                        borderRadius={0}
-                        animationDuration={0.5}
-                    /></li>
-
-                <li><a href="/">หน้าหลัก</a></li>
-                <li><NavLink to="/howto">วิธีการใช้งาน</NavLink></li>
-                <li><NavLink to="/infor">ข้อมูลอุปกรณ์</NavLink></li>
-                <li><NavLink to="/contact">ติดต่อ</NavLink></li>
-                <li><NavLink to="/test">ทดสอบ</NavLink></li>
-                <li><NavLink to="" onClick={this.logOut.bind(this)}>ออกจากระบบ</NavLink></li>
-            </ul>
+            <Menu pointing secondary>
+                <Menu.Item position='right' />
+                <NavLink to="/" className="fonthead">
+                    หน้าหลัก
+                </NavLink>
+                <NavLink to="/howto" className="fonthead">
+                    วิธีการใช้งาน
+                </NavLink>
+                <NavLink to="/infor" className="fonthead">
+                    ข้อมูลอุปกรณ์
+                </NavLink>
+                <NavLink to="/monitoring" className="fonthead">
+                    การตรวจสอบ
+                </NavLink>
+                <NavLink to="/notification" className="fonthead">
+                    ระบบแจ้งเตือน
+                </NavLink>
+                <NavLink to="/history" className="fonthead">
+                    ประวัติย้อนหลัง
+                </NavLink>
+                <NavLink to="/setlocation" className="fonthead">
+                    ตั้งค่าอุปกรณ์
+                </NavLink>
+                <div className="fonthead">|</div>
+                <div className="fonthead">{data_ss.Positions}   :   {data_ss.Fname}</div>
+                {/* ออกจากระบบ */}
+                <div className="layoutbutre">
+                    <NavLink to="/" className="logout-btn" onClick={this.logOut.bind(this)}>
+                        ออกจากระบบ
+                </NavLink>
+                </div>
+            </Menu>
         )
         const userLink = (
-            <ul className="probootstrap-main-nav">
-                <li><a href="/">หน้าหลัก</a></li>
-                <li><NavLink to="/howto">วิธีการใช้งาน</NavLink></li>
-                <li><NavLink to="/infor">ข้อมูลอุปกรณ์</NavLink></li>
-                <li><NavLink to="/contact">ติดต่อ</NavLink></li>
-                <li><NavLink to="/monitoring">การตรวจสอบ</NavLink></li>
-                <li><NavLink to="/notification">ระบบแจ้งเตือน</NavLink></li>
-                <li><NavLink to="/history">ประวัติย้อนหลัง</NavLink></li>
-                <li><NavLink to="" onClick={this.logOut.bind(this)}>ออกจากระบบ</NavLink></li>
-            </ul>
+            <Menu pointing secondary>
+                <Menu.Item position='right' />
+                <NavLink to="/" className="fonthead">
+                    หน้าหลัก
+                </NavLink>
+                <NavLink to="/howto" className="fonthead">
+                    วิธีการใช้งาน
+                </NavLink>
+                <NavLink to="/infor" className="fonthead">
+                    ข้อมูลอุปกรณ์
+                </NavLink>
+                <NavLink to="/monitoring" className="fonthead">
+                    การตรวจสอบ
+                </NavLink>
+                <NavLink to="/notification" className="fonthead">
+                    ระบบแจ้งเตือน
+                </NavLink>
+                <NavLink to="/history" className="fonthead">
+                    ประวัติย้อนหลัง
+                </NavLink>
+                <div className="fonthead">|</div>
+                <div className="fonthead">{data_ss.Positions}   :   {data_ss.Fname}</div>
+                {/* ออกจากระบบ */}
+                <div className="layoutbutre">
+                    <NavLink to="/" className="logout-btn" onClick={this.logOut.bind(this)}>
+                        ออกจากระบบ
+                </NavLink>
+                </div>
+
+            </Menu>
         )
         const Link = (
-            <ul className="probootstrap-main-nav">
-                <li><a href="/">หน้าหลัก</a></li>
-                <li><NavLink to="/howto">วิธีการใช้งาน</NavLink></li>
-                <li><NavLink to="/infor">ข้อมูลอุปกรณ์</NavLink></li>
-                <li><NavLink to="/contact">ติดต่อ</NavLink></li>
-            </ul>
-        )
-        return (
-            <header role="banner" className="probootstrap-header">
-                <div>
-                    <CheeseburgerMenu
-                        isOpen={this.state.menuOpen}
-                        closeCallback={this.closeMenu.bind(this)}>
-                        <MenuContent closeCallback={this.closeMenu.bind(this)} />
-                    </CheeseburgerMenu>
-
-
-                    <nav role="navigation" className="probootstrap-nav hidden-xs">
-
-                        {sessionStorage.getItem('Login_add') ? adminLink : sessionStorage.getItem('Login_user') ? userLink : Link}
-
-                        {/* <div className="extra-text visible-xs">
-                            <a href="/" className="probootstrap-burger-menu"><i>เมนู</i></a>
-                        </div> */}
-
-                    </nav>
+            <Menu pointing secondary>
+                <Menu.Item position='right' />
+                <NavLink to="/" className="fonthead">
+                    หน้าหลัก
+                </NavLink>
+                <NavLink to="/howto" className="fonthead">
+                    วิธีการใช้งาน
+                </NavLink>
+                <NavLink to="/infor" className="fonthead">
+                    ข้อมูลอุปกรณ์
+                </NavLink>
+                <NavLink to="/contact" className="fonthead">
+                    ติดต่อ
+                </NavLink>
+                <div className="fonthead">|</div>
+                <NavLink to="/login" className="fonthead">
+                    เข้าสู่ระบบ
+                </NavLink>
+                <div className="layoutbutre">
+                    <NavLink to="/signup" className="regis-btn">
+                        สมัครเข้าใช้งาน
+                </NavLink>
                 </div>
-            </header >
-        );
+
+            </Menu>
+        )
+
+        return (
+
+            <div>
+                {sessionStorage.getItem('Login_add') ? adminLink : sessionStorage.getItem('Login_user') ? userLink : Link}
+            </div>
+        )
     }
 }

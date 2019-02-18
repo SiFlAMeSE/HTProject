@@ -31,7 +31,7 @@ export default class set_location extends React.Component {
     componentWillMount() {
         data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
         this.setState({ data: data_ss })
-        //console.log(ss._id)
+        // console.log(data_ss._id)
     }
 
     toggle() {
