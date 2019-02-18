@@ -12,6 +12,12 @@ html,body {
   color : LightSlateGray
 }
 
+.layoutbutre{
+  padding-right: 10px;
+  padding-left: 5px;
+  padding-top: 10px;
+}
+
 .fonthead {
   color: #778899;
   font-family: 'Prompt', sans-serif;
@@ -29,21 +35,18 @@ html,body {
   
 }
 
-.buttomregis{
-  /* width: 100px;
-  height: 30px; */
-  padding: 15px 32px;
+.regis-btn {
+  color: #FFFFFF;
   text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  
-}
-
-/* .headerCus a:visited {color: #00FF00} */
-
-
-Menu.Item {
-  color: #000080;
   font-family: 'Prompt', sans-serif;
   font-size: 16px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 120px;
+  height: 35px;
+  background-color: #1582ff;
+  border-radius: 25px;
+
 }

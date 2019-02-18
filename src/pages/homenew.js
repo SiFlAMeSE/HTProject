@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom'
-import locationBG from '../img/BG_bl.jpg';
 
 class homenew extends Component {
     // constructor(props) {
