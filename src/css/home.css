@@ -1,0 +1,43 @@
+.banner-top {
+    position: relative;
+    height: 572px;
+    background: #f4f4f4;
+    background: -webkit-linear-gradient(bottom,#f4f4f4,#fff);
+    background: linear-gradient(to top,#f4f4f4,#fff);
+    overflow: hidden;
+}
+
+/* ตัวกำหนดรูปตู้ */
+.co-picture {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    left: 50%;
+    bottom: 0;
+    margin-left: -500px;
+    z-index: 1;
+}
+
+/* รูปตู้ความชื้น */
+.picture {
+    position: absolute;
+    width: 474px;
+    height: 625px;
+    left: 50%;
+    margin-left: -237px;
+    bottom: -90px;
+    z-index: 3;
+}
+
+/* เคลื่อนไหว */
+.iconfront1 {
+    position: absolute;
+    width: 161px;
+    height: 163px;
+    top: 360px;
+    left: 390px;
+    background-color: red;
+    z-index: 5;
+    -webkit-animation: gLetter 2s ease-in-out 0s infinite alternate;
+    animation: gLetter 2s ease-in-out 0s infinite alternate;
+}

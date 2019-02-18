@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Menu } from 'semantic-ui-react'
+
 var data_ss;
 export default class header2 extends Component {
 constructor(props) {
@@ -35,9 +36,6 @@ constructor(props) {
                 </NavLink>
                 <NavLink to="/howto" className="fonthead">
                     วิธีการใช้งาน
-                </NavLink>
-                <NavLink to="/infor" className="fonthead">
-                    ข้อมูลอุปกรณ์
                 </NavLink>
                 <NavLink to="/monitoring" className="fonthead">
                     การตรวจสอบ
@@ -122,7 +120,6 @@ constructor(props) {
         )
 
         return (
-
             <div>
                 {sessionStorage.getItem('Login_add') ? adminLink : sessionStorage.getItem('Login_user') ? userLink : Link}
             </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import homenew from "../pages/homenew";
+import home from "../pages/home";
 import howto from "../pages/howto";
 import infor from "../pages/information";
 import contact from "../pages/contact";
@@ -25,8 +25,8 @@ import testcode from "../testcode";
 export default () => (
     <Switch>
 
-        {/* <Route exact path="/" component={home} /> */}
-        <Route exact path="/" component={homenew} />
+        <Route exact path="/" component={home} />
+        {/* <Route exact path="/" component={homenew} /> */}
         <Route exact path="/howto" component={howto} />
         <Route exact path="/infor" component={infor} />
         <Route exact path="/contact" component={contact} />
