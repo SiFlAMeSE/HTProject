@@ -1,20 +1,39 @@
 import React, { Component } from 'react';
+import { Container } from 'semantic-ui-react';
+import { Col, Row } from 'reactstrap';
 import './css/footer.css';
+
 
 class footer extends Component {
     render() {
         return (
 
             <footer className="bg-footer">
-                <center>
-                    ติดต่อ
-                        <br />
-                    <span>นายสิรศักดิ์  สุนทรท้วม  5802041610089</span> &nbsp;&nbsp;
-                        <i className="icon-phone2"></i>&nbsp;<span>094-931-2638</span>
+                <Container>
+                    <Row>
+                        <Col sm={8}>
+                            <div className="headtopic">
+                                วัตถุประสงค์
+                        </div>
+                            <div>
+                                การพัฒนาเว็บแอพพลิเคชั่นระบบแบบตอบกลับทันทีและติดตามเฝ้าระวังอุณหภูมิและความชื้นแบบออนไลน์
+                            </div>
+                        </Col>
+
+                        <Col sm={4}>
+                        <div className="headtopic">
+                                คณะผู้จัดทำ
+                        </div>
+                            <div>
+                                นายสิรศักดิ์  สุนทรท้วม
+                            </div>
+                            <div>
+                                นายสมโภชน์  สระทองแง๊ก
+                            </div>
+                    </Col>
+                    </Row>
                     <br />
-                    <span>นายสมโภชน์  สระทองแง๊ก  5802041620203</span> &nbsp;&nbsp;
-                        <i className="icon-phone2"></i>&nbsp;<span>092-493-6145</span>
-                </center>
+                </Container>
                 <div className="bg-foot-low" align="center" >Copyright © 2019 Project Temperature And Humidnity</div>
             </footer>
 

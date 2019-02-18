@@ -1,11 +1,18 @@
 .bg-footer{
     background: #f6f6f6;
-    padding-top: 30px;
-    color: #fff;
+    font-size: 15px;
+    padding-top: 20px;
+    color: LightSlateGray;
 }
 .bg-foot-low {
     background: #0099ff;
+    font-size: 13px;
     color:#FFFFFF;
     padding-top: 5px;
-    padding-bottom: 5px;
+    padding-bottom: 5px;   
+}
+
+.headtopic{
+    color:black;
+    font-weight: bold;
 }
