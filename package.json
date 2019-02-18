@@ -10,6 +10,7 @@
     "chartjs-plugin-annotation": "^0.5.7",
     "cheeseburger-menu": "0.0.13",
     "mdbreact": "^4.8.6",
+    "moment": "^2.24.0",
     "react": "^16.7.0",
     "react-bootstrap": "^0.32.4",
     "react-bootstrap-modal": "^4.2.0",

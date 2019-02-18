@@ -4,6 +4,9 @@ import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import Tablehistory from './Tabalhistory';
 import SenserChoice from './SenserChoice';
+import moment from 'moment';
+
+
 var _id , mac , date;
 
 class history extends Component {
@@ -16,6 +19,8 @@ class history extends Component {
 
     componentWillMount() {
         _id = this.props.match.params.id
+        var test = moment('2019-02-18 08:37:51.968Z').format('DD-MM-YYYY HH-mm-ss')
+        console.log(test)
     }
 
     componentDidMount() {
@@ -59,7 +64,7 @@ class history extends Component {
 
     tabRow() {
         return this.state.History.map(function (object, i) {
-            if (_id === object.mac || date === object.date)
+            if (_id === object.mac || date === moment(object.date).format('DD'))
                 return <Tablehistory obj={object} key={i} />;
         });
     }
