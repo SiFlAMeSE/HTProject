@@ -1,3 +1,6 @@
+#b {
+    font-weight: bold;
+}
 .banner-top {
     position: relative;
     height: 572px;
@@ -10,12 +13,11 @@
 /* ตัวกำหนดรูปตู้ */
 .co-picture {
     position: absolute;
-    width: 500px;
+    width: 100%;
     height: 500px;
     left: 50%;
     bottom: 0;
     margin-left: -500px;
-    z-index: 1;
 }
 
 /* รูปตู้ความชื้น */
@@ -24,9 +26,8 @@
     width: 474px;
     height: 625px;
     left: 50%;
-    margin-left: -237px;
+    margin-left: -950px;
     bottom: -90px;
-    z-index: 3;
 }
 
 /* เคลื่อนไหว */
@@ -50,5 +51,30 @@
     color:rgb(255, 255, 255);
     padding-top: 20px;
     padding-bottom: 20px;   
-    
 }
+
+/* ส่วนกำหนดหัวข้อใหญ่ */
+.content {
+    position: absolute;
+    width: 100%;
+    height: 572px;
+    top: 0;
+    padding-left: 575px;
+    padding-right: 5%;
+}
+.content-cotext{
+    line-height: 34pt;
+}
+.content-text{
+    font-size: 64px; 
+    color:rgb(0, 162, 255);
+    word-wrap: break-word;
+}
+
+.space {
+    padding-top:20px;
+}
+
+
+
+
