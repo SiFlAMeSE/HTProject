@@ -53,7 +53,7 @@ export default class header2 extends Component {
                     ตั้งค่าอุปกรณ์
                 </NavLink>
                 <div className="fonthead">|</div>
-                <sh_profile />
+                <this.sh_profile />
                 {/* ออกจากระบบ */}
                 <div className="layoutbutre">
                     <NavLink to="/" className="logout-btn" onClick={this.logOut.bind(this)}>
