@@ -4,29 +4,32 @@ import { Menu } from 'semantic-ui-react'
 
 var data_ss;
 export default class header2 extends Component {
-constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state ={
-        data: {}
+        this.state = {
+            data: {}
+        }
     }
-}
     componentWillMount() {
-        if(sessionStorage.getItem('Login_add'))
-        {
+        if (sessionStorage.getItem('Login_add')) {
             data_ss = JSON.parse(sessionStorage.getItem("Login_add"))
             this.setState({ data: data_ss })
-        }else if(sessionStorage.getItem('Login_user'))
-        {
+        } else if (sessionStorage.getItem('Login_user')) {
             data_ss = JSON.parse(sessionStorage.getItem("Login_user"))
             this.setState({ data: data_ss })
         }
-        console.log(data_ss);
+        // console.log(data_ss);
     }
 
     logOut = (e) => {
         sessionStorage.clear();
     }
+
+    sh_profile() {
+        return <div className="fonthead">{data_ss.Positions}   :   {data_ss.Fname}</div>
+    }
+
     render() {
         const adminLink = (
             <Menu pointing secondary>
@@ -50,7 +53,7 @@ constructor(props) {
                     ตั้งค่าอุปกรณ์
                 </NavLink>
                 <div className="fonthead">|</div>
-                <div className="fonthead">{data_ss.Positions}   :   {data_ss.Fname}</div>
+                <sh_profile />
                 {/* ออกจากระบบ */}
                 <div className="layoutbutre">
                     <NavLink to="/" className="logout-btn" onClick={this.logOut.bind(this)}>
@@ -81,7 +84,7 @@ constructor(props) {
                     ประวัติย้อนหลัง
                 </NavLink>
                 <div className="fonthead">|</div>
-                <div className="fonthead">{data_ss.Positions}   :   {data_ss.Fname}</div>
+                <sh_profile />
                 {/* ออกจากระบบ */}
                 <div className="layoutbutre">
                     <NavLink to="/" className="logout-btn" onClick={this.logOut.bind(this)}>
