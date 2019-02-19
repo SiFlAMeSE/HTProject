@@ -41,3 +41,14 @@
     -webkit-animation: gLetter 2s ease-in-out 0s infinite alternate;
     animation: gLetter 2s ease-in-out 0s infinite alternate;
 }
+
+/* แทบต่อรูป */
+.bg-mid-low {
+    background: linear-gradient(to left,#3744ff,#4fcbfc);
+    vertical-align: middle;
+    font-size: 30px;
+    color:rgb(255, 255, 255);
+    padding-top: 20px;
+    padding-bottom: 20px;   
+    
+}
