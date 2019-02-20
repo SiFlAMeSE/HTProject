@@ -64,3 +64,12 @@ html,body {
   background-color: #801111;
   border-radius: 25px;
 }
+
+/* ปกรูปหน้าเพจต่าง ๆ */
+.banner-h {
+  margin-right: auto;
+  margin-left: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  
+}

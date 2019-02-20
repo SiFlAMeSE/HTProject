@@ -1,6 +1,5 @@
 import React from 'react';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import TabLoca from './Detail_Back/TabRowLocation';
 var data_ss;
@@ -95,25 +94,11 @@ export default class set_location extends React.Component {
     }
 
     render() {
-        const divStyle = {
-            color: 'blue',
-            backgroundImage: 'url(' + locationBG + ')',
-        };
-
         return (
             <div>
-                <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                    <center>
-                        <h1>ลงทะเบียนสถานที่</h1>
-                    </center>
-
-                    <span className="probootstrap-animate">
-                        <a className="probootstrap-scroll-down js-next" href="#next-section">คลิกเลื่อน
-                        <i className="icon-chevron-down"></i></a></span>
-                </section>
+               
                 <div>
-                    <section id="next-section" className="probootstrap-section" >
+                    
 
                         <Modal isOpen={this.state.modal}
                             toggle={this.toggle}
@@ -148,7 +133,6 @@ export default class set_location extends React.Component {
                             </form>
                         </Modal>
 
-                    </section>
                     <Container>
                         <div className="container row">
                             {this.createcard()}
