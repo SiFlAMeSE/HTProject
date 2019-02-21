@@ -27,7 +27,7 @@ export default class monitoring extends React.Component {
         <section id="space">
           <div className="banner-h">
             <div className="text-cobg">
-              test
+              การตรวจสอบ
                     </div>
           </div>
         </section>

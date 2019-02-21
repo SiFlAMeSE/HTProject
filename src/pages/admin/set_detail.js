@@ -130,7 +130,7 @@ export default class set_detail extends React.Component {
                 <section id="space">
                     <div className="banner-h">
                         <div className="text-cobg">
-                            test
+                            ลงทะเบียนเซนเซอร์
                     </div>
                     </div>
                 </section>

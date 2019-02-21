@@ -99,7 +99,7 @@ export default class set_location extends React.Component {
                 <section id="space">
                     <div className="banner-h">
                         <div className="text-cobg">
-                            test
+                            ลงทะเบียนสถานที่
                     </div>
                     </div>
                 </section>

@@ -8,7 +8,7 @@ class notification extends Component {
                 <section id="space">
                     <div className="banner-h">
                         <div className="text-cobg">
-                            test
+                            ระบบการแจ้งเตือน
                     </div>
                     </div>
                 </section>

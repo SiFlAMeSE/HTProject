@@ -43,6 +43,9 @@ export default class header2 extends Component {
                 <NavLink to="/monitoring" className="fonthead">
                     การตรวจสอบ
                 </NavLink>
+                <NavLink to="/dashboard" className="fonthead">
+                    แผงควบคุม
+                </NavLink>
                 <NavLink to="/notification" className="fonthead">
                     ระบบแจ้งเตือน
                 </NavLink>
@@ -76,6 +79,9 @@ export default class header2 extends Component {
                 </NavLink>
                 <NavLink to="/monitoring" className="fonthead">
                     การตรวจสอบ
+                </NavLink>
+                <NavLink to="/dashboard" className="fonthead">
+                    แผงควบคุม
                 </NavLink>
                 <NavLink to="/notification" className="fonthead">
                     ระบบแจ้งเตือน

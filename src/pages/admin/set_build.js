@@ -91,7 +91,7 @@ export default class set_build extends React.Component {
                 <section id="space">
                     <div className="banner-h">
                         <div className="text-cobg">
-                            test
+                            ลงทะเบียนอาคาร
                     </div>
                     </div>
                 </section>

@@ -50,7 +50,7 @@ export default class signup extends Component {
                 <section id="space">
                 <div className="banner-h">
                     <div className="text-cobg">
-                        test
+                        ลงทะเบียนเข้าสู่ระบบ
                     </div>
                 </div>
                 </section>
