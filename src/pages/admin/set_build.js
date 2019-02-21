@@ -1,6 +1,5 @@
 import React from 'react';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import TabBuild from './Detail_Back/TabRowBuild';
 var _id;
@@ -87,71 +86,57 @@ export default class set_build extends React.Component {
     }
 
     render() {
-        const divStyle = {
-            color: 'blue',
-            backgroundImage: 'url(' + locationBG + ')',
-            backgroundSize: 'cover'
-        };
         return (
             <div>
-                <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                    <center>
-                        <h1>ลงทะเบียนอาคาร</h1>
-                        <h3>{this.props.match.params.id}</h3>
-                    </center>
-
-                    <span className="probootstrap-animate">
-                        <a className="probootstrap-scroll-down js-next" href="#next-section">คลิกเลื่อน
-                        <i className="icon-chevron-down"></i></a></span>
+                <section id="space">
+                    <div className="banner-h">
+                        <div className="text-cobg">
+                            test
+                    </div>
+                    </div>
                 </section>
-                <div>
-                    <section id="next-section" className="probootstrap-section" >
+                <Modal isOpen={this.state.modal}
+                    toggle={this.toggle}>
 
-                        <Modal isOpen={this.state.modal}
-                            toggle={this.toggle}
-                        >
-
-                            <ModalHeader toggle={this.toggle}>ระบุชื่ออาคาร</ModalHeader>
-                            <form onSubmit={this.onSubmit}>
-                                <ModalBody>
-                                    <Container>
-                                        <Table>
-                                            <Row>
-                                                <Col>
-                                                    <Label>ชื่ออาคาร</Label>
-                                                    <Input type="text" name="location" placeholder="ใส่ชื่ออาคาร" onChange={this.onchangeNameBuild}></Input>
-                                                </Col>
-                                            </Row>
-                                            <br />
-                                        </Table>
-                                    </Container>
-                                </ModalBody>
-                                <ModalFooter>
-                                    <Button type="submit" color="primary" onClick={this.toggle}>ตกลง</Button>
-                                    <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
-                                </ModalFooter>
-                            </form>
-                        </Modal>
-                    </section>
-                    <Container>
-                        <div className="container row">
-                            {this.createcard()}
-                            {/* {
+                    <ModalHeader toggle={this.toggle}>ระบุชื่ออาคาร</ModalHeader>
+                    <form onSubmit={this.onSubmit}>
+                        <ModalBody>
+                            <Container>
+                                <Table>
+                                    <Row>
+                                        <Col>
+                                            <Label>ชื่ออาคาร</Label>
+                                            <Input type="text" name="location" placeholder="ใส่ชื่ออาคาร" onChange={this.onchangeNameBuild}></Input>
+                                        </Col>
+                                    </Row>
+                                    <br />
+                                </Table>
+                            </Container>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button type="submit" color="primary" onClick={this.toggle}>ตกลง</Button>
+                            <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
+                        </ModalFooter>
+                    </form>
+                </Modal>
+                <Container>
+                    <div className="container row">
+                        {this.createcard()}
+                        {/* {
                                 this.state.Build.map((object, i) => {object.Id_Loca === this.props.match.params.id ? <TabBuild obj={object} key={i} params={this.props.match.params.id}/>} )
                             } */}
-                        </div>
-                    </Container>
-                    <Container>
-                        <Row align="right">
-                            <Col>
-                                <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มอาคาร </button>
-                            </Col>
-                        </Row>
-                    </Container>
+                    </div>
+                </Container>
+                <Container>
+                    <Row align="right">
+                        <Col>
+                            <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มอาคาร </button>
+                        </Col>
+                    </Row>
+                </Container>
 
-                </div>
             </div>
+
         );
     }
 }

@@ -47,23 +47,19 @@ export default class signup extends Component {
     render() {
         return (
             <div>
-                <section>
-                    <div className="container">
-                        <div>
-                            <div>
-                                <center>
-                                    <h1 >Register</h1>
-                                    <h2>For User</h2>
-                                </center>
-                            </div>
-                        </div>
+                <section id="space">
+                <div className="banner-h">
+                    <div className="text-cobg">
+                        test
                     </div>
+                </div>
                 </section>
+               
                 <div>
                     <section>
                         <div className="container">
                             <div className="col-auto">
-                                <form className="probootstrap-form" noValidate onSubmit={this.onSubmit}>
+                                <form noValidate onSubmit={this.onSubmit}>
                                     <div className="row">
                                         <div className="col-md-6">
                                             <div className="form-group">

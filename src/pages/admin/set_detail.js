@@ -1,6 +1,5 @@
 import React from 'react';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import TabDetail from './Detail_Back/TabRowDetail';
 var _id;
@@ -119,99 +118,87 @@ export default class set_detail extends React.Component {
 
     createcardDetail() {
         return this.state.Senser.map(function (object, i) {
-            if (_id === object.Id_Build)
-            {
+            if (_id === object.Id_Build) {
                 return <TabDetail obj={object} key={i} />
             }
         });
     }
 
     render() {
-        const divStyle = {
-            color: 'blue',
-            backgroundImage: 'url(' + locationBG + ')',
-            backgroundSize: 'cover'
-        };
         return (
             <div>
-                <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                    <center>
-                        <h1>ตั้งค่าอุปกรณ์</h1>
-                    </center>
-
-                    <span className="probootstrap-animate">
-                        <a className="probootstrap-scroll-down js-next" href="#next-section">คลิกเลื่อน
-                        <i className="icon-chevron-down"></i></a></span>
+                <section id="space">
+                    <div className="banner-h">
+                        <div className="text-cobg">
+                            test
+                    </div>
+                    </div>
                 </section>
-                <div>
-                    <section id="next-section" className="probootstrap-section">
-                        <Modal isOpen={this.state.modal}
-                            toggle={this.toggle}>
+                <Modal isOpen={this.state.modal}
+                    toggle={this.toggle}>
 
-                            <ModalHeader toggle={this.toggle}>รายละเอียดอุปกรณ์</ModalHeader>
-                            <form onSubmit={this.onSubmit}>
-                                <ModalBody>
-                                    <Container>
-                                        <Table>
-                                            <Row>
-                                                <Col>
-                                                    <Label>จุดที่ตั้ง</Label>
-                                                    <Input type="text" name="name" placeholder="ตำแหน่ง" onChange={this.onchangePosition}></Input>
-                                                    <Label>รหัสอุปกรณ์</Label>
-                                                    <Input type="text" name="mac" placeholder="Mac Address" onChange={this.onchangeMacaddress}></Input>
+                    <ModalHeader toggle={this.toggle}>รายละเอียดอุปกรณ์</ModalHeader>
+                    <form onSubmit={this.onSubmit}>
+                        <ModalBody>
+                            <Container>
+                                <Table>
+                                    <Row>
+                                        <Col>
+                                            <Label>จุดที่ตั้ง</Label>
+                                            <Input type="text" name="name" placeholder="ตำแหน่ง" onChange={this.onchangePosition}></Input>
+                                            <Label>รหัสอุปกรณ์</Label>
+                                            <Input type="text" name="mac" placeholder="Mac Address" onChange={this.onchangeMacaddress}></Input>
 
-                                                    <Table>
-                                                        <Row>
-                                                            <Col>
-                                                                <Label>ค่าอุณหภูมิต่ำสุด</Label>
-                                                                <Input type="text" name="mintem" placeholder="ค่าน้อยสุด" onChange={this.onchangeTemp_Low}></Input>
-                                                            </Col>
-                                                            <Col>
-                                                                <Label>ค่าอุณหภูมิสูงสุด</Label>
-                                                                <Input type="text" name="maxtem" placeholder="ค่ามากสุด" onChange={this.onchangeTemp_Hight}></Input>
-                                                            </Col>
-                                                        </Row>
-                                                        <Row>
-                                                            <Col>
-                                                                <Label>ค่าความชื้นต่ำสุด</Label>
-                                                                <Input type="text" name="minhum" placeholder="ค่าน้อยสุด" onChange={this.onchangeHumdi_Low}></Input>
-                                                            </Col>
-                                                            <Col>
-                                                                <Label>ค่าความชื้นสูงสุด</Label>
-                                                                <Input type="text" name="maxhum" placeholder="ค่ามากสุด" onChange={this.onchangeHumdi_Hight}></Input>
-                                                            </Col>
-                                                        </Row>
-                                                    </Table>
-                                                </Col>
-                                            </Row>
-                                        </Table>
-                                    </Container>
-                                </ModalBody>
-                                <ModalFooter>
-                                    <Button type="submit" color="primary" onClick={this.toggle}>ตกลง</Button>
-                                    <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
-                                </ModalFooter>
-                            </form>
-                        </Modal>
-                    </section>
-                    <Container>
-                        <div className="container row">
-                            {this.createcardDetail()}
-                            {/* {
+                                            <Table>
+                                                <Row>
+                                                    <Col>
+                                                        <Label>ค่าอุณหภูมิต่ำสุด</Label>
+                                                        <Input type="text" name="mintem" placeholder="ค่าน้อยสุด" onChange={this.onchangeTemp_Low}></Input>
+                                                    </Col>
+                                                    <Col>
+                                                        <Label>ค่าอุณหภูมิสูงสุด</Label>
+                                                        <Input type="text" name="maxtem" placeholder="ค่ามากสุด" onChange={this.onchangeTemp_Hight}></Input>
+                                                    </Col>
+                                                </Row>
+                                                <Row>
+                                                    <Col>
+                                                        <Label>ค่าความชื้นต่ำสุด</Label>
+                                                        <Input type="text" name="minhum" placeholder="ค่าน้อยสุด" onChange={this.onchangeHumdi_Low}></Input>
+                                                    </Col>
+                                                    <Col>
+                                                        <Label>ค่าความชื้นสูงสุด</Label>
+                                                        <Input type="text" name="maxhum" placeholder="ค่ามากสุด" onChange={this.onchangeHumdi_Hight}></Input>
+                                                    </Col>
+                                                </Row>
+                                            </Table>
+                                        </Col>
+                                    </Row>
+                                </Table>
+                            </Container>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button type="submit" color="primary" onClick={this.toggle}>ตกลง</Button>
+                            <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
+                        </ModalFooter>
+                    </form>
+                </Modal>
+                <Container>
+                    <div className="container row">
+                        {this.createcardDetail()}
+                        {/* {
                                 this.state.Senser.map((object, i) => <TabDetail obj={object} key={i} params={this.props.match.params.id} />)
                             } */}
-                        </div>
-                    </Container>
-                    <Container>
-                        <Row align="right">
-                            <Col>
-                                <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มอุปกรณ์ </button>
-                            </Col>
-                        </Row>
-                    </Container>
-                </div>
+                    </div>
+                </Container>
+                <Container>
+                    <Row align="right">
+                        <Col>
+                            <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มอุปกรณ์ </button>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
+
         );
     }
 }

@@ -1,29 +1,21 @@
 import React, { Component } from 'react';
-import locationBG from '../img/BG_bl.jpg';
 
 class howto extends Component {
     render() {
-        const divStyle = {
-            color: 'blue',
-            backgroundImage: 'url(' + locationBG + ')',
-        };
         return (
             <div>
-                <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
-                                <br/><br/><br/><br/><br/><br/><br/><br/>
-                                <center>
-                                <h1>วิธีการใช้งาน</h1>
-                                </center>
-                                   
-                    <span className="probootstrap-animate">
-                        <a className="probootstrap-scroll-down js-next" href="#next-section">คลิกเลื่อน
-                        <i className="icon-chevron-down"></i></a></span>
+                <section id="space">
+                    <div className="banner-h">
+                        <div className="text-cobg">
+                            test
+                    </div>
+                    </div>
                 </section>
                 <div>
                     <section id="next-section" className="probootstrap-section">
                         <div className="container">
                             <div className="col-md-6">
-                            {/* เขียนตรงนี้ */}
+                                {/* เขียนตรงนี้ */}
                             </div>
                         </div>
                     </section>

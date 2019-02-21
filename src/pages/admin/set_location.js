@@ -1,6 +1,5 @@
 import React from 'react';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import TabLoca from './Detail_Back/TabRowLocation';
 var data_ss;
@@ -95,74 +94,62 @@ export default class set_location extends React.Component {
     }
 
     render() {
-        const divStyle = {
-            color: 'blue',
-            backgroundImage: 'url(' + locationBG + ')',
-        };
-
         return (
             <div>
-                <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                    <center>
-                        <h1>ลงทะเบียนสถานที่</h1>
-                    </center>
-
-                    <span className="probootstrap-animate">
-                        <a className="probootstrap-scroll-down js-next" href="#next-section">คลิกเลื่อน
-                        <i className="icon-chevron-down"></i></a></span>
+                <section id="space">
+                    <div className="banner-h">
+                        <div className="text-cobg">
+                            test
+                    </div>
+                    </div>
                 </section>
-                <div>
-                    <section id="next-section" className="probootstrap-section" >
+                <Modal isOpen={this.state.modal}
+                    toggle={this.toggle}
+                    className={this.props.className}>
 
-                        <Modal isOpen={this.state.modal}
-                            toggle={this.toggle}
-                            className={this.props.className}>
+                    <ModalHeader toggle={this.toggle}>พื้นที่</ModalHeader>
+                    <form onSubmit={this.onSubmit}>
+                        <ModalBody>
+                            <Container>
+                                <Table>
+                                    <Row>
+                                        <Col>
+                                            <Label>ชื่อสถานที่</Label>
+                                            <Input type="text" name="location" placeholder="ใส่ชื่อสถานที่" onChange={this.onchangeNameLocation}></Input>
+                                        </Col>
+                                    </Row>
+                                    <br />
+                                    <Row>
+                                        <Col>
+                                            <Label>ที่อยู่</Label>
+                                            <Input type="textarea" cols="30" rows="10" onChange={this.onchangeAddress}></Input>
+                                        </Col>
+                                    </Row>
+                                    <br />
+                                </Table>
+                            </Container>
+                        </ModalBody>
+                        <ModalFooter>
+                            <Button type="submit" color="primary" onClick={this.toggle}>ตกลง</Button>{' '}
+                            <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
+                        </ModalFooter>
+                    </form>
+                </Modal>
 
-                            <ModalHeader toggle={this.toggle}>พื้นที่</ModalHeader>
-                            <form onSubmit={this.onSubmit}>
-                                <ModalBody>
-                                    <Container>
-                                        <Table>
-                                            <Row>
-                                                <Col>
-                                                    <Label>ชื่อสถานที่</Label>
-                                                    <Input type="text" name="location" placeholder="ใส่ชื่อสถานที่" onChange={this.onchangeNameLocation}></Input>
-                                                </Col>
-                                            </Row>
-                                            <br />
-                                            <Row>
-                                                <Col>
-                                                    <Label>ที่อยู่</Label>
-                                                    <Input type="textarea" cols="30" rows="10" onChange={this.onchangeAddress}></Input>
-                                                </Col>
-                                            </Row>
-                                            <br />
-                                        </Table>
-                                    </Container>
-                                </ModalBody>
-                                <ModalFooter>
-                                    <Button type="submit" color="primary" onClick={this.toggle}>ตกลง</Button>{' '}
-                                    <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
-                                </ModalFooter>
-                            </form>
-                        </Modal>
-
-                    </section>
-                    <Container>
-                        <div className="container row">
-                            {this.createcard()}
-                        </div>
-                    </Container>
-                    <Container>
-                        <Row align="right">
-                            <Col>
-                                <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มตำแหน่ง </button>
-                            </Col>
-                        </Row>
-                    </Container>
-                </div>
+                <Container>
+                    <div className="container row">
+                        {this.createcard()}
+                    </div>
+                </Container>
+                <Container>
+                    <Row align="right">
+                        <Col>
+                            <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มตำแหน่ง </button>
+                        </Col>
+                    </Row>
+                </Container>
             </div>
+
         );
     }
 }
