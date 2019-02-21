@@ -103,6 +103,7 @@ export default class set_location extends React.Component {
                     </div>
                     </div>
                 </section>
+
                 <Modal isOpen={this.state.modal}
                     toggle={this.toggle}
                     className={this.props.className}>
@@ -136,18 +137,19 @@ export default class set_location extends React.Component {
                     </form>
                 </Modal>
 
-                <Container>
-                    <div className="container row">
-                        {this.createcard()}
-                    </div>
-                </Container>
-                <Container>
-                    <Row align="right">
-                        <Col>
-                            <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มตำแหน่ง </button>
-                        </Col>
-                    </Row>
-                </Container>
+                <Row style={{ paddingLeft: '160px',paddingRight: '250px' }}>
+                    <Col sm={8}>
+                        <div className="container row" >
+                            {this.createcard()}
+                        </div>
+                    </Col>
+                    <Col sm={4} align="center" >
+                        <img src={require('../../img/location.gif')} width="350px" />
+                        <br />
+                        <button type="button" onClick={this.toggle} className="btn btn-info btn-lg"> เพิ่มตำแหน่ง </button>
+                    </Col>
+                </Row>
+
             </div>
 
         );
