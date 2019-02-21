@@ -101,8 +101,6 @@ class TabRowLocation extends Component {
     // console.log(this.state._id)
     return (
       <div>
-
-
         <Row>
           <Col xs="15" style={{ paddingRight: "50px" }}>
             <Card>
