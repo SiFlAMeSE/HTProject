@@ -104,9 +104,10 @@ class TabRowLocation extends Component {
         <section style={{ paddingRight: '16px',paddingBottom: '25px'}} >
           <Card style={{ width: '15rem' }} id="card">
             <CardImg width="40px" height="185px" src={require('../../../img/location.gif')} />
-            <CardTitle>{this.props.obj.Name_Lo}</CardTitle>
+            <hr/>
+            <CardTitle id="b">{this.props.obj.Name_Lo}</CardTitle>
             <CardText>{this.props.obj.Address}</CardText>
-            <CardText>{this.props.obj._id}</CardText>
+            <CardText id="co3">ID : {this.props.obj._id}</CardText>
             {/* เรียกส่งค่า */}
               <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentid(e)} >เพิ่มอาคาร</Button>
             <Button onClick={this.toggle} color="secondary">การจัดการ</Button>

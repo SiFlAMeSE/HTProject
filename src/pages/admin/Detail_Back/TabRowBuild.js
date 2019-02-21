@@ -90,17 +90,16 @@ class TabRowBuild extends Component {
     render() {
         return (
             <div>
-                <Row>
-                    <Col xs="15" style={{ paddingRight: "50px" }}>
-                        <Card>
-                            <CardImg width="150px" height="150px" src={require('../../../img/location.gif')} />
-                            <CardTitle>{this.props.obj.Name_Build}</CardTitle>
-                            <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentidlo(e)}>เพิ่มอุปกรณ์</Button>
-                            <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
-                        </Card>
-                    </Col>
-                </Row>
-                <br /><br />
+                <section style={{ paddingRight: '16px', paddingBottom: '25px' }} >
+                    <Card style={{ width: '15rem' }} id="card">
+                        <CardImg width="40px" height="185px" src={require('../../../img/location.gif')} />
+                        <hr />
+                        <CardTitle id="b">{this.props.obj.Name_Build}</CardTitle>
+                        {/* เรียกส่งค่า */}
+                        <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentidlo(e)}>เพิ่มอุปกรณ์</Button>
+                        <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
+                    </Card>
+                </section>
 
                 {/* เมนูตัวเลือกด้านใน */}
                 <Modal isOpen={this.state.modal}

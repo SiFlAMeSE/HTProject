@@ -77,7 +77,7 @@ export default class set_build extends React.Component {
                 console.log(error);
             })
     }
-    createcard() {
+    createcardBuild() {
         return this.state.Build.map(function (object, i) {
             if (_id === object.Id_Loca) {
                 return <TabBuild obj={object} key={i} />
@@ -119,21 +119,19 @@ export default class set_build extends React.Component {
                         </ModalFooter>
                     </form>
                 </Modal>
-                <Container>
-                    <div className="container row">
-                        {this.createcard()}
-                        {/* {
-                                this.state.Build.map((object, i) => {object.Id_Loca === this.props.match.params.id ? <TabBuild obj={object} key={i} params={this.props.match.params.id}/>} )
-                            } */}
-                    </div>
-                </Container>
-                <Container>
-                    <Row align="right">
-                        <Col>
-                            <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มอาคาร </button>
-                        </Col>
-                    </Row>
-                </Container>
+
+                <Row style={{ paddingLeft: '160px', paddingRight: '250px' }}>
+                    <Col sm={8}>
+                        <div className="container row" >
+                            {this.createcardBuild()}
+                        </div>
+                    </Col>
+                    <Col sm={4} align="center" >
+                        <img src={require('../../img/location.gif')} width="350px" />
+                        <br />
+                        <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มอุปกรณ์ </button>
+                    </Col>
+                </Row>
 
             </div>
 

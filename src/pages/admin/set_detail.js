@@ -182,22 +182,20 @@ export default class set_detail extends React.Component {
                         </ModalFooter>
                     </form>
                 </Modal>
-                <Container>
-                    <div className="container row">
-                        {this.createcardDetail()}
-                        {/* {
-                                this.state.Senser.map((object, i) => <TabDetail obj={object} key={i} params={this.props.match.params.id} />)
-                            } */}
-                    </div>
-                </Container>
-                <Container>
-                    <Row align="right">
-                        <Col>
-                            <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มอุปกรณ์ </button>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+
+                <Row style={{ paddingLeft: '160px', paddingRight: '250px' }}>
+                    <Col sm={8}>
+                        <div className="container row" >
+                            {this.createcardDetail()}
+                        </div>
+                    </Col>
+                    <Col sm={4} align="center" >
+                        <img src={require('../../img/location.gif')} width="350px" />
+                        <br />
+                        <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มอุปกรณ์ </button>
+                    </Col>
+                </Row>
+            </div >
 
         );
     }
