@@ -1,8 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Prompt:400');
 
 #content {
-  /* padding-top: 70px; */
   min-height:  calc(100vh - 92px);
+}
+
+/* ระยะห่างหน้าแบน */
+#space {
+  padding-bottom: 50px;
 }
 
 html,body {
@@ -66,9 +70,14 @@ html,body {
 
 /* ปกรูปหน้าเพจต่าง ๆ */
 .banner-h {
+  background: url(./img/cover-h.jpg) repeat;
   margin-right: auto;
   margin-left: auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  
+  height: 300px;
+}
+/* กำหนดรูปแบบอักษรหน้าแบนเนอร์ */
+.text-cobg {
+  text-align: center;
+  font-size: 84px;
+  padding-top: 75px;
 }

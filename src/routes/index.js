@@ -26,16 +26,13 @@ export default () => (
     <Switch>
 
         <Route exact path="/" component={home} />
-        {/* <Route exact path="/" component={homenew} /> */}
         <Route exact path="/howto" component={howto} />
         <Route exact path="/infor" component={infor} />
         <Route exact path="/contact" component={contact} />
         <Route exact path="/login" component={loginp} />
         <Route exact path="/signup" component={signup} />
-        {/* <Route exact path="/signup_admin" component={signupadmin} /> */}
 
         <Route exact path="/report" component={report} />
-        {/* <Route exact path="/setmain" component={set_main} /> */}
         <Route exact path="/setbuild/:id" component={set_build} />
         <Route exact path="/setdetail/:id" component={set_detail} />
         <Route exact path="/setlocation" component={set_location} />

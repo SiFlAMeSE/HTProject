@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import { Table, Container, Row, Col } from 'reactstrap';
 
-
 class contact extends Component {
 
     render() {
         return (
             <div >
-                <section>
-                    <center>
-                        <h1>ผู้พัฒนาระบบ</h1>
-                    </center>
+
+                <section id="space">
+                    <div className="banner-h">
+                        <div className="text-cobg">
+                            test
+                    </div>
+                    </div>
                 </section>
                 <div>
                     <section>

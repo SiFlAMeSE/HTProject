@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { Table, Button, Input, FormGroup, Form, Container, Row, Col } from 'reactstrap';
-import locationBG from '../../img/BG_bl.jpg';
 import axios from 'axios';
 import Tablehistory from './Tabalhistory';
 import SenserChoice from './SenserChoice';
 import moment from 'moment';
-
-
-var _id , mac , date;
+var _id, mac, date;
 
 class history extends Component {
     constructor(props) {
@@ -45,12 +42,12 @@ class history extends Component {
     }
 
     onchangeMAC(e) {
-            mac = e.target.value
+        mac = e.target.value
     }
 
     onchangeDate(e) {
-            date = e.target.value
-            console.log(date)
+        date = e.target.value
+        console.log(date)
     }
 
     // onSubmit(e) {
@@ -76,68 +73,59 @@ class history extends Component {
     }
 
     render() {
-        const divStyle = {
-            color: 'blue',
-            backgroundImage: 'url(' + locationBG + ')',
-        };
         return (
             <div>
-                <section className="probootstrap-intro probootstrap-intro-inner" style={divStyle} data-stellar-background-ratio="0.5">
-                    <br /><br /><br /><br /><br /><br /><br /><br />
-                    <center>
-                        <h1>ประวัติย้อนหลัง</h1>
-                    </center>
-
-                    <span className="probootstrap-animate">
-                        <a className="probootstrap-scroll-down js-next" href="#next-section">คลิกเลื่อน
-                        <i className="icon-chevron-down"></i></a></span>
-                </section>
                 <div>
-                    <section id="next-section" className="probootstrap-section">
-                        <Container>
-                            <Form>
-                                <Row align="center">
-                                    <Col>
-                                        <Input type="select" name="select" onChange={this.onchangeMAC}>
-                                            <option>เลือกเซนเซอร์</option>
-                                            {this.choice()}
-                                        </Input>
-                                    </Col>
-
-                                    <Col>
-                                        <Input
-                                            type="date"
-                                            name="date"
-                                            id="exampleDate"
-                                            placeholder="ระบุวันเดือนปี"
-                                            onChange={this.onchangeDate}
-                                        />
-                                    </Col>
-
-                                    <Col>
-                                        <Button color="success" onClick={(e) => this.sentid(e)}>ตกลง</Button>
-                                    </Col>
-                                </Row>
-                            </Form>
-                            <Form>
-                                <Table bordered>
-                                    <thead>
-                                        <tr>
-                                            <td>อุณหภูมิ</td>
-                                            <td>ความชื้น</td>
-                                            <td>รหัสเครื่อง</td>
-                                            <td>วันที่และเวลา</td>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {this.tabRow()}
-                                    </tbody>
-                                </Table>
-                            </Form>
-                        </Container>
+                    <section id="space">
+                        <div className="banner-h">
+                            <div className="text-cobg">
+                                test
+                    </div>
+                        </div>
                     </section>
+                    <Container>
+                        <Form>
+                            <Row align="center">
+                                <Col>
+                                    <Input type="select" name="select" onChange={this.onchangeMAC}>
+                                        <option>เลือกเซนเซอร์</option>
+                                        {this.choice()}
+                                    </Input>
+                                </Col>
+
+                                <Col>
+                                    <Input
+                                        type="date"
+                                        name="date"
+                                        id="exampleDate"
+                                        placeholder="ระบุวันเดือนปี"
+                                        onChange={this.onchangeDate}
+                                    />
+                                </Col>
+
+                                <Col>
+                                    <Button color="success" onClick={(e) => this.sentid(e)}>ตกลง</Button>
+                                </Col>
+                            </Row>
+                        </Form>
+                        <Form>
+                            <Table bordered>
+                                <thead>
+                                    <tr>
+                                        <td>อุณหภูมิ</td>
+                                        <td>ความชื้น</td>
+                                        <td>รหัสเครื่อง</td>
+                                        <td>วันที่และเวลา</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {this.tabRow()}
+                                </tbody>
+                            </Table>
+                        </Form>
+                    </Container>
+
                 </div>
-                <br /> <br /> <br />
             </div >
         );
     }

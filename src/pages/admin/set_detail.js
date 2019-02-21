@@ -127,6 +127,13 @@ export default class set_detail extends React.Component {
     render() {
         return (
             <div>
+                <section id="space">
+                    <div className="banner-h">
+                        <div className="text-cobg">
+                            test
+                    </div>
+                    </div>
+                </section>
                 <Modal isOpen={this.state.modal}
                     toggle={this.toggle}>
 
@@ -191,7 +198,7 @@ export default class set_detail extends React.Component {
                     </Row>
                 </Container>
             </div>
-          
+
         );
     }
 }

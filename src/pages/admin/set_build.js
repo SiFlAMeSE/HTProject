@@ -88,9 +88,15 @@ export default class set_build extends React.Component {
     render() {
         return (
             <div>
+                <section id="space">
+                    <div className="banner-h">
+                        <div className="text-cobg">
+                            test
+                    </div>
+                    </div>
+                </section>
                 <Modal isOpen={this.state.modal}
-                    toggle={this.toggle}
-                >
+                    toggle={this.toggle}>
 
                     <ModalHeader toggle={this.toggle}>ระบุชื่ออาคาร</ModalHeader>
                     <form onSubmit={this.onSubmit}>

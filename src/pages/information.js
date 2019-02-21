@@ -1,11 +1,12 @@
-import React, {Component} from 'react';
-import '../index.css';
+import React, { Component } from 'react';
 class infor extends Component {
     render() {
         return (
             <information>
                 <div className="banner-h">
-                fff
+                    <div className="text-cobg">
+                        test
+                    </div>
                 </div>
             </information>
         );
