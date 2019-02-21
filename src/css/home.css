@@ -23,11 +23,11 @@
 /* รูปตู้ความชื้น */
 .picture {
     position: absolute;
-    width: 474px;
-    height: 625px;
+    width: 670px;
+    /* height: 625px; */
     left: 50%;
-    margin-left: -950px;
-    bottom: -90px;
+    margin-left: -1000px;
+    bottom: -10px;
 }
 
 /* เคลื่อนไหว */
