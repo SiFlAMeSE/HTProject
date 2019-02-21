@@ -42,7 +42,7 @@ export default () => (
 
         <Route exact path="/dashboard" component={dashboard} />
         <Route exact path="/history" component={history} />
-        <Route exact path="/history/:id" component={history} />
+        <Route exact path="/history/:id/:date" component={history} />
         <Route exact path="/monitoring" component={monitoring} />
         <Route exact path="/notification" component={notification} />
 

@@ -5,22 +5,23 @@ import axios from 'axios';
 import Tablehistory from './Tabalhistory';
 import SenserChoice from './SenserChoice';
 import moment from 'moment';
-
-
-var _id , mac , date;
+var _mac , _dateP , mac , date;
 
 class history extends Component {
     constructor(props) {
         super(props);
 
         this.state = { History: [], Senser: [] };
-
+        
     }
-
+    
     componentWillMount() {
-        _id = this.props.match.params.id
-        var test = moment('2019-02-18 08:37:51.968Z').format('DD-MM-YYYY HH-mm-ss')
-        console.log(test)
+        _mac = this.props.match.params.id
+        _dateP = this.props.match.params.date
+        var test = moment('2019-02-18 08:37:51.968Z').format('YYYY-MM-DD')
+        //console.log(test)
+        console.log(_mac)
+        console.log(_dateP)
     }
 
     componentDidMount() {
@@ -59,13 +60,30 @@ class history extends Component {
     // }
 
     sentid = (e) => {
-        window.location.replace('/history/' + mac)
+        window.location.replace('/history/' + mac + '/' + date)
     }
 
     tabRow() {
         return this.state.History.map(function (object, i) {
-            if (_id === object.mac || date === moment(object.date).format('DD'))
-                return <Tablehistory obj={object} key={i} />;
+            const _date = moment(object.date).format('YYYY-MM-DD')
+            var set = "undefined"
+            console.log(set)
+            if(_mac !== set && _dateP === set)
+            {
+                if (_mac === object.mac)
+                    return <Tablehistory obj={object} key={i} />;
+            } 
+            else if(_mac === set && _dateP !== set)
+            {
+                if (_dateP === _date)
+                    return <Tablehistory obj={object} key={i} />;
+            }
+            else if(_mac !== set && _dateP !== set)
+            {
+                if (_mac === object.mac && _dateP === _date)
+                    return <Tablehistory obj={object} key={i} />;
+            }
+            
         });
     }
 

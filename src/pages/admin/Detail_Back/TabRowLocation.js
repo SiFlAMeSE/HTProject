@@ -62,7 +62,8 @@ class TabRowLocation extends Component {
   Deletelocation() {
     axios.post('http://localhost:5000/locations/Removelocation/' + this.props.obj._id)
       .then(function (res) {
-        if (res.data === 'Location has been Deleted') {
+        if (res.data === 'Location has been Deleted') 
+        {
           window.location = "/setlocation"
           console.log('OK');
         }
@@ -153,7 +154,7 @@ class TabRowLocation extends Component {
             </ModalBody>
             <ModalFooter>
               <Button color="info" onClick={this.Updatelocation}>แก้ไขข้อมูล</Button>
-              <Button color="danger" onClick={() => { if (window.confirm('คุณต้องการลบ : ' + this.props.obj.Name_Lo + ' ใช่ไหม')) { this.Deletelocation() } }}>ลบข้อมูล</Button>
+              <Button color="danger" onClick={() => { if (window.confirm('คุณต้องการลบสถานที่ : ' + this.props.obj.Name_Lo + ' ใช่ไหม ? ถ้าคุณกดตกลง อาคารและเซนเซอร์ที่ถูกตั้งค่าในสถานที่นี้จะถูกลบไปด้วย')) { this.Deletelocation() } }}>ลบข้อมูล</Button>
               <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
             </ModalFooter>
           </form>
