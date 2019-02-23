@@ -198,7 +198,7 @@ class TabRowBuild extends Component {
                         </ModalBody>
                         <ModalFooter>
                             <Button color="info" onClick={this.UpdateSenser}>แก้ไขข้อมูล</Button>
-                            <Button color="danger" onClick={() => { if (window.confirm('คุณต้องการลบ : ' + this.props.obj.Position + ' ใช่ไหม')) { this.Deletesenser() } }}>ลบข้อมูล</Button>
+                            <Button color="danger" onClick={() => { if (window.confirm('คุณต้องการลบเซนเซอร์ : ' + this.props.obj.Position + ' ใช่ไหม')) { this.Deletesenser() } }}>ลบข้อมูล</Button>
                             <Button color="secondary" onClick={this.toggle} >ยกเลิก</Button>
                         </ModalFooter>
                     </form>
