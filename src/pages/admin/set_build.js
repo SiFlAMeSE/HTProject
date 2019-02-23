@@ -127,8 +127,7 @@ export default class set_build extends React.Component {
                         </div>
                     </Col>
                     <Col sm={4} align="center" >
-                        <img src={require('../../img/location.gif')} width="350px" />
-                        <br />
+                        <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} /><br/>
                         <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มอุปกรณ์ </button>
                     </Col>
                 </Row>

@@ -92,7 +92,7 @@ class TabRowBuild extends Component {
             <div>
                 <section style={{ paddingRight: '16px', paddingBottom: '25px' }} >
                     <Card style={{ width: '15rem' }} id="card">
-                        <CardImg width="40px" height="185px" src={require('../../../img/location.gif')} />
+                        <CardImg width="35px" height="200px" src={require('../../../img/build.gif')} />
                         <hr />
                         <CardTitle id="b">{this.props.obj.Name_Build}</CardTitle>
                         {/* เรียกส่งค่า */}

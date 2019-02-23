@@ -131,7 +131,7 @@ class TabRowBuild extends Component {
             <div>
                 <section style={{ paddingRight: '16px', paddingBottom: '25px' }} >
                     <Card style={{ width: '15rem' }} id="card">
-                        <CardImg width="40px" height="185px" src={require('../../../img/location.gif')} />
+                        <CardImg width="50px" height="250px" src={require('../../../img/sensor.gif')} />
                         <hr />
                         <CardTitle id="b">{this.props.obj.Position}</CardTitle>
                         <CardText>MAC : {this.props.obj.Macaddress}</CardText>
