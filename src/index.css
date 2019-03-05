@@ -13,7 +13,11 @@
   padding-top: 10px;
 }
 
-html,body {
+#font {
+  font-family: 'Prompt', sans-serif;
+}
+
+html,body,Input,Button {
   font-family: 'Prompt', sans-serif;
   font-size: 20px;
   /* text-shadow: 2px 2px 2px rgb(200, 255, 0); */

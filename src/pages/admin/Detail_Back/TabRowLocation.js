@@ -109,7 +109,7 @@ class TabRowLocation extends Component {
             <CardText>{this.props.obj.Address}</CardText>
             <CardText id="co3">ID : {this.props.obj._id}</CardText>
             {/* เรียกส่งค่า */}
-              <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentid(e)} >เพิ่มอาคาร</Button>
+              <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentid(e)}>เพิ่มอาคาร</Button>
             <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
           </Card>
         </section>
