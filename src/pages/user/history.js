@@ -127,17 +127,14 @@ class history extends Component {
                         if (Build[z].Id_Loca === Location[y]._id) {
                             if (data_ss._id === Location[y].Id_Admin) {
                                 return <SenserChoice obj={object} key={i} />;
-                            } else
-                                return false
-                        } else
-                            return false
+                            } 
+                        } 
                     }
                     // console.log(object.Id_Build)
                     // console.log(Build[z]._id)
-                } else
-                    return false
+                } 
             }
-            return false
+            return true
             //console.log(object.Id_Build)
             // console.log(Build)
             // console.log(Loca_num)
