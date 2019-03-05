@@ -16,13 +16,13 @@ class infor extends Component {
                         <Container>
                             <Table>
                                 <Row>
-                                    <Col><img width="480px" height="520px" src={require('../img/esp32.png')} alt="esp32" /></Col>
-                                    <Col sm="6"><h1>นายสิรศักดิ์  สุนทรท้วม</h1>คณะครุศาสตร์อุตสาหกรรม ชั้นปีที่ 4</Col>
+                                    <Col><img width="485px" height="425px" src={require('../img/esp32.png')} alt="esp32" /></Col>
+                                    <Col sm="6"><h1>Node ESP32</h1>ตัวกลางการเชื่อมต่อระหว่างอุปกรณ์และอินเตอร์เน็ต</Col>
                                 </Row>
                                 <hr />
                                 <Row>
-                                    <Col sm="6"><h1>นายสมโภชน์  สระทองแง๊ก</h1>คณะครุศาสตร์อุตสาหกรรม ชั้นปีที่ 4</Col>
-                                    <Col><img width="420px" height="520px" src={require('../img/dht22.png')} alt="sensor" /></Col>
+                                    <Col sm="6"><h1>DHT22</h1>ทำการส่งข้อมูลอุณหภูมิและความชื้นไปให้โหนด Node ESP32</Col>
+                                    <Col><img width="260px" height="340px" src={require('../img/dht22.png')} alt="sensor" /></Col>
                                 </Row>
                             </Table>
                         </Container>
