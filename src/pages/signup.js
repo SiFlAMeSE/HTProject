@@ -62,18 +62,18 @@ export default class signup extends Component {
                                 <form noValidate onSubmit={this.onSubmit}>
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <div className="form-group">
+                                            {/* <div className="form-group"> */}
                                                 <label for="Username">ชื่อผู้ใช้งาน</label>
                                                 <input type="text"
                                                     className="form-control"
                                                     name="User_g"
                                                     placeholder="ชื่อผู้ใช้"
                                                     value={this.state.User_g}
-                                                    onChange={this.onChange}
-                                                    pattern="[\w]{1,20}"
-                                                    title="ภาษาอังกฤษหรือตัวเลข มากกว่า 8 ตัวขึ้นไป"
+                                                    // onChange={this.onChange}
+                                                    // pattern="[\w]{1,20}"
+                                                    // title="ภาษาอังกฤษหรือตัวเลข มากกว่า 8 ตัวขึ้นไป"
                                                     required />
-                                            </div>
+                                            {/* </div> */}
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-group">

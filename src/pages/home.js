@@ -25,7 +25,7 @@ class home extends Component {
             <home>
                 <section className="banner-top">
                     <div className="co-picture">
-                        <img src={require('../img/esp32.png')} className="picture" />
+                        <img src={require('../img/esp32.png')} className="picture" alt="esp32"/>
                         {/* <img src={require('../img/icon.png')} className="iconfront1"/> */}
                         {/* <div className="iconfront1"></div> */}
                         <div className="content">

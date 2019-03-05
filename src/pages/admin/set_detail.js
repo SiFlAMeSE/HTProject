@@ -117,12 +117,13 @@ export default class set_detail extends React.Component {
     }
 
     createcardDetail() {
-        return this.state.Senser.map(function (object, i) {
+        this.state.Senser.map(function (object, i) {
             if (_id === object.Id_Build) {
-                return <TabDetail obj={object} key={i} />
-            }
+               return <TabDetail obj={object} key={i} />
+            };
         });
     }
+
 
     render() {
         return (
@@ -190,7 +191,7 @@ export default class set_detail extends React.Component {
                         </div>
                     </Col>
                     <Col sm={4} align="center" >
-                        <img src={require('../../img/arrow.gif')} height="120" style={{paddingBottom: '20px'}}/><br/>
+                        <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
                         <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มอุปกรณ์ </button>
                     </Col>
                 </Row>

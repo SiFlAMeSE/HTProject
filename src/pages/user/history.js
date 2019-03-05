@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Button, Input, FormGroup, Form, Container, Row, Col } from 'reactstrap';
+import { Table, Button, Input, Form, Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import Tablehistory from './Tabalhistory';
 import SenserChoice from './SenserChoice';
@@ -17,7 +17,7 @@ class history extends Component {
     componentWillMount() {
         _mac = this.props.match.params.id
         _dateP = this.props.match.params.date
-        var test = moment('2019-02-18 08:37:51.968Z').format('YYYY-MM-DD')
+        // var test = moment('2019-02-18 08:37:51.968Z').format('YYYY-MM-DD')
         //console.log(test)
         console.log(_mac)
         console.log(_dateP)
