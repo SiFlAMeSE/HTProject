@@ -1,6 +1,19 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom'
-import { Menu } from 'semantic-ui-react'
+// import { NavLink } from 'react-router-dom'
+import {
+    Collapse,
+    Navbar,
+    NavbarToggler,
+    NavbarBrand,
+    Nav,
+    NavItem,
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem
+} from 'reactstrap';
+
 
 var data_ss;
 export default class header2 extends Component {
@@ -8,7 +21,8 @@ export default class header2 extends Component {
         super(props);
 
         this.state = {
-            data: {}
+            data: {},
+            isOpen: false
         }
     }
     componentWillMount() {
@@ -30,107 +44,49 @@ export default class header2 extends Component {
         return <div className="fonthead">{data_ss.Positions}   :   {data_ss.Fname}</div>
     }
 
+    toggle() {
+        this.setState({
+            isOpen: !this.state.isOpen
+        });
+    }
+
     render() {
-        const adminLink = (
-            <Menu pointing secondary>
-                <Menu.Item position='right' />
-                <NavLink to="/" className="fonthead">
-                    หน้าหลัก
-                </NavLink>
-                <NavLink to="/howto" className="fonthead">
-                    วิธีการใช้งาน
-                </NavLink>
-                <NavLink to="/monitoring" className="fonthead">
-                    การตรวจสอบ
-                </NavLink>
-                <NavLink to="/dashboard" className="fonthead">
-                    แผงควบคุม
-                </NavLink>
-                <NavLink to="/notification" className="fonthead">
-                    ระบบแจ้งเตือน
-                </NavLink>
-                <NavLink to="/history" className="fonthead">
-                    ประวัติย้อนหลัง
-                </NavLink>
-                <NavLink to="/setlocation" className="fonthead">
-                    ตั้งค่าอุปกรณ์
-                </NavLink>
-                <div className="fonthead">|</div>
-                <this.sh_profile />
-                {/* ออกจากระบบ */}
-                <div className="layoutbutre">
-                    <NavLink to="/" className="logout-btn" onClick={this.logOut.bind(this)}>
-                        ออกจากระบบ
-                </NavLink>
-                </div>
-            </Menu>
-        )
-        const userLink = (
-            <Menu pointing secondary>
-                <Menu.Item position='right' />
-                <NavLink to="/" className="fonthead">
-                    หน้าหลัก
-                </NavLink>
-                <NavLink to="/howto" className="fonthead">
-                    วิธีการใช้งาน
-                </NavLink>
-                <NavLink to="/infor" className="fonthead">
-                    ข้อมูลอุปกรณ์
-                </NavLink>
-                <NavLink to="/monitoring" className="fonthead">
-                    การตรวจสอบ
-                </NavLink>
-                <NavLink to="/dashboard" className="fonthead">
-                    แผงควบคุม
-                </NavLink>
-                <NavLink to="/notification" className="fonthead">
-                    ระบบแจ้งเตือน
-                </NavLink>
-                <NavLink to="/history" className="fonthead">
-                    ประวัติย้อนหลัง
-                </NavLink>
-                <div className="fonthead">|</div>
-                <sh_profile />
-                {/* ออกจากระบบ */}
-                <div className="layoutbutre">
-                    <NavLink to="/" className="logout-btn" onClick={this.logOut.bind(this)}>
-                        ออกจากระบบ
-                </NavLink>
-                </div>
 
-            </Menu>
-        )
-        const Link = (
-            <Menu pointing secondary>
-                <Menu.Item position='right' />
-                <NavLink to="/" className="fonthead">
-                    หน้าหลัก
-                </NavLink>
-                <NavLink to="/howto" className="fonthead">
-                    วิธีการใช้งาน
-                </NavLink>
-                <NavLink to="/infor" className="fonthead">
-                    ข้อมูลอุปกรณ์
-                </NavLink>
-                <NavLink to="/contact" className="fonthead">
-                    ติดต่อ
-                </NavLink>
-                <div className="fonthead">|</div>
-                <NavLink to="/login" className="fonthead">
-                    เข้าสู่ระบบ
-                </NavLink>
-                <div className="layoutbutre">
-                    <NavLink to="/signup" className="regis-btn">
-                        สมัครเข้าใช้งาน
-                </NavLink>
-                </div>
 
-            </Menu>
-        )
 
         return (
             <div>
-                {sessionStorage.getItem('Login_add') ? adminLink : sessionStorage.getItem('Login_user') ? userLink : Link}
+                <Navbar color="light" light expand="md">
+                    <NavbarBrand href="/">reactstrap</NavbarBrand>
+                    <NavbarToggler onClick={(e) => this.toggle(e)} />
+                    <Collapse isOpen={this.state.isOpen} navbar>
+                        <Nav className="ml-auto" navbar>
+                            <NavItem>
+                                <NavLink href="/components/">Components</NavLink>
+                            </NavItem>
+                            <NavItem>
+                                <NavLink href="https://github.com/reactstrap/reactstrap">GitHub</NavLink>
+                            </NavItem>
+                            <UncontrolledDropdown nav inNavbar>
+                                <DropdownToggle nav caret>
+                                    Options
+                </DropdownToggle>
+                                <DropdownMenu right>
+                                    <DropdownItem>
+                                        Option 1
+                  </DropdownItem>
+                                    <DropdownItem>
+                                        Option 2
+                  </DropdownItem>
+                                    <DropdownItem divider />
+                                    <DropdownItem>
+                                        Reset
+                  </DropdownItem>
+                                </DropdownMenu>
+                            </UncontrolledDropdown>
+                        </Nav>
+                    </Collapse>
+                </Navbar>
             </div>
         )
     }

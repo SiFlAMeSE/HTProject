@@ -86,10 +86,12 @@ export default class set_location extends React.Component {
     }
 
     createcard() {
-        return this.state.Location.map(function (object, i) {
+        return  this.state.Location.map((object, i) => {
             if (data_ss._id === object.Id_Admin) {
                 return <TabLoca obj={object} key={i} />;
             }
+            else
+                return false
         });
     }
 
@@ -144,7 +146,7 @@ export default class set_location extends React.Component {
                         </div>
                     </Col>
                     <Col sm={4} align="center" >
-                        <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow"/><br />
+                        <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
                         <button type="button" onClick={this.toggle} className="btn btn-info btn-lg"> เพิ่มตำแหน่ง </button>
                     </Col>
                 </Row>

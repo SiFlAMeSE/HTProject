@@ -81,7 +81,8 @@ export default class set_build extends React.Component {
         return this.state.Build.map(function (object, i) {
             if (_id === object.Id_Loca) {
                 return <TabBuild obj={object} key={i} />
-            }
+            } else
+                return false
         });
     }
 
@@ -127,7 +128,7 @@ export default class set_build extends React.Component {
                         </div>
                     </Col>
                     <Col sm={4} align="center" >
-                        <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow"/><br/>
+                        <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
                         <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มอุปกรณ์ </button>
                     </Col>
                 </Row>
