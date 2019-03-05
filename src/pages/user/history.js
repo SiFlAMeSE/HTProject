@@ -4,8 +4,8 @@ import axios from 'axios';
 import Tablehistory from './Tabalhistory';
 import SenserChoice from './SenserChoice';
 import moment from 'moment';
-var _mac , _dateP , mac , date , Build , Location;
-var bu_num , Loca_num;
+var _mac, _dateP, mac, date, Build, Location;
+var bu_num, Loca_num;
 var data_ss;
 
 class history extends Component {
@@ -16,8 +16,8 @@ class history extends Component {
             data: {}
         }
 
-        this.state = { History: [], Senser: []};
-        
+        this.state = { History: [], Senser: [] };
+
     }
 
     componentWillMount() {
@@ -34,7 +34,7 @@ class history extends Component {
         axios.get('http://localhost:5000/history')
             .then(response => {
                 const History = response.data;
-                this.setState({ History:History });
+                this.setState({ History: History });
                 //console.log(History)
             })
             .catch(function (error) {
@@ -44,13 +44,13 @@ class history extends Component {
         axios.get('http://localhost:5000/sensers/senser_list')
             .then(response => {
                 const Senser = response.data;
-                this.setState({ Senser:Senser });
+                this.setState({ Senser: Senser });
                 //console.log(Senser);
             })
             .catch(function (error) {
                 console.log(error);
             })
-        
+
         axios.get('http://localhost:5000/build/build_list')
             .then(response => {
                 Build = response.data;
@@ -121,25 +121,24 @@ class history extends Component {
 
     choice() {
         return this.state.Senser.map(function (object, i) {
-            for(let z=0 ; z<bu_num; z++)
-            {
-                if(object.Id_Build === Build[z]._id)
-                {
-                    for(let y=0 ; y<Loca_num ; y++)
-                    {
-                        if(Build[z].Id_Loca === Location[y]._id)
-                        {
-                            if(data_ss._id === Location[y].Id_Admin)
-                            {
+            for (let z = 0; z < bu_num; z++) {
+                if (object.Id_Build === Build[z]._id) {
+                    for (let y = 0; y < Loca_num; y++) {
+                        if (Build[z].Id_Loca === Location[y]._id) {
+                            if (data_ss._id === Location[y].Id_Admin) {
                                 return <SenserChoice obj={object} key={i} />;
-                            }
-                        }
+                            } else
+                                return false
+                        } else
+                            return false
                     }
                     // console.log(object.Id_Build)
                     // console.log(Build[z]._id)
-                }
+                } else
+                    return false
             }
-             //console.log(object.Id_Build)
+            return false
+            //console.log(object.Id_Build)
             // console.log(Build)
             // console.log(Loca_num)
             // console.log(Location)
