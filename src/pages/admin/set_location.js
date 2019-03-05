@@ -108,11 +108,11 @@ export default class set_location extends React.Component {
 
                 <Modal isOpen={this.state.modal}
                     toggle={this.toggle}
-                    className={this.props.className}>
+                    className={this.props.className} > 
 
-                    <ModalHeader toggle={this.toggle}>พื้นที่</ModalHeader>
+                    <ModalHeader toggle={this.toggle} id="font">พื้นที่</ModalHeader>
                     <form onSubmit={this.onSubmit}>
-                        <ModalBody>
+                        <ModalBody >
                             <Container>
                                 <Table>
                                     <Row>

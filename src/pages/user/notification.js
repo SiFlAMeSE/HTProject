@@ -17,7 +17,7 @@ class notification extends Component {
                         <FormGroup>
                             <Row align="center">
                                 <Col>
-                                    <Input type="select" name="select">
+                                    <Input type="select" name="select" id="font">
                                         <option>ชั้น</option>
                                         <option>1</option>
                                         <option>2</option>
@@ -27,7 +27,7 @@ class notification extends Component {
                                 </Col>
 
                                 <Col>
-                                    <Input type="select" name="select" >
+                                    <Input type="select" name="select" id="font">
                                         <option>ประเภทการแจ้งเตือน</option>
                                         <option>1</option>
                                         <option>2</option>

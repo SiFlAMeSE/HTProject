@@ -117,7 +117,7 @@ export default class set_detail extends React.Component {
     }
 
     createcardDetail() {
-        this.state.Senser.map(function (object, i) {
+        return this.state.Senser.map(function (object, i) {
             if (_id === object.Id_Build) {
                 return <TabDetail obj={object} key={i} />
             } else
