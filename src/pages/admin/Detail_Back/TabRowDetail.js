@@ -129,22 +129,22 @@ class TabRowBuild extends Component {
     render() {
         return (
             <div>
-                <Row>
-                    <Col xs="15" style={{ paddingRight: "50px" }}>
-                        <Card>
-                            <CardImg width="150px" height="150px" src={require('../../../img/location.gif')} />
-                            <CardTitle>{this.props.obj.Position}</CardTitle>
-                            <CardText>{this.props.obj.Macaddress}</CardText>
-                            <CardText>{this.props.obj.Temp_Low}</CardText>
-                            <CardText>{this.props.obj.Temp_Hight}</CardText>
-                            <CardText>{this.props.obj.Humdi_Low}</CardText>
-                            <CardText>{this.props.obj.Humdi_Hight}</CardText>
-                            <Button href="/monitoring" color="primary">ตรวจสอบ</Button>
-                            <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
-                        </Card>
-                    </Col>
-                </Row>
-                <br /><br />
+                <section style={{ paddingRight: '16px', paddingBottom: '25px' }} >
+                    <Card style={{ width: '15rem' }} id="card">
+                        <CardImg width="50px" height="250px" src={require('../../../img/sensor.gif')} />
+                        <hr />
+                        <CardTitle id="b">{this.props.obj.Position}</CardTitle>
+                        <CardText>MAC : {this.props.obj.Macaddress}</CardText>
+                        <hr/>
+                        <CardText id="b">Temparature</CardText>
+                        <CardText>Low : {this.props.obj.Temp_Low} Hight : {this.props.obj.Temp_Hight}</CardText>
+                        <CardText id="b">Humidity</CardText>
+                        <CardText>Low : {this.props.obj.Humdi_Low} Hight : {this.props.obj.Humdi_Hight}</CardText>
+                        {/* เรียกส่งค่า */}
+                        <Button href="/monitoring" color="primary">ตรวจสอบ</Button>
+                        <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
+                    </Card>
+                </section>
 
 
                 {/* เมนูตัวเลือกด้านใน */}

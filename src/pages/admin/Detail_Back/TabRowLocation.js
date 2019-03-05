@@ -62,8 +62,7 @@ class TabRowLocation extends Component {
   Deletelocation() {
     axios.post('http://localhost:5000/locations/Removelocation/' + this.props.obj._id)
       .then(function (res) {
-        if (res.data === 'Location has been Deleted') 
-        {
+        if (res.data === 'Location has been Deleted') {
           window.location = "/setlocation"
           console.log('OK');
         }
@@ -102,20 +101,18 @@ class TabRowLocation extends Component {
     // console.log(this.state._id)
     return (
       <div>
-        <Row>
-          <Col xs="15" style={{ paddingRight: "50px" }}>
-            <Card>
-              <CardImg width="150px" height="150px" src={require('../../../img/location.gif')} />
-              <CardTitle>{this.props.obj.Name_Lo}</CardTitle>
-              <CardText>{this.props.obj.Address}</CardText>
-              <CardText>{this.props.obj._id}</CardText>
-              {/* เรียกส่งค่า */}
+        <section style={{ paddingRight: '16px',paddingBottom: '25px'}} >
+          <Card style={{ width: '15rem' }} id="card">
+            <CardImg width="40px" height="185px" src={require('../../../img/location.gif')} />
+            <hr/>
+            <CardTitle id="b">{this.props.obj.Name_Lo}</CardTitle>
+            <CardText>{this.props.obj.Address}</CardText>
+            <CardText id="co3">ID : {this.props.obj._id}</CardText>
+            {/* เรียกส่งค่า */}
               <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentid(e)} >เพิ่มอาคาร</Button>
-              <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
-            </Card>
-          </Col>
-        </Row>
-        <br /><br />
+            <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
+          </Card>
+        </section>
 
         {/* เมนูตัวเลือกด้านใน */}
         <Modal isOpen={this.state.modal}

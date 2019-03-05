@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table, Button, Input, FormGroup, Form, Container, Row, Col } from 'reactstrap';
+import { Table, Button, Input, Form, Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import Tablehistory from './Tabalhistory';
 import SenserChoice from './SenserChoice';
@@ -17,7 +17,7 @@ class history extends Component {
     componentWillMount() {
         _mac = this.props.match.params.id
         _dateP = this.props.match.params.date
-        var test = moment('2019-02-18 08:37:51.968Z').format('YYYY-MM-DD')
+        // var test = moment('2019-02-18 08:37:51.968Z').format('YYYY-MM-DD')
         //console.log(test)
         console.log(_mac)
         console.log(_dateP)
@@ -84,26 +84,29 @@ class history extends Component {
     }
 
     tabRow() {
-        return this.state.History.map(function (object, i) {
+        return this.state.History.map((object, i) => {
             const _date = moment(object.date).format('YYYY-MM-DD')
             var set = "undefined"
             console.log(set)
-            if(_mac !== set && _dateP === set)
-            {
-                if (_mac === object.mac)
+            if (_mac !== set && _dateP === set) {
+                if (_mac === object.mac) {
                     return <Tablehistory obj={object} key={i} />;
-            } 
-            else if(_mac === set && _dateP !== set)
-            {
-                if (_dateP === _date)
-                    return <Tablehistory obj={object} key={i} />;
+                } else
+                    return false
             }
-            else if(_mac !== set && _dateP !== set)
-            {
-                if (_mac === object.mac && _dateP === _date)
+            else if (_mac === set && _dateP !== set) {
+                if (_dateP === _date) {
                     return <Tablehistory obj={object} key={i} />;
+                } else
+                    return false
             }
-            
+            else if (_mac !== set && _dateP !== set) {
+                if (_mac === object.mac && _dateP === _date) {
+                    return <Tablehistory obj={object} key={i} />;
+                } else
+                    return false
+            } else
+                return false
         });
     }
 
@@ -124,7 +127,7 @@ class history extends Component {
                     <section id="space">
                         <div className="banner-h">
                             <div className="text-cobg">
-                                test
+                                ประวัติย้อนหลัง
                     </div>
                         </div>
                     </section>

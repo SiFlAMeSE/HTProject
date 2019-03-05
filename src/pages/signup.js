@@ -48,13 +48,13 @@ export default class signup extends Component {
         return (
             <div>
                 <section id="space">
-                <div className="banner-h">
-                    <div className="text-cobg">
-                        test
+                    <div className="banner-h">
+                        <div className="text-cobg">
+                            ลงทะเบียนเข้าสู่ระบบ
                     </div>
-                </div>
+                    </div>
                 </section>
-               
+
                 <div>
                     <section>
                         <div className="container">
@@ -62,17 +62,18 @@ export default class signup extends Component {
                                 <form noValidate onSubmit={this.onSubmit}>
                                     <div className="row">
                                         <div className="col-md-6">
-                                            <div className="form-group">
+                                            {/* <div className="form-group"> */}
                                                 <label for="Username">ชื่อผู้ใช้งาน</label>
                                                 <input type="text"
                                                     className="form-control"
                                                     name="User_g"
                                                     placeholder="ชื่อผู้ใช้"
-                                                    // pattern="(\d)([a-z])([A-Z]).{8,}"
-                                                    // required title="ต้องมีตัวอักษรภาษาอังกฤษทั้งเล็กและใหญ่และตัวเลข มากกว่า 8 ตัวขึ้นไป"
                                                     value={this.state.User_g}
-                                                    onChange={this.onChange} />
-                                            </div>
+                                                    // onChange={this.onChange}
+                                                    // pattern="[\w]{1,20}"
+                                                    // title="ภาษาอังกฤษหรือตัวเลข มากกว่า 8 ตัวขึ้นไป"
+                                                    required />
+                                            {/* </div> */}
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-group">
@@ -95,8 +96,8 @@ export default class signup extends Component {
                                                     className="form-control"
                                                     name="Fname"
                                                     placeholder="ชื่อ"
-                                                    pattern="([a-z]).{3,}"
-                                                    required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
+                                                    // pattern="([a-z]).{3,}"
+                                                    // required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
                                                     value={this.state.Fname}
                                                     onChange={this.onChange} />
                                             </div>
@@ -108,8 +109,8 @@ export default class signup extends Component {
                                                     className="form-control"
                                                     name="Lname"
                                                     placeholder="นามสกุล"
-                                                    pattern="([a-z]).{3,}"
-                                                    required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
+                                                    // pattern="([a-z]).{3,}"
+                                                    // required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
                                                     value={this.state.Lname}
                                                     onChange={this.onChange} />
                                             </div>
@@ -121,8 +122,8 @@ export default class signup extends Component {
                                             className="form-control"
                                             name="Phonenumber"
                                             placeholder="รหัส"
-                                            pattern="(/d.{3,}"
-                                            required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
+                                            // pattern="(/d.{3,}"
+                                            // required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
                                             value={this.state.Phonenumber}
                                             onChange={this.onChange} />
                                     </div>

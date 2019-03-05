@@ -117,12 +117,14 @@ export default class set_detail extends React.Component {
     }
 
     createcardDetail() {
-        return this.state.Senser.map(function (object, i) {
+        this.state.Senser.map(function (object, i) {
             if (_id === object.Id_Build) {
                 return <TabDetail obj={object} key={i} />
-            }
+            } else
+                return false
         });
     }
+
 
     render() {
         return (
@@ -130,7 +132,7 @@ export default class set_detail extends React.Component {
                 <section id="space">
                     <div className="banner-h">
                         <div className="text-cobg">
-                            test
+                            ลงทะเบียนเซนเซอร์
                     </div>
                     </div>
                 </section>
@@ -182,22 +184,19 @@ export default class set_detail extends React.Component {
                         </ModalFooter>
                     </form>
                 </Modal>
-                <Container>
-                    <div className="container row">
-                        {this.createcardDetail()}
-                        {/* {
-                                this.state.Senser.map((object, i) => <TabDetail obj={object} key={i} params={this.props.match.params.id} />)
-                            } */}
-                    </div>
-                </Container>
-                <Container>
-                    <Row align="right">
-                        <Col>
-                            <button type="button" onClick={this.toggle} className="btn btn-danger btn-lg" > เพิ่มอุปกรณ์ </button>
-                        </Col>
-                    </Row>
-                </Container>
-            </div>
+
+                <Row style={{ paddingLeft: '160px', paddingRight: '250px' }}>
+                    <Col sm={8}>
+                        <div className="container row" >
+                            {this.createcardDetail()}
+                        </div>
+                    </Col>
+                    <Col sm={4} align="center" >
+                        <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
+                        <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มอุปกรณ์ </button>
+                    </Col>
+                </Row>
+            </div >
 
         );
     }

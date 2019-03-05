@@ -7,7 +7,7 @@ class howto extends Component {
                 <section id="space">
                     <div className="banner-h">
                         <div className="text-cobg">
-                            test
+                            วิธีการใช้งาน
                     </div>
                     </div>
                 </section>

@@ -8,7 +8,7 @@ export default class dashboard extends React.Component {
                 <section id="space">
                     <div className="banner-h">
                         <div className="text-cobg">
-                            test
+                            แผงควบคุม
                     </div>
                     </div>
                 </section>

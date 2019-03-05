@@ -80,7 +80,8 @@ class loginp extends Component {
                                     id="inputl"
                                     placeholder="ชื่อผู้ใช้งาน"
                                     value={this.state.User_g}
-                                    onChange={this.onChange} />
+                                    onChange={this.onChange}
+                                />
                                 <span className="focus-input100"></span>
                             </div>
 
