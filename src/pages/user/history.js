@@ -4,16 +4,16 @@ import axios from 'axios';
 import Tablehistory from './Tabalhistory';
 import SenserChoice from './SenserChoice';
 import moment from 'moment';
-var _mac , _dateP , mac , date;
+var _mac , _dateP , mac , date , Build;
 
 class history extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { History: [], Senser: [] };
+        this.state = { History: [], Senser: [], Location: [] };
         
     }
-    
+
     componentWillMount() {
         _mac = this.props.match.params.id
         _dateP = this.props.match.params.date
@@ -27,7 +27,8 @@ class history extends Component {
         axios.get('http://localhost:5000/history')
             .then(response => {
                 const History = response.data;
-                this.setState({ History });
+                this.setState({ History:History });
+                //console.log(History)
             })
             .catch(function (error) {
                 console.log(error);
@@ -36,8 +37,28 @@ class history extends Component {
         axios.get('http://localhost:5000/sensers/senser_list')
             .then(response => {
                 const Senser = response.data;
-                this.setState({ Senser });
+                this.setState({ Senser:Senser });
                 //console.log(Senser);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        
+        axios.get('http://localhost:5000/build/build_list')
+            .then(response => {
+                Build = response.data;
+                //this.setState({ Build: Build});
+                //console.log(Build);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+
+        axios.get('http://localhost:5000/locations/location_list')
+            .then(response => {
+                const Location = response.data;
+                this.setState({ Location: Location });
+                //console.log(Locatio);
             })
             .catch(function (error) {
                 console.log(error);
@@ -88,11 +109,15 @@ class history extends Component {
 
     choice() {
         return this.state.Senser.map(function (object, i) {
-            return <SenserChoice obj={object} key={i} />;
+            // console.log(i)
+            console.log(Build);
+                return <SenserChoice obj={object} key={i} />;
+            
         });
     }
 
     render() {
+        //console.log(this.state.Build);
         return (
             <div>
                 <div>
