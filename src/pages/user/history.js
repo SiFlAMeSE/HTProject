@@ -4,13 +4,19 @@ import axios from 'axios';
 import Tablehistory from './Tabalhistory';
 import SenserChoice from './SenserChoice';
 import moment from 'moment';
-var _mac , _dateP , mac , date , Build;
+var _mac , _dateP , mac , date , Build , Location;
+var bu_num , Loca_num;
+var data_ss;
 
 class history extends Component {
     constructor(props) {
         super(props);
 
-        this.state = { History: [], Senser: [], Location: [] };
+        this.state = {
+            data: {}
+        }
+
+        this.state = { History: [], Senser: []};
         
     }
 
@@ -21,6 +27,7 @@ class history extends Component {
         //console.log(test)
         console.log(_mac)
         console.log(_dateP)
+        data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
     }
 
     componentDidMount() {
@@ -47,6 +54,7 @@ class history extends Component {
         axios.get('http://localhost:5000/build/build_list')
             .then(response => {
                 Build = response.data;
+                bu_num = response.data.length;
                 //this.setState({ Build: Build});
                 //console.log(Build);
             })
@@ -56,8 +64,9 @@ class history extends Component {
 
         axios.get('http://localhost:5000/locations/location_list')
             .then(response => {
-                const Location = response.data;
-                this.setState({ Location: Location });
+                Location = response.data;
+                Loca_num = response.data.length;
+                //this.setState({ Location: Location });
                 //console.log(Locatio);
             })
             .catch(function (error) {
@@ -71,7 +80,7 @@ class history extends Component {
 
     onchangeDate(e) {
         date = e.target.value
-        console.log(date)
+        //console.log(date)
     }
 
     // onSubmit(e) {
@@ -87,7 +96,7 @@ class history extends Component {
         return this.state.History.map((object, i) => {
             const _date = moment(object.date).format('YYYY-MM-DD')
             var set = "undefined"
-            console.log(set)
+            //console.log(set)
             if (_mac !== set && _dateP === set) {
                 if (_mac === object.mac) {
                     return <Tablehistory obj={object} key={i} />;
@@ -112,10 +121,28 @@ class history extends Component {
 
     choice() {
         return this.state.Senser.map(function (object, i) {
-            // console.log(i)
-            console.log(Build);
-                return <SenserChoice obj={object} key={i} />;
-            
+            for(let z=0 ; z<bu_num; z++)
+            {
+                if(object.Id_Build === Build[z]._id)
+                {
+                    for(let y=0 ; y<Loca_num ; y++)
+                    {
+                        if(Build[z].Id_Loca === Location[y]._id)
+                        {
+                            if(data_ss._id === Location[y].Id_Admin)
+                            {
+                                return <SenserChoice obj={object} key={i} />;
+                            }
+                        }
+                    }
+                    // console.log(object.Id_Build)
+                    // console.log(Build[z]._id)
+                }
+            }
+             //console.log(object.Id_Build)
+            // console.log(Build)
+            // console.log(Loca_num)
+            // console.log(Location)
         });
     }
 
@@ -136,7 +163,7 @@ class history extends Component {
                             <Row align="center">
                                 <Col>
                                     <Input type="select" name="select" onChange={this.onchangeMAC}>
-                                        <option>เลือกเซนเซอร์</option>
+                                        <option value="undefined">เลือกเซนเซอร์</option>
                                         {this.choice()}
                                     </Input>
                                 </Col>
