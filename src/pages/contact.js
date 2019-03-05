@@ -6,7 +6,6 @@ class contact extends Component {
     render() {
         return (
             <div >
-
                 <section id="space">
                     <div className="banner-h">
                         <div className="text-cobg">
