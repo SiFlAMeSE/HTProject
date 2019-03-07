@@ -2,10 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import { Table, Button, Input, Container, Row, Col } from 'reactstrap';
 import SenserChoice from './Choice/SenserChoice';
-import Char from './Char';
+import Chart from './Chart';
+import MonitorChoice from './Choice/MonitorChoice';
 
-var _mac, mac, Build, Location;
-var bu_num, Loca_num;
+var _mac, mac, Build, Location, Dht;
+var bu_num, Loca_num, dht_num;
 var data_ss;
 export default class monitoring extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class monitoring extends React.Component {
       data: {},
     }
 
-    this.state = { Senser: [], Location: [] };
+    this.state = { Senser: [], Location: [], Dht: [] };
 
   }
 
@@ -23,7 +24,7 @@ export default class monitoring extends React.Component {
     _mac = this.props.match.params.id
     data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
 
-    // console.log(_mac)
+    console.log(_mac)
   }
 
   componentDidMount() {
@@ -60,10 +61,23 @@ export default class monitoring extends React.Component {
       .catch(function (error) {
         console.log(error);
       })
+
+    axios.get('http://localhost:5000/dht/dht_list')
+      .then(response => {
+        Dht = response.data;
+        dht_num = response.data.length;
+        this.setState({ Dht: Dht });
+        // console.log(Dht)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
+
 
   sentid = (e) => {
     window.location.replace('/monitoring/' + mac)
+
   }
 
   onchangeMAC(e) {
@@ -84,6 +98,16 @@ export default class monitoring extends React.Component {
         }
       }
       return true
+    });
+  }
+
+  showbar() {
+    return this.state.Dht.map((object, i) => {
+      for (let z = 0; z < dht_num; z++) {
+        if (object.mac === Dht[z].mac) {
+          return <MonitorChoice obj={object} key={i} />;
+        }
+      }
     });
   }
 
@@ -114,11 +138,11 @@ export default class monitoring extends React.Component {
           </Table>
         </Container>
 
-
+        {this.showbar()}
         {/* กราฟที่โชว์ */}
         <Row >
           <Col md={11} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
-            <Char />
+            <Chart />
           </div>
           </Col>
         </Row>
