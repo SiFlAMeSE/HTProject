@@ -169,7 +169,7 @@ class history extends Component {
                                 </Col>
 
                                 <Col>
-                                    <Button color="success" onClick={(e) => this.sentid(e)}>ตกลง</Button>
+                                    <Button color="success" onClick={(e) => this.sentid(e)}>ค้นหา</Button>
                                 </Col>
                             </Row>
                         </Form>

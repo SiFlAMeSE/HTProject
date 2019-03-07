@@ -38,6 +38,7 @@ export default () => (
         <Route exact path="/setlocation" component={set_location} />
 
         <Route exact path="/dashboard" component={dashboard} />
+        <Route exact path="/dashboard/:id" component={dashboard} />
         <Route exact path="/history" component={history} />
         <Route exact path="/history/:id/:date" component={history} />
         <Route exact path="/monitoring" component={monitoring} />
