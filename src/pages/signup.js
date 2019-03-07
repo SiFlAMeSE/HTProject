@@ -69,7 +69,7 @@ export default class signup extends Component {
                                                     name="User_g"
                                                     placeholder="ชื่อผู้ใช้"
                                                     value={this.state.User_g}
-                                                    // onChange={this.onChange}
+                                                    onChange={this.onChange}
                                                     // pattern="[\w]{1,20}"
                                                     // title="ภาษาอังกฤษหรือตัวเลข มากกว่า 8 ตัวขึ้นไป"
                                                     required />
@@ -81,7 +81,7 @@ export default class signup extends Component {
                                                 <input type="Password"
                                                     className="form-control"
                                                     name="Password"
-                                                    placeholder="รหัส"
+                                                    placeholder="รหัสผ่าน"
                                                     // pattern="(\d).{8,}"
                                                     // required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
                                                     value={this.state.Password}
@@ -121,7 +121,7 @@ export default class signup extends Component {
                                         <input type="text"
                                             className="form-control"
                                             name="Phonenumber"
-                                            placeholder="รหัส"
+                                            placeholder="เบอร์โทรศัพท์"
                                             // pattern="(/d.{3,}"
                                             // required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
                                             value={this.state.Phonenumber}

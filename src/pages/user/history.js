@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Table, Button, Input, Form, Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import Tablehistory from './Tabalhistory';
-import SenserChoice from './SenserChoice';
+import SenserChoice from './Choice/SenserChoice';
 import moment from 'moment';
 var _mac, _dateP, mac, date, Build, Location;
 var bu_num, Loca_num;
@@ -127,18 +127,12 @@ class history extends Component {
                         if (Build[z].Id_Loca === Location[y]._id) {
                             if (data_ss._id === Location[y].Id_Admin) {
                                 return <SenserChoice obj={object} key={i} />;
-                            } 
-                        } 
+                            }
+                        }
                     }
-                    // console.log(object.Id_Build)
-                    // console.log(Build[z]._id)
-                } 
+                }
             }
             return true
-            //console.log(object.Id_Build)
-            // console.log(Build)
-            // console.log(Loca_num)
-            // console.log(Location)
         });
     }
 
