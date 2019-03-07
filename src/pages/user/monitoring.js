@@ -23,7 +23,7 @@ export default class monitoring extends React.Component {
     _mac = this.props.match.params.id
     data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
 
-    console.log(_mac)
+    // console.log(_mac)
   }
 
   componentDidMount() {
@@ -43,8 +43,8 @@ export default class monitoring extends React.Component {
         Build = response.data;
         bu_num = response.data.length;
         //this.setState({ Build: Build});
-        console.log(Build);
-        console.log(bu_num);
+        // console.log(Build);
+        // console.log(bu_num);
       })
       .catch(function (error) {
         console.log(error);
@@ -55,7 +55,7 @@ export default class monitoring extends React.Component {
         Location = response.data;
         Loca_num = response.data.length;
         this.setState({ Location: Location });
-        console.log(Location);
+        // console.log(Location);
       })
       .catch(function (error) {
         console.log(error);
@@ -71,14 +71,10 @@ export default class monitoring extends React.Component {
   }
 
   choice() {
-    console.log('test1');
     return this.state.Senser.map((object, i) => {
-      console.log(bu_num);
       for (let z = 0; z < bu_num; z++) {
-        console.log('test3');
         if (object.Id_Build === Build[z]._id) {
           for (let y = 0; y < Loca_num; y++) {
-            console.log('test4');
             if (Build[z].Id_Loca === Location[y]._id) {
               if (data_ss._id === Location[y].Id_Admin) {
                 return <SenserChoice obj={object} key={i} />;

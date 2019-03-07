@@ -1,9 +1,13 @@
 import React from 'react';
+import axios from 'axios';
 import { Line } from 'react-chartjs-2';
 
+var data_ss,Dht;
 export default class Char extends React.Component {
     constructor(props) {
         super(props);
+       
+        this.state = { Dht: [] };
 
         this.state = {
             chartData: {
@@ -49,6 +53,24 @@ export default class Char extends React.Component {
                 ]
             }
         }
+
+
+    }
+
+    componentWillMount() {
+        data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
+    }
+
+    componentDidMount() {
+        axios.get('http://localhost:5000/dht/dht_list')
+            .then(response => {
+                Dht = response.data;
+                // this.setState({ Senser: Senser });
+                console.log(Dht)
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
     }
 
     render() {
