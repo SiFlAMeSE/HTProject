@@ -52,7 +52,7 @@ export default class header extends Component {
                             <NavLink to="/howto" className="fonthead">วิธีการใช้งาน</NavLink>
                         </NavItem>
                         <NavItem id="spacetop">
-                            <NavLink to="/monitoring/" className="fonthead">การตรวจสอบ</NavLink>
+                            <NavLink to="/monitoring/undefined" className="fonthead">การตรวจสอบ</NavLink>
                         </NavItem>
                         <NavItem id="spacetop">
                             <NavLink to="/dashboard/undefined" className="fonthead">แผงควบคุม</NavLink>

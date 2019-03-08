@@ -8,6 +8,9 @@ import MonitorChoice from './Choice/MonitorChoice';
 var _mac, mac, Build, Location, Dht;
 var bu_num, Loca_num, dht_num;
 var data_ss;
+var num = 0;
+var data = [];
+
 export default class monitoring extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +27,7 @@ export default class monitoring extends React.Component {
     _mac = this.props.match.params.id
     data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
 
-    console.log(_mac)
+    //console.log(_mac)
   }
 
   componentDidMount() {
@@ -102,17 +105,28 @@ export default class monitoring extends React.Component {
   }
 
   showbar() {
-    return this.state.Dht.map((object, i) => {
-      for (let z = 0; z < dht_num; z++) {
-        if (object.mac === Dht[z].mac) {
-          return <MonitorChoice obj={object} key={i} />;
+    if (_mac !== "undefined") {
+      return this.state.Dht.map((object, i) => {
+        // console.log(i)
+        // console.log(dht_num-1)
+        if (object.mac === _mac) {
+          // console.log(i)
+          // console.log(num)
+          data[num] = object
+          // console.log(data[num])
+          num = num + 1
         }
-      }
-    });
+        if (i === (dht_num - 1)) {
+          // console.log(data)
+          return <Chart obj={data} key={num} />;
+          //return <MonitorChoice obj={data} key={num} />; 
+        }
+      });
+    }
   }
 
   render() {
-
+    //console.log(_mac)
     return (
       <div>
         <section id="space">
@@ -138,11 +152,12 @@ export default class monitoring extends React.Component {
           </Table>
         </Container>
 
-        {/* {this.showbar()} */}
-        {/* กราฟที่โชว์ */}
+
         <Row >
           <Col md={11} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
-            <Chart />
+            {/* <Chart /> */}
+            {this.showbar()}
+            {/* กราฟที่โชว์ */}
           </div>
           </Col>
         </Row>

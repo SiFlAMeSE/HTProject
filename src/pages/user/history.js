@@ -4,9 +4,25 @@ import axios from 'axios';
 import Tablehistory from './Tabalhistory';
 import SenserChoice from './Choice/SenserChoice';
 import moment from 'moment';
+import JsonToExcel from 'react-json-excel';
+
 var _mac, _dateP, mac, date, Build, Location;
 var bu_num, Loca_num;
 var data_ss;
+
+const className = 'class-name-for-style',
+    filename = 'Excel-file',
+    fields = {
+        "index": "Index",
+        "guid": "GUID"
+    },
+    style = {
+        padding: "5px"
+    },
+    data = [
+        { index: 0, guid: 'asdf231234' },
+        { index: 1, guid: 'wetr2343af' }
+    ];
 
 class history extends Component {
     constructor(props) {
@@ -92,6 +108,16 @@ class history extends Component {
         window.location.replace('/history/' + mac + '/' + date)
     }
 
+    sentEx = (e) => {
+       return <JsonToExcel
+            data={data}
+            className={className}
+            filename={filename}
+            fields={fields}
+            style={style}
+        />
+    }
+
     tabRow() {
         return this.state.History.map((object, i) => {
             const _date = moment(object.date).format('YYYY-MM-DD')
@@ -170,6 +196,7 @@ class history extends Component {
 
                                 <Col>
                                     <Button color="success" onClick={(e) => this.sentid(e)}>ค้นหา</Button>
+                                    <Button color="success" onClick={(e) => this.sentEx(e)}>ส่งออก</Button>
                                 </Col>
                             </Row>
                         </Form>
