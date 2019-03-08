@@ -4,9 +4,10 @@ import React, { Component } from 'react';
 class MonitorChoice extends Component {
   render() {
     return (
-      <div>
-        
-      </div>
+      <>
+    {this.props.obj.date},{this.props.obj.t},{this.props.obj.h}<p></p>
+    
+      </>
         // console.log(this.props.obj.date)
     );
   }
