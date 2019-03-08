@@ -54,7 +54,7 @@ class TableDashboard extends React.Component {
             {this.props.obj.Humdi_Hight}
           </td>
           <td>
-            <Button color="danger" onClick={this.toggle}>ข้อมูลเพิ่มเติม</Button>
+            <Button color="danger" onClick={this.toggle}>ข้อมูล</Button>
           </td>
         </tr>
       </>
