@@ -148,7 +148,7 @@ class history extends Component {
                     </div>
                         </div>
                     </section>
-                    <Container>
+                    <Container> 
                         <Form>
                             <Row align="center">
                                 <Col>
@@ -173,7 +173,7 @@ class history extends Component {
                                 </Col>
                             </Row>
                         </Form>
-                        <Form>
+                        <Form id="spacetop">
                             <Table bordered>
                                 <thead>
                                     <tr>

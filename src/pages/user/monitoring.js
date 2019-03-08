@@ -138,7 +138,7 @@ export default class monitoring extends React.Component {
           </Table>
         </Container>
 
-        {this.showbar()}
+        {/* {this.showbar()} */}
         {/* กราฟที่โชว์ */}
         <Row >
           <Col md={11} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
