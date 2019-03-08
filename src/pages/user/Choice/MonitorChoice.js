@@ -3,11 +3,13 @@ import React, { Component } from 'react';
 
 class MonitorChoice extends Component {
   render() {
+    console.log(this.props.obj[0].date)
+    console.log(this.props.key)
     return (
       <div>
         
       </div>
-        // console.log(this.props.obj.date)
+        
     );
   }
 }
