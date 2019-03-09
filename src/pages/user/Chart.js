@@ -44,7 +44,7 @@ export default class Chart extends React.Component {
                 labels: label_X,
                 datasets: [
                     {
-                        label: label_temp,
+                        label: label_temp,label_humdi,
                         data: data_temp,
                         backgroundColor: ['rgba(75, 99, 135, 0.6)',]
                     },
@@ -75,6 +75,11 @@ export default class Chart extends React.Component {
                 console.log(error);
             })
     }
+
+    // componentWillReceiveProps(nextProps){
+    //     this.label_X(nextProps)
+    //     this.label_X(nextProps)
+    // }
 
     dataGraph(){
         for(let i=39 ; i>=0 ; i-- , data_num--){
