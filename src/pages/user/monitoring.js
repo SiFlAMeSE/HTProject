@@ -7,8 +7,8 @@ import MonitorChoice from './Choice/MonitorChoice';
 
 var _mac, mac, Build, Location, Dht;
 var bu_num, Loca_num, dht_num;
-var data_ss;
-var num = 0,seconds=1;
+var data_ss, count=0;
+var num = 0, seconds = 1;
 var data = [];
 
 export default class monitoring extends React.Component {
@@ -19,7 +19,7 @@ export default class monitoring extends React.Component {
       data: {},
     }
 
-    this.state = { Senser: [], Location: [], Dht: [], time: {}};
+    this.state = { Senser: [], Location: [], Dht: [], time: {} };
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
@@ -87,16 +87,32 @@ export default class monitoring extends React.Component {
         console.log(error);
       })
 
-    axios.get('http://localhost:5000/dht/dht_list')
-      .then(response => {
-        Dht = response.data;
-        dht_num = response.data.length;
-        this.setState({ Dht: Dht });
-        // console.log(Dht)
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
+      axios.get('http://localhost:5000/dht/dht_list')
+        .then(response => {
+          Dht = response.data;
+          dht_num = response.data.length;
+          this.setState({ Dht: Dht });
+          // console.log(Dht)
+        })
+        .catch(function (error) {
+          console.log(error);
+        })   
+  }
+
+  componentDidUpdate() {
+    console.log('loop')
+    if (count == 2) {
+      axios.get('http://localhost:5000/dht/dht_list')
+        .then(response => {
+          Dht = response.data;
+          dht_num = response.data.length;
+          this.setState({ Dht: Dht });
+          // console.log(Dht)
+        })
+        .catch(function (error) {
+          console.log(error);
+        })
+    }
   }
 
 
@@ -127,6 +143,7 @@ export default class monitoring extends React.Component {
 
   showbar() {
     if (_mac !== "undefined") {
+      count = 1;
       return this.state.Dht.map((object, i) => {
         // console.log(i)
         // console.log(dht_num-1)
@@ -166,14 +183,15 @@ export default class monitoring extends React.Component {
     // Check if we're at zero.
     if (seconds == 0) {
       clearInterval(this.timer);
+      count = 2;
     }
   }
 
   render() {
-    if (seconds == 1) {
+    if (seconds == 1 && count == 1) {
       console.log('loop 1')
       this.startTimer()
-    } 
+    }
     return (
       <div>
         <section id="space">

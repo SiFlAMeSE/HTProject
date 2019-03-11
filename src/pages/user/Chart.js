@@ -83,7 +83,7 @@ export default class Chart extends React.Component {
 
     dataGraph(){
         for(let i=39 ; i>=0 ; i-- , data_num--){
-            console.log(moment().format())
+            // console.log(moment().format())
             label_X[i] = moment(data_set[data_num].date).format('LTS')
             data_temp[i] = data_set[data_num].t
             data_humdi[i] = data_set[data_num].h
