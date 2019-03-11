@@ -100,14 +100,9 @@ export default class testcode extends React.Component {
                 value="min_h"
                 onChange={this.handleInputChange} />ความชื้นต่ำกว่ากำหนด
           </div>
-
           </label>
           <br />
-
         </form>
-
-
-
       </div>
 
 
