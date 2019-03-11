@@ -119,7 +119,7 @@ export default class monitoring extends React.Component {
           }
             if(i === (dht_num-1))
             {
-              // console.log(data)
+              console.log(data)
               return <Chart obj={data} key={num} />;
               //return <MonitorChoice obj={data} key={num} />; 
             }

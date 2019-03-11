@@ -4,25 +4,19 @@ import axios from 'axios';
 import Tablehistory from './Tabalhistory';
 import SenserChoice from './Choice/SenserChoice';
 import moment from 'moment';
-import JsonToExcel from 'react-json-excel';
+import { CSVLink } from "react-csv";
 
 var _mac, _dateP, mac, date, Build, Location;
 var bu_num, Loca_num;
-var data_ss;
-
-const className = 'class-name-for-style',
-    filename = 'Excel-file',
-    fields = {
-        "index": "Index",
-        "guid": "GUID"
-    },
-    style = {
-        padding: "5px"
-    },
-    data = [
-        { index: 0, guid: 'asdf231234' },
-        { index: 1, guid: 'wetr2343af' }
-    ];
+var data_ss, csv_num = 0;
+const headers = [
+    { label: "ID", key: "_id" },
+    { label: "Temperature", key: "t" },
+    { label: "Humidity", key: "h" },
+    { label: "MAC Address", key: "mac" },
+    { label: "Date", key: "date" }
+];
+const csvData = [];
 
 class history extends Component {
     constructor(props) {
@@ -109,13 +103,7 @@ class history extends Component {
     }
 
     sentEx = (e) => {
-       return <JsonToExcel
-            data={data}
-            className={className}
-            filename={filename}
-            fields={fields}
-            style={style}
-        />
+        return <CSVLink data={csvData} headers={headers}><img width="180px" src={require('../../img/downloadEx.png')} /></CSVLink>
     }
 
     tabRow() {
@@ -125,18 +113,24 @@ class history extends Component {
             //console.log(set)
             if (_mac !== set && _dateP === set) {
                 if (_mac === object.mac) {
+                    csvData[csv_num] = object
+                    csv_num = csv_num + 1
                     return <Tablehistory obj={object} key={i} />;
                 } else
                     return false
             }
             else if (_mac === set && _dateP !== set) {
                 if (_dateP === _date) {
+                    csvData[csv_num] = object
+                    csv_num = csv_num + 1
                     return <Tablehistory obj={object} key={i} />;
                 } else
                     return false
             }
             else if (_mac !== set && _dateP !== set) {
                 if (_mac === object.mac && _dateP === _date) {
+                    csvData[csv_num] = object
+                    csv_num = csv_num + 1
                     return <Tablehistory obj={object} key={i} />;
                 } else
                     return false
@@ -163,7 +157,8 @@ class history extends Component {
     }
 
     render() {
-        //console.log(this.state.Build);
+        console.log(csv_num);
+        console.log(csvData);
         return (
             <div>
                 <div>
@@ -176,15 +171,15 @@ class history extends Component {
                     </section>
                     <Container>
                         <Form>
-                            <Row align="center">
-                                <Col>
+                            <Row>
+                                <Col style={{ paddingTop: '25px',paddingLeft: '70px' }}>
                                     <Input type="select" name="select" onChange={this.onchangeMAC}>
                                         <option value="undefined">เลือกเซนเซอร์</option>
                                         {this.choice()}
                                     </Input>
                                 </Col>
 
-                                <Col>
+                                <Col style={{ paddingTop: '25px' }}>
                                     <Input
                                         type="date"
                                         name="date"
@@ -193,12 +188,15 @@ class history extends Component {
                                         onChange={this.onchangeDate}
                                     />
                                 </Col>
-
                                 <Col>
-                                    <Button color="success" onClick={(e) => this.sentid(e)}>ค้นหา</Button>
-                                    <Button color="success" onClick={(e) => this.sentEx(e)}>ส่งออก</Button>
+                                    <Button color="primary" onClick={(e) => this.sentid(e)}>ค้นหา</Button>
+                                    {this.sentEx()}
                                 </Col>
+
                             </Row>
+
+
+
                         </Form>
                         <Form>
                             <Table bordered>
