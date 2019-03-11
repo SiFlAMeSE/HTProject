@@ -8,7 +8,7 @@ import MonitorChoice from './Choice/MonitorChoice';
 var _mac, mac, Build, Location, Dht;
 var bu_num, Loca_num, dht_num;
 var data_ss;
-var num = 0,seconds=1;
+var num = 0,seconds=1 , timer;
 var data = [];
 
 export default class monitoring extends React.Component {
@@ -51,9 +51,6 @@ export default class monitoring extends React.Component {
   }
 
   componentDidMount() {
-
-    let timeLeftVar = this.secondsToTime(this.state.seconds);
-    this.setState({ time: timeLeftVar });
     axios.get('http://localhost:5000/sensers/senser_list')
       .then(response => {
         const Senser = response.data;
@@ -97,6 +94,11 @@ export default class monitoring extends React.Component {
       .catch(function (error) {
         console.log(error);
       })
+  }
+
+  componentDidUpdate(){
+    let timeLeftVar = this.secondsToTime(seconds);
+    timer = timeLeftVar;
   }
 
 
@@ -148,8 +150,8 @@ export default class monitoring extends React.Component {
 
   startTimer() {
     console.log('start');
-    if (this.timer == 0 && seconds > 0) {
-      this.timer = setInterval(this.countDown, 7000);
+    if (timer == 0 && seconds > 0) {
+      timer = setInterval(this.countDown, 7000);
       // this.state.down = 1;
     }
     // this.showbar()
@@ -157,7 +159,7 @@ export default class monitoring extends React.Component {
 
   countDown() {
     // Remove one second, set state so a re-render happens.
-    let seconds = this.state.seconds - 1;
+    let seconds = seconds - 1;
     this.setState({
       time: this.secondsToTime(seconds),
       seconds: seconds,
@@ -173,6 +175,7 @@ export default class monitoring extends React.Component {
     if (seconds == 1) {
       console.log('loop 1')
       this.startTimer()
+      this.componentDidMount()
     } 
     return (
       <div>

@@ -3,7 +3,8 @@ import { Table, Button, Input, FormGroup, Form, Container, Row, Col } from 'reac
 import axios from 'axios';
 import SenserChoice from './Choice/SenserChoice';
 
-var _mac, _dateP, mac, date, Build, Location;
+var _mac, _dateP, _t, _h, _s_error;
+var mac, date, t, h, s_error, Build, Location;
 var bu_num, Loca_num;
 var data_ss;
 
@@ -15,11 +16,16 @@ class notification extends Component {
             data: {}
         }
 
-        this.state = {Senser: [] };
+        this.state = { Senser: [] };
 
     }
 
     componentWillMount() {
+        _mac = this.props.match.params.id
+        _s_error = this.props.match.params.error
+        _t = this.props.match.params.t
+        _h = this.props.match.params.h
+        _dateP = this.props.match.params.date
         data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
     }
 
@@ -67,6 +73,31 @@ class notification extends Component {
             })
     }
 
+    onchangeMAC(e) {
+        mac = e.target.value
+    }
+
+    onchangeError(e){
+        s_error = e.target.value
+    }
+
+    onchangeT(e){
+        t = e.target.value
+    }
+
+    onchangeH(e){
+        h = e.target.value
+    }
+
+    onchangeDate(e) {
+        date = e.target.value
+        //console.log(date)
+    }
+
+    sentid = (e) => {
+        window.location.replace('/notification/' + mac +'/' + s_error + '/' + t + '/' + h + '/' + date)
+    }
+
     choice() {
         return this.state.Senser.map(function (object, i) {
             for (let z = 0; z < bu_num; z++) {
@@ -99,20 +130,36 @@ class notification extends Component {
                         <FormGroup>
                             <Row align="center">
                                 <Col>
-                                    <Input type="select" name="select" id="font">
+                                    <Input type="select" name="select" id="font" onChange={this.onchangeMAC}>
                                         <option value="undefined">เลือกเซนเซอร์</option>
                                         {this.choice()}
                                     </Input>
                                 </Col>
 
                                 <Col>
-                                    <Input type="select" name="select" id="font">
-                                        <option>ประเภทการแจ้งเตือน</option>
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                    </Input>
+                                        <label>
+                                            ประเภทการแจ้งเตือน
+                                            <div>
+                                                <input
+                                                    name="error"
+                                                    type="checkbox"
+                                                    value="error"
+                                                    onChange={this.onchangeError} />ข้อบกพร่องของอุปกรณ์
+                                                    <span style={{ paddingRight: '15px' }} />
+                                                <input
+                                                    name="max_t"
+                                                    type="checkbox"
+                                                    value="max_t"
+                                                    onChange={this.onchangeT} />ข้อบกพร่องของอุณหภูมิ
+                                                    <span style={{ paddingRight: '15px' }} />
+                                                <input
+                                                    name="max_h"
+                                                    type="checkbox"
+                                                    value="max_h"
+                                                    onChange={this.onchangeH} />ข้อบกพร่องของความชื้น
+                                                    <span style={{ paddingRight: '15px' }} />
+                                            </div>
+                                        </label>
                                 </Col>
 
                                 <Col>
@@ -121,11 +168,12 @@ class notification extends Component {
                                         name="date"
                                         id="exampleDate"
                                         placeholder="ระบุวันเดือนปี"
+                                        onChange={this.onchangeDate}
                                     />
                                 </Col>
 
                                 <Col>
-                                    <Button color="success">ตกลง</Button>{' '}
+                                    <Button color="primary" onClick={(e) => this.sentid(e)}>ค้นหา</Button>
                                 </Col>
                             </Row>
                         </FormGroup>
@@ -137,6 +185,7 @@ class notification extends Component {
                                         <th>สถานที่</th>
                                         <th>การตั้งค่าอุปกรณ์</th>
                                         <th>สถานะ</th>
+                                        <th>วันที่และเวลา</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -145,8 +194,10 @@ class notification extends Component {
                                         <td>รายละเอียด1</td>
                                         <td>รายละเอียด1</td>
                                         <td>รายละเอียด1</td>
+                                        <td>รายละเอียด1</td>
                                     </tr>
                                     <tr>
+                                        <td>รายละเอียด2</td>
                                         <td>รายละเอียด2</td>
                                         <td>รายละเอียด2</td>
                                         <td>รายละเอียด2</td>
