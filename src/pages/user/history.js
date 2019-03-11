@@ -169,7 +169,7 @@ class history extends Component {
                     </div>
                         </div>
                     </section>
-                    <Container>
+                    <Container> 
                         <Form>
                             <Row>
                                 <Col style={{ paddingTop: '25px',paddingLeft: '70px' }}>
@@ -198,7 +198,7 @@ class history extends Component {
 
 
                         </Form>
-                        <Form>
+                        <Form id="spacetop">
                             <Table bordered>
                                 <thead>
                                     <tr>

@@ -8,7 +8,7 @@ import MonitorChoice from './Choice/MonitorChoice';
 var _mac, mac, Build, Location, Dht;
 var bu_num, Loca_num, dht_num;
 var data_ss;
-var num=0;
+var num = 0, down = 0, func = 0;
 var data = [];
 
 export default class monitoring extends React.Component {
@@ -19,8 +19,28 @@ export default class monitoring extends React.Component {
       data: {},
     }
 
-    this.state = { Senser: [], Location: [], Dht: [] };
+    this.state = { Senser: [], Location: [], Dht: [], time: {}, seconds: 1 };
+    this.timer = 0;
+    this.startTimer = this.startTimer.bind(this);
+    this.countDown = this.countDown.bind(this);
 
+  }
+
+  secondsToTime(secs) {
+    let hours = Math.floor(secs / (60 * 60));
+
+    let divisor_for_minutes = secs % (60 * 60);
+    let minutes = Math.floor(divisor_for_minutes / 60);
+
+    let divisor_for_seconds = divisor_for_minutes % 60;
+    let seconds = Math.ceil(divisor_for_seconds);
+
+    let obj = {
+      "h": hours,
+      "m": minutes,
+      "s": seconds
+    };
+    return obj;
   }
 
   componentWillMount() {
@@ -32,6 +52,8 @@ export default class monitoring extends React.Component {
 
   componentDidMount() {
 
+    let timeLeftVar = this.secondsToTime(this.state.seconds);
+    this.setState({ time: timeLeftVar });
     axios.get('http://localhost:5000/sensers/senser_list')
       .then(response => {
         const Senser = response.data;
@@ -80,7 +102,6 @@ export default class monitoring extends React.Component {
 
   sentid = (e) => {
     window.location.replace('/monitoring/' + mac)
-
   }
 
   onchangeMAC(e) {
@@ -105,32 +126,64 @@ export default class monitoring extends React.Component {
   }
 
   showbar() {
-    if(_mac !== "undefined")
-    {
+    if (_mac !== "undefined") {
       return this.state.Dht.map((object, i) => {
         // console.log(i)
         // console.log(dht_num-1)
-          if (object.mac === _mac) {
-            // console.log(i)
-            // console.log(num)
-            data[num] = object
-            // console.log(data[num])
-            num = num + 1
-          }
-            if(i === (dht_num-1))
-            {
-              console.log(data)
-              return <Chart obj={data} key={num} />;
-              //return <MonitorChoice obj={data} key={num} />; 
-            }
+        if (object.mac === _mac) {
+          // console.log(i)
+          // console.log(num)
+          data[num] = object
+          // console.log(data[num])
+          num = num + 1
+        }
+        if (i === (dht_num - 1)) {
+          // console.log(data)
+          return <Chart obj={data} key={num} />;
+          //return <MonitorChoice obj={data} key={num} />; 
+        }
       });
     }
   }
 
+  startTimer() {
+    console.log('start');
+    if (this.timer == 0 && this.state.seconds > 0) {
+      this.timer = setInterval(this.countDown, 7000);
+      // this.state.down = 1;
+      console.log('loop 2');
+    }
+    // this.showbar()
+  }
+
+  countDown() {
+    // Remove one second, set state so a re-render happens.
+    let seconds = this.state.seconds - 1;
+    this.setState({
+      time: this.secondsToTime(seconds),
+      seconds: seconds,
+    });
+
+    // Check if we're at zero.
+    if (seconds == 0) {
+      clearInterval(this.timer);
+    }
+  }
+
   render() {
-    //console.log(_mac)
+    if (this.state.seconds == 1) {
+      console.log('loop 1')
+      this.showbar()
+      // this.startTimer()
+    } else if (this.state.seconds == 0) {
+      this.state.seconds = 1;
+      this.state.count = 0;
+      console.log('restart');
+      this.startTimer()
+    }
     return (
       <div>
+        {this.startTimer()}
         <section id="space">
           <div className="banner-h">
             <div className="text-cobg">
@@ -154,7 +207,7 @@ export default class monitoring extends React.Component {
           </Table>
         </Container>
 
-        
+
         <Row >
           <Col md={11} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
             {/* <Chart /> */}
