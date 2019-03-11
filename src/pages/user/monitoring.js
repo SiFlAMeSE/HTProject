@@ -8,7 +8,7 @@ import MonitorChoice from './Choice/MonitorChoice';
 var _mac, mac, Build, Location, Dht;
 var bu_num, Loca_num, dht_num;
 var data_ss;
-var num = 0, down = 0, func = 0;
+var num = 0,seconds=1;
 var data = [];
 
 export default class monitoring extends React.Component {
@@ -19,7 +19,7 @@ export default class monitoring extends React.Component {
       data: {},
     }
 
-    this.state = { Senser: [], Location: [], Dht: [], time: {}, seconds: 1 };
+    this.state = { Senser: [], Location: [], Dht: [], time: {}};
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
@@ -148,10 +148,9 @@ export default class monitoring extends React.Component {
 
   startTimer() {
     console.log('start');
-    if (this.timer == 0 && this.state.seconds > 0) {
+    if (this.timer == 0 && seconds > 0) {
       this.timer = setInterval(this.countDown, 7000);
       // this.state.down = 1;
-      console.log('loop 2');
     }
     // this.showbar()
   }
@@ -171,19 +170,12 @@ export default class monitoring extends React.Component {
   }
 
   render() {
-    if (this.state.seconds == 1) {
+    if (seconds == 1) {
       console.log('loop 1')
-      this.showbar()
-      // this.startTimer()
-    } else if (this.state.seconds == 0) {
-      this.state.seconds = 1;
-      this.state.count = 0;
-      console.log('restart');
       this.startTimer()
-    }
+    } 
     return (
       <div>
-        {this.startTimer()}
         <section id="space">
           <div className="banner-h">
             <div className="text-cobg">
