@@ -17,6 +17,10 @@
   font-family: 'Prompt', sans-serif;
 }
 
+#fcolor{
+  width:100px;height:500px;background:url(./img/downloadEx.png) no-repeat;display:block;
+}
+
 html,body,Input,Button {
   font-family: 'Prompt', sans-serif;
   font-size: 20px;
