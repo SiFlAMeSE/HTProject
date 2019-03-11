@@ -107,6 +107,9 @@ export default class Chart extends React.Component {
                 <Line height="550px"
                     data={this.state.chartData}
                     options={{
+                        animation:{
+                            duration:0
+                        },
                         responsive: true,
                         legend: {
                             display: false,
