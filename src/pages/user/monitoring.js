@@ -3,12 +3,11 @@ import axios from 'axios';
 import { Table, Button, Input, Container, Row, Col } from 'reactstrap';
 import SenserChoice from './Choice/SenserChoice';
 import Chart from './Chart';
-import MonitorChoice from './Choice/MonitorChoice';
 
 var _mac, mac, Build, Location, Dht;
 var bu_num, Loca_num, dht_num;
-var data_ss, count;
-var num = 0, seconds = 1;
+var data_ss, num = 0;
+var count, seconds = 1;
 var data = [];
 
 export default class monitoring extends React.Component {
