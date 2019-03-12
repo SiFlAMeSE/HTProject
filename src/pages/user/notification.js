@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import { Table, Button, Input, FormGroup, Form, Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
 import SenserChoice from './Choice/SenserChoice';
+import WarnSenser from './TabalNotification';
+import moment from 'moment';
 
 var _mac, _dateP, _t, _h, _s_error;
-var mac, date, t, h, s_error, Build, Location;
-var bu_num, Loca_num;
+var mac, date, t, h, s_error, Build, Location, Senser;
+var bu_num, Loca_num, num=0;
 var data_ss;
+var loca = [];
+var set = "undefined";
 
 class notification extends Component {
     constructor(props) {
@@ -16,7 +20,7 @@ class notification extends Component {
             data: {}
         }
 
-        this.state = { Senser: [] };
+        this.state = { Senser: [], WarnTH: [], WarnSenser: [] ,Build: [], Location: [] };
 
     }
 
@@ -30,19 +34,29 @@ class notification extends Component {
     }
 
     componentDidMount() {
-        // axios.get('http://localhost:5000/history')
-        //     .then(response => {
-        //         const History = response.data;
-        //         this.setState({ History: History });
-        //         //console.log(History)
-        //     })
-        //     .catch(function (error) {
-        //         console.log(error);
-        //     })
+        axios.get('http://localhost:5000/WarnTempHumid')
+            .then(response => {
+                const WarnTH = response.data;
+                this.setState({ WarnTH: WarnTH });
+                console.log(WarnTH)
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+
+        axios.get('http://localhost:5000/WarnSenser')
+            .then(response => {
+                const WarnSenser = response.data;
+                this.setState({ WarnSenser: WarnSenser });
+                console.log(WarnSenser)
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
 
         axios.get('http://localhost:5000/sensers/senser_list')
             .then(response => {
-                const Senser = response.data;
+                Senser = response.data;
                 this.setState({ Senser: Senser });
                 //console.log(Senser);
             })
@@ -54,7 +68,7 @@ class notification extends Component {
             .then(response => {
                 Build = response.data;
                 bu_num = response.data.length;
-                //this.setState({ Build: Build});
+                this.setState({ Build: Build});
                 //console.log(Build);
             })
             .catch(function (error) {
@@ -65,7 +79,7 @@ class notification extends Component {
             .then(response => {
                 Location = response.data;
                 Loca_num = response.data.length;
-                //this.setState({ Location: Location });
+                this.setState({ Location: Location });
                 //console.log(Locatio);
             })
             .catch(function (error) {
@@ -77,15 +91,15 @@ class notification extends Component {
         mac = e.target.value
     }
 
-    onchangeError(e){
+    onchangeError(e) {
         s_error = e.target.value
     }
 
-    onchangeT(e){
+    onchangeT(e) {
         t = e.target.value
     }
 
-    onchangeH(e){
+    onchangeH(e) {
         h = e.target.value
     }
 
@@ -95,7 +109,88 @@ class notification extends Component {
     }
 
     sentid = (e) => {
-        window.location.replace('/notification/' + mac +'/' + s_error + '/' + t + '/' + h + '/' + date)
+        window.location.replace('/notification/' + mac + '/' + s_error + '/' + t + '/' + h + '/' + date)
+    }
+
+    tabRow1() {
+        return this.state.WarnSenser.map(function (object, i){
+            const _date = moment(object.date).format('YYYY-MM-DD')
+            if(_s_error !== set)
+            {
+                if(_mac !== set && _dateP === set) {
+                    if(_mac === object.Id_MAC) {
+                        for(i=0 ; i<loca.length ; i++)
+                        {
+                            if(_mac === loca[i].Macaddress)
+                            {
+                                const show = {
+                                    mass: "ข้อบกพร่องของอุปกรณ์",
+                                    location: "สถานที่ : " + loca[i].Name_Lo + "อาคาร : " + loca[i].Name_Build + "ห้อง : " + loca[i].Position,
+                                    max_t: loca[i].Temp_Hight,
+                                    min_t: loca[i].Temp_Low,
+                                    max_h: loca[i].Humdi_Hight,
+                                    min_h: loca[i].Humdi_Low,
+                                    t: " - ",
+                                    h: " - ",
+                                    error: object.Message,
+                                    mac: loca[i].Macaddress,
+                                    date: object.date
+                                }
+                                return <WarnSenser obj={show}/> 
+                            }
+                        }
+                    }
+                }
+                else if(_mac === set && _dateP != set){
+                    if(_dateP === _date){
+                        for(i=0 ; i<loca.length ; i++)
+                        {
+                            if(object.Id_MAC === loca[i].Macaddress)
+                            {
+                                const show = {
+                                    mass: "ข้อบกพร่องของอุปกรณ์",
+                                    location: "สถานที่ : " + loca[i].Name_Lo + "อาคาร : " + loca[i].Name_Build + "ห้อง : " + loca[i].Position,
+                                    max_t: loca[i].Temp_Hight,
+                                    min_t: loca[i].Temp_Low,
+                                    max_h: loca[i].Humdi_Hight,
+                                    min_h: loca[i].Humdi_Low,
+                                    t: " - ",
+                                    h: " - ",
+                                    error: object.Message,
+                                    mac: loca[i].Macaddress,
+                                    date: object.date
+                                }
+                                return <WarnSenser obj={show}/> 
+                            }
+                        }
+                    }
+                }
+                else if(_mac !== set && _dateP !== set) {
+                    if(_mac === object.Id_MAC && _dateP === _date) {
+                        for(i=0 ; i<loca.length ; i++)
+                        {
+                            if(object.Id_MAC === loca[i].Macaddress)
+                            {
+                                const show = {
+                                    mass: "ข้อบกพร่องของอุปกรณ์",
+                                    location: "สถานที่ : " + loca[i].Name_Lo + "อาคาร : " + loca[i].Name_Build + "ห้อง : " + loca[i].Position,
+                                    max_t: loca[i].Temp_Hight,
+                                    min_t: loca[i].Temp_Low,
+                                    max_h: loca[i].Humdi_Hight,
+                                    min_h: loca[i].Humdi_Low,
+                                    t: " - ",
+                                    h: " - ",
+                                    error: object.Message,
+                                    mac: loca[i].Macaddress,
+                                    date: object.date
+                                }
+                                return <WarnSenser obj={show}/> 
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 
     choice() {
@@ -105,6 +200,17 @@ class notification extends Component {
                     for (let y = 0; y < Loca_num; y++) {
                         if (Build[z].Id_Loca === Location[y]._id) {
                             if (data_ss._id === Location[y].Id_Admin) {
+                                loca[num] = {
+                                    Name_Lo : Location[y].Name_Lo,
+                                    Name_Build: Build[z].Name_Build,
+                                    Position: object.Position,
+                                    Macaddress: object.Macaddress,
+                                    Temp_Low: object.Temp_Low,
+                                    Temp_Hight: object.Temp_Hight,
+                                    Humdi_Low: object.Humdi_Low,
+                                    Humdi_Hight: object.Humdi_Hight
+                                }
+                                num = num + 1
                                 return <SenserChoice obj={object} key={i} />;
                             }
                         }
@@ -116,6 +222,7 @@ class notification extends Component {
     }
 
     render() {
+        //console.log(loca)
         return (
             <div>
                 <section id="space">
@@ -137,29 +244,29 @@ class notification extends Component {
                                 </Col>
 
                                 <Col>
-                                        <label>
-                                            ประเภทการแจ้งเตือน
-                                            <div>
-                                                <input
-                                                    name="error"
-                                                    type="checkbox"
-                                                    value="error"
-                                                    onChange={this.onchangeError} />ข้อบกพร่องของอุปกรณ์
+                                    <label>
+                                        ประเภทการแจ้งเตือน
+                                        <div>
+                                            <input
+                                                name="error"
+                                                type="checkbox"
+                                                value="error"
+                                                onChange={this.onchangeError} />ข้อบกพร่องของอุปกรณ์
                                                     <span style={{ paddingRight: '15px' }} />
-                                                <input
-                                                    name="max_t"
-                                                    type="checkbox"
-                                                    value="max_t"
-                                                    onChange={this.onchangeT} />ข้อบกพร่องของอุณหภูมิ
+                                            <input
+                                                name="t"
+                                                type="checkbox"
+                                                value="max_t"
+                                                onChange={this.onchangeT} />ข้อบกพร่องของอุณหภูมิ
                                                     <span style={{ paddingRight: '15px' }} />
-                                                <input
-                                                    name="max_h"
-                                                    type="checkbox"
-                                                    value="max_h"
-                                                    onChange={this.onchangeH} />ข้อบกพร่องของความชื้น
+                                            <input
+                                                name="h"
+                                                type="checkbox"
+                                                value="max_h"
+                                                onChange={this.onchangeH} />ข้อบกพร่องของความชื้น
                                                     <span style={{ paddingRight: '15px' }} />
-                                            </div>
-                                        </label>
+                                        </div>
+                                    </label>
                                 </Col>
 
                                 <Col>
@@ -180,30 +287,25 @@ class notification extends Component {
                         <Form>
                             <Table bordered>
                                 <thead>
+                                    <tr align="center" valign="middle">
+                                        <th rowspan="2">ลักษณะการเตือน</th>
+                                        <th rowspan="2">สถานที่</th>
+                                        <th colspan="4">การตั้งค่าอุปกรณ์</th>
+                                        <th colspan="3">สถานะ</th>
+                                        <th rowspan="2">รหัสเครื่อง</th>
+                                        <th rowspan="2">วันที่และเวลา</th>
+                                    </tr>
                                     <tr>
-                                        <th>ลักษณะการเตือน</th>
-                                        <th>สถานที่</th>
-                                        <th>การตั้งค่าอุปกรณ์</th>
-                                        <th>สถานะ</th>
-                                        <th>วันที่และเวลา</th>
+                                        <th>อุณหภูมิต่ำสุด</th>
+                                        <th>อุณหภูมิสูงสุด</th>
+                                        <th>ความชื้นต่ำสุด</th>
+                                        <th>ความชื้นสูงสุด</th>
+                                        <th>อุณหภูมิ</th>
+                                        <th>ความชื้น</th>
+                                        <th>ข้อความแจ้งเตือน</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>รายละเอียด1</td>
-                                        <td>รายละเอียด1</td>
-                                        <td>รายละเอียด1</td>
-                                        <td>รายละเอียด1</td>
-                                        <td>รายละเอียด1</td>
-                                    </tr>
-                                    <tr>
-                                        <td>รายละเอียด2</td>
-                                        <td>รายละเอียด2</td>
-                                        <td>รายละเอียด2</td>
-                                        <td>รายละเอียด2</td>
-                                        <td>รายละเอียด2</td>
-                                    </tr>
-                                </tbody>
+                                {this.tabRow1()}
                             </Table>
                         </Form>
                     </Container>
