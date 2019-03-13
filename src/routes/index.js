@@ -45,6 +45,7 @@ export default () => (
         <Route exact path="/monitoring" component={monitoring} />
         <Route exact path="/monitoring/:id" component={monitoring} />
         <Route exact path="/notification" component={notification} />
+        <Route exact path="/notification/:id/:error/:t/:h/:date" component={notification} />
 
 
         <Route exact path="/test" component={test} />

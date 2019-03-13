@@ -199,7 +199,7 @@ export default class monitoring extends React.Component {
         <section id="space">
           <div className="banner-h">
             <div className="text-cobg">
-              การตรวจสอบ
+              การตรวจสอบข้อมูลอุณหภูมิและความชื้น
                     </div>
           </div>
         </section>

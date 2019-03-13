@@ -58,7 +58,7 @@ export default class header extends Component {
                             <NavLink to="/dashboard/undefined" className="fonthead">แผงควบคุม</NavLink>
                         </NavItem>
                         <NavItem id="spacetop">
-                            <NavLink to="/notification" className="fonthead">ระบบแจ้งเตือน</NavLink>
+                            <NavLink to="/notification/undefined/undefined/undefined/undefined/undefined" className="fonthead">ระบบแจ้งเตือน</NavLink>
                         </NavItem>
                         <NavItem id="spacetop">
                             <NavLink to="/history" className="fonthead">ประวัติย้อนหลัง</NavLink>
