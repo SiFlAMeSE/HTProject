@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Table, Button, Input, FormGroup, Form, Container, Row, Col } from 'reactstrap';
 import axios from 'axios';
-import DashboardChoice from './DashboardChoice';
-import TableDashboard from './TabalDashboard';
+import DashboardChoice from './Choice/DashboardChoice';
+import DashboardTable from './Dashboard_Table';
 
 var _id, loca, Build, Location;
 var bu_num, Loca_num;
@@ -16,16 +16,6 @@ class dashboard extends Component {
         this.state = {
             data: {}
         }
-
-        // this.state = {
-        //     Name_Lo: '',
-        //     Name_Build: '',
-        //     Position: '',
-        //     Temp_Low: '',
-        //     Temp_Hight: '',
-        //     Humdi_Low: '',
-        //     Humdi_Hight: ''
-        // }
 
         this.state = { Senser: [], Location: [] };
 
@@ -71,6 +61,7 @@ class dashboard extends Component {
             .catch(function (error) {
                 console.log(error);
             })
+
     }
 
     onchangeLocatioin(e) {
@@ -95,18 +86,20 @@ class dashboard extends Component {
                                     Temp_Low: object.Temp_Low,
                                     Temp_Hight: object.Temp_Hight,
                                     Humdi_Low: object.Humdi_Low,
-                                    Humdi_Hight: object.Humdi_Hight
+                                    Humdi_Hight: object.Humdi_Hight,
+                                    Macaddress: object.Macaddress
+
                                 }
                                 // console.log("test")
                                 // console.log(show)
                                 if(_id === Location[y]._id)
                                 {
-                                    return <TableDashboard obj={show} />
+                                    return <DashboardTable obj={show} />
                                 }
                                 else if(_id === "undefined")
                                 {
                                     console.log(_id)
-                                    return <TableDashboard obj={show} />
+                                    return <DashboardTable obj={show} />
                                 }
                                 
                             }

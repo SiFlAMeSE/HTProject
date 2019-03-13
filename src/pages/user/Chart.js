@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
 import { Line } from 'react-chartjs-2';
-import ChoiceLable from './Choice/ChoiceLable';
 import moment from 'moment';
 
 var data_ss, Dht;
@@ -62,6 +61,8 @@ export default class Chart extends React.Component {
         data_set = this.props.obj
         data_num = this.props.obj.length - 1
         data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
+
+        // console.log(data_set)
     }
 
     componentDidMount() {
@@ -76,17 +77,13 @@ export default class Chart extends React.Component {
             })
     }
 
-    // componentWillReceiveProps(nextProps){
-    //     this.label_X(nextProps)
-    //     this.label_X(nextProps)
-    // }
-
     dataGraph(){
         for(let i=39 ; i>=0 ; i-- , data_num--){
             // console.log(moment().format())
             label_X[i] = moment(data_set[data_num].date).format('LTS')
             data_temp[i] = data_set[data_num].t
             data_humdi[i] = data_set[data_num].h
+            
             // console.log(data_set[data_num]._id)
             // console.log(data_set[data_num].t)
             // console.log(moment(data_set[data_num].date).format('LTS'))
