@@ -11,6 +11,7 @@ var bu_num, Loca_num, num=0;
 var data_ss;
 var loca = [];
 var set = "undefined";
+var _mass;
 
 class notification extends Component {
     constructor(props) {
@@ -193,6 +194,245 @@ class notification extends Component {
         });
     }
 
+    tabRow2() {
+        return this.state.WarnTH.map(function (object, i) {
+            const _date = moment(object.date).format('YYYY-MM-DD')
+            if(_t !== set && _h === set){
+              if(object.Message === "อุณหภูมิสูงกว่าค่าที่กำหนด" || object.Message === "อุณหภูมิต่ำกว่าค่าที่กำหนด") {
+                console.log("test2")
+                if(_mac !== set && _dateP === set) {
+                    if(_mac === object.Id_MAC) {
+                        for(i=0 ; i<loca.length ; i++)
+                        {
+                            if(_mac === loca[i].Macaddress)
+                            {
+                                const show = {
+                                    mass: "ข้อบกพร่องของอุณหภูมิ",
+                                    location: "สถานที่ : " + loca[i].Name_Lo + "อาคาร : " + loca[i].Name_Build + "ห้อง : " + loca[i].Position,
+                                    max_t: loca[i].Temp_Hight,
+                                    min_t: loca[i].Temp_Low,
+                                    max_h: loca[i].Humdi_Hight,
+                                    min_h: loca[i].Humdi_Low,
+                                    t: object.Temp,
+                                    h: object.Humdidity,
+                                    error: object.Message,
+                                    mac: loca[i].Macaddress,
+                                    date: object.date
+                                }
+                                return <WarnSenser obj={show}/> 
+                            }
+                        }
+                    }
+                }
+                else if(_mac === set && _dateP != set){
+                    if(_dateP === _date){
+                        for(i=0 ; i<loca.length ; i++)
+                        {
+                            if(object.Id_MAC === loca[i].Macaddress)
+                            {
+                                const show = {
+                                    mass: "ข้อบกพร่องของอุณหภูมิ",
+                                    location: "สถานที่ : " + loca[i].Name_Lo + "อาคาร : " + loca[i].Name_Build + "ห้อง : " + loca[i].Position,
+                                    max_t: loca[i].Temp_Hight,
+                                    min_t: loca[i].Temp_Low,
+                                    max_h: loca[i].Humdi_Hight,
+                                    min_h: loca[i].Humdi_Low,
+                                    t: object.Temp,
+                                    h: object.Humdidity,
+                                    error: object.Message,
+                                    mac: loca[i].Macaddress,
+                                    date: object.date
+                                }
+                                return <WarnSenser obj={show}/> 
+                            }
+                        }
+                    }
+                }
+                else if(_mac !== set && _dateP !== set) {
+                    if(_mac === object.Id_MAC && _dateP === _date) {
+                        for(i=0 ; i<loca.length ; i++)
+                        {
+                            if(object.Id_MAC === loca[i].Macaddress)
+                            {
+                                const show = {
+                                    mass: "ข้อบกพร่องของอุณหภูมิ",
+                                    location: "สถานที่ : " + loca[i].Name_Lo + "อาคาร : " + loca[i].Name_Build + "ห้อง : " + loca[i].Position,
+                                    max_t: loca[i].Temp_Hight,
+                                    min_t: loca[i].Temp_Low,
+                                    max_h: loca[i].Humdi_Hight,
+                                    min_h: loca[i].Humdi_Low,
+                                    t: object.Temp,
+                                    h: object.Humdidity,
+                                    error: object.Message,
+                                    mac: loca[i].Macaddress,
+                                    date: object.date
+                                }
+                                return <WarnSenser obj={show}/> 
+                            }
+                        }
+                    }
+                }
+            }
+            } else if(_t === set && _h !== set){
+                if(object.Message === "ความชื้นสูงกว่าค่าที่กำหนด" || object.Message === "ความชื้นตำกว่าค่าที่กำหนด") {
+                    console.log("test2")
+                    if(_mac !== set && _dateP === set) {
+                        if(_mac === object.Id_MAC) {
+                            for(i=0 ; i<loca.length ; i++)
+                            {
+                                if(_mac === loca[i].Macaddress)
+                                {
+                                    const show = {
+                                        mass: "ข้อบกพร่องของความชื้น",
+                                        location: "สถานที่ : " + loca[i].Name_Lo + "อาคาร : " + loca[i].Name_Build + "ห้อง : " + loca[i].Position,
+                                        max_t: loca[i].Temp_Hight,
+                                        min_t: loca[i].Temp_Low,
+                                        max_h: loca[i].Humdi_Hight,
+                                        min_h: loca[i].Humdi_Low,
+                                        t: object.Temp,
+                                        h: object.Humdidity,
+                                        error: object.Message,
+                                        mac: loca[i].Macaddress,
+                                        date: object.date
+                                    }
+                                    return <WarnSenser obj={show}/> 
+                                }
+                            }
+                        }
+                    }
+                    else if(_mac === set && _dateP != set){
+                        if(_dateP === _date){
+                            for(i=0 ; i<loca.length ; i++)
+                            {
+                                if(object.Id_MAC === loca[i].Macaddress)
+                                {
+                                    const show = {
+                                        mass: "ข้อบกพร่องของความชื้น",
+                                        location: "สถานที่ : " + loca[i].Name_Lo + "อาคาร : " + loca[i].Name_Build + "ห้อง : " + loca[i].Position,
+                                        max_t: loca[i].Temp_Hight,
+                                        min_t: loca[i].Temp_Low,
+                                        max_h: loca[i].Humdi_Hight,
+                                        min_h: loca[i].Humdi_Low,
+                                        t: object.Temp,
+                                        h: object.Humdidity,
+                                        error: object.Message,
+                                        mac: loca[i].Macaddress,
+                                        date: object.date
+                                    }
+                                    return <WarnSenser obj={show}/> 
+                                }
+                            }
+                        }
+                    }
+                    else if(_mac !== set && _dateP !== set) {
+                        if(_mac === object.Id_MAC && _dateP === _date) {
+                            for(i=0 ; i<loca.length ; i++)
+                            {
+                                if(object.Id_MAC === loca[i].Macaddress)
+                                {
+                                    const show = {
+                                        mass: "ข้อบกพร่องของความชื้น",
+                                        location: "สถานที่ : " + loca[i].Name_Lo + "อาคาร : " + loca[i].Name_Build + "ห้อง : " + loca[i].Position,
+                                        max_t: loca[i].Temp_Hight,
+                                        min_t: loca[i].Temp_Low,
+                                        max_h: loca[i].Humdi_Hight,
+                                        min_h: loca[i].Humdi_Low,
+                                        t: object.Temp,
+                                        h: object.Humdidity,
+                                        error: object.Message,
+                                        mac: loca[i].Macaddress,
+                                        date: object.date
+                                    }
+                                    return <WarnSenser obj={show}/> 
+                                }
+                            }
+                        }
+                    }
+                }
+            } else if(_t !== set && _h !== set){
+                    if(object.Message === "ความชื้นสูงกว่าค่าที่กำหนด" || object.Message === "ความชื้นตำกว่าค่าที่กำหนด")
+                    {
+                        _mass = "ข้อบกพร่องของความชื้น"
+                    } else if(object.Message === "อุณหภูมิสูงกว่าค่าที่กำหนด" || object.Message === "อุณหภูมิต่ำกว่าค่าที่กำหนด")
+                    {
+                        _mass = "ข้อบกพร่องของอุณหภูมิ"
+                    }
+                    if(_mac !== set && _dateP === set) {
+                        if(_mac === object.Id_MAC) {
+                            for(i=0 ; i<loca.length ; i++)
+                            {
+                                if(_mac === loca[i].Macaddress)
+                                {
+                                    const show = {
+                                        mass: _mass,
+                                        location: "สถานที่ : " + loca[i].Name_Lo + "อาคาร : " + loca[i].Name_Build + "ห้อง : " + loca[i].Position,
+                                        max_t: loca[i].Temp_Hight,
+                                        min_t: loca[i].Temp_Low,
+                                        max_h: loca[i].Humdi_Hight,
+                                        min_h: loca[i].Humdi_Low,
+                                        t: object.Temp,
+                                        h: object.Humdidity,
+                                        error: object.Message,
+                                        mac: loca[i].Macaddress,
+                                        date: object.date
+                                    }
+                                    return <WarnSenser obj={show}/> 
+                                }
+                            }
+                        }
+                    }
+                    else if(_mac === set && _dateP != set){
+                        if(_dateP === _date){
+                            for(i=0 ; i<loca.length ; i++)
+                            {
+                                if(object.Id_MAC === loca[i].Macaddress)
+                                {
+                                    const show = {
+                                        mass: _mass,
+                                        location: "สถานที่ : " + loca[i].Name_Lo + "อาคาร : " + loca[i].Name_Build + "ห้อง : " + loca[i].Position,
+                                        max_t: loca[i].Temp_Hight,
+                                        min_t: loca[i].Temp_Low,
+                                        max_h: loca[i].Humdi_Hight,
+                                        min_h: loca[i].Humdi_Low,
+                                        t: object.Temp,
+                                        h: object.Humdidity,
+                                        error: object.Message,
+                                        mac: loca[i].Macaddress,
+                                        date: object.date
+                                    }
+                                    return <WarnSenser obj={show}/> 
+                                }
+                            }
+                        }
+                    }
+                    else if(_mac !== set && _dateP !== set) {
+                        if(_mac === object.Id_MAC && _dateP === _date) {
+                            for(i=0 ; i<loca.length ; i++)
+                            {
+                                if(object.Id_MAC === loca[i].Macaddress)
+                                {
+                                    const show = {
+                                        mass: _mass,
+                                        location: "สถานที่ : " + loca[i].Name_Lo + "อาคาร : " + loca[i].Name_Build + "ห้อง : " + loca[i].Position,
+                                        max_t: loca[i].Temp_Hight,
+                                        min_t: loca[i].Temp_Low,
+                                        max_h: loca[i].Humdi_Hight,
+                                        min_h: loca[i].Humdi_Low,
+                                        t: object.Temp,
+                                        h: object.Humdidity,
+                                        error: object.Message,
+                                        mac: loca[i].Macaddress,
+                                        date: object.date
+                                    }
+                                    return <WarnSenser obj={show}/> 
+                                }
+                            }
+                        }
+                    }
+            }
+        });
+    }
+
     choice() {
         return this.state.Senser.map(function (object, i) {
             for (let z = 0; z < bu_num; z++) {
@@ -306,6 +546,7 @@ class notification extends Component {
                                     </tr>
                                 </thead>
                                 {this.tabRow1()}
+                                {this.tabRow2()}
                             </Table>
                         </Form>
                     </Container>

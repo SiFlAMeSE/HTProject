@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 
 class Tablehistory extends Component {
   render() {
@@ -35,7 +36,7 @@ class Tablehistory extends Component {
             {this.props.obj.mac}
           </td>
           <td>
-            {this.props.obj.date}
+            {moment(this.props.obj.date).format('MMMM Do YYYY, h:mm:ss a')}
           </td>
         </tr>
     );
