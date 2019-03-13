@@ -22,6 +22,8 @@ import test from "../pages/testHTPPSget";
 import testcode from "../testcode";
 import testcount from "../pages/testCount";
 
+import authorize from "../pages/user/user_page/authorize";
+
 
 export default () => (
     <Switch>
@@ -50,9 +52,11 @@ export default () => (
 
         <Route exact path="/test" component={test} />
         <Route exact path="/testcode" component={testcode} />
-        <Route exact path="/testcount" component={testcount}/>
+        <Route exact path="/testcount" component={testcount} />
 
-        
+        {/* page user */}
+        <Route exact path="/authorize" component={authorize} />
+
 
     </Switch>
 )
