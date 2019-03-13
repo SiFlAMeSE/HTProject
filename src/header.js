@@ -91,22 +91,13 @@ export default class header extends Component {
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
                         <NavItem id="spacetop">
-                            <NavLink to="/" className="fonthead">หน้าหลัก</NavLink>
-                        </NavItem>
-                        <NavItem id="spacetop">
                             <NavLink to="/howto" className="fonthead">วิธีการใช้งาน</NavLink>
                         </NavItem>
                         <NavItem id="spacetop">
-                            <NavLink to="/infor" className="fonthead">ข้อมูลอุปกรณ์</NavLink>
+                            <NavLink to="/monitoring/undefined" className="fonthead">การตรวจสอบ</NavLink>
                         </NavItem>
                         <NavItem id="spacetop">
-                            <NavLink to="/monitoring" className="fonthead">การตรวจสอบ</NavLink>
-                        </NavItem>
-                        <NavItem id="spacetop">
-                            <NavLink to="/dashboard/undefined" className="fonthead">แผงควบคุม</NavLink>
-                        </NavItem>
-                        <NavItem id="spacetop">
-                            <NavLink to="/notification" className="fonthead">ระบบแจ้งเตือน</NavLink>
+                            <NavLink to="/notification/undefined/undefined/undefined/undefined/undefined" className="fonthead">ระบบแจ้งเตือน</NavLink>
                         </NavItem>
                         <NavItem id="spacetop">
                             <NavLink to="/history" className="fonthead">ประวัติย้อนหลัง</NavLink>

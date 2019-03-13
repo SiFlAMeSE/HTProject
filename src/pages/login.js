@@ -48,7 +48,7 @@ class loginp extends Component {
                     if (data.Positions === 'user') {
                         sessionStorage.clear();
                         sessionStorage.setItem('Login_user', JSON.stringify(res.data.data))
-                        window.location = "/"
+                        window.location = "/authorize"
                     }
                 }
                 else {
