@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
+import { Button } from 'semantic-ui-react';
 
 export default class signup extends Component {
     constructor() {
@@ -12,13 +14,24 @@ export default class signup extends Component {
             Address: '',
             Phonenumber: '',
             Positions: '',
+            Id_line: '',
+
+            modal: false
         }
+
+        this.toggle = this.toggle.bind(this);
         this.onChange = this.onChange.bind(this)
         this.onSubmit = this.onSubmit.bind(this)
     }
 
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value })
+    }
+
+    toggle() {
+        this.setState({
+            modal: !this.state.modal
+        });
     }
 
     onSubmit(e) {
@@ -30,8 +43,8 @@ export default class signup extends Component {
             Lname: this.state.Lname,
             Address: this.state.Address,
             Phonenumber: this.state.Phonenumber,
-            Positions: this.state.Positions
-
+            Positions: this.state.Positions,
+            Id_line: this.state.Id_line
         }
         axios.post('http://localhost:5000/users/add', UserGen)
             // .then(res => console.log(res.data));
@@ -63,16 +76,16 @@ export default class signup extends Component {
                                     <div className="row">
                                         <div className="col-md-6">
                                             {/* <div className="form-group"> */}
-                                                <label for="Username">ชื่อผู้ใช้งาน</label>
-                                                <input type="text"
-                                                    className="form-control"
-                                                    name="User_g"
-                                                    placeholder="ชื่อผู้ใช้"
-                                                    value={this.state.User_g}
-                                                    onChange={this.onChange}
-                                                    // pattern="[\w]{1,20}"
-                                                    // title="ภาษาอังกฤษหรือตัวเลข มากกว่า 8 ตัวขึ้นไป"
-                                                    required />
+                                            <label for="Username">ชื่อผู้ใช้งาน</label>
+                                            <input type="text"
+                                                className="form-control"
+                                                name="User_g"
+                                                placeholder="ชื่อผู้ใช้"
+                                                value={this.state.User_g}
+                                                onChange={this.onChange}
+                                                // pattern="[\w]{1,20}"
+                                                // title="ภาษาอังกฤษหรือตัวเลข มากกว่า 8 ตัวขึ้นไป"
+                                                required />
                                             {/* </div> */}
                                         </div>
                                         <div className="col-md-6">
@@ -102,6 +115,7 @@ export default class signup extends Component {
                                                     onChange={this.onChange} />
                                             </div>
                                         </div>
+
                                         <div className="col-md-6">
                                             <div className="form-group">
                                                 <label for="Lname">นามสกุล</label>
@@ -161,6 +175,29 @@ export default class signup extends Component {
                                         </textarea>
 
                                     </div>
+
+                                    <div className="form-group">
+                                        <label for="Phone">รหัสไลน์</label>
+                                        <span onClick={this.toggle} style={{color:'red',paddingLeft:'5px'}}><u>วิธีขอรหัส</u></span>
+                                        <Modal isOpen={this.state.modal}
+                                            toggle={this.toggle}>
+                                            <ModalBody>
+                                                <p>1.ทำการเพิ่มเพื่อน Line Bot : NotiDHT จาก QR Code</p>
+                                                <img src={require('../../src/img/QRCode.png')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
+                                                <p>2.ส่งขอความไปหา Line Bot : NotiDHT "ขอรหัสไอดี"</p>
+                                                <p>3.นำรหัสไอดีที่ได้ไปใส่ในช่องรหัสไลน์</p>
+                                        </ModalBody>
+                                        </Modal>
+                                        <input type="text"
+                                            className="form-control"
+                                            name="Id_line"
+                                            placeholder="รหัสไลน์"
+                                            // pattern="(/d.{3,}"
+                                            // required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
+                                            value={this.state.Id_line}
+                                            onChange={this.onChange} />
+                                    </div>
+
                                     <div className="form-group">
                                         <input type="submit" className="btn btn-primary" value="ลงทะเบียน" />
                                     </div>
