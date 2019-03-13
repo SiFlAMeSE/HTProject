@@ -5,8 +5,8 @@ import { Line } from 'react-chartjs-2';
 import moment from 'moment';
 
 
-var data_ss, Dht, dht_num;
-var label_X = []
+var data_ss, Dht, dht_num, num = 0
+var label_X = [], data = []
 var label_temp = 'อุณหภูมิ'
 var label_humdi = 'ความชื้น'
 var data_temp = []
@@ -74,7 +74,7 @@ class Dashboard_Table extends React.Component {
       .then(response => {
         Dht = response.data;
         data_num = response.data.length - 1;
-        // this.setState({ Dht: Dht });
+        this.setState({ Dht: Dht });
         // console.log(Dht)
         // console.log(Dht[0].date)
       })
@@ -89,7 +89,7 @@ class Dashboard_Table extends React.Component {
       .then(response => {
         Dht = response.data;
         data_num = response.data.length - 1;
-        // this.setState({ Dht: Dht });
+        this.setState({ Dht: Dht });
         // console.log(Dht)
       })
       .catch(function (error) {
@@ -98,14 +98,42 @@ class Dashboard_Table extends React.Component {
     count = 0;
   }
 
-  dataGraph() {
-    // console.log('kk')
-    for (let i = 39; i >= 0; i-- , data_num--) {
-      label_X[i] = moment(Dht[data_num].date).format('LTS')
-      data_temp[i] = Dht[data_num].t
-      data_humdi[i] = Dht[data_num].h
+  showbar(_mac) {
+    console.log(_mac)
+    num = 0
+    data = []
+    //console.log(data)
+    if (_mac !== "undefined") {
+      //console.log("test")
+      return this.state.Dht.map((object, i) => {
+        //  console.log(i)
+        //  console.log(data_num-1)
+        if (object.mac === _mac) {
+          //  console.log(i)
+          //  console.log(num)
+          data[num] = object
+          //  console.log(data[num])
+          num = num + 1
+        }
+      });
+    }
+  }
 
-      // console.log(data_set[data_num]._id)
+  dataGraph() {
+    console.log(this.props.obj.Macaddress)
+    { this.showbar(this.props.obj.Macaddress) }
+    console.log(data)
+    console.log(num - 1)
+    num -= 1
+    for (let i = 39; i >= 0; i-- , num--) {
+      console.log(data[num])
+      console.log(num)
+      label_X[i] = moment(data[num].date).format('LTS')
+      data_temp[i] = data[num].t
+      data_humdi[i] = data[num].h
+
+      console.log(data[i].mac)
+      // console.log(label_X[i])
       // console.log(data_set[data_num].t)
       // console.log(moment(data_set[data_num].date).format('LTS'))
 
@@ -144,11 +172,11 @@ class Dashboard_Table extends React.Component {
 
   render() {
     if (seconds == 1) {
-      // console.log('render 1')
+      console.log('render 1')
       this.startTimer()
 
     } if (count == 1) {
-      // console.log('render 2')
+      console.log('render 2')
       this.loopdht()
     }
     return (
