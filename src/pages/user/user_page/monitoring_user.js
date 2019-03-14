@@ -3,12 +3,14 @@ import axios from 'axios';
 import { Table, Button, Input, Container, Row, Col } from 'reactstrap';
 import SenserChoice from '../Choice/SenserChoice';
 import Chart from '../Chart';
+import moment from 'moment';
 
 var _mac, mac, Build, Location, Dht, Authorize, Senser;
 var sen_num, bu_num, Loca_num, dht_num, aut_num;
 var data_ss, num = 0;
 var count, seconds = 1;
 var data = [];
+var show = [], show_num = 0;
 
 export default class monitoring_user extends React.Component {
   constructor(props) {
@@ -53,15 +55,15 @@ export default class monitoring_user extends React.Component {
     // let timeLeftVar = this.secondsToTime(seconds);
     // this.setState({ time: timeLeftVar });
     axios.get('http://localhost:5000/authorize/authorize_list')
-            .then(response => {
-                Authorize = response.data;
-                aut_num = response.data.length;
-                // this.setState({ Authorize });
-                // console.log(Authorize);
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
+      .then(response => {
+        Authorize = response.data;
+        aut_num = response.data.length;
+        // this.setState({ Authorize });
+        // console.log(Authorize);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
 
     axios.get('http://localhost:5000/sensers/senser_list')
       .then(response => {
@@ -78,7 +80,7 @@ export default class monitoring_user extends React.Component {
       .then(response => {
         Build = response.data;
         bu_num = response.data.length;
-        this.setState({ Build: Build});
+        this.setState({ Build: Build });
         // console.log(Build);
         // console.log(bu_num);
       })
@@ -148,24 +150,94 @@ export default class monitoring_user extends React.Component {
     //   }
     //   return true
     // });
-
+    show = [];
+    show_num = 0;
     return this.state.Senser.map(function (object, i) {
-        for (let z = 0; z < bu_num; z++) {
-            if (object.Id_Build === Build[z]._id) {
-                for (let y = 0; y < Loca_num; y++) {
-                    if (Build[z].Id_Loca === Location[y]._id) {
-                        for (let i = 0; i < aut_num; i++) {
-                            if (object.Key_Room === Authorize[i].Key_Room) {
-                                if (data_ss._id === Authorize[i].Id_User) {
-                                    return <SenserChoice obj={object} key={i} />;
-                                }
-                            }
-                        }
+      for (let z = 0; z < bu_num; z++) {
+        if (object.Id_Build === Build[z]._id) {
+          for (let y = 0; y < Loca_num; y++) {
+            if (Build[z].Id_Loca === Location[y]._id) {
+              for (let i = 0; i < aut_num; i++) {
+                if (object.Key_Room === Authorize[i].Key_Room) {
+                  if (data_ss._id === Authorize[i].Id_User) {
+                    show[show_num] = {
+                      Name_Lo: Location[y].Name_Lo,
+                      Name_Build: Build[z].Name_Build,
+                      Position: object.Position,
+                      Temp_Low: object.Temp_Low,
+                      Temp_Hight: object.Temp_Hight,
+                      Humdi_Low: object.Humdi_Low,
+                      Humdi_Hight: object.Humdi_Hight,
+                      Macaddress: object.Macaddress
                     }
+                    show_num = show_num + 1
+                    return <SenserChoice obj={object} key={i} />;
+                  }
                 }
+              }
             }
+          }
         }
+      }
     });
+  }
+
+  showData() {
+    if (_mac !== "undefined") {
+      console.log("No deil")
+      for (let i = 0; i < show_num; i++) {
+        if (_mac === show[i].Macaddress) {
+          return <Table>
+            <Row>
+              <Col>
+                <div>ข้อมูลตั้งค่า</div>
+              </Col>
+              <Col>
+                <div>ข้อมูลเซนเซอร์ </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div>สถานที่ : {show[i].Name_Lo}</div>
+              </Col>
+              <Col>
+                <div>อุณหภูมิสูงสุด : {show[i].Temp_Hight} </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div>อาคาร : {show[i].Name_Build}</div>
+              </Col>
+              <Col>
+                <div>อุณหภูมิตำสุด : {show[i].Temp_Low} </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div>ห้องติดตั้งเซนเซอร์ : {show[i].Position}</div>
+              </Col>
+              <Col>
+                <div>ความชื้นสูงสุด : {show[i].Humdi_Hight} </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div>รหัสเครื่อง : {show[i].Macaddress}</div>
+              </Col>
+              <Col>
+                <div>ความชื้นสูงสุด : {show[i].Humdi_Low} </div>
+              </Col>
+            </Row>
+          </Table>
+        }
+      }
+    }
+  }
+
+  dateNow() {
+    if (_mac !== "undefined") {
+      return moment().format('MMMM Do YYYY, h:mm:ss a')
+    }
   }
 
   showbar() {
@@ -206,7 +278,7 @@ export default class monitoring_user extends React.Component {
       time: this.secondsToTime(seconds),
       seconds: seconds,
     });
-    
+
     // Check if we're at zero.
     if (seconds == 0) {
       clearInterval(this.timer);
@@ -246,6 +318,11 @@ export default class monitoring_user extends React.Component {
                 <Button color="success" onClick={(e) => this.sentid(e)}>ค้นหา</Button>
               </Col>
             </Row>
+            <br />
+          </Table>
+          {this.showData()}
+          <Table>
+            <Row align="right"><Col> {this.dateNow()} </Col></Row>
           </Table>
         </Container>
 
