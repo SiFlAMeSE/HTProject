@@ -1,0 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Prompt:400');
+
+
+#font {
+    font-family: 'Prompt', sans-serif;
+  }
+
+#my-modal {
+    /* width : 90vw */
+    max-width : 85vw;
+}

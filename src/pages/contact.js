@@ -19,11 +19,11 @@ class contact extends Component {
                             <Table>
                                 <Row>
                                     <Col><img width="410px" height="520px" src={require('../img/flame.jpg')} alt="pic-flame"/></Col>
-                                    <Col sm="6"><h1>นายสิรศักดิ์  สุนทรท้วม</h1>คณะครุศาสตร์อุตสาหกรรม ชั้นปีที่ 4</Col>
+                                    <Col sm="6"><b>นายสิรศักดิ์  สุนทรท้วม</b><br/>คณะครุศาสตร์อุตสาหกรรม ชั้นปีที่ 4</Col>
                                 </Row>
                                 <hr />
                                 <Row>
-                                    <Col sm="6"><h1>นายสมโภชน์  สระทองแง๊ก</h1>คณะครุศาสตร์อุตสาหกรรม ชั้นปีที่ 4</Col>
+                                    <Col sm="6"><b>นายสมโภชน์  สระทองแง๊ก</b><br/>คณะครุศาสตร์อุตสาหกรรม ชั้นปีที่ 4</Col>
                                     <Col><img width="420px" height="520px" src={require('../img/thiey.jpg')} alt="pic-theiy"/></Col>
                                 </Row>
                             </Table>

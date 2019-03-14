@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalHeader, ModalBody, Row, Col } from 'reactstrap';
 import axios from 'axios';
-import { Button } from 'semantic-ui-react';
+
+import '../css/signup.css';
+
 
 export default class signup extends Component {
     constructor() {
@@ -69,7 +71,7 @@ export default class signup extends Component {
                 </section>
 
                 <div>
-                    <section>
+                    <section >
                         <div className="container">
                             <div className="col-auto">
                                 <form noValidate onSubmit={this.onSubmit}>
@@ -173,20 +175,30 @@ export default class signup extends Component {
                                             onChange={this.onChange}
                                         >
                                         </textarea>
-
                                     </div>
 
-                                    <div className="form-group">
+                                    <div >
                                         <label for="Phone">รหัสไลน์</label>
-                                        <span onClick={this.toggle} style={{color:'red',paddingLeft:'5px'}}><u>วิธีขอรหัส</u></span>
+                                        <span onClick={this.toggle} style={{ color: 'red', paddingLeft: '5px' }}><u>วิธีขอรหัส</u></span>
                                         <Modal isOpen={this.state.modal}
-                                            toggle={this.toggle}>
-                                            <ModalBody>
-                                                <p>1.ทำการเพิ่มเพื่อน Line Bot : NotiDHT จาก QR Code</p>
-                                                <img src={require('../../src/img/QRCode.png')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
-                                                <p>2.ส่งขอความไปหา Line Bot : NotiDHT "ขอรหัสไอดี"</p>
-                                                <p>3.นำรหัสไอดีที่ได้ไปใส่ในช่องรหัสไลน์</p>
-                                        </ModalBody>
+                                            toggle={this.toggle} id="my-modal">
+
+                                            <ModalBody align="center" valign="middle">
+                                                <Row colSpan="3" >
+                                                    <Col><b>ขั้นตอนการขอรหัสเข้าใช้งาน</b></Col>
+                                                </Row>
+                                                <hr/>
+                                                <Row style={{paddingBottom: '30px' }}>
+                                                    <Col>1.ทำการเพิ่มเพื่อน Line Bot : NotiDHT จาก QR Code</Col>
+                                                    <Col>2.ส่งขอความไปหา Line Bot : NotiDHT "ขอรหัสไอดี"</Col>
+                                                    <Col>3.นำรหัสไอดีที่ได้ไปใส่ในช่องรหัสไลน์</Col>
+                                                </Row>
+                                                <Row>
+                                                    <Col><img src={require('../../src/img/QRCode.png')} height="300"  alt="qrcode" /></Col>
+                                                    <Col><img src={require('../../src/img/getkey.gif')} height="720"  alt="videoline" /></Col>
+                                                    <Col><img src={require('../../src/img/how3.gif')} width="500"  alt="popup" /></Col>
+                                                </Row>
+                                            </ModalBody>
                                         </Modal>
                                         <input type="text"
                                             className="form-control"

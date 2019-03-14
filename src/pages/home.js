@@ -25,7 +25,7 @@ class home extends Component {
             <home>
                 <section className="banner-top">
                     <div className="co-picture">
-                        <img src={require('../img/esp32.png')} className="picture" alt="esp32"/>
+                        <img src={require('../img/esp32.png')} className="picture" alt="esp32" />
                         {/* <img src={require('../img/icon.png')} className="iconfront1"/> */}
                         {/* <div className="iconfront1"></div> */}
                         <div className="content">
@@ -42,12 +42,19 @@ class home extends Component {
                     <Row align="center">
                         <Col xs={6} md={4} id="b">
                             ตรวจสอบสถานะปัจจุบัน
+                            <br/>
+                            <img src={require('../img/h1.png')} alt="alert"  height="200px"/>
+
                         </Col>
                         <Col xs={6} md={4} id="b">
                             ประวัติย้อนหลัง
+                            <br/>
+                            <img src={require('../img/h2.png')} alt="history"  height="200px"/>
                         </Col>
                         <Col xs={6} md={4} id="b">
-                            ตรวจสอบความผิดหลาด
+                            ตรวจสอบความผิดพลาด
+                            <br/>
+                            <img src={require('../img/h3.png')} alt="check"  height="200px"/>
                         </Col>
                     </Row>
                 </Container>
