@@ -88,7 +88,6 @@ class dashboard extends Component {
                                     Humdi_Low: object.Humdi_Low,
                                     Humdi_Hight: object.Humdi_Hight,
                                     Macaddress: object.Macaddress
-
                                 }
                                 // console.log("test")
                                 // console.log(show)

@@ -3,12 +3,14 @@ import axios from 'axios';
 import { Table, Button, Input, Container, Row, Col } from 'reactstrap';
 import SenserChoice from './Choice/SenserChoice';
 import Chart from './Chart';
+import moment from 'moment';
 
 var _mac, mac, Build, Location, Dht;
 var bu_num, Loca_num, dht_num;
 var data_ss, num = 0;
 var count, seconds = 1;
 var data = [];
+var show = [], show_num = 0;
 
 export default class monitoring extends React.Component {
   constructor(props) {
@@ -122,12 +124,25 @@ export default class monitoring extends React.Component {
   }
 
   choice() {
+    show = [];
+    show_num = 0;
     return this.state.Senser.map((object, i) => {
       for (let z = 0; z < bu_num; z++) {
         if (object.Id_Build === Build[z]._id) {
           for (let y = 0; y < Loca_num; y++) {
             if (Build[z].Id_Loca === Location[y]._id) {
               if (data_ss._id === Location[y].Id_Admin) {
+                show[show_num] = {
+                  Name_Lo: Location[y].Name_Lo,
+                  Name_Build: Build[z].Name_Build,
+                  Position: object.Position,
+                  Temp_Low: object.Temp_Low,
+                  Temp_Hight: object.Temp_Hight,
+                  Humdi_Low: object.Humdi_Low,
+                  Humdi_Hight: object.Humdi_Hight,
+                  Macaddress: object.Macaddress
+                }
+                show_num = show_num + 1
                 return <SenserChoice obj={object} key={i} />;
               }
             }
@@ -136,6 +151,65 @@ export default class monitoring extends React.Component {
       }
       return true
     });
+  }
+
+  showData() {
+    if (_mac !== "undefined") {
+      console.log("No deil")
+      for (let i = 0; i < show_num; i++) {
+        if (_mac === show[i].Macaddress) {
+          return <Table>
+            <Row>
+              <Col>
+                <div>ข้อมูลตั้งค่า</div>
+              </Col>
+              <Col>
+                <div>ข้อมูลเซนเซอร์ </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div>สถานที่ : {show[i].Name_Lo}</div>
+              </Col>
+              <Col>
+                <div>อุณหภูมิสูงสุด : {show[i].Temp_Hight} </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div>อาคาร : {show[i].Name_Build}</div>
+              </Col>
+              <Col>
+                <div>อุณหภูมิตำสุด : {show[i].Temp_Low} </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div>ห้องติดตั้งเซนเซอร์ : {show[i].Position}</div>
+              </Col>
+              <Col>
+                <div>ความชื้นสูงสุด : {show[i].Humdi_Hight} </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col>
+                <div>รหัสเครื่อง : {show[i].Macaddress}</div>
+              </Col>
+              <Col>
+                <div>ความชื้นสูงสุด : {show[i].Humdi_Low} </div>
+              </Col>
+            </Row>
+          </Table>
+        }
+      }
+    }
+  }
+  dateNow()
+  {
+    if(_mac !== "undefined")
+    {
+      return moment().format('MMMM Do YYYY, h:mm:ss a')
+    }
   }
 
   showbar() {
@@ -162,7 +236,7 @@ export default class monitoring extends React.Component {
   startTimer() {
     console.log('start');
     if (this.timer == 0 && seconds > 0) {
-      this.timer = setInterval(this.countDown, 10000);
+      this.timer = setInterval(this.countDown, 1000);
       // this.state.down = 1;
     }
     // this.showbar()
@@ -176,7 +250,7 @@ export default class monitoring extends React.Component {
       time: this.secondsToTime(seconds),
       seconds: seconds,
     });
-    
+
     // Check if we're at zero.
     if (seconds == 0) {
       clearInterval(this.timer);
@@ -208,7 +282,7 @@ export default class monitoring extends React.Component {
             <Row align="center">
               <Col>
                 <Input type="select" name="select" onChange={this.onchangeMAC}>
-                  <option>เลือกเซนเซอร์</option>
+                  <option value="undefined">เลือกเซนเซอร์</option>
                   {this.choice()}
                 </Input>
               </Col>
@@ -216,6 +290,11 @@ export default class monitoring extends React.Component {
                 <Button color="success" onClick={(e) => this.sentid(e)}>ค้นหา</Button>
               </Col>
             </Row>
+            <br />
+          </Table>
+          {this.showData()}
+          <Table>
+            <Row align="right"><Col> {this.dateNow()} </Col></Row>
           </Table>
         </Container>
 
