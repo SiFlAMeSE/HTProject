@@ -142,7 +142,8 @@ class TabRowBuild extends Component {
                         <CardText>Low : {this.props.obj.Temp_Low} Hight : {this.props.obj.Temp_Hight}</CardText>
                         <CardText id="b">Humidity</CardText>
                         <CardText>Low : {this.props.obj.Humdi_Low} Hight : {this.props.obj.Humdi_Hight}</CardText>
-                        <CardText>MAC : {this.props.obj.Key_Room}</CardText>
+                        <CardText id="b">Key Room</CardText>
+                        <CardText>Key : {this.props.obj.Key_Room}</CardText>
                         {/* เรียกส่งค่า */}
                         <Button href="/monitoring/undefined" color="primary">ตรวจสอบ</Button>
                         <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
