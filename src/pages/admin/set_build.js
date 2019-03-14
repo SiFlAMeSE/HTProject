@@ -77,6 +77,7 @@ export default class set_build extends React.Component {
                 console.log(error);
             })
     }
+    
     createcardBuild() {
         return this.state.Build.map(function (object, i) {
             if (_id === object.Id_Loca) {

@@ -23,6 +23,9 @@ import testcode from "../testcode";
 import testcount from "../pages/testCount";
 
 import authorize from "../pages/user/user_page/authorize";
+import monitoring_user from "../pages/user/user_page/monitoring_user";
+import history_user from "../pages/user/user_page/history_user";
+import notification_user from "../pages/user/user_page/notification_user"
 
 
 export default () => (
@@ -55,8 +58,13 @@ export default () => (
         <Route exact path="/testcount" component={testcount} />
 
         {/* page user */}
-        <Route exact path="/authorize" component={authorize} />
-
+        <Route exact path="/user/authorize" component={authorize} />
+        <Route exact path="/user/monitoring" component={monitoring_user} />
+        <Route exact path="/user/monitoring/:id" component={monitoring_user} />
+        <Route exact path="/user/history" component={history_user} />
+        <Route exact path="/user/history/:id/:date" component={history_user} />
+        <Route exact path="/user/notification" component={notification_user} />
+        <Route exact path="/user/notification/:id/:error/:t/:h/:date" component={notification_user} />
 
     </Switch>
 )

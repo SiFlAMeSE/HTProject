@@ -2,7 +2,9 @@ import React from 'react';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
 import TabDetail from './Detail_Back/TabRowDetail';
+const uuidv1 = require('uuid/v1');
 var _id;
+var data_ss
 
 export default class set_detail extends React.Component {
     constructor(props) {
@@ -22,6 +24,7 @@ export default class set_detail extends React.Component {
             Temp_Hight: '',
             Humdi_Low: '',
             Humdi_Hight: '',
+            Key_Room: '',
             Id_Build: '',
         }
         this.state = {
@@ -36,6 +39,11 @@ export default class set_detail extends React.Component {
             reload: this.props.match.params.id
         })
         _id = this.props.match.params.id
+
+        data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
+        this.setState({
+            data: data_ss
+        })
     }
     toggle() {
         this.setState({
@@ -74,6 +82,7 @@ export default class set_detail extends React.Component {
     }
     onSubmit(e) {
         e.preventDefault();
+        var key = uuidv1();
         const Senser = {
             Position: this.state.Position,
             Macaddress: this.state.Macaddress,
@@ -81,6 +90,7 @@ export default class set_detail extends React.Component {
             Temp_Hight: this.state.Temp_Hight,
             Humdi_Low: this.state.Humdi_Low,
             Humdi_Hight: this.state.Humdi_Hight,
+            Key_Room: key,
             Id_Build: this.props.match.params.id
         }
         axios.post('http://localhost:5000/sensers/add', Senser)
@@ -100,8 +110,24 @@ export default class set_detail extends React.Component {
             Temp_Hight: '',
             Humdi_Low: '',
             Humdi_Hight: '',
+            Key_Room: '',
             Id_Build: ''
         });
+
+        const Authorize = {
+            Key_Room: key,
+            Id_User: data_ss
+        }
+
+        axios.post('http://localhost:5000/authorize/add', Authorize)
+            .then((res) => {
+                if (res.data === 'Server added successfully') {
+                    window.location = "/setdetail/" + this.state.reload
+                }
+            })
+            .catch(function (err) {
+                console.log('error');
+            })
     }
 
     componentDidMount() {

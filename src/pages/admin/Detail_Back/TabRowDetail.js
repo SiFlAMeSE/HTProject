@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardTitle, CardText, CardImg } from 'reactstrap';
 var data_ss
+const uuidv1 = require('uuid/v1');
 
 class TabRowBuild extends Component {
     constructor(props) {
@@ -28,6 +29,7 @@ class TabRowBuild extends Component {
             Temp_Hight: '',
             Humdi_Low: '',
             Humdi_Hight: '',
+            Key_Room: '',
             Id_Build: ''
         }
 
@@ -38,7 +40,6 @@ class TabRowBuild extends Component {
         this.setState({
             data: data_ss
         })
-
     }
 
     toggle() {
@@ -53,7 +54,8 @@ class TabRowBuild extends Component {
                     Temp_Low: response.data.Temp_Low,
                     Temp_Hight: response.data.Temp_Hight,
                     Humdi_Low: response.data.Humdi_Low,
-                    Humdi_Hight: response.data.Humdi_Hight
+                    Humdi_Hight: response.data.Humdi_Hight,
+                    Key_Room: response.data.Key_Room
                 })
             })
             .catch(function (error) {
@@ -140,8 +142,10 @@ class TabRowBuild extends Component {
                         <CardText>Low : {this.props.obj.Temp_Low} Hight : {this.props.obj.Temp_Hight}</CardText>
                         <CardText id="b">Humidity</CardText>
                         <CardText>Low : {this.props.obj.Humdi_Low} Hight : {this.props.obj.Humdi_Hight}</CardText>
+                        <CardText id="b">Key Room</CardText>
+                        <CardText>Key : {this.props.obj.Key_Room}</CardText>
                         {/* เรียกส่งค่า */}
-                        <Button href="/monitoring" color="primary">ตรวจสอบ</Button>
+                        <Button href="/monitoring/undefined" color="primary">ตรวจสอบ</Button>
                         <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
                     </Card>
                 </section>
@@ -193,6 +197,13 @@ class TabRowBuild extends Component {
                                             </Col>
                                         </Row>
                                     </Table>
+                                    <br />
+                                    <Row>
+                                        <Col>
+                                            <Label>รหัสสิทธิการเข้าถึง</Label>
+                                            <Input className="form-control" name="mac" value={this.state.Key_Room} disabled></Input>
+                                        </Col>
+                                    </Row>
                                 </Table>
                             </Container>
                         </ModalBody>

@@ -90,17 +90,20 @@ export default class header extends Component {
                 <NavbarToggler onClick={(e) => this.toggle(e)} />
                 <Collapse isOpen={this.state.isOpen} navbar>
                     <Nav className="ml-auto" navbar>
+                    <NavItem id="spacetop">
+                            <NavLink to="/user/authorize" className="fonthead">เพิ่มสิทธิการเข้าถึง</NavLink>
+                        </NavItem>
                         <NavItem id="spacetop">
                             <NavLink to="/howto" className="fonthead">วิธีการใช้งาน</NavLink>
                         </NavItem>
                         <NavItem id="spacetop">
-                            <NavLink to="/monitoring/undefined" className="fonthead">การตรวจสอบ</NavLink>
+                            <NavLink to="/user/monitoring/undefined" className="fonthead">การตรวจสอบ</NavLink>
                         </NavItem>
                         <NavItem id="spacetop">
-                            <NavLink to="/notification/undefined/undefined/undefined/undefined/undefined" className="fonthead">ระบบแจ้งเตือน</NavLink>
+                            <NavLink to="/user/notification/undefined/undefined/undefined/undefined/undefined" className="fonthead">ระบบแจ้งเตือน</NavLink>
                         </NavItem>
                         <NavItem id="spacetop">
-                            <NavLink to="/history" className="fonthead">ประวัติย้อนหลัง</NavLink>
+                            <NavLink to="/user/history" className="fonthead">ประวัติย้อนหลัง</NavLink>
                         </NavItem>
 
                         {/* <div className="fonthead">|</div> */}
