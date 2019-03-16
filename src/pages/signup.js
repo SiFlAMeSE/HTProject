@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, ModalHeader, ModalBody, Row, Col } from 'reactstrap';
+import { Modal, Button, ModalBody, Row, Col } from 'reactstrap';
 import axios from 'axios';
 
 import '../css/signup.css';
@@ -187,16 +187,16 @@ export default class signup extends Component {
                                                 <Row colSpan="3" >
                                                     <Col><b>ขั้นตอนการขอรหัสเข้าใช้งาน</b></Col>
                                                 </Row>
-                                                <hr/>
-                                                <Row style={{paddingBottom: '30px' }}>
+                                                <hr />
+                                                <Row style={{ paddingBottom: '30px' }}>
                                                     <Col>1.ทำการเพิ่มเพื่อน Line Bot : NotiDHT จาก QR Code</Col>
                                                     <Col>2.ส่งขอความไปหา Line Bot : NotiDHT "ขอรหัสไอดี"</Col>
                                                     <Col>3.นำรหัสไอดีที่ได้ไปใส่ในช่องรหัสไลน์</Col>
                                                 </Row>
                                                 <Row>
-                                                    <Col><img src={require('../../src/img/QRCode.png')} height="300"  alt="qrcode" /></Col>
-                                                    <Col><img src={require('../../src/img/getkey.gif')} height="720"  alt="videoline" /></Col>
-                                                    <Col><img src={require('../../src/img/how3.gif')} width="500"  alt="popup" /></Col>
+                                                    <Col><img src={require('../../src/img/QRCode.png')} height="300" alt="qrcode" /></Col>
+                                                    <Col><img src={require('../../src/img/getkey.gif')} height="720" alt="videoline" /></Col>
+                                                    <Col><img src={require('../../src/img/how3.gif')} width="500" alt="popup" /></Col>
                                                 </Row>
                                             </ModalBody>
                                         </Modal>
@@ -209,11 +209,12 @@ export default class signup extends Component {
                                             value={this.state.Id_line}
                                             onChange={this.onChange} />
                                     </div>
-
-                                    <div className="form-group">
-                                        <input type="submit" className="btn btn-primary" value="ลงทะเบียน" />
+                                    <br />
+                                    <div>
+                                        <Button color="primary" type="submit" className="btn btn-primary" size="lg" block>ลงทะเบียน</Button>
                                     </div>
                                 </form>
+                                <br />
                             </div>
                         </div>
                     </section>

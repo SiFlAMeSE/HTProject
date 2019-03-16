@@ -1,0 +1,8 @@
+.linemid {
+    background: linear-gradient(to left,#3744ff,#4fcbfc);
+    vertical-align: middle;
+    font-size: 48px;
+    color:rgb(255, 255, 255);
+    padding-top: 60px;
+    padding-bottom: 60px;   
+}

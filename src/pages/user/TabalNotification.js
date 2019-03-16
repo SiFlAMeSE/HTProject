@@ -29,7 +29,7 @@ class Tablehistory extends Component {
           <td>
             {this.props.obj.h}
           </td>
-          <td>
+          <td style={{ color: 'Red' }}>
             {this.props.obj.error}
           </td>
           <td>

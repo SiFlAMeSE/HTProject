@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import '../css/home.css';
 import { Container, Col, Row } from 'reactstrap';
+
+import '../css/home.css';
 
 class home extends Component {
     // constructor(props) {

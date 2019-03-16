@@ -1,0 +1,53 @@
+.bgtabkey {
+    width: 100%;  
+    min-height: 60vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+}
+
+.formedit{
+    height: 195px;
+    width: 550px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    
+    
+  
+    box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.35);
+    -moz-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -webkit-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -o-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+    -ms-box-shadow: 0 3px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.btn_cus{
+    border-radius: 15px;
+}
+
+#fixinput{
+    width: 450px;
+    text-align: center;
+}
+
+#tab1{
+    background-color: rgb(0, 69, 134);
+    color: white;
+    border-top-left-radius: 20px;
+    
+}
+
+#tab2{
+    background-color: rgb(0, 103, 199);
+    color: white;
+    border-top-right-radius: 20px;
+}
+
