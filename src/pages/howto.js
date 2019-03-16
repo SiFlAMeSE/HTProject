@@ -10,6 +10,7 @@ import classnames from 'classnames';
 
 import '../css/howto.css'
 
+var loopback = 0;
 const items = [
     {
         src: require('../img/Howto/U1.jpg'),
@@ -119,6 +120,10 @@ class howto extends Component {
         if (this.animating) return;
         this.setState({ activeIndex: newIndex });
     }
+
+    callback() {
+        this.state.activeIndex = 0
+    }
     render() {
         const { activeIndex } = this.state;
 
@@ -147,8 +152,8 @@ class howto extends Component {
                 </CarouselItem>
             );
         });
-        return (
 
+        return (
             <div>
                 <section id="space">
                     <div className="banner-h">
@@ -162,27 +167,31 @@ class howto extends Component {
                         <NavItem style={{ paddingRight: '3px' }}>
                             <NavLink
                                 className={classnames({ active: this.state.activeTab === '1' })}
-                                onClick={() => { this.toggle('1'); }}
+                                onClick={() => { this.toggle('1');this.callback(); }}
                                 id="tab1"
                             >ผู้ใช้งาน
                             </NavLink>
+
                         </NavItem>
 
                         <NavItem>
                             <NavLink
                                 className={classnames({ active: this.state.activeTab === '2' })}
-                                onClick={() => { this.toggle('2'); }}
+                                onClick={() => { this.toggle('2');this.callback(); }}
                                 id="tab2"
                             >ผู้ดูแลระบบ</NavLink>
+
                         </NavItem>
                     </Nav>
+
+
                 </div>
 
                 {/* เนื้อหาในแท็บ */}
                 <TabContent activeTab={this.state.activeTab}>
                     <TabPane tabId="1">
                         <div className="bgtabkey">
-                            <div className="formhow" style={{ paddingLeft: '50px',paddingRight:'40px' }}>
+                            <div className="formhow" style={{ paddingLeft: '50px', paddingRight: '40px' }}>
                                 <Carousel
                                     activeIndex={activeIndex}
                                     next={this.next}
@@ -200,7 +209,7 @@ class howto extends Component {
                     </TabPane>
                     <TabPane tabId="2">
                         <div className="bgtabkey">
-                            <div className="formhow" style={{ paddingLeft: '50px',paddingRight:'40px' }}>
+                            <div className="formhow" style={{ paddingLeft: '50px', paddingRight: '40px' }}>
                                 <Carousel
                                     activeIndex={activeIndex}
                                     next={this.next}
