@@ -14,7 +14,7 @@ var stylebg = {
 var Senser, Build, Location, Authorize;
 var sen_num, bu_num, Loca_num, aut_num;
 var data_ss;
-var s = 0;
+var s = 0
 
 class authorize extends Component {
     constructor(props) {
@@ -36,9 +36,11 @@ class authorize extends Component {
         data_ss = JSON.parse(sessionStorage.getItem('Login_user'))
         this.setState({ data: data_ss })
         console.log(data_ss)
+
         this.setState({
             activeTab: '1'
         });
+
     }
 
     toggle(tab) {
@@ -187,7 +189,7 @@ class authorize extends Component {
 
                 <div style={{ paddingLeft: '80vh' }} >
                     <Nav tabs >
-                        <NavItem style={{paddingRight:'3px'}}>
+                        <NavItem style={{ paddingRight: '3px' }}>
                             <NavLink
                                 className={classnames({ active: this.state.activeTab === '1' })}
                                 onClick={() => { this.toggle('1'); }}
@@ -196,7 +198,7 @@ class authorize extends Component {
                                 เพิ่มเซนเซอร์
             </NavLink>
                         </NavItem>
-                        
+
                         <NavItem >
                             <NavLink
                                 className={classnames({ active: this.state.activeTab === '2' })}
