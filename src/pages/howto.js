@@ -168,7 +168,7 @@ class howto extends Component {
                             </NavLink>
                         </NavItem>
 
-                        <NavItem >
+                        <NavItem>
                             <NavLink
                                 className={classnames({ active: this.state.activeTab === '2' })}
                                 onClick={() => { this.toggle('2'); }}
@@ -182,7 +182,7 @@ class howto extends Component {
                 <TabContent activeTab={this.state.activeTab}>
                     <TabPane tabId="1">
                         <div className="bgtabkey">
-                            <div className="formhow" style={{ paddingLeft: '50px' }}>
+                            <div className="formhow" style={{ paddingLeft: '50px',paddingRight:'40px' }}>
                                 <Carousel
                                     activeIndex={activeIndex}
                                     next={this.next}
@@ -191,8 +191,8 @@ class howto extends Component {
                                 >
                                     <CarouselIndicators items={items} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
                                     {slides}
-                                    <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-                                    <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+                                    <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} className="carousel-control-next" />
+                                    <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} className="carousel-control-next" />
                                 </Carousel>
                             </div>
                         </div>
@@ -200,7 +200,7 @@ class howto extends Component {
                     </TabPane>
                     <TabPane tabId="2">
                         <div className="bgtabkey">
-                            <div className="formhow" style={{ paddingLeft: '50px' }}>
+                            <div className="formhow" style={{ paddingLeft: '50px',paddingRight:'40px' }}>
                                 <Carousel
                                     activeIndex={activeIndex}
                                     next={this.next}
@@ -209,8 +209,8 @@ class howto extends Component {
                                 >
                                     <CarouselIndicators items={items2} activeIndex={activeIndex} onClickHandler={this.goToIndex} />
                                     {slides2}
-                                    <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} />
-                                    <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} />
+                                    <CarouselControl direction="prev" directionText="Previous" onClickHandler={this.previous} className="carousel-control-next" />
+                                    <CarouselControl direction="next" directionText="Next" onClickHandler={this.next} className="carousel-control-next" />
                                 </Carousel>
                             </div>
                         </div>
