@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, ModalBody, Row, Col } from 'reactstrap';
+import { Modal, Button, ModalBody, Row, Col,Form } from 'reactstrap';
 import axios from 'axios';
 
 import '../css/signup.css';
@@ -177,6 +177,8 @@ export default class signup extends Component {
                                         </textarea>
                                     </div>
 
+                                    <Form>
+                                    </Form>
                                     <div >
                                         <label for="Phone">รหัสไลน์</label>
                                         <span onClick={this.toggle} style={{ color: 'red', paddingLeft: '5px' }}><u>วิธีขอรหัส</u></span>

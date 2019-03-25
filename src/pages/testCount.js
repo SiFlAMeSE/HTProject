@@ -33,7 +33,7 @@ export default class testCount extends Component {
     }
 
     startTimer() {
-        if (this.timer == 0 && this.state.seconds > 0) {
+        if (this.timer === 0 && this.state.seconds > 0) {
             this.timer = setInterval(this.countDown, 10000);
         }
     }
@@ -47,17 +47,17 @@ export default class testCount extends Component {
         });
 
         // Check if we're at zero.
-        if (seconds == 0) {
+        if (seconds === 0) {
             clearInterval(this.timer);
         }
     }
 
     render() {
-        // if (this.state.seconds == 0)
+        // if (this.state.seconds === 0)
         //     window.location.reload();
-        if (this.state.down == 1) { 
+        if (this.state.down === 1) { 
             this.showbar()
-          }else if(this.state.seconds == 0){
+          }else if(this.state.seconds === 0){
             this.state.seconds = 1;
             this.state.count = 0;
             window.location.reload();

@@ -235,7 +235,7 @@ export default class monitoring extends React.Component {
 
   startTimer() {
     console.log('start');
-    if (this.timer == 0 && seconds > 0) {
+    if (this.timer === 0 && seconds > 0) {
       this.timer = setInterval(this.countDown, 1000);
       // this.state.down = 1;
     }
@@ -252,18 +252,18 @@ export default class monitoring extends React.Component {
     });
 
     // Check if we're at zero.
-    if (seconds == 0) {
+    if (seconds === 0) {
       clearInterval(this.timer);
 
     }
   }
 
   render() {
-    if (seconds == 1) {
+    if (seconds === 1) {
       console.log('render 1')
       this.startTimer()
 
-    } if (count == 1) {
+    } if (count === 1) {
       console.log('render 2')
       this.loopdht()
     }
