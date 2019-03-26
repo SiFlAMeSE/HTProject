@@ -151,7 +151,7 @@ class notification extends Component {
                         }
                     }
                 }
-                else if (_mac === set && _dateP != set) {
+                else if (_mac === set && _dateP !== set) {
                     if (_dateP === _date) {
                         for (i = 0; i < loca.length; i++) {
                             if (object.Id_MAC === loca[i].Macaddress) {
@@ -227,7 +227,7 @@ class notification extends Component {
                             }
                         }
                     }
-                    else if (_mac === set && _dateP != set) {
+                    else if (_mac === set && _dateP !== set) {
                         if (_dateP === _date) {
                             for (i = 0; i < loca.length; i++) {
                                 if (object.Id_MAC === loca[i].Macaddress) {
@@ -297,7 +297,7 @@ class notification extends Component {
                             }
                         }
                     }
-                    else if (_mac === set && _dateP != set) {
+                    else if (_mac === set && _dateP !== set) {
                         if (_dateP === _date) {
                             for (i = 0; i < loca.length; i++) {
                                 if (object.Id_MAC === loca[i].Macaddress) {
@@ -370,7 +370,7 @@ class notification extends Component {
                         }
                     }
                 }
-                else if (_mac === set && _dateP != set) {
+                else if (_mac === set && _dateP !== set) {
                     if (_dateP === _date) {
                         for (i = 0; i < loca.length; i++) {
                             if (object.Id_MAC === loca[i].Macaddress) {

@@ -5,7 +5,7 @@ import { Line } from 'react-chartjs-2';
 import moment from 'moment';
 
 
-var data_ss, Dht, dht_num, num = 0
+var data_ss, Dht, num = 0
 var label_X = [], data = []
 var label_temp = 'อุณหภูมิ'
 var label_humdi = 'ความชื้น'
@@ -114,14 +114,14 @@ class Dashboard_Table extends React.Component {
           data[num] = object
           //  console.log(data[num])
           num = num + 1
-        }
+        }return false
       });
-    }
+    } 
   }
 
   dataGraph() {
     console.log(this.props.obj.Macaddress)
-    { this.showbar(this.props.obj.Macaddress) }
+    this.showbar(this.props.obj.Macaddress)
     console.log(data)
     console.log(num - 1)
     num -= 1
@@ -144,13 +144,13 @@ class Dashboard_Table extends React.Component {
     this.setState(prevState => ({
       modal: !prevState.modal
     }));
-    { this.dataGraph() }
+    this.dataGraph()
 
   }
 
   startTimer() {
     // console.log('start');
-    if (this.timer == 0 && seconds > 0) {
+    if (this.timer === 0 && seconds > 0) {
       this.timer = setInterval(this.countDown, 10000);
     }
   }
@@ -163,7 +163,7 @@ class Dashboard_Table extends React.Component {
       seconds: seconds,
     });
 
-    if (seconds == 0) {
+    if (seconds === 0) {
       clearInterval(this.timer);
 
     }
@@ -171,11 +171,11 @@ class Dashboard_Table extends React.Component {
 
 
   render() {
-    if (seconds == 1) {
+    if (seconds === 1) {
       console.log('render 1')
       this.startTimer()
 
-    } if (count == 1) {
+    } if (count === 1) {
       console.log('render 2')
       this.loopdht()
     }

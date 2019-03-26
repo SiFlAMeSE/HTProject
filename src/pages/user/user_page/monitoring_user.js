@@ -112,7 +112,7 @@ export default class monitoring_user extends React.Component {
   }
 
   loopdht() {
-    console.log('dhtupdate')
+    // console.log('dhtupdate')
     axios.get('http://localhost:5000/dht/dht_list')
       .then(response => {
         Dht = response.data;
@@ -120,10 +120,11 @@ export default class monitoring_user extends React.Component {
         this.setState({ Dht: Dht });
         // console.log(Dht)
       })
+    return count = 0
       .catch(function (error) {
         console.log(error);
       })
-    count = 0;
+    // count = 0;
   }
 
 
@@ -178,7 +179,7 @@ export default class monitoring_user extends React.Component {
             }
           }
         }
-      }
+      } return true //ถ้าผิดพลาดให้ลบ บรรทัดนี้
     });
   }
 
@@ -256,17 +257,17 @@ export default class monitoring_user extends React.Component {
           // console.log(data)
           return <Chart obj={data} key={num} />;
           //return <MonitorChoice obj={data} key={num} />; 
-        }
+        }return false
       });
     }
   }
 
   startTimer() {
     console.log('start');
-    if (this.timer == 0 && seconds > 0) {
+    if (this.timer === 0 && seconds > 0) {
       this.timer = setInterval(this.countDown, 10000);
       // this.state.down = 1;
-    }
+    } 
     // this.showbar()
   }
 
@@ -280,18 +281,18 @@ export default class monitoring_user extends React.Component {
     });
 
     // Check if we're at zero.
-    if (seconds == 0) {
+    if (seconds === 0) {
       clearInterval(this.timer);
 
     }
   }
 
   render() {
-    if (seconds == 1) {
+    if (seconds === 1) {
       console.log('render 1')
       this.startTimer()
 
-    } if (count == 1) {
+    } if (count === 1) {
       console.log('render 2')
       this.loopdht()
     }

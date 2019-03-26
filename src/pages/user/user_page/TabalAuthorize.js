@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { Button } from 'reactstrap';
 import axios from 'axios';
 
 class TabalAuthorize extends React.Component {
