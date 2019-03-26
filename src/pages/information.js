@@ -102,8 +102,8 @@ class infor extends Component {
                                 <hr />
                                 <Row>
                                     <Col sm="6"><h1>DHT22</h1>ทำการส่งข้อมูลอุณหภูมิและความชื้นไปให้โหนด Node ESP32
-                                    <div style={{ color: 'RoyalBlue' }}>"ทนต่ออุณหภูมิ : ตั้งแต่ -40 ถึง 125 องศาเซลเซียส"</div>
-                                        <div style={{ color: 'DodgerBlue'}}>"ทนต่อความชื้น : ตั้งแต่ 0 ถึง 100 องศาเซลเซียส "</div>
+                                    <div style={{ color: 'RoyalBlue' }}>"ทนต่ออุณหภูมิ : ตั้งแต่ -40 ถึง 80 องศาเซลเซียส"</div>
+                                        <div style={{ color: 'DodgerBlue'}}>"ทนต่อความชื้น : ตั้งแต่ 0 ถึง 100 %RH "</div>
                                     </Col>
 
                                     <Col><img width="260px" height="340px" src={require('../img/dht22.png')} alt="sensor" /></Col>

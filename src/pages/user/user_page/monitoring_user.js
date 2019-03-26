@@ -226,7 +226,7 @@ export default class monitoring_user extends React.Component {
                 <div>รหัสเครื่อง : {show[i].Macaddress}</div>
               </Col>
               <Col>
-                <div>ความชื้นสูงสุด : {show[i].Humdi_Low} </div>
+                <div>ความชื้นต่ำสุด : {show[i].Humdi_Low} </div>
               </Col>
             </Row>
           </Table>
