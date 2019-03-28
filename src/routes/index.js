@@ -9,6 +9,7 @@ import loginp from "../pages/login";
 import signup from "../pages/signup";
 
 import report from "../pages/admin/report";
+import set_map from "../pages/admin/set_map";
 import set_build from "../pages/admin/set_build";
 import set_detail from "../pages/admin/set_detail";
 import set_location from "../pages/admin/set_location";
@@ -39,8 +40,9 @@ export default () => (
         <Route exact path="/signup" component={signup} />
 
         <Route exact path="/report" component={report} />
+        <Route exact path="/setmap/:id" component={set_map} />
         <Route exact path="/setbuild/:id" component={set_build} />
-        <Route exact path="/setdetail/:id" component={set_detail} />
+        <Route exact path="/setdetail/:id/:id" component={set_detail} />
         <Route exact path="/setlocation" component={set_location} />
 
         <Route exact path="/dashboard" component={dashboard} />

@@ -109,7 +109,7 @@ export default class set_detail extends React.Component {
         axios.post('http://localhost:5000/sensers/add', Senser)
             .then((res) => {
                 if (res.data === 'Server added successfully') {
-                    window.location = "/setdetail/" + this.state.reload
+                    window.location.reload()
                 }
             })
             .catch(function (err) {
@@ -135,7 +135,7 @@ export default class set_detail extends React.Component {
         axios.post('http://localhost:5000/authorize/add', Authorize)
             .then((res) => {
                 if (res.data === 'Server added successfully') {
-                    window.location = "/setdetail/" + this.state.reload
+                    window.location.reload()
                 }
             })
             .catch(function (err) {
@@ -268,7 +268,7 @@ export default class set_detail extends React.Component {
                     <ModalBody>
                         <Container>
                             <input type="file" onChange={this.fileSelectedHandler} name="image" />
-                            <button type="button" onClick={this.fileUploadHandler}>Upload</button>
+                            {/* <button type="button" onClick={this.fileUploadHandler}>Upload</button> */}
                             <br />
                             {
                                 this.state.file !== '' &&
@@ -277,8 +277,8 @@ export default class set_detail extends React.Component {
                         </Container>
                     </ModalBody>
                     <ModalFooter>
-                        <Button color="success" onClick={this.togglemap}>ตกลง</Button>
-                        <Button color="secondary" onClick={this.togglemap}>ยกเลิก</Button>
+                        <Button color="success" onClick={this.fileUploadHandler}>อัพโหลด</Button>
+                        <Button color="secondary" onClick={this.togglemap}>ปิด</Button>
                     </ModalFooter>
                 </Modal>
 

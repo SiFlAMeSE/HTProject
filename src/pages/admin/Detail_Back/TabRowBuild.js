@@ -1,4 +1,4 @@
- import React, { Component } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardTitle, CardImg } from 'reactstrap';
 var data_ss
@@ -83,8 +83,12 @@ class TabRowBuild extends Component {
             })
     }
 
-    sentidlo = (e) => {
-        window.location.replace('/setdetail/' + e.target.value)
+    // sentidlo = (e) => {
+    //     window.location.replace('/setdetail/' + e.target.value)
+    // }
+
+    sentidbuild = (e) => {
+        window.location.replace('/setmap/' + e.target.value )
     }
 
     render() {
@@ -96,7 +100,8 @@ class TabRowBuild extends Component {
                         <hr />
                         <CardTitle id="b">{this.props.obj.Name_Build}</CardTitle>
                         {/* เรียกส่งค่า */}
-                        <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentidlo(e)}>เพิ่มอุปกรณ์</Button>
+                        <Button color="warning" value={this.props.obj._id} onClick={(e) => this.sentidbuild(e)}>เพิ่มแผนที่</Button>
+                        {/* <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentidlo(e)}>เพิ่มอุปกรณ์</Button> */}
                         <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
                     </Card>
                 </section>
