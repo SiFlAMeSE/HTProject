@@ -1,113 +1,73 @@
 import React from 'react';
 import axios from 'axios';
-import Show from './Show';
-import { Form } from 'reactstrap';
 
-var users, data_user;
 export default class testcode extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      data: {},
-    }
-
-    this.state = { users: [] };
-  }
-
-  componentWillMount() {
-    // data_user = this.props.obj.length-1
-  }
-
-  componentDidMount() {
-    axios.get('http://localhost:5000/users/user_list')
-      .then(res => {
-        users = res.data;
-        this.setState({ users });
-        console.log(users.length)
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (this.state.users.length !== nextProps.users.length) {
-      this.showtest();
+      file: '',
+      Pic_name: '',
+      Pic_type: ''
     }
   }
+  // state = {
+  //   file: null
+  // }
 
-  showtest() {
-    // this.forceUpdate();
-    return this.state.users.map((object, i) => {
-      return <Show obj={object} key={i} />
+  fileSelectedHandler = event => {
+    this.setState({
+      file: event.target.files[0]
     })
+
+    var reader = new FileReader();
+
+    reader.onloadstart = () =>{
+      console.log("File: " + reader.result);
+    }
+
+
+    reader.onloadend = () =>{
+      this.setState({
+        file : reader.result
+      })
+
+    };
+
+    reader.readAsDataURL(event.target.files[0])
+
   }
 
-  // componentWillReceiveProps(nextProps){
-  //   this.showtest(nextProps)
-  // }
+  fileUploadHandler = () => {
 
-  // componentWillReceiveProps(nextProps){
-  //   axios.get('http://localhost:5000/users/user_list')
-  //   .then(res => {
-  //     users = res.data;
-  //     this.setState({ users });
-  //     console.log(users)
-  //   })
-  //   .catch(function(error) {
-  //     console.log(error);
-  //   })
-  // }
+    // console.log(this.state, 'THe STATE ----')
 
+
+    // console.log(this.state.file)
+    // const fd = new FormData();
+    // fd.append('image', this.state.file, this.state.file.name);
+    const Pic = {
+      image: this.state.file
+    }
+    // console.log(Pic)
+    axios.post('http://localhost:5000/imageupload/add', Pic)
+      .then(res => {
+        console.log(res.data);
+      });
+  }
   render() {
     return (
-      <div>{this.state.users.length}
-        <br /><br />
-        {this.showtest()}
-        <br /><br />
-        <form>
-          <label>
-            ประเภทการแจ้งเตือน
-          <div>
-              <input
-                name="error"
-                type="checkbox"
-                value="error"
-                onChange={this.handleInputChange} />พบข้อบกพร่อง
-              <span style={{ paddingRight: '15px' }} />
-              <input
-                name="max_t"
-                type="checkbox"
-                value="max_t"
-                onChange={this.handleInputChange} />อุณหภูมิสูงกว่ากำหนด
-              <span style={{ paddingRight: '15px' }} />
-              <input
-                name="min_t"
-                type="checkbox"
-                value="min_t"
-                onChange={this.handleInputChange} />อุณหภูมิต่ำกว่ากำหนด
-              <span style={{ paddingRight: '15px' }} />
-              <input
-                name="max_h"
-                type="checkbox"
-                value="max_h"
-                onChange={this.handleInputChange} />ความชื้นสูงกว่ากำหนด
-              <span style={{ paddingRight: '15px' }} />
-              <input
-                name="min_h"
-                type="checkbox"
-                value="min_h"
-                onChange={this.handleInputChange} />ความชื้นต่ำกว่ากำหนด
-          </div>
-          </label>
-          <br />
-        </form>
-      </div>
+      <>
+        <input type="file" onChange={this.fileSelectedHandler} encType="multipart/form-data" />
+        <button type="button" onClick={this.fileUploadHandler}>Upload</button>
+        <br/>
+      {
+        this.state.file !== '' &&
+        <img src={this.state.file} alt="Picture" />
+      }
 
-
-
-
-    );
+      </>
+    )
   }
 }
+
