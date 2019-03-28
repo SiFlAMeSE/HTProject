@@ -46,7 +46,7 @@ export default () => (
         <Route exact path="/dashboard" component={dashboard} />
         <Route exact path="/dashboard/:id" component={dashboard} />
         <Route exact path="/history" component={history} />
-        <Route exact path="/history/:id/:date" component={history} />
+        <Route exact path="/history/:id/:datef/:datet" component={history} />
         <Route exact path="/monitoring" component={monitoring} />
         <Route exact path="/monitoring/:id" component={monitoring} />
         <Route exact path="/notification" component={notification} />
@@ -62,7 +62,7 @@ export default () => (
         <Route exact path="/user/monitoring" component={monitoring_user} />
         <Route exact path="/user/monitoring/:id" component={monitoring_user} />
         <Route exact path="/user/history" component={history_user} />
-        <Route exact path="/user/history/:id/:date" component={history_user} />
+        <Route exact path="/user/history/:id/:datef/:datet" component={history_user} />
         <Route exact path="/user/notification" component={notification_user} />
         <Route exact path="/user/notification/:id/:error/:t/:h/:date" component={notification_user} />
 
