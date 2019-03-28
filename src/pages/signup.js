@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, ModalBody, Row, Col,Form } from 'reactstrap';
+import { Modal, Button, ModalBody, Row, Col, Form,Input } from 'reactstrap';
 import axios from 'axios';
 
 import '../css/signup.css';
@@ -77,18 +77,16 @@ export default class signup extends Component {
                                 <form noValidate onSubmit={this.onSubmit}>
                                     <div className="row">
                                         <div className="col-md-6">
-                                            {/* <div className="form-group"> */}
-                                            <label for="Username">ชื่อผู้ใช้งาน</label>
-                                            <input type="text"
-                                                className="form-control"
-                                                name="User_g"
-                                                placeholder="ชื่อผู้ใช้"
-                                                value={this.state.User_g}
-                                                onChange={this.onChange}
-                                                // pattern="[\w]{1,20}"
-                                                // title="ภาษาอังกฤษหรือตัวเลข มากกว่า 8 ตัวขึ้นไป"
-                                                required />
-                                            {/* </div> */}
+                                            <div className="form-group">
+                                                <label for="Username">ชื่อผู้ใช้งาน</label>
+                                                <input type="text"
+                                                    className="form-control"
+                                                    name="User_g"
+                                                    placeholder="ชื่อผู้ใช้"
+                                                    value={this.state.User_g}
+                                                    onChange={this.onChange}
+                                                    />
+                                            </div>
                                         </div>
                                         <div className="col-md-6">
                                             <div className="form-group">
@@ -177,8 +175,6 @@ export default class signup extends Component {
                                         </textarea>
                                     </div>
 
-                                    <Form>
-                                    </Form>
                                     <div >
                                         <label for="Phone">รหัสไลน์</label>
                                         <span onClick={this.toggle} style={{ color: 'red', paddingLeft: '5px' }}><u>วิธีขอรหัส</u></span>
