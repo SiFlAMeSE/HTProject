@@ -26,11 +26,17 @@ export default class set_detail extends React.Component {
             Humdi_Hight: '',
             Key_Room: '',
             Id_Build: '',
+
+            file: '',
+            Pictures: null,
         }
         this.state = {
-            modal: false
+            modal: false,
+            modal1: false
         };
         this.toggle = this.toggle.bind(this);
+        this.togglemap = this.togglemap.bind(this);
+
         this.state = { Senser: [] };
     }
     componentWillMount() {
@@ -50,6 +56,13 @@ export default class set_detail extends React.Component {
             modal: !this.state.modal
         });
     }
+    togglemap() {
+        this.setState({
+            modal1: !this.state.modal1,
+            file: ''
+        });
+    }
+
     onchangePosition(e) {
         this.setState({
             Position: e.target.value
@@ -151,6 +164,43 @@ export default class set_detail extends React.Component {
         });
     }
 
+    // uploadpicturemap
+    fileSelectedHandler = event => {
+        this.setState({
+            file: event.target.files[0]
+        })
+        var reader = new FileReader();
+
+        const fd = new FormData();
+        fd.append('image', event.target.files[0]);
+
+        reader.onloadstart = () => {
+        }
+        reader.onloadend = () => {
+            this.setState({
+                file: reader.result,
+                Pictures: fd
+
+
+            })
+
+        };
+        reader.readAsDataURL(event.target.files[0])
+    }
+
+    fileUploadHandler = () => {
+        // console.log(this.state.Pictures)
+
+        let data = {
+            img: this.state.file,
+            Id_Build: this.props.match.params.id
+        }
+
+        axios.post('http://localhost:5000/imageupload/up', data)
+            .then(res => {
+                console.log(res.data);
+            });
+    }
 
     render() {
         return (
@@ -211,6 +261,28 @@ export default class set_detail extends React.Component {
                     </form>
                 </Modal>
 
+                <Modal isOpen={this.state.modal1}
+                    togglemap={this.togglemap}>
+
+                    <ModalHeader togglemap={this.togglemap}>เพิ่มรูปภาพ</ModalHeader>
+                    <ModalBody>
+                        <Container>
+                            <input type="file" onChange={this.fileSelectedHandler} name="image" />
+                            <button type="button" onClick={this.fileUploadHandler}>Upload</button>
+                            <br />
+                            {
+                                this.state.file !== '' &&
+                                <img src={this.state.file} alt="Picture" />
+                            }
+                        </Container>
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="success" onClick={this.togglemap}>ตกลง</Button>
+                        <Button color="secondary" onClick={this.togglemap}>ยกเลิก</Button>
+                    </ModalFooter>
+                </Modal>
+
+
                 <Row style={{ paddingLeft: '160px', paddingRight: '250px' }}>
                     <Col sm={8}>
                         <div className="container row" >
@@ -220,7 +292,11 @@ export default class set_detail extends React.Component {
                     <Col sm={4} align="center" >
                         <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
                         <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มอุปกรณ์ </button>
+                        <br /><br />
+                        <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
+                        <button type="button" onClick={this.togglemap} className="btn btn-info btn-lg" > เพิ่มรูปต่ำแหน่ง </button>
                     </Col>
+
                 </Row>
             </div >
 
