@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, ModalBody, Row, Col, Form,Input } from 'reactstrap';
+import { Modal, Button, ModalBody, Row, Col } from 'reactstrap';
 import axios from 'axios';
 
 import '../css/signup.css';

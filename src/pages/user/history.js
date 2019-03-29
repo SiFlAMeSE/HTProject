@@ -57,7 +57,7 @@ class history extends Component {
         date_num = (moment(_datePt).diff(moment(_datePf), 'days')) + 1
         date_Next = _datePf
         for (let i = 0; i < date_num; i++) {
-            if (i == 0) {
+            if (i === 0) {
                 dateS[i] = _datePf
                 //console.log(moment(_datePf).format('YYYY-MM-DD'))
             }
@@ -141,7 +141,7 @@ class history extends Component {
     }
 
     sentEx = (e) => {
-        return <CSVLink data={csvData} headers={headers}><img width="180px" src={require('../../img/downloadEx.png')} /></CSVLink>
+        return <CSVLink data={csvData} headers={headers}><img alt="ok" width="180px" src={require('../../img/downloadEx.png')} /></CSVLink>
     }
 
     // tabRow() {
@@ -188,7 +188,7 @@ class history extends Component {
     }
 
     Select_Data() {
-        if (status == 0) {
+        if (status === 0) {
             for (let i = 0; i < date_num; i++) {
                 // console.log(his_num)
                 // console.log(History)

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardTitle, CardText, CardImg } from 'reactstrap';
 var data_ss
-const uuidv1 = require('uuid/v1');
+// const uuidv1 = require('uuid/v1');
 
 class TabRowBuild extends Component {
     constructor(props) {

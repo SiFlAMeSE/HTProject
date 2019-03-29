@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import {  Button,  Container, Row, Col,  Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
 import TabRowMap from './Detail_Back/TabRowMap';
 
@@ -131,7 +131,7 @@ export default class set_map extends React.Component {
                             <br />
                             {
                                 this.state.file !== '' &&
-                                <img src={this.state.file} alt="Picture" />
+                                <image src={this.state.file} alt="Picture" />
                             }
                         </Container>
                     </ModalBody>

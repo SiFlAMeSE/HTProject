@@ -10,8 +10,8 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import { formatDate, parseDate } from 'react-day-picker/moment';
 
-var _mac, _datePf, _datePt, mac, date, Build, Location, Senser, Authorize, date_Next, dateS = [], History;
-var sen_num, bu_num, Loca_num, aut_num, date_num, his_num;
+var _mac, _datePf, _datePt, mac,  Build, Location, Senser, Authorize, date_Next, dateS = [], History;
+var  bu_num, Loca_num, aut_num, date_num, his_num;
 var data_ss, csv_num = 0;
 const headers = [
     { label: "ID", key: "_id" },
@@ -57,7 +57,7 @@ class history_user extends Component {
         date_num = (moment(_datePt).diff(moment(_datePf), 'days')) + 1
         date_Next = _datePf
         for (let i = 0; i < date_num; i++) {
-            if (i == 0) {
+            if (i === 0) {
                 dateS[i] = _datePf
                 //console.log(moment(_datePf).format('YYYY-MM-DD'))
             }
@@ -102,7 +102,7 @@ class history_user extends Component {
         axios.get('http://localhost:5000/sensers/senser_list')
             .then(response => {
                 Senser = response.data;
-                sen_num = response.data.length;
+                // sen_num = response.data.length;
                 this.setState({ Senser: Senser });
                 //console.log(Senser);
             })
@@ -154,7 +154,7 @@ class history_user extends Component {
     }
 
     sentEx = (e) => {
-        return <CSVLink data={csvData} headers={headers}><img width="180px" src={require('../../../img/downloadEx.png')} /></CSVLink>
+        return <CSVLink data={csvData} headers={headers}><img alt="ok" width="180px" src={require('../../../img/downloadEx.png')} /></CSVLink>
     }
 
     // tabRow() {
@@ -201,7 +201,7 @@ class history_user extends Component {
     }
 
     Select_Data() {
-        if (status == 0) {
+        if (status === 0) {
             for (let i = 0; i < date_num; i++) {
                 // console.log(his_num)
                 // console.log(History)
@@ -320,6 +320,7 @@ class history_user extends Component {
                     }
                 }
             }
+            return true
         });
     }
 

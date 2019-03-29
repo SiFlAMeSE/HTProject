@@ -6,7 +6,7 @@ import Chart from '../Chart';
 import moment from 'moment';
 
 var _mac, mac, Build, Location, Dht, Authorize, Senser;
-var sen_num, bu_num, Loca_num, dht_num, aut_num;
+var bu_num, Loca_num, dht_num, aut_num;
 var data_ss, num = 0;
 var count, seconds = 1;
 var data = [];
@@ -68,7 +68,7 @@ export default class monitoring_user extends React.Component {
     axios.get('http://localhost:5000/sensers/senser_list')
       .then(response => {
         Senser = response.data;
-        sen_num = response.data.length;
+        // sen_num = response.data.length;
         this.setState({ Senser: Senser });
         //console.log(Senser);
       })
@@ -257,7 +257,7 @@ export default class monitoring_user extends React.Component {
           // console.log(data)
           return <Chart obj={data} key={num} />;
           //return <MonitorChoice obj={data} key={num} />; 
-        }return false
+        } return false
       });
     }
   }
@@ -267,7 +267,7 @@ export default class monitoring_user extends React.Component {
     if (this.timer === 0 && seconds > 0) {
       this.timer = setInterval(this.countDown, 10000);
       // this.state.down = 1;
-    } 
+    }
     // this.showbar()
   }
 

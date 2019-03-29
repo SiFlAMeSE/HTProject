@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Line } from 'react-chartjs-2';
 import moment from 'moment';
 
-var data_ss, Dht;
+// var data_ss, Dht;
 var label_X = /*['ตัวที่1', 'ตัวที่2', 'ตัวที่3', 'ตัวที่4', 'ตัวที่5',
          'ตัวที่6', 'ตัวที่7', 'ตัวที่8', 'ตัวที่9', 'ตัวที่10',
          'ตัวที่11', 'ตัวที่12', 'ตัวที่13', 'ตัวที่14', 'ตัวที่15',
@@ -60,7 +60,8 @@ export default class Chart extends React.Component {
     componentWillMount() {
         data_set = this.props.obj
         data_num = this.props.obj.length - 1
-        data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
+        // data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
+        JSON.parse(sessionStorage.getItem('Login_add'))
 
         // console.log(data_set)
     }
@@ -68,7 +69,9 @@ export default class Chart extends React.Component {
     componentDidMount() {
         axios.get('http://localhost:5000/dht/dht_list')
             .then(response => {
-                Dht = response.data;
+                this.setState({ Dht: response.data });
+
+                // Dht = response.data;
                 // this.setState({ Senser: Senser });
                 //console.log(Dht)
             })

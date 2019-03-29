@@ -7,7 +7,7 @@ import moment from 'moment';
 
 var _mac, _dateP, _t, _h, _s_error;
 var mac, date, t, h, s_error, Build, Location, Senser, Authorize;
-var sen_num, bu_num, Loca_num, aut_num, num = 0;
+var  bu_num, Loca_num, aut_num, num = 0;
 var data_ss;
 var loca = [];
 var set = "undefined";
@@ -69,7 +69,7 @@ class notification extends Component {
         axios.get('http://localhost:5000/sensers/senser_list')
             .then(response => {
                 Senser = response.data;
-                sen_num = response.data.length;
+                // sen_num = response.data.length;
                 this.setState({ Senser: Senser });
                 //console.log(Senser);
             })
@@ -195,7 +195,7 @@ class notification extends Component {
                         }
                     }
                 }
-            }
+            } return false
         });
     }
 
@@ -414,7 +414,7 @@ class notification extends Component {
                         }
                     }
                 }
-            }
+            }return false
         });
     }
 
@@ -471,7 +471,7 @@ class notification extends Component {
                         }
                     }
                 }
-            }
+            } return true
         });
     }
 

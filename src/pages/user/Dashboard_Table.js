@@ -5,13 +5,13 @@ import { Line } from 'react-chartjs-2';
 import moment from 'moment';
 
 
-var data_ss, Dht, num = 0
+var Dht, num = 0
 var label_X = [], data = []
 var label_temp = 'อุณหภูมิ'
 var label_humdi = 'ความชื้น'
 var data_temp = []
 var data_humdi = []
-var data_set, data_num;
+var data_set;
 var count, seconds = 1;
 
 class Dashboard_Table extends React.Component {
@@ -64,7 +64,9 @@ class Dashboard_Table extends React.Component {
   componentWillMount() {
     // data_set = this.props.obj
     // data_num = this.props.obj.length - 1
-    data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
+    // data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
+    JSON.parse(sessionStorage.getItem('Login_add'))
+
 
     console.log(data_set)
   }
@@ -73,7 +75,7 @@ class Dashboard_Table extends React.Component {
     axios.get('http://localhost:5000/dht/dht_list')
       .then(response => {
         Dht = response.data;
-        data_num = response.data.length - 1;
+        // data_num = response.data.length - 1;
         this.setState({ Dht: Dht });
         // console.log(Dht)
         // console.log(Dht[0].date)
@@ -88,7 +90,7 @@ class Dashboard_Table extends React.Component {
     axios.get('http://localhost:5000/dht/dht_list')
       .then(response => {
         Dht = response.data;
-        data_num = response.data.length - 1;
+        // data_num = response.data.length - 1;
         this.setState({ Dht: Dht });
         // console.log(Dht)
       })
@@ -114,9 +116,9 @@ class Dashboard_Table extends React.Component {
           data[num] = object
           //  console.log(data[num])
           num = num + 1
-        }return false
+        } return false
       });
-    } 
+    }
   }
 
   dataGraph() {
