@@ -1,10 +1,12 @@
 import React from 'react';
-import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardImg } from 'reactstrap';
 import axios from 'axios';
 import TabDetail from './Detail_Back/TabRowDetail';
+import { CardHeader } from 'semantic-ui-react';
 const uuidv1 = require('uuid/v1');
 var _id;
 var data_ss
+
 
 export default class set_detail extends React.Component {
     constructor(props) {
@@ -26,23 +28,23 @@ export default class set_detail extends React.Component {
             Humdi_Hight: '',
             Key_Room: '',
             Id_Build: '',
+            Id_Map: '',
+            Picturemap: {}
 
-            file: '',
-            Pictures: null,
         }
+
         this.state = {
             modal: false,
-            modal1: false
         };
         this.toggle = this.toggle.bind(this);
-        this.togglemap = this.togglemap.bind(this);
 
         this.state = { Senser: [] };
     }
     componentWillMount() {
         this.setState({
             path: this.props.params,
-            reload: this.props.match.params.id
+            reload: this.props.match.params.id,
+
         })
         _id = this.props.match.params.id
 
@@ -56,12 +58,7 @@ export default class set_detail extends React.Component {
             modal: !this.state.modal
         });
     }
-    togglemap() {
-        this.setState({
-            modal1: !this.state.modal1,
-            file: ''
-        });
-    }
+
 
     onchangePosition(e) {
         this.setState({
@@ -104,7 +101,8 @@ export default class set_detail extends React.Component {
             Humdi_Low: this.state.Humdi_Low,
             Humdi_Hight: this.state.Humdi_Hight,
             Key_Room: key,
-            Id_Build: this.props.match.params.id
+            Id_Build: this.props.match.params.id,
+            Id_Map: this.props.match.params.idmap
         }
         axios.post('http://localhost:5000/sensers/add', Senser)
             .then((res) => {
@@ -124,7 +122,8 @@ export default class set_detail extends React.Component {
             Humdi_Low: '',
             Humdi_Hight: '',
             Key_Room: '',
-            Id_Build: ''
+            Id_Build: '',
+            Id_Map: ''
         });
 
         const Authorize = {
@@ -153,6 +152,14 @@ export default class set_detail extends React.Component {
             .catch(function (error) {
                 console.log(error);
             })
+
+
+        axios.get('http://localhost:5000/imageupload/picmap/' + this.props.match.params.idmap)
+            .then(res => {
+                this.setState({
+                    Picturemap: res.data
+                });
+            })
     }
 
     createcardDetail() {
@@ -180,8 +187,6 @@ export default class set_detail extends React.Component {
             this.setState({
                 file: reader.result,
                 Pictures: fd
-
-
             })
 
         };
@@ -202,8 +207,26 @@ export default class set_detail extends React.Component {
             });
     }
 
+    previewFile() {
+
+
+        var reader = new FileReader();
+
+        reader.onloadstart = () => {
+        }
+        reader.onloadend = () => {
+            console.log(this.state.Picturemap)
+        };
+        // reader.readAsDataURL(this.state.Picturemap)
+
+        // <img src={this.state.Picturemap.Id_Map} />
+
+    }
+
     render() {
+
         return (
+
             <div>
                 <section id="space">
                     <div className="banner-h">
@@ -212,6 +235,15 @@ export default class set_detail extends React.Component {
                     </div>
                     </div>
                 </section>
+
+                <Card style={{ width: '18rem' }}>
+                    {/* {this.previewFile()} */}
+                    {
+                        this.state.Picturemap !== undefined &&
+                        <img src={this.state.Picturemap.Id_Map} alt="ok"  />
+                    }
+                </Card>
+
                 <Modal isOpen={this.state.modal}
                     toggle={this.toggle}>
 
@@ -261,26 +293,6 @@ export default class set_detail extends React.Component {
                     </form>
                 </Modal>
 
-                <Modal isOpen={this.state.modal1}
-                    togglemap={this.togglemap}>
-
-                    <ModalHeader togglemap={this.togglemap}>เพิ่มรูปภาพ</ModalHeader>
-                    <ModalBody>
-                        <Container>
-                            <input type="file" onChange={this.fileSelectedHandler} name="image" />
-                            {/* <button type="button" onClick={this.fileUploadHandler}>Upload</button> */}
-                            <br />
-                            {
-                                this.state.file !== '' &&
-                                <img src={this.state.file} alt="Picture" />
-                            }
-                        </Container>
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button color="success" onClick={this.fileUploadHandler}>อัพโหลด</Button>
-                        <Button color="secondary" onClick={this.togglemap}>ปิด</Button>
-                    </ModalFooter>
-                </Modal>
 
 
                 <Row style={{ paddingLeft: '160px', paddingRight: '250px' }}>
@@ -292,9 +304,6 @@ export default class set_detail extends React.Component {
                     <Col sm={4} align="center" >
                         <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
                         <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มอุปกรณ์ </button>
-                        <br /><br />
-                        <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
-                        <button type="button" onClick={this.togglemap} className="btn btn-info btn-lg" > เพิ่มรูปต่ำแหน่ง </button>
                     </Col>
 
                 </Row>

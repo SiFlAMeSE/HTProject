@@ -92,7 +92,7 @@ class TabRowMap extends Component {
                     <Card style={{ width: '15rem' }} id="card">
                         <CardImg width="35px" height="200px" src={require('../../../img/Map.png')} />
                         <hr />
-                        {/* <CardTitle id="b">{this.props.obj.Id_Build}</CardTitle> */}
+                        <CardTitle id="b">{this.props.obj._id}</CardTitle>
                         {/* เรียกส่งค่า */}
                         <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentidmap(e)}>เพิ่มอุปกรณ์</Button>
                         <Button onClick={this.toggle} color="secondary">การจัดการ</Button>

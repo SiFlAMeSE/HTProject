@@ -42,7 +42,7 @@ export default () => (
         <Route exact path="/report" component={report} />
         <Route exact path="/setmap/:id" component={set_map} />
         <Route exact path="/setbuild/:id" component={set_build} />
-        <Route exact path="/setdetail/:id/:id" component={set_detail} />
+        <Route exact path="/setdetail/:id/:idmap" component={set_detail} />
         <Route exact path="/setlocation" component={set_location} />
 
         <Route exact path="/dashboard" component={dashboard} />

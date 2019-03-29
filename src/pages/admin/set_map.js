@@ -46,40 +46,6 @@ export default class set_map extends React.Component {
     }
 
 
-    // onSubmit(e) {
-    //     e.preventDefault();
-    // var key = uuidv1();
-    // const Map = {
-    //     Position: this.state.Position,
-    //     Macaddress: this.state.Macaddress,
-    //     Temp_Low: this.state.Temp_Low,
-    //     Temp_Hight: this.state.Temp_Hight,
-    //     Humdi_Low: this.state.Humdi_Low,
-    //     Humdi_Hight: this.state.Humdi_Hight,
-    //     Key_Room: key,
-    //     Id_Build: this.props.match.params.id
-    // }
-    // axios.post('http://localhost:5000/sensers/add', Map)
-    //     .then((res) => {
-    //         if (res.data === 'Server added successfully') {
-    //             window.location = "/setdetail/" + this.state.reload
-    //         }
-    //     })
-    //     .catch(function (err) {
-    //         console.log('error');
-    //     })
-
-    // this.setState({
-    //     Position: '',
-    //     Macaddress: '',
-    //     Temp_Low: '',
-    //     Temp_Hight: '',
-    //     Humdi_Low: '',
-    //     Humdi_Hight: '',
-    //     Key_Room: '',
-    //     Id_Build: ''
-    // });
-
 
     componentDidMount() {
         axios.get('http://localhost:5000/imageupload/picmap_list')
@@ -119,7 +85,7 @@ export default class set_map extends React.Component {
                 file: reader.result,
                 Pictures: fd
             })
-
+            console.log(this.state.file)
         };
         reader.readAsDataURL(event.target.files[0])
     }
@@ -137,6 +103,7 @@ export default class set_map extends React.Component {
 
         axios.post('http://localhost:5000/imageupload/up', data)
             .then(res => {
+                window.location.reload()
                 console.log(res.data);
             });
     }
@@ -151,6 +118,7 @@ export default class set_map extends React.Component {
                     </div>
                     </div>
                 </section>
+
 
                 <Modal isOpen={this.state.modal}
                     toggle={this.toggle}>
