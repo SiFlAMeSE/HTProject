@@ -99,7 +99,8 @@ class TabRowBuild extends Component {
             .then((res) => {
                 if (res.data === 'Senser has been Deleted') {
                     // window.location = "/setdetail"
-                    window.location.replace('/setdetail/' + this.props.obj.Id_Build)
+                    //window.location.replace('/setdetail/' + this.props.obj.Id_Build + this.props.match.params.idmap)
+                    window.location.reload()
                     console.log('OK');
                 } else {
                     console.log('error');
@@ -121,7 +122,8 @@ class TabRowBuild extends Component {
             .then((res) => {
                 if (res.data === 'Updated!') {
                     console.log(res.data);
-                    window.location.replace('/setdetail/' + this.props.obj.Id_Build)
+                    //window.location.replace('/setdetail/' + this.props.obj.Id_Build + this.props.match.params.idmap)
+                    window.location.reload()
                 } else {
                     console.log('error');
                 }

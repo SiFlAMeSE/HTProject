@@ -46,7 +46,7 @@ export default class set_detail extends React.Component {
             reload: this.props.match.params.id,
 
         })
-        _id = this.props.match.params.id
+        _id = this.props.match.params.idmap
 
         data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
         this.setState({
@@ -164,7 +164,7 @@ export default class set_detail extends React.Component {
 
     createcardDetail() {
         return this.state.Senser.map(function (object, i) {
-            if (_id === object.Id_Build) {
+            if (_id === object.Id_Map) {
                 return <TabDetail obj={object} key={i} />
             } else
                 return false
@@ -224,7 +224,6 @@ export default class set_detail extends React.Component {
     }
 
     render() {
-
         return (
 
             <div>

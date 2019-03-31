@@ -120,11 +120,11 @@ export default class monitoring_user extends React.Component {
         this.setState({ Dht: Dht });
         // console.log(Dht)
       })
-    return count = 0
+    //return count = 0
       .catch(function (error) {
         console.log(error);
       })
-    // count = 0;
+    count = 0;
   }
 
 
