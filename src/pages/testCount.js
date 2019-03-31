@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-var down = 0;
+// var down = 0;
 export default class testCount extends Component {
     constructor() {
         super();
@@ -58,8 +58,12 @@ export default class testCount extends Component {
         if (this.state.down === 1) { 
             this.showbar()
           }else if(this.state.seconds === 0){
-            this.state.seconds = 1;
-            this.state.count = 0;
+              this.setState({
+                seconds : 1,
+                count : 0 
+              })
+            // this.state.seconds = 1;
+            // this.state.count = 0;
             window.location.reload();
 
           }

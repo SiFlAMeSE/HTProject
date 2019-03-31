@@ -184,6 +184,7 @@ class notification extends Component {
                     }
                 }
             }
+            return false
         });
     }
 
@@ -403,6 +404,7 @@ class notification extends Component {
                     }
                 }
             }
+            return false
         });
     }
 

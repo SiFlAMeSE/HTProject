@@ -1,10 +1,7 @@
 import React from 'react';
 import { Line } from 'react-chartjs-2';
-import moment from 'moment';
-import { Form } from 'semantic-ui-react';
-import { Table, Button, Input, Container, Row, Col } from 'reactstrap';
+import { Container } from 'reactstrap';
 
-var data_ss, Dht;
 var label_X = ['00.00', '01.00', '02.00', '03.00', '04.00',
     '05.00', '06.00', '07.00', '08.00', '09.00',
     '10.00', '11.00', '12.00', '13.00', '14.00',

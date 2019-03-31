@@ -167,7 +167,8 @@ class authorize extends Component {
                         }
                     }
                 }
-            }
+                 
+            }return true
         });
         // return this.state.Location.map(function (object, i){
         //     return <TableDashboard obj={object} bu={Build} key={i} />

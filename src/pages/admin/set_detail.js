@@ -1,10 +1,12 @@
 import React from 'react';
-import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Card } from 'reactstrap';
 import axios from 'axios';
 import TabDetail from './Detail_Back/TabRowDetail';
+// import { CardHeader } from 'semantic-ui-react';
 const uuidv1 = require('uuid/v1');
 var _id;
 var data_ss
+
 
 export default class set_detail extends React.Component {
     constructor(props) {
@@ -26,19 +28,25 @@ export default class set_detail extends React.Component {
             Humdi_Hight: '',
             Key_Room: '',
             Id_Build: '',
+            Id_Map: '',
+            Picturemap: {}
+
         }
+
         this.state = {
-            modal: false
+            modal: false,
         };
         this.toggle = this.toggle.bind(this);
+
         this.state = { Senser: [] };
     }
     componentWillMount() {
         this.setState({
             path: this.props.params,
-            reload: this.props.match.params.id
+            reload: this.props.match.params.id,
+
         })
-        _id = this.props.match.params.id
+        _id = this.props.match.params.idmap
 
         data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
         this.setState({
@@ -50,6 +58,8 @@ export default class set_detail extends React.Component {
             modal: !this.state.modal
         });
     }
+
+
     onchangePosition(e) {
         this.setState({
             Position: e.target.value
@@ -91,12 +101,13 @@ export default class set_detail extends React.Component {
             Humdi_Low: this.state.Humdi_Low,
             Humdi_Hight: this.state.Humdi_Hight,
             Key_Room: key,
-            Id_Build: this.props.match.params.id
+            Id_Build: this.props.match.params.id,
+            Id_Map: this.props.match.params.idmap
         }
         axios.post('http://localhost:5000/sensers/add', Senser)
             .then((res) => {
                 if (res.data === 'Server added successfully') {
-                    window.location = "/setdetail/" + this.state.reload
+                    window.location.reload()
                 }
             })
             .catch(function (err) {
@@ -111,7 +122,8 @@ export default class set_detail extends React.Component {
             Humdi_Low: '',
             Humdi_Hight: '',
             Key_Room: '',
-            Id_Build: ''
+            Id_Build: '',
+            Id_Map: ''
         });
 
         const Authorize = {
@@ -122,7 +134,7 @@ export default class set_detail extends React.Component {
         axios.post('http://localhost:5000/authorize/add', Authorize)
             .then((res) => {
                 if (res.data === 'Server added successfully') {
-                    window.location = "/setdetail/" + this.state.reload
+                    window.location.reload()
                 }
             })
             .catch(function (err) {
@@ -140,20 +152,80 @@ export default class set_detail extends React.Component {
             .catch(function (error) {
                 console.log(error);
             })
+
+
+        axios.get('http://localhost:5000/imageupload/picmap/' + this.props.match.params.idmap)
+            .then(res => {
+                this.setState({
+                    Picturemap: res.data
+                });
+            })
     }
 
     createcardDetail() {
         return this.state.Senser.map(function (object, i) {
-            if (_id === object.Id_Build) {
+            if (_id === object.Id_Map) {
                 return <TabDetail obj={object} key={i} />
             } else
                 return false
         });
     }
 
+    // uploadpicturemap
+    fileSelectedHandler = event => {
+        this.setState({
+            file: event.target.files[0]
+        })
+        var reader = new FileReader();
+
+        const fd = new FormData();
+        fd.append('image', event.target.files[0]);
+
+        reader.onloadstart = () => {
+        }
+        reader.onloadend = () => {
+            this.setState({
+                file: reader.result,
+                Pictures: fd
+            })
+
+        };
+        reader.readAsDataURL(event.target.files[0])
+    }
+
+    fileUploadHandler = () => {
+        // console.log(this.state.Pictures)
+
+        let data = {
+            img: this.state.file,
+            Id_Build: this.props.match.params.id
+        }
+
+        axios.post('http://localhost:5000/imageupload/up', data)
+            .then(res => {
+                console.log(res.data);
+            });
+    }
+
+    previewFile() {
+
+
+        var reader = new FileReader();
+
+        reader.onloadstart = () => {
+        }
+        reader.onloadend = () => {
+            console.log(this.state.Picturemap)
+        };
+        // reader.readAsDataURL(this.state.Picturemap)
+
+        // <img src={this.state.Picturemap.Id_Map} />
+
+    }
 
     render() {
         return (
+
             <div>
                 <section id="space">
                     <div className="banner-h">
@@ -162,6 +234,15 @@ export default class set_detail extends React.Component {
                     </div>
                     </div>
                 </section>
+
+                <Card style={{ width: '18rem' }}>
+                    {/* {this.previewFile()} */}
+                    {
+                        this.state.Picturemap !== undefined &&
+                        <img src={this.state.Picturemap.Id_Map} alt="ok"  />
+                    }
+                </Card>
+
                 <Modal isOpen={this.state.modal}
                     toggle={this.toggle}>
 
@@ -211,6 +292,8 @@ export default class set_detail extends React.Component {
                     </form>
                 </Modal>
 
+
+
                 <Row style={{ paddingLeft: '160px', paddingRight: '250px' }}>
                     <Col sm={8}>
                         <div className="container row" >
@@ -221,6 +304,7 @@ export default class set_detail extends React.Component {
                         <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
                         <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มอุปกรณ์ </button>
                     </Col>
+
                 </Row>
             </div >
 

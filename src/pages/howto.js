@@ -10,7 +10,7 @@ import classnames from 'classnames';
 
 import '../css/howto.css'
 
-var loopback = 0;
+// var loopback = 0;
 const items = [
     {
         src: require('../img/Howto/U1.jpg'),
@@ -122,7 +122,9 @@ class howto extends Component {
     }
 
     callback() {
-        this.state.activeIndex = 0
+        this.setState({
+            activeIndex : 0
+        }) 
     }
     render() {
         const { activeIndex } = this.state;

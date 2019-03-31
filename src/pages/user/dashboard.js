@@ -7,7 +7,7 @@ import DashboardTable from './Dashboard_Table';
 var _id, loca, Build, Location;
 var bu_num, Loca_num;
 var data_ss;
-var set = "undefined"
+// var set = "undefined"
 
 class dashboard extends Component {
     constructor(props) {
@@ -106,6 +106,7 @@ class dashboard extends Component {
                     }
                 }
             }
+            return true
         });
         // return this.state.Location.map(function (object, i){
         //     return <TableDashboard obj={object} bu={Build} key={i} />
@@ -118,6 +119,7 @@ class dashboard extends Component {
             if (data_ss._id === object.Id_Admin) {
                 return <DashboardChoice obj={object} key={i} />
             }
+            return false
         })
     }
 

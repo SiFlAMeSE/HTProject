@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import { Table, Button, Input, Container, Row, Col } from 'reactstrap';
+import { Table, Button, Input, Container, Row, Col, Card } from 'reactstrap';
 import SenserChoice from './Choice/SenserChoice';
 import Chart from './Chart';
 import moment from 'moment';
 
-var _mac, mac, Build, Location, Dht;
-var bu_num, Loca_num, dht_num;
+var _mac, mac, Build, Location, Dht, MapI;
+var bu_num, Loca_num, dht_num, map_num;
 var data_ss, num = 0;
 var count, seconds = 1;
 var data = [];
@@ -20,7 +20,7 @@ export default class monitoring extends React.Component {
       data: {},
     }
 
-    this.state = { Senser: [], Location: [], Dht: [], time: {} };
+    this.state = { Senser: [], Location: [], Dht: [], time: {}, Map: [] };
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
@@ -97,6 +97,17 @@ export default class monitoring extends React.Component {
       .catch(function (error) {
         console.log(error);
       })
+
+    axios.get('http://localhost:5000/imageupload/picmap_list')
+      .then(response => {
+        MapI = response.data;
+        map_num = response.data.length;
+        this.setState({ MapI: MapI });
+        // console.log(Dht)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
   loopdht() {
@@ -132,18 +143,23 @@ export default class monitoring extends React.Component {
           for (let y = 0; y < Loca_num; y++) {
             if (Build[z].Id_Loca === Location[y]._id) {
               if (data_ss._id === Location[y].Id_Admin) {
-                show[show_num] = {
-                  Name_Lo: Location[y].Name_Lo,
-                  Name_Build: Build[z].Name_Build,
-                  Position: object.Position,
-                  Temp_Low: object.Temp_Low,
-                  Temp_Hight: object.Temp_Hight,
-                  Humdi_Low: object.Humdi_Low,
-                  Humdi_Hight: object.Humdi_Hight,
-                  Macaddress: object.Macaddress
+                for (let x = 0; x < map_num; x++) {
+                  if (object.Id_Map === MapI[x]._id) {
+                    show[show_num] = {
+                      Name_Lo: Location[y].Name_Lo,
+                      Name_Build: Build[z].Name_Build,
+                      Position: object.Position,
+                      Temp_Low: object.Temp_Low,
+                      Temp_Hight: object.Temp_Hight,
+                      Humdi_Low: object.Humdi_Low,
+                      Humdi_Hight: object.Humdi_Hight,
+                      Macaddress: object.Macaddress,
+                      Id_Map: MapI[x].Id_Map
+                    }
+                    show_num = show_num + 1
+                    return <SenserChoice obj={object} key={i} />;
+                  }
                 }
-                show_num = show_num + 1
-                return <SenserChoice obj={object} key={i} />;
               }
             }
           }
@@ -155,7 +171,7 @@ export default class monitoring extends React.Component {
 
   showData() {
     if (_mac !== "undefined") {
-      console.log("No deil")
+      //console.log("No deil")
       for (let i = 0; i < show_num; i++) {
         if (_mac === show[i].Macaddress) {
           return <Table>
@@ -204,10 +220,25 @@ export default class monitoring extends React.Component {
       }
     }
   }
-  dateNow()
-  {
-    if(_mac !== "undefined")
-    {
+
+  showMap() {
+    if (_mac !== "undefined") {
+      //console.log("No deil")
+      for (let i = 0; i < show_num; i++) {
+        if (_mac === show[i].Macaddress) {
+          return <Card style={{ width: '18rem' }}>
+          {/* {this.previewFile()} */}
+          {
+            <img src={show[i].Id_Map} alt="ok" />
+          }
+        </Card>
+        }
+      }
+    }
+  }
+
+  dateNow() {
+    if (_mac !== "undefined") {
       return moment().format('MMMM Do YYYY, h:mm:ss a')
     }
   }
@@ -229,6 +260,7 @@ export default class monitoring extends React.Component {
           return <Chart obj={data} key={num} />;
           //return <MonitorChoice obj={data} key={num} />; 
         }
+        else return false
       });
     }
   }
@@ -296,6 +328,7 @@ export default class monitoring extends React.Component {
           <Table>
             <Row align="right"><Col> {this.dateNow()} </Col></Row>
           </Table>
+          {this.showMap()}
         </Container>
 
 
