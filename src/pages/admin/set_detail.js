@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Card } from 'reactstrap';
+import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
 import TabDetail from './Detail_Back/TabRowDetail';
 // import { CardHeader } from 'semantic-ui-react';
@@ -235,13 +235,18 @@ export default class set_detail extends React.Component {
                     </div>
                 </section>
 
-                <Card style={{ width: '18rem' }}>
-                    {/* {this.previewFile()} */}
-                    {
-                        this.state.Picturemap !== undefined &&
-                        <img src={this.state.Picturemap.Id_Map} alt="ok"  />
-                    }
-                </Card>
+                <center>
+                    <Table style={{ width: '80%' }} bordered="2">
+                        <center>
+                            {/* {this.previewFile()} */}
+                            {
+                                this.state.Picturemap !== undefined &&
+                                <img src={this.state.Picturemap.Id_Map} alt="ok" />
+                            }
+                        </center>
+                    </Table>
+                </center>
+                <br />
 
                 <Modal isOpen={this.state.modal}
                     toggle={this.toggle}>
@@ -294,7 +299,7 @@ export default class set_detail extends React.Component {
 
 
 
-                <Row style={{ paddingLeft: '160px', paddingRight: '250px' }}>
+                <Row style={{ paddingLeft: '160px', paddingRight: '250px' ,paddingBottom:'20px'}}>
                     <Col sm={8}>
                         <div className="container row" >
                             {this.createcardDetail()}
@@ -304,7 +309,6 @@ export default class set_detail extends React.Component {
                         <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
                         <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มอุปกรณ์ </button>
                     </Col>
-
                 </Row>
             </div >
 
