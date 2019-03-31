@@ -227,11 +227,17 @@ export default class monitoring extends React.Component {
       for (let i = 0; i < show_num; i++) {
         if (_mac === show[i].Macaddress) {
           return <Card style={{ width: '18rem' }}>
-          {/* {this.previewFile()} */}
-          {
-            <img src={show[i].Id_Map} alt="ok" />
-          }
-        </Card>
+            {/* {this.previewFile()} */}
+            <Table style={{ width: '80%' }} bordered="2">
+              <center>
+                {/* {this.previewFile()} */}
+                {
+                  this.state.Picturemap !== undefined &&
+                  <img src={this.state.Picturemap.Id_Map} alt="ok" />
+                }
+              </center>
+            </Table>
+          </Card>
         }
       }
     }
@@ -309,6 +315,7 @@ export default class monitoring extends React.Component {
                     </div>
           </div>
         </section>
+        {this.showMap()}
         <Container>
           <Table>
             <Row align="center">
@@ -328,7 +335,7 @@ export default class monitoring extends React.Component {
           <Table>
             <Row align="right"><Col> {this.dateNow()} </Col></Row>
           </Table>
-          {this.showMap()}
+
         </Container>
 
 
