@@ -1,12 +1,12 @@
 import React from 'react';
 import axios from 'axios';
-import { Table, Button, Input, Container, Row, Col } from 'reactstrap';
+import { Table, Button, Input, Container, Row, Col, Card } from 'reactstrap';
 import SenserChoice from '../Choice/SenserChoice';
 import Chart from '../Chart';
 import moment from 'moment';
 
-var _mac, mac, Build, Location, Dht, Authorize, Senser;
-var bu_num, Loca_num, dht_num, aut_num;
+var _mac, mac, Build, Location, Dht, Authorize, Senser, MapI;
+var bu_num, Loca_num, dht_num, aut_num, map_num;
 var data_ss, num = 0;
 var count, seconds = 1;
 var data = [];
@@ -20,7 +20,7 @@ export default class monitoring_user extends React.Component {
       data: {},
     }
 
-    this.state = { Authorize: [], Senser: [], Location: [], Dht: [], time: {} };
+    this.state = { Authorize: [], Senser: [], Location: [], Dht: [], time: {}, Map: [] };
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
@@ -109,6 +109,17 @@ export default class monitoring_user extends React.Component {
       .catch(function (error) {
         console.log(error);
       })
+
+    axios.get('http://localhost:5000/imageupload/picmap_list')
+      .then(response => {
+        MapI = response.data;
+        map_num = response.data.length;
+        this.setState({ MapI: MapI });
+        // console.log(Dht)
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
   loopdht() {
@@ -120,7 +131,7 @@ export default class monitoring_user extends React.Component {
         this.setState({ Dht: Dht });
         // console.log(Dht)
       })
-    //return count = 0
+      //return count = 0
       .catch(function (error) {
         console.log(error);
       })
@@ -161,18 +172,23 @@ export default class monitoring_user extends React.Component {
               for (let i = 0; i < aut_num; i++) {
                 if (object.Key_Room === Authorize[i].Key_Room) {
                   if (data_ss._id === Authorize[i].Id_User) {
-                    show[show_num] = {
-                      Name_Lo: Location[y].Name_Lo,
-                      Name_Build: Build[z].Name_Build,
-                      Position: object.Position,
-                      Temp_Low: object.Temp_Low,
-                      Temp_Hight: object.Temp_Hight,
-                      Humdi_Low: object.Humdi_Low,
-                      Humdi_Hight: object.Humdi_Hight,
-                      Macaddress: object.Macaddress
+                    for (let x = 0; x < map_num; x++) {
+                      if (object.Id_Map === MapI[x]._id) {
+                        show[show_num] = {
+                          Name_Lo: Location[y].Name_Lo,
+                          Name_Build: Build[z].Name_Build,
+                          Position: object.Position,
+                          Temp_Low: object.Temp_Low,
+                          Temp_Hight: object.Temp_Hight,
+                          Humdi_Low: object.Humdi_Low,
+                          Humdi_Hight: object.Humdi_Hight,
+                          Macaddress: object.Macaddress,
+                          Id_Map: MapI[x].Id_Map
+                        }
+                        show_num = show_num + 1
+                        return <SenserChoice obj={object} key={i} />;
+                      }
                     }
-                    show_num = show_num + 1
-                    return <SenserChoice obj={object} key={i} />;
                   }
                 }
               }
@@ -234,6 +250,21 @@ export default class monitoring_user extends React.Component {
       }
     }
   }
+
+  showMap() {
+    if (_mac !== "undefined") {
+      //console.log("No deil")
+      for (let i = 0; i < show_num; i++) {
+        if (_mac === show[i].Macaddress) {
+          return <img src={show[i].Id_Map} alt="ok" style={{ height: "560px" }} />
+          {/* {this.previewFile()} */ }
+
+
+        }
+      }
+    }
+  }
+
 
   dateNow() {
     if (_mac !== "undefined") {
@@ -326,8 +357,14 @@ export default class monitoring_user extends React.Component {
             <Row align="right"><Col> {this.dateNow()} </Col></Row>
           </Table>
         </Container>
-
-
+        <Table style={{ width: '80%' }} bordered="2" align="center">
+          <center>
+            {this.showMap()}
+          </center>
+        </Table>
+        <br />
+        <div className="bg-mid-low" align="center" >สถานะปัจจุบัน</div>
+        <br />
         <Row >
           <Col md={11} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
             {/* <Chart /> */}
