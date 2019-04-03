@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {  Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardTitle, CardImg } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardTitle, CardImg } from 'reactstrap';
 var data_ss
 
 class TabRowMap extends Component {
@@ -52,17 +52,17 @@ class TabRowMap extends Component {
     //     });
     // }
 
-    // Deletemap() {
-    //     axios.post('http://178.128.48.132:5000/imageupload/Removemap/' + this.props.obj._id)
-    //         .then((res) => {
-    //             if (res.data === 'Build has been Deleted') {
-    //                 window.location.replace('/setbuild/' + this.props.obj.Id_Loca)
-    //                 // console.log(this.state.reload);
-    //             } else {
-    //                 console.log("error");
-    //             }
-    //         })
-    // }
+    Deletemap() {
+        axios.post('http://178.128.48.132:5000/imageupload/Removemap/' + this.props.obj._id)
+            .then((res) => {
+                if (res.data === 'Map has been Deleted') {
+                    window.location.reload()
+                    // console.log(this.state.reload);
+                } else {
+                    console.log("error");
+                }
+            })
+    }
 
     // Updatebuild(e) {
     //     e.preventDefault();

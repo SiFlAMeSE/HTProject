@@ -226,18 +226,15 @@ export default class monitoring extends React.Component {
       //console.log("No deil")
       for (let i = 0; i < show_num; i++) {
         if (_mac === show[i].Macaddress) {
-          return <Card style={{ width: '18rem' }}>
-            {/* {this.previewFile()} */}
-            <Table style={{ width: '80%' }} bordered="2">
-              <center>
-                {/* {this.previewFile()} */}
-                {
-                  this.state.Picturemap !== undefined &&
-                  <img src={this.state.Picturemap.Id_Map} alt="ok" />
-                }
-              </center>
-            </Table>
-          </Card>
+          return <img src={show[i].Id_Map} alt="ok" style={{ height: "560px" }} />
+          {/* {this.previewFile()} */ }
+          {/* {this.previewFile()} */ }
+          {
+            // this.state.Picturemap !== undefined &&
+
+          }
+
+
         }
       }
     }
@@ -315,7 +312,6 @@ export default class monitoring extends React.Component {
                     </div>
           </div>
         </section>
-        {this.showMap()}
         <Container>
           <Table>
             <Row align="center">
@@ -332,12 +328,19 @@ export default class monitoring extends React.Component {
             <br />
           </Table>
           {this.showData()}
-          <Table>
+          <Table >
             <Row align="right"><Col> {this.dateNow()} </Col></Row>
           </Table>
-
         </Container>
 
+        <Table style={{ width: '80%' }} bordered="2" align="center">
+          <center>
+            {this.showMap()}
+          </center>
+        </Table>
+        <br />
+        <div className="bg-mid-low" align="center" >สถานะปัจจุบัน</div>
+        <br />
 
         <Row >
           <Col md={11} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
