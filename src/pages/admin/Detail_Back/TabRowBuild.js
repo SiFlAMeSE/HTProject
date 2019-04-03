@@ -37,7 +37,7 @@ class TabRowBuild extends Component {
         this.setState({
             modal: !this.state.modal
         });
-        axios.get('http://localhost:5000/build/build/' + this.props.obj._id)
+        axios.get('http://128.199.217.17/build/build/' + this.props.obj._id)
             .then(response => {
                 this.setState({
                     Name_Build: response.data.Name_Build
@@ -55,7 +55,7 @@ class TabRowBuild extends Component {
     }
 
     Deletebuild() {
-        axios.post('http://localhost:5000/build/Removebuild/' + this.props.obj._id)
+        axios.post('http://128.199.217.17/build/Removebuild/' + this.props.obj._id)
             .then((res) => {
                 if (res.data === 'Build has been Deleted') {
                     window.location.replace('/setbuild/' + this.props.obj.Id_Loca)
@@ -71,7 +71,7 @@ class TabRowBuild extends Component {
         const obj = {
             Name_Build: this.state.Name_Build
         };
-        axios.post('http://localhost:5000/build/update/' + this.props.obj._id, obj)
+        axios.post('http://128.199.217.17/build/update/' + this.props.obj._id, obj)
             .then((res) => {
                 if (res.data === 'Updated!') {
                     // console.log(res.data);

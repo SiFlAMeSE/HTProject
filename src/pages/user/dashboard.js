@@ -28,7 +28,7 @@ class dashboard extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/sensers/senser_list')
+        axios.get('http://128.199.217.17/sensers/senser_list')
             .then(response => {
                 const Senser = response.data;
                 //sen_num = response.data.length;
@@ -39,7 +39,7 @@ class dashboard extends Component {
                 console.log(error);
             })
 
-        axios.get('http://localhost:5000/build/build_list')
+        axios.get('http://128.199.217.17/build/build_list')
             .then(response => {
                 Build = response.data;
                 bu_num = response.data.length;
@@ -51,7 +51,7 @@ class dashboard extends Component {
                 console.log(error);
             })
 
-        axios.get('http://localhost:5000/locations/location_list')
+        axios.get('http://128.199.217.17/locations/location_list')
             .then(response => {
                 Location = response.data;
                 Loca_num = response.data.length;

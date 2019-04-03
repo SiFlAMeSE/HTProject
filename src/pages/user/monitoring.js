@@ -54,7 +54,7 @@ export default class monitoring extends React.Component {
   componentDidMount() {
     // let timeLeftVar = this.secondsToTime(seconds);
     // this.setState({ time: timeLeftVar });
-    axios.get('http://localhost:5000/sensers/senser_list')
+    axios.get('http://128.199.217.17/sensers/senser_list')
       .then(response => {
         const Senser = response.data;
         this.setState({ Senser: Senser });
@@ -64,7 +64,7 @@ export default class monitoring extends React.Component {
         console.log(error);
       })
 
-    axios.get('http://localhost:5000/build/build_list')
+    axios.get('http://128.199.217.17/build/build_list')
       .then(response => {
         Build = response.data;
         bu_num = response.data.length;
@@ -76,7 +76,7 @@ export default class monitoring extends React.Component {
         console.log(error);
       })
 
-    axios.get('http://localhost:5000/locations/location_list')
+    axios.get('http://128.199.217.17/locations/location_list')
       .then(response => {
         Location = response.data;
         Loca_num = response.data.length;
@@ -87,7 +87,7 @@ export default class monitoring extends React.Component {
         console.log(error);
       })
 
-    axios.get('http://localhost:5000/dht/dht_list')
+    axios.get('http://128.199.217.17/dht/dht_list')
       .then(response => {
         Dht = response.data;
         dht_num = response.data.length;
@@ -98,7 +98,7 @@ export default class monitoring extends React.Component {
         console.log(error);
       })
 
-    axios.get('http://localhost:5000/imageupload/picmap_list')
+    axios.get('http://128.199.217.17/imageupload/picmap_list')
       .then(response => {
         MapI = response.data;
         map_num = response.data.length;
@@ -112,7 +112,7 @@ export default class monitoring extends React.Component {
 
   loopdht() {
     console.log('dhtupdate')
-    axios.get('http://localhost:5000/dht/dht_list')
+    axios.get('http://128.199.217.17/dht/dht_list')
       .then(response => {
         Dht = response.data;
         dht_num = response.data.length;

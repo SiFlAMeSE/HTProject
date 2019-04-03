@@ -48,7 +48,7 @@ export default class signup extends Component {
             Positions: this.state.Positions,
             Id_line: this.state.Id_line
         }
-        axios.post('http://localhost:5000/users/add', UserGen)
+        axios.post('http://128.199.217.17/users/add', UserGen)
             // .then(res => console.log(res.data));
             .then(function (res) {
                 if (res.data === 'Server added successfully') {

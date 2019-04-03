@@ -58,7 +58,7 @@ class authorize extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/authorize/authorize_list')
+        axios.get('http://128.199.217.17/authorize/authorize_list')
             .then(response => {
                 Authorize = response.data;
                 aut_num = response.data.length;
@@ -69,7 +69,7 @@ class authorize extends Component {
                 console.log(error);
             })
 
-        axios.get('http://localhost:5000/sensers/senser_list')
+        axios.get('http://128.199.217.17/sensers/senser_list')
             .then(response => {
                 Senser = response.data;
                 sen_num = response.data.length;
@@ -80,7 +80,7 @@ class authorize extends Component {
                 console.log(error);
             })
 
-        axios.get('http://localhost:5000/build/build_list')
+        axios.get('http://128.199.217.17/build/build_list')
             .then(response => {
                 Build = response.data;
                 bu_num = response.data.length;
@@ -91,7 +91,7 @@ class authorize extends Component {
                 console.log(error);
             })
 
-        axios.get('http://localhost:5000/locations/location_list')
+        axios.get('http://128.199.217.17/locations/location_list')
             .then(response => {
                 Location = response.data;
                 Loca_num = response.data.length;
@@ -112,7 +112,7 @@ class authorize extends Component {
                     Key_Room: this.state.Key_Room,
                     Id_User: data_ss._id
                 }
-                axios.post('http://localhost:5000/authorize/add', Authorize)
+                axios.post('http://128.199.217.17/authorize/add', Authorize)
                     .then(function (res) {
                         if (res.data === 'Server added successfully') {
                             window.location.replace('/user/authorize')

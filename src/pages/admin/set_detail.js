@@ -104,7 +104,7 @@ export default class set_detail extends React.Component {
             Id_Build: this.props.match.params.id,
             Id_Map: this.props.match.params.idmap
         }
-        axios.post('http://localhost:5000/sensers/add', Senser)
+        axios.post('http://128.199.217.17/sensers/add', Senser)
             .then((res) => {
                 if (res.data === 'Server added successfully') {
                     window.location.reload()
@@ -131,7 +131,7 @@ export default class set_detail extends React.Component {
             Id_User: data_ss
         }
 
-        axios.post('http://localhost:5000/authorize/add', Authorize)
+        axios.post('http://128.199.217.17/authorize/add', Authorize)
             .then((res) => {
                 if (res.data === 'Server added successfully') {
                     window.location.reload()
@@ -143,7 +143,7 @@ export default class set_detail extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/sensers/senser_list')
+        axios.get('http://128.199.217.17/sensers/senser_list')
             .then(response => {
                 const Senser = response.data;
                 this.setState({ Senser });
@@ -154,7 +154,7 @@ export default class set_detail extends React.Component {
             })
 
 
-        axios.get('http://localhost:5000/imageupload/picmap/' + this.props.match.params.idmap)
+        axios.get('http://128.199.217.17/imageupload/picmap/' + this.props.match.params.idmap)
             .then(res => {
                 this.setState({
                     Picturemap: res.data
@@ -201,7 +201,7 @@ export default class set_detail extends React.Component {
             Id_Build: this.props.match.params.id
         }
 
-        axios.post('http://localhost:5000/imageupload/up', data)
+        axios.post('http://128.199.217.17/imageupload/up', data)
             .then(res => {
                 console.log(res.data);
             });
