@@ -57,7 +57,7 @@ export default class set_location extends React.Component {
             Address: this.state.Address,
             Id_Admin: data_ss._id
         }
-        axios.post('http://localhost:5000/locations/add', Locations)
+        axios.post('http://178.128.48.132:5000/locations/add', Locations)
             .then(function (res) {
                 if (res.data === 'Server added successfully') {
                     window.location = "/setlocation"
@@ -74,7 +74,7 @@ export default class set_location extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/locations/location_list')
+        axios.get('http://178.128.48.132:5000/locations/location_list')
             .then(response => {
                 const Location = response.data;
                 this.setState({ Location });

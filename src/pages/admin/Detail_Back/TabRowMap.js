@@ -35,7 +35,7 @@ class TabRowMap extends Component {
         this.setState({
             modal: !this.state.modal
         });
-        axios.get('http://localhost:5000/imageupload/picmap/' + this.props.obj._id)
+        axios.get('http://178.128.48.132:5000/imageupload/picmap/' + this.props.obj._id)
             .then(response => {
                 this.setState({
                     Id_Map: response.data.Id_Map
@@ -53,7 +53,7 @@ class TabRowMap extends Component {
     // }
 
     // Deletemap() {
-    //     axios.post('http://localhost:5000/imageupload/Removemap/' + this.props.obj._id)
+    //     axios.post('http://178.128.48.132:5000/imageupload/Removemap/' + this.props.obj._id)
     //         .then((res) => {
     //             if (res.data === 'Build has been Deleted') {
     //                 window.location.replace('/setbuild/' + this.props.obj.Id_Loca)
@@ -69,7 +69,7 @@ class TabRowMap extends Component {
     //     const obj = {
     //         Name_Build: this.state.Name_Build
     //     };
-    //     axios.post('http://localhost:5000/build/update/' + this.props.obj._id, obj)
+    //     axios.post('http://178.128.48.132:5000/build/update/' + this.props.obj._id, obj)
     //         .then((res) => {
     //             if (res.data === 'Updated!') {
     //                 // console.log(res.data);

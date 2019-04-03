@@ -48,7 +48,7 @@ export default class set_map extends React.Component {
 
 
     componentDidMount() {
-        axios.get('http://localhost:5000/imageupload/picmap_list')
+        axios.get('http://178.128.48.132:5000/imageupload/picmap_list')
             .then(response => {
                 const Image = response.data;
                 this.setState({ Image });
@@ -101,7 +101,7 @@ export default class set_map extends React.Component {
             Id_Build: this.props.match.params.id
         }
 
-        axios.post('http://localhost:5000/imageupload/up', data)
+        axios.post('http://178.128.48.132:5000/imageupload/up', data)
             .then(res => {
                 window.location.reload()
                 console.log(res.data);

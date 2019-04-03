@@ -31,7 +31,7 @@ class loginp extends Component {
             Positions: this.state.Positions
         }
         // const { data } = this.state
-        axios.post('http://localhost:5000/users/login', UserGen)
+        axios.post('http://178.128.48.132:5000/users/login', UserGen)
             .then(function (res) {
                 const data = res.data.data
                 if (res.data.status === 'Success') {
