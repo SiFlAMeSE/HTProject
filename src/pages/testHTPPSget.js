@@ -23,7 +23,7 @@ export default class testHTPPSget extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://178.128.48.132:5000/users/user_list')
+    axios.get('http://localhost:5000/users/user_list')
       .then(response => {
         const UserGen = response.data;
         this.setState({ UserGen });

@@ -67,7 +67,7 @@ export default class Chart extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://178.128.48.132:5000/dht/dht_list')
+        axios.get('http://localhost:5000/dht/dht_list')
             .then(response => {
                 this.setState({ Dht: response.data });
 

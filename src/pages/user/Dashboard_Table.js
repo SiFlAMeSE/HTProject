@@ -72,7 +72,7 @@ class Dashboard_Table extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://178.128.48.132:5000/dht/dht_list')
+    axios.get('http://localhost:5000/dht/dht_list')
       .then(response => {
         Dht = response.data;
         // data_num = response.data.length - 1;
@@ -87,7 +87,7 @@ class Dashboard_Table extends React.Component {
 
   loopdht() {
     console.log('dhtupdate')
-    axios.get('http://178.128.48.132:5000/dht/dht_list')
+    axios.get('http://localhost:5000/dht/dht_list')
       .then(response => {
         Dht = response.data;
         // data_num = response.data.length - 1;

@@ -46,7 +46,7 @@ class TabRowBuild extends Component {
         this.setState({
             modal: !this.state.modal
         });
-        axios.get('http://178.128.48.132:5000/sensers/senser/' + this.props.obj._id)
+        axios.get('http://localhost:5000/sensers/senser/' + this.props.obj._id)
             .then(response => {
                 this.setState({
                     Position: response.data.Position,
@@ -95,7 +95,7 @@ class TabRowBuild extends Component {
     }
 
     Deletesenser() {
-        axios.post('http://178.128.48.132:5000/sensers/Removesenser/' + this.props.obj._id)
+        axios.post('http://localhost:5000/sensers/Removesenser/' + this.props.obj._id)
             .then((res) => {
                 if (res.data === 'Senser has been Deleted') {
                     // window.location = "/setdetail"
@@ -118,7 +118,7 @@ class TabRowBuild extends Component {
             Humdi_Low: this.state.Humdi_Low,
             Humdi_Hight: this.state.Humdi_Hight
         };
-        axios.post('http://178.128.48.132:5000/sensers/update/' + this.props.obj._id, obj)
+        axios.post('http://localhost:5000/sensers/update/' + this.props.obj._id, obj)
             .then((res) => {
                 if (res.data === 'Updated!') {
                     console.log(res.data);

@@ -76,7 +76,7 @@ class history extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://178.128.48.132:5000/history')
+        axios.get('http://localhost:5000/history')
             .then(response => {
                 History = response.data;
                 his_num = response.data.length;
@@ -87,7 +87,7 @@ class history extends Component {
                 console.log(error);
             })
 
-        axios.get('http://178.128.48.132:5000/sensers/senser_list')
+        axios.get('http://localhost:5000/sensers/senser_list')
             .then(response => {
                 const Senser = response.data;
                 this.setState({ Senser: Senser });
@@ -97,7 +97,7 @@ class history extends Component {
                 console.log(error);
             })
 
-        axios.get('http://178.128.48.132:5000/build/build_list')
+        axios.get('http://localhost:5000/build/build_list')
             .then(response => {
                 Build = response.data;
                 bu_num = response.data.length;
@@ -108,7 +108,7 @@ class history extends Component {
                 console.log(error);
             })
 
-        axios.get('http://178.128.48.132:5000/locations/location_list')
+        axios.get('http://localhost:5000/locations/location_list')
             .then(response => {
                 Location = response.data;
                 Loca_num = response.data.length;
