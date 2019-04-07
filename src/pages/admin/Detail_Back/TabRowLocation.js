@@ -36,7 +36,7 @@ class TabRowLocation extends Component {
     this.setState({
       modal: !this.state.modal
     });
-    axios.get('http://128.199.217.17/locations/location/' + this.props.obj._id)
+    axios.get('http://206.189.94.192:5000/locations/location/' + this.props.obj._id)
       .then(response => {
         this.setState({
           Name_Lo: response.data.Name_Lo,
@@ -60,7 +60,7 @@ class TabRowLocation extends Component {
   }
 
   Deletelocation() {
-    axios.post('http://128.199.217.17/locations/Removelocation/' + this.props.obj._id)
+    axios.post('http://206.189.94.192:5000/locations/Removelocation/' + this.props.obj._id)
       .then(function (res) {
         if (res.data === 'Location has been Deleted') {
           window.location = "/setlocation"
@@ -78,7 +78,7 @@ class TabRowLocation extends Component {
       Name_Lo: this.state.Name_Lo,
       Address: this.state.Address
     };
-    axios.post('http://128.199.217.17/locations/update/' + this.props.obj._id, obj)
+    axios.post('http://206.189.94.192:5000/locations/update/' + this.props.obj._id, obj)
       .then(function (res) {
         if (res.data === 'Updated!') {
           console.log(res.data);

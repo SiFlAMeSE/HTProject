@@ -35,7 +35,7 @@ class notification extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://128.199.217.17/WarnTempHumid')
+        axios.get('http://206.189.94.192:5000/WarnTempHumid')
             .then(response => {
                 const WarnTH = response.data;
                 this.setState({ WarnTH: WarnTH });
@@ -45,7 +45,7 @@ class notification extends Component {
                 console.log(error);
             })
 
-        axios.get('http://128.199.217.17/WarnSenser')
+        axios.get('http://206.189.94.192:5000/WarnSenser')
             .then(response => {
                 const WarnSenser = response.data;
                 this.setState({ WarnSenser: WarnSenser });
@@ -55,7 +55,7 @@ class notification extends Component {
                 console.log(error);
             })
 
-        axios.get('http://128.199.217.17/sensers/senser_list')
+        axios.get('http://206.189.94.192:5000/sensers/senser_list')
             .then(response => {
                 Senser = response.data;
                 this.setState({ Senser: Senser });
@@ -65,7 +65,7 @@ class notification extends Component {
                 console.log(error);
             })
 
-        axios.get('http://128.199.217.17/build/build_list')
+        axios.get('http://206.189.94.192:5000/build/build_list')
             .then(response => {
                 Build = response.data;
                 bu_num = response.data.length;
@@ -76,7 +76,7 @@ class notification extends Component {
                 console.log(error);
             })
 
-        axios.get('http://128.199.217.17/locations/location_list')
+        axios.get('http://206.189.94.192:5000/locations/location_list')
             .then(response => {
                 Location = response.data;
                 Loca_num = response.data.length;

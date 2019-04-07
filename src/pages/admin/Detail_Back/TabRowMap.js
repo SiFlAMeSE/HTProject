@@ -35,7 +35,7 @@ class TabRowMap extends Component {
         this.setState({
             modal: !this.state.modal
         });
-        axios.get('http://128.199.217.17/imageupload/picmap/' + this.props.obj._id)
+        axios.get('http://206.189.94.192:5000/imageupload/picmap/' + this.props.obj._id)
             .then(response => {
                 this.setState({
                     Id_Map: response.data.Id_Map
@@ -53,7 +53,7 @@ class TabRowMap extends Component {
     // }
 
     Deletemap() {
-        axios.post('http://128.199.217.17/imageupload/Removemap/' + this.props.obj._id)
+        axios.post('http://206.189.94.192:5000/imageupload/Removemap/' + this.props.obj._id)
             .then((res) => {
                 if (res.data === 'Map has been Deleted') {
                     window.location.reload()
@@ -69,7 +69,7 @@ class TabRowMap extends Component {
     //     const obj = {
     //         Name_Build: this.state.Name_Build
     //     };
-    //     axios.post('http://128.199.217.17/build/update/' + this.props.obj._id, obj)
+    //     axios.post('http://206.189.94.192:5000/build/update/' + this.props.obj._id, obj)
     //         .then((res) => {
     //             if (res.data === 'Updated!') {
     //                 // console.log(res.data);

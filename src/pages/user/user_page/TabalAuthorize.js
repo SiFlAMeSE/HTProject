@@ -5,7 +5,7 @@ import axios from 'axios';
 class TabalAuthorize extends React.Component {
 
     Deletelocation(_id) {
-        axios.post('http://128.199.217.17/authorize/Removeauthorize/' + _id)
+        axios.post('http://206.189.94.192:5000/authorize/Removeauthorize/' + _id)
           .then(function (res) {
             if (res.data === 'Authorize has been Deleted') {
               window.location = "/user/authorize"

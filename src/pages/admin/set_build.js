@@ -51,7 +51,7 @@ export default class set_build extends React.Component {
             Name_Build: this.state.Name_Build,
             Id_Loca: this.props.match.params.id
         }
-        axios.post('http://128.199.217.17/build/add', Build)
+        axios.post('http://206.189.94.192:5000/build/add', Build)
             .then((res) => {
                 if (res) {
                     window.location.replace('/setbuild/' + this.state.reload)
@@ -67,7 +67,7 @@ export default class set_build extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://128.199.217.17/build/build_list')
+        axios.get('http://206.189.94.192:5000/build/build_list')
             .then(response => {
                 const Build = response.data;
                 this.setState({ Build });

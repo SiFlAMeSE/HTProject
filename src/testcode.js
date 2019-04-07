@@ -40,7 +40,7 @@
 //       img : this.state.file
 //     }
     
-//     axios.post('http://128.199.217.17/imageupload/up', data)
+//     axios.post('http://206.189.94.192:5000/imageupload/up', data)
 //       .then(res => {
 //         console.log(res.data);
 //       });
