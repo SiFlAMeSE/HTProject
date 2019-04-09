@@ -295,7 +295,7 @@ export default class monitoring_user extends React.Component {
   startTimer() {
     console.log('start');
     if (this.timer === 0 && seconds > 0) {
-      this.timer = setInterval(this.countDown, 10000);
+      this.timer = setInterval(this.countDown, 1000);
       // this.state.down = 1;
     }
     // this.showbar()
