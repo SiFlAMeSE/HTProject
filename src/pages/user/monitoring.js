@@ -262,8 +262,8 @@ export default class monitoring extends React.Component {
           // console.log(data)
           return <Chart obj={data} key={num} />;
           //return <MonitorChoice obj={data} key={num} />; 
-        }
-        else return false
+        } return false
+
       });
     }
   }
