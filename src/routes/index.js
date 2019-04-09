@@ -13,6 +13,7 @@ import set_map from "../pages/admin/set_map";
 import set_build from "../pages/admin/set_build";
 import set_detail from "../pages/admin/set_detail";
 import set_location from "../pages/admin/set_location";
+import showmap from "../pages/admin/showmap";
 
 import dashboard from "../pages/user/dashboard";
 import history from "../pages/user/history";
@@ -44,6 +45,7 @@ export default () => (
         <Route exact path="/setbuild/:id" component={set_build} />
         <Route exact path="/setdetail/:id/:idmap" component={set_detail} />
         <Route exact path="/setlocation" component={set_location} />
+        <Route exact path="/showmap" component={showmap} />
 
         <Route exact path="/dashboard" component={dashboard} />
         <Route exact path="/dashboard/:id" component={dashboard} />

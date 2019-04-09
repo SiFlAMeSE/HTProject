@@ -22,6 +22,8 @@ class TabRowLocation extends Component {
     this.state = {
       Name_Lo: '',
       Address: '',
+      lat: '',
+      lng: '',
       _id: ''
     }
 
@@ -40,13 +42,17 @@ class TabRowLocation extends Component {
       .then(response => {
         this.setState({
           Name_Lo: response.data.Name_Lo,
-          Address: response.data.Address
+          Address: response.data.Address,
+          lat: response.data.lat,
+          lng: response.data.lng
         })
       })
       .catch(function (error) {
         console.log(error);
       })
   }
+
+
 
   onchangeNameLocation(e) {
     this.setState({
@@ -56,6 +62,16 @@ class TabRowLocation extends Component {
   onchangeAddress(e) {
     this.setState({
       Address: e.target.value
+    });
+  }
+  onchangelat(e) {
+    this.setState({
+      lat: e.target.value
+    });
+  }
+  onchangelng(e) {
+    this.setState({
+      lng: e.target.value
     });
   }
 
@@ -76,7 +92,9 @@ class TabRowLocation extends Component {
     e.preventDefault();
     const obj = {
       Name_Lo: this.state.Name_Lo,
-      Address: this.state.Address
+      Address: this.state.Address,
+      lat: this.state.lat,
+      lng: this.state.lng
     };
     axios.post('http://206.189.94.192:5000/locations/update/' + this.props.obj._id, obj)
       .then(function (res) {
@@ -96,21 +114,27 @@ class TabRowLocation extends Component {
     // console.log("go build" + this.state._id);
   }
 
+  openMap = (e) => {
+    window.location.replace('/showmap/')
+  }
+
 
   render() {
     // console.log(this.state._id)
+    console.log(this.props.obj.Address)
     return (
       <div>
-        <section style={{ paddingRight: '16px',paddingBottom: '25px'}} >
+        <section style={{ paddingRight: '16px', paddingBottom: '25px' }} >
           <Card style={{ width: '15rem' }} id="card">
             <CardImg width="40px" height="185px" src={require('../../../img/location.gif')} />
-            <hr/>
+            <hr />
             <CardTitle id="b">{this.props.obj.Name_Lo}</CardTitle>
             <CardText>{this.props.obj.Address}</CardText>
             <CardText id="co3">ID : {this.props.obj._id}</CardText>
             {/* เรียกส่งค่า */}
-              <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentid(e)}>เพิ่มอาคาร</Button>
-            <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
+            <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentid(e)}>เพิ่มอาคาร</Button>
+            <Button color="warning" onClick={this.toggle}>การจัดการ</Button>
+            <Button color="success" onClick={(e) => this.openMap(e)}>ดูแผนที่</Button>
           </Card>
         </section>
 

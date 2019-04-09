@@ -13,7 +13,9 @@ export default class set_location extends React.Component {
         this.state = {
             Name_Lo: '',
             Address: '',
-            Id_Admin: ''
+            Id_Admin: '',
+            lat: '',
+            lng: ''
         }
         // เช็คสถานะ
         this.state = {
@@ -49,13 +51,27 @@ export default class set_location extends React.Component {
             Address: e.target.value
         });
     }
+    onchangelat(e) {
+        this.setState({
+            lat: e.target.value
+        });
+    }
+    onchangelng(e) {
+        this.setState({
+            lng: e.target.value
+        });
+    }
+
 
     onSubmit(e) {
         e.preventDefault();
         const Locations = {
             Name_Lo: this.state.Name_Lo,
             Address: this.state.Address,
-            Id_Admin: data_ss._id
+            Id_Admin: data_ss._id,
+            lat: this.state.lat,
+            lng: this.state.lng
+
         }
         axios.post('http://206.189.94.192:5000/locations/add', Locations)
             .then(function (res) {
@@ -69,7 +85,9 @@ export default class set_location extends React.Component {
 
         this.setState({
             Name_Lo: '',
-            Address: ''
+            Address: '',
+            lat: '',
+            lng: ''
         });
     }
 
@@ -86,7 +104,7 @@ export default class set_location extends React.Component {
     }
 
     createcard() {
-        return  this.state.Location.map((object, i) => {
+        return this.state.Location.map((object, i) => {
             if (data_ss._id === object.Id_Admin) {
                 return <TabLoca obj={object} key={i} />;
             }
@@ -108,7 +126,7 @@ export default class set_location extends React.Component {
 
                 <Modal isOpen={this.state.modal}
                     toggle={this.toggle}
-                    className={this.props.className} > 
+                    className={this.props.className} >
 
                     <ModalHeader toggle={this.toggle} id="font">พื้นที่</ModalHeader>
                     <form onSubmit={this.onSubmit}>
@@ -125,10 +143,27 @@ export default class set_location extends React.Component {
                                     <Row>
                                         <Col>
                                             <Label>ที่อยู่</Label>
-                                            <Input type="textarea" cols="30" rows="10" onChange={this.onchangeAddress}></Input>
+                                            <Input type="textarea" cols="30" rows="5" onChange={this.onchangeAddress}></Input>
                                         </Col>
                                     </Row>
                                     <br />
+                                    <hr />
+                                    <Row>
+                                        <Col align="center">
+                                            <Label >ตำแหน่ง</Label>
+                                            <Row>
+
+                                                <Col>
+                                                    <Input type="text" name="lat" placeholder="ละติจูด" onChange={this.onchangelat}></Input>
+                                                </Col>
+                                                <Col>
+                                                    <Input type="text" name="lng" placeholder="ลองติจูด" onChange={this.onchangelng}></Input>
+                                                </Col>
+                                            </Row>
+
+
+                                        </Col>
+                                    </Row>
                                 </Table>
                             </Container>
                         </ModalBody>
