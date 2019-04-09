@@ -36,9 +36,9 @@ class showmap extends Component {
 
 
     render() {
-        console.log(_id)
-        console.log(this.state.Location.Name_Lo)
-        console.log(this.state.Location.lat)
+        // console.log(_id)
+        // console.log(this.state.Location.Name_Lo)
+        // console.log(this.state.Location.lat)
         const Pointlat = this.state.Location.lat
         const Pointlng = this.state.Location.lng
 
