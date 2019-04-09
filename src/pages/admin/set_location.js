@@ -8,6 +8,8 @@ export default class set_location extends React.Component {
         super(props);
         this.onchangeNameLocation = this.onchangeNameLocation.bind(this);
         this.onchangeAddress = this.onchangeAddress.bind(this);
+        this.onchangelat = this.onchangelat.bind(this);
+        this.onchangelng = this.onchangelng.bind(this);
         this.onSubmit = this.onSubmit.bind(this);
 
         this.state = {
@@ -160,8 +162,6 @@ export default class set_location extends React.Component {
                                                     <Input type="text" name="lng" placeholder="ลองติจูด" onChange={this.onchangelng}></Input>
                                                 </Col>
                                             </Row>
-
-
                                         </Col>
                                     </Row>
                                 </Table>

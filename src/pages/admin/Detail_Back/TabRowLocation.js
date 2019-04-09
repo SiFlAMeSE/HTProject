@@ -17,6 +17,8 @@ class TabRowLocation extends Component {
 
     this.onchangeNameLocation = this.onchangeNameLocation.bind(this);
     this.onchangeAddress = this.onchangeAddress.bind(this);
+    this.onchangelat = this.onchangelat.bind(this);
+    this.onchangelng = this.onchangelng.bind(this);
     this.Updatelocation = this.Updatelocation.bind(this);
 
     this.state = {
@@ -158,7 +160,7 @@ class TabRowLocation extends Component {
                   <Row>
                     <Col>
                       <Label>ที่อยู่</Label>
-                      <Input type="textarea" cols="30" rows="10" value={this.state.Address} onChange={this.onchangeAddress}></Input>
+                      <Input type="textarea" cols="30" rows="5" value={this.state.Address} onChange={this.onchangeAddress}></Input>
                     </Col>
                   </Row>
                   <Row>
@@ -168,6 +170,21 @@ class TabRowLocation extends Component {
                     </Col>
                   </Row>
                   <br />
+                  <hr />
+                  <Row>
+                    <Col align="center">
+                      <Label >ตำแหน่ง</Label>
+                      <Row>
+
+                        <Col>
+                          <Input type="text" name="lat" placeholder="ละติจูด" value={this.state.lat} onChange={this.onchangelat}></Input>
+                        </Col>
+                        <Col>
+                          <Input type="text" name="lng" placeholder="ลองติจูด" value={this.state.lng} onChange={this.onchangelng}></Input>
+                        </Col>
+                      </Row>
+                    </Col>
+                  </Row>
                 </Table>
               </Container>
             </ModalBody>
