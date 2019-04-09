@@ -108,7 +108,7 @@ export default class Chart extends React.Component {
                     data={this.state.chartData}
                     options={{
                         animation: {
-                            duration: 800,
+                            duration: 0,
                             lazy: false,
                         },
                         responsive: true,
