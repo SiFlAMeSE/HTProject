@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Table, Button, Input, Container, Row, Col, Card } from 'reactstrap';
+import { Table, Button, Input, Container, Row, Col } from 'reactstrap';
 import SenserChoice from '../Choice/SenserChoice';
 import Chart from '../Chart';
 import moment from 'moment';
@@ -257,7 +257,6 @@ export default class monitoring_user extends React.Component {
       for (let i = 0; i < show_num; i++) {
         if (_mac === show[i].Macaddress) {
           return <img src={show[i].Id_Map} alt="ok" style={{ height: "560px" }} />
-          {/* {this.previewFile()} */ }
 
 
         }
@@ -296,7 +295,7 @@ export default class monitoring_user extends React.Component {
   startTimer() {
     console.log('start');
     if (this.timer === 0 && seconds > 0) {
-      this.timer = setInterval(this.countDown, 10000);
+      this.timer = setInterval(this.countDown, 1000);
       // this.state.down = 1;
     }
     // this.showbar()

@@ -30,7 +30,7 @@ var data_humdi = /*[{ y: 28 }, { y: 5 }, { y: 6 }, { y: 28 }, { y: 28 },
                   { y: 28 }, { y: 5 }, { y: 6 }, { y: 28 }, { y: 28 },
                   { y: 28 }, { y: 5 }, { y: 6 }, { y: 28 }, { y: 28 },
                   { y: 28 }, { y: 5 }, { y: 6 }, { y: 28 }, { y: 28 }]*/ []
-var data_set,data_num;
+var data_set, data_num;
 
 export default class Chart extends React.Component {
     constructor(props) {
@@ -43,7 +43,7 @@ export default class Chart extends React.Component {
                 labels: label_X,
                 datasets: [
                     {
-                        label: label_temp,label_humdi,
+                        label: label_temp, label_humdi,
                         data: data_temp,
                         backgroundColor: ['rgba(75, 99, 135, 0.6)',]
                     },
@@ -81,14 +81,14 @@ export default class Chart extends React.Component {
     //         })
     // }
 
-    dataGraph(){
-        for(let i=39 ; i>=0 ; i-- , data_num--){
+    dataGraph() {
+        for (let i = 39; i >= 0; i-- , data_num--) {
             // console.log(moment().format())
             //console.log(data_num)
             label_X[i] = moment(data_set[data_num].date).format('LTS')
             data_temp[i] = data_set[data_num].t
             data_humdi[i] = data_set[data_num].h
-            
+
             // console.log(data_set[data_num]._id)
             // console.log(data_set[data_num].t)
             // console.log(moment(data_set[data_num].date).format('LTS'))
@@ -109,8 +109,9 @@ export default class Chart extends React.Component {
                 <Line height="550px"
                     data={this.state.chartData}
                     options={{
-                        animation:{
-                            duration:0
+                        animation: {
+                            duration: 0,
+                            lazy: false,
                         },
                         responsive: true,
                         legend: {

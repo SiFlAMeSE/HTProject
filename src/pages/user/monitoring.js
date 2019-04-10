@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { Table, Button, Input, Container, Row, Col, Card } from 'reactstrap';
+import { Table, Button, Input, Container, Row, Col } from 'reactstrap';
 import SenserChoice from './Choice/SenserChoice';
 import Chart from './Chart';
 import moment from 'moment';
@@ -227,14 +227,6 @@ export default class monitoring extends React.Component {
       for (let i = 0; i < show_num; i++) {
         if (_mac === show[i].Macaddress) {
           return <img src={show[i].Id_Map} alt="ok" style={{ height: "560px" }} />
-          {/* {this.previewFile()} */ }
-          {/* {this.previewFile()} */ }
-          {
-            // this.state.Picturemap !== undefined &&
-
-          }
-
-
         }
       }
     }
@@ -268,8 +260,8 @@ export default class monitoring extends React.Component {
           //num = 0 
           return <Chart obj={data} key={num} />;
           //return <MonitorChoice obj={data} key={num} />; 
-        }
-        else return false
+        }return false
+
       });
     }
   }

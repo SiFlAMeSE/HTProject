@@ -45,7 +45,7 @@ export default () => (
         <Route exact path="/setbuild/:id" component={set_build} />
         <Route exact path="/setdetail/:id/:idmap" component={set_detail} />
         <Route exact path="/setlocation" component={set_location} />
-        <Route exact path="/showmap" component={showmap} />
+        <Route exact path="/showmap/:id" component={showmap} />
 
         <Route exact path="/dashboard" component={dashboard} />
         <Route exact path="/dashboard/:id" component={dashboard} />

@@ -117,7 +117,7 @@ class TabRowLocation extends Component {
   }
 
   openMap = (e) => {
-    window.location.replace('/showmap/')
+    window.location.replace('/showmap/' + e.target.value)
   }
 
 
@@ -136,7 +136,7 @@ class TabRowLocation extends Component {
             {/* เรียกส่งค่า */}
             <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentid(e)}>เพิ่มอาคาร</Button>
             <Button color="warning" onClick={this.toggle}>การจัดการ</Button>
-            <Button color="success" onClick={(e) => this.openMap(e)}>ดูแผนที่</Button>
+            <Button color="success" value={this.props.obj._id} onClick={(e) => this.openMap(e)}>ดูแผนที่</Button>
           </Card>
         </section>
 
