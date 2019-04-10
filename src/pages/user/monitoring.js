@@ -92,7 +92,7 @@ export default class monitoring extends React.Component {
         Dht = response.data;
         dht_num = response.data.length;
         this.setState({ Dht: Dht });
-        // console.log(Dht)
+        //console.log(Dht)
       })
       .catch(function (error) {
         console.log(error);
@@ -117,7 +117,7 @@ export default class monitoring extends React.Component {
         Dht = response.data;
         dht_num = response.data.length;
         this.setState({ Dht: Dht });
-        // console.log(Dht)
+        //console.log(Dht)
       })
       .catch(function (error) {
         console.log(error);
@@ -240,6 +240,10 @@ export default class monitoring extends React.Component {
 
   showbar() {
     if (_mac !== "undefined") {
+      //data = []
+      //num -= num
+      //console.log(this.state.Dht)
+      console.log(num)
       return this.state.Dht.map((object, i) => {
         // console.log(i)
         // console.log(dht_num-1)
@@ -251,7 +255,9 @@ export default class monitoring extends React.Component {
           num = num + 1
         }
         if (i === (dht_num - 1)) {
-          // console.log(data)
+          //console.log(data)
+          //console.log(num)
+          //num = 0 
           return <Chart obj={data} key={num} />;
           //return <MonitorChoice obj={data} key={num} />; 
         }return false

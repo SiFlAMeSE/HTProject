@@ -60,29 +60,31 @@ export default class Chart extends React.Component {
     componentWillMount() {
         data_set = this.props.obj
         data_num = this.props.obj.length - 1
+        //console.log(data_num)
         // data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
         JSON.parse(sessionStorage.getItem('Login_add'))
 
         // console.log(data_set)
     }
 
-    componentDidMount() {
-        axios.get('http://206.189.94.192:5000/dht/dht_list')
-            .then(response => {
-                this.setState({ Dht: response.data });
+    // componentDidMount() {
+    //     axios.get('http://206.189.94.192:5000/dht/dht_list')
+    //         .then(response => {
+    //             this.setState({ Dht: response.data });
 
-                // Dht = response.data;
-                // this.setState({ Senser: Senser });
-                //console.log(Dht)
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }
+    //             // Dht = response.data;
+    //             // this.setState({ Senser: Senser });
+    //             //console.log(Dht)
+    //         })
+    //         .catch(function (error) {
+    //             console.log(error);
+    //         })
+    // }
 
     dataGraph() {
         for (let i = 39; i >= 0; i-- , data_num--) {
             // console.log(moment().format())
+            //console.log(data_num)
             label_X[i] = moment(data_set[data_num].date).format('LTS')
             data_temp[i] = data_set[data_num].t
             data_humdi[i] = data_set[data_num].h
