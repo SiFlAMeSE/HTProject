@@ -6,7 +6,7 @@ import DashboardTable from './Dashboard_Table';
 
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
 
-var _id, loca, Build, Location;
+var _id, loca, Build, Location, mapLocation;
 var bu_num, Loca_num, Pointlat, Pointlng;
 var data_ss;
 // var set = "undefined"
@@ -19,7 +19,7 @@ class dashboard extends Component {
             data: {}
         }
 
-        this.state = { Senser: [], Location: [] };
+        this.state = { Senser: [], Location: [], mapLocation: [] };
 
     }
 
@@ -59,9 +59,18 @@ class dashboard extends Component {
                 Loca_num = response.data.length;
                 // Pointlat = response.data.Location.lat
                 // Pointlng = response.data.Location.lng
-                console.log(response.data.lat);
+                console.log(Location)
                 this.setState({ Location: Location });
-                //console.log(Locatio);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+
+        axios.get('http://206.189.94.192:5000/locations/location/' + _id)
+            .then(response => {
+                const mapLocation = response.data;
+                this.setState({ mapLocation: mapLocation });
+                // console.log(Location);
             })
             .catch(function (error) {
                 console.log(error);
@@ -127,13 +136,14 @@ class dashboard extends Component {
     }
 
     showpinmap() {
-
-        return <Marker name={this.state.Location.Address} position={{ lat: Pointlat, lng: Pointlng }} />
+        const Pointlat = this.state.mapLocation.lat
+        const Pointlng = this.state.mapLocation.lng
+        return <Marker name={this.state.mapLocation.Address} position={{ lat: Pointlat, lng: Pointlng }} />
     }
 
     render() {
-
-        console.log(this.Pointlat)
+        console.log(this.state.mapLocation.Name_Lo)
+        console.log(this.state.mapLocation.lat)
         return (
             <div>
                 <section id="space">
@@ -148,7 +158,7 @@ class dashboard extends Component {
                         <Col xs="6" style={{ paddingLeft: '75px' }}>
                             <Map google={this.props.google}
                                 style={{ width: 'auto', height: '550px', position: 'relative' }}
-                                zoom={12}
+                                zoom={16}
                                 initialCenter={{
                                     lat: 13.8185021,
                                     lng: 100.5141232
