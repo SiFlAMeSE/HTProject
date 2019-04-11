@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Table, Button, Input, FormGroup, Form, Container, Row, Col } from 'reactstrap';
+import { Table, Button, Input, FormGroup, Form, Container, Row, Col, Label } from 'reactstrap';
 import axios from 'axios';
 import DashboardChoice from './Choice/DashboardChoice';
 import DashboardTable from './Dashboard_Table';
 
+import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+
 var _id, loca, Build, Location;
-var bu_num, Loca_num;
+var bu_num, Loca_num, Pointlat, Pointlng;
 var data_ss;
 // var set = "undefined"
 
@@ -55,6 +57,9 @@ class dashboard extends Component {
             .then(response => {
                 Location = response.data;
                 Loca_num = response.data.length;
+                // Pointlat = response.data.Location.lat
+                // Pointlng = response.data.Location.lng
+                console.log(response.data.lat);
                 this.setState({ Location: Location });
                 //console.log(Locatio);
             })
@@ -91,16 +96,14 @@ class dashboard extends Component {
                                 }
                                 // console.log("test")
                                 // console.log(show)
-                                if(_id === Location[y]._id)
-                                {
+                                if (_id === Location[y]._id) {
                                     return <DashboardTable obj={show} />
                                 }
-                                else if(_id === "undefined")
-                                {
+                                else if (_id === "undefined") {
                                     console.log(_id)
                                     return <DashboardTable obj={show} />
                                 }
-                                
+
                             }
                         }
                     }
@@ -123,7 +126,14 @@ class dashboard extends Component {
         })
     }
 
+    showpinmap() {
+
+        return <Marker name={this.state.Location.Address} position={{ lat: Pointlat, lng: Pointlng }} />
+    }
+
     render() {
+
+        console.log(this.Pointlat)
         return (
             <div>
                 <section id="space">
@@ -133,21 +143,35 @@ class dashboard extends Component {
                     </div>
                     </div>
                 </section>
-                <Container>
-                    <FormGroup>
-                        <Row align="center">
-                            <Col>
-                                <Input type="select" name="select" onChange={this.onchangeLocatioin}>
-                                    <option value="undefined">สถานที่</option>
+                <Table style={{ height: '650px' }}>
+                    <Row align="center">
+                        <Col xs="6" style={{ paddingLeft: '75px' }}>
+                            <Map google={this.props.google}
+                                style={{ width: 'auto', height: '550px', position: 'relative' }}
+                                zoom={12}
+                                initialCenter={{
+                                    lat: 13.8185021,
+                                    lng: 100.5141232
+                                }}>
+                                {this.showpinmap()}
+                            </Map>
+                        </Col>
+                        <Col xs="5" style={{ paddingLeft: '190px' }}>
+                            <FormGroup>
+                                <Label for="selectlocation">เลือกสถานที่</Label>
+                                <Input type="select" name="selectMulti" id="selectlocation" onChange={this.onchangeLocatioin} multiple>
+                                    {/* <option value="undefined">สถานที่</option> */}
                                     {this.choice()}
                                 </Input>
-                            </Col>
-
-                            <Col>
+                                <br />
                                 <Button color="success" onClick={(e) => this.sentid(e)}>ค้นหา</Button>
-                            </Col>
-                        </Row>
-                    </FormGroup>
+
+                            </FormGroup>
+                        </Col>
+                    </Row>
+                </Table>
+                <Container>
+
                     <Form>
                         <Table bordered>
                             <thead >
@@ -176,4 +200,7 @@ class dashboard extends Component {
     }
 }
 
-export default dashboard;
+export default GoogleApiWrapper({
+    apiKey: ("AIzaSyAFHTcbUykLDkXfK19GoXmm8EltWUbq9dM")
+})(dashboard)
+// export default dashboard;
