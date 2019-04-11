@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import { Table, Button, Input, Container, Row, Col } from 'reactstrap';
 import SenserChoice from './Choice/SenserChoice';
+import Bar1 from './ChartPM';
 import Chart from './Chart';
 import moment from 'moment';
 
@@ -243,7 +244,7 @@ export default class monitoring extends React.Component {
       //data = []
       //num -= num
       //console.log(this.state.Dht)
-      console.log(num)
+      //console.log(num)
       return this.state.Dht.map((object, i) => {
         // console.log(i)
         // console.log(dht_num-1)
@@ -258,16 +259,48 @@ export default class monitoring extends React.Component {
           //console.log(data)
           //console.log(num)
           //num = 0 
-          return <Chart obj={data} key={num} />;
+          return <Chart obj={data} key={num} />
+          //return 
           //return <MonitorChoice obj={data} key={num} />; 
-        }return false
+        } return false
 
       });
     }
   }
 
+  showbar1() {
+    if (_mac !== "undefined") {
+      //data = []
+      //num -= num
+      //console.log(this.state.Dht)
+      //console.log(num)
+      return this.state.Dht.map((object, i) => {
+        // console.log(i)
+        // console.log(dht_num-1)
+        if (object.mac === _mac) {
+          // console.log(i)
+          // console.log(num)
+          data[num] = object
+          // console.log(data[num])
+          num = num + 1
+        }
+        if (i === (dht_num - 1)) {
+          //console.log(data)
+          //console.log(num)
+          //num = 0 
+          if (data[num - 1].nc10 !== 0) {
+            return <Bar1 obj={data} key={num} />
+          }
+          //return 
+          //return <MonitorChoice obj={data} key={num} />; 
+        } return false
+      });
+    }
+
+  }
+
   startTimer() {
-    console.log('start');
+    //console.log('start');
     if (this.timer === 0 && seconds > 0) {
       this.timer = setInterval(this.countDown, 1000);
       // this.state.down = 1;
@@ -293,11 +326,11 @@ export default class monitoring extends React.Component {
 
   render() {
     if (seconds === 1) {
-      console.log('render 1')
+      //console.log('render 1')
       this.startTimer()
 
     } if (count === 1) {
-      console.log('render 2')
+      //console.log('render 2')
       this.loopdht()
     }
 
@@ -344,6 +377,15 @@ export default class monitoring extends React.Component {
           <Col md={11} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
             {/* <Chart /> */}
             {this.showbar()}
+            {/* กราฟที่โชว์ */}
+          </div>
+          </Col>
+        </Row>
+
+        <Row >
+          <Col md={11} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
+            {/* <Chart /> */}
+            {this.showbar1()}
             {/* กราฟที่โชว์ */}
           </div>
           </Col>
