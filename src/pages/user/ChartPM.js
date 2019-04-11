@@ -3,7 +3,7 @@ import { Bar } from 'react-chartjs-2';
 var dataPM = []
 var data_set, data_num;
 
-class testcode extends Component {
+class ChartPM extends Component {
     constructor(props) {
         super(props);
 
@@ -13,7 +13,7 @@ class testcode extends Component {
                 labels: ['PM1.0', 'PM2.5', 'PM4.0', 'PM10.0', 'NC0.5', 'NC1.0', 'NC2.5', 'NC4.0', 'NC10.0'],
                 datasets: [
                     {
-                        label: 'My First dataset',
+                        label: 'แสดงการวัดค่าฝุน',
                         backgroundColor: 'rgba(255,99,132,0.2)',
                         borderColor: 'rgba(255,99,132,1)',
                         borderWidth: 1,
@@ -55,6 +55,7 @@ class testcode extends Component {
         return (
             <div>
                 {this.dataGraph()}
+                
                 <Bar
                     data={this.state.chartData}
                     // width={100}
@@ -82,4 +83,4 @@ class testcode extends Component {
     }
 }
 
-export default testcode;
+export default ChartPM;

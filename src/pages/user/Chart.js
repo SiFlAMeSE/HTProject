@@ -1,6 +1,7 @@
 import React from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import { Line } from 'react-chartjs-2';
+
 import moment from 'moment';
 
 // var data_ss, Dht;
@@ -96,6 +97,8 @@ export default class Chart extends React.Component {
         }
     }
 
+    // displayName: 'BarExample',
+
     render() {
         // console.log(label_X)
         // console.log(data_temp)
@@ -105,7 +108,7 @@ export default class Chart extends React.Component {
         return (
             <div>
                 {this.dataGraph()}
-                {/* กราฟที่โชว์ */}
+                
                 <Line height="550px"
                     data={this.state.chartData}
                     options={{
