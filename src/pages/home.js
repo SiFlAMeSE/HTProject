@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Container, Col, Row } from 'reactstrap';
+import { Container, Col, Row, Table } from 'reactstrap';
 
 import '../css/home.css';
 
@@ -26,39 +26,49 @@ class home extends Component {
             <home>
                 <section className="banner-top">
                     <div className="co-picture">
-                        <img src={require('../img/esp32.png')} className="picture" alt="esp32" />
-                        {/* <img src={require('../img/icon.png')} className="iconfront1"/> */}
-                        {/* <div className="iconfront1"></div> */}
-                        <div className="content">
-                            <span className="content-cotext">
-                                <span className="content-text">ระบบแจ้งเตือน</span>
-                                <br />
-                                <span className="content-text">อุณหภูมิและความชื้น</span>
-                            </span>
-                        </div>
+                        <Table style={{ width: '100%' }}>
+                            <Row>
+                                <img src={require('../img/esp32.png')} className="picture" alt="esp32" />
+                                <div className="content">
+                                    <span className="content-cotext">
+                                        <span className="content-text">ระบบแจ้งเตือน</span>
+                                        <br />
+                                        <span className="content-text">อุณหภูมิและความชื้น</span>
+                                    </span>
+                                </div>
+                            </Row>
+                        </Table>
+
                     </div>
                 </section>
                 <div className="bg-mid-low" align="center" >ใช้ได้สำหรับทุกองค์กร</div>
-                <Container className="space">
-                    <Row align="center">
-                        <Col xs={6} md={4} id="b">
-                            ตรวจสอบสถานะปัจจุบัน
-                            <br/>
-                            <img src={require('../img/h1.png')} alt="alert"  height="200px"/>
 
-                        </Col>
-                        <Col xs={6} md={4} id="b">
-                            ประวัติย้อนหลัง
-                            <br/>
-                            <img src={require('../img/h2.png')} alt="history"  height="200px"/>
-                        </Col>
-                        <Col xs={6} md={4} id="b">
-                            ตรวจสอบความผิดพลาด
-                            <br/>
-                            <img src={require('../img/h3.png')} alt="check"  height="200px"/>
-                        </Col>
-                    </Row>
-                </Container>
+                <center>
+                    <Table style={{ width: '80%' }}>
+                        <Row align='center'>
+                            <Col md="4" id="b">
+                                ตรวจสอบสถานะปัจจุบัน
+                            <br />
+                                <img src={require('../img/h1.png')} alt="alert" height="200px" />
+                            </Col>
+                            <Col md="4" id="b">
+                                ประวัติย้อนหลัง
+                            <br />
+                                <img src={require('../img/h2.png')} alt="history" height="200px" />
+                            </Col>
+                            <Col md="4" id="b">
+                                ตรวจสอบความผิดพลาด
+                            <br />
+                                <img src={require('../img/h3.png')} alt="check" height="200px" />
+                            </Col>
+                        </Row>
+                    </Table>
+                </center>
+
+
+
+
+
             </home>
         );
     }
