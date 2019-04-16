@@ -4,7 +4,7 @@ import axios from 'axios';
 import DashboardChoice from './Choice/DashboardChoice';
 import DashboardTable from './Dashboard_Table';
 
-import { Map, InfoWindow, Marker, GoogleApiWrapper } from 'google-maps-react';
+import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 
 var _id, loca, Build, Location, mapLocation;
 var bu_num, Loca_num, Pointlat, Pointlng;
@@ -68,7 +68,7 @@ class dashboard extends Component {
 
         axios.get('http://206.189.94.192:5000/locations/location/' + _id)
             .then(response => {
-                const mapLocation = response.data;
+                mapLocation = response.data;
                 this.setState({ mapLocation: mapLocation });
                 // console.log(Location);
             })
@@ -136,8 +136,8 @@ class dashboard extends Component {
     }
 
     showpinmap() {
-        const Pointlat = this.state.mapLocation.lat
-        const Pointlng = this.state.mapLocation.lng
+        Pointlat = this.state.mapLocation.lat
+        Pointlng = this.state.mapLocation.lng
         return <Marker name={this.state.mapLocation.Address} position={{ lat: Pointlat, lng: Pointlng }} />
     }
 
