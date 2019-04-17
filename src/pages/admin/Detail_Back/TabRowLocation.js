@@ -123,20 +123,30 @@ class TabRowLocation extends Component {
 
   render() {
     // console.log(this.state._id)
-    console.log(this.props.obj.Address)
+    // console.log(this.props.obj.Address)
     return (
       <div>
         <section style={{ paddingRight: '16px', paddingBottom: '25px' }} >
-          <Card style={{ width: '15rem' }} id="card">
+          <Card style={{ width: '16rem',height:'22rem' }} id="card">
             <CardImg width="40px" height="185px" src={require('../../../img/location.gif')} />
             <hr />
             <CardTitle id="b">{this.props.obj.Name_Lo}</CardTitle>
             <CardText>{this.props.obj.Address}</CardText>
             <CardText id="co3">ID : {this.props.obj._id}</CardText>
             {/* เรียกส่งค่า */}
-            <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentid(e)}>เพิ่มอาคาร</Button>
-            <Button color="warning" onClick={this.toggle}>การจัดการ</Button>
-            <Button color="success" value={this.props.obj._id} onClick={(e) => this.openMap(e)}>ดูแผนที่</Button>
+            <center>
+              <Row>
+                <Col>
+                  <Button color="primary" style={{ fontSize: '12px' }} value={this.props.obj._id} onClick={(e) => this.sentid(e)}>เพิ่มอาคาร</Button>
+                </Col>
+                <Col>
+                  <Button color="primary" style={{ fontSize: '12px' }} onClick={this.toggle}>การจัดการ</Button>
+                </Col>
+                <Col>
+                  <Button color="success" style={{ fontSize: '12px' }} value={this.props.obj._id} onClick={(e) => this.openMap(e)}>ดูแผนที่</Button>
+                </Col>
+              </Row>
+            </center>
           </Card>
         </section>
 

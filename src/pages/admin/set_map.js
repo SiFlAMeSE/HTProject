@@ -150,7 +150,7 @@ export default class set_map extends React.Component {
                     </Col>
                     <Col sm={4} align="center" >
                         <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
-                        <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มรูปต่ำแหน่ง </button>
+                        <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มรูปตำแหน่ง </button>
                     </Col>
 
                 </Row>

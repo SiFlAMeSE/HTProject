@@ -126,6 +126,29 @@ export default class set_location extends React.Component {
                     </div>
                 </section>
 
+                <center>
+                    <Table style={{ width: '95%' }}>
+                        <Row>
+                            <Col style={{ fontSize: '48px', paddingTop: '20px', }} align='center' >
+                                เพิ่มตำแหน่ง
+                            </Col>
+                            <Col align='center'>
+                                <button type="button" onClick={this.toggle} className="btn btn-info btn-lg"> คลิ้ก </button>
+                            </Col>
+                        </Row>
+                        <br />
+                        <hr />
+                    </Table>
+                    <Row>
+                        <Col xl={12}>
+                            <div className="container row" >
+                                {this.createcard()}
+                            </div>
+                        </Col>
+                    </Row>
+                </center>
+
+
                 <Modal isOpen={this.state.modal}
                     toggle={this.toggle}
                     className={this.props.className} >
@@ -174,17 +197,7 @@ export default class set_location extends React.Component {
                     </form>
                 </Modal>
 
-                <Row style={{ paddingLeft: '160px', paddingRight: '250px' }}>
-                    <Col sm={8}>
-                        <div className="container row" >
-                            {this.createcard()}
-                        </div>
-                    </Col>
-                    <Col sm={4} align="center" >
-                        <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
-                        <button type="button" onClick={this.toggle} className="btn btn-info btn-lg"> เพิ่มตำแหน่ง </button>
-                    </Col>
-                </Row>
+
 
             </div>
 

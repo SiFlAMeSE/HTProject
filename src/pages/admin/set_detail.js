@@ -2,7 +2,6 @@ import React from 'react';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
 import TabDetail from './Detail_Back/TabRowDetail';
-// import { CardHeader } from 'semantic-ui-react';
 const uuidv1 = require('uuid/v1');
 var _id;
 var data_ss

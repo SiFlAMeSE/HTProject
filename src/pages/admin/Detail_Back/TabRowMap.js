@@ -46,12 +46,6 @@ class TabRowMap extends Component {
             })
     }
 
-    // onchangeNameBuild(e) {
-    //     this.setState({
-    //         Name_Build: e.target.value
-    //     });
-    // }
-
     Deletemap() {
         axios.post('http://206.189.94.192:5000/imageupload/Removemap/' + this.props.obj._id)
             .then((res) => {
@@ -64,23 +58,6 @@ class TabRowMap extends Component {
             })
     }
 
-    // Updatebuild(e) {
-    //     e.preventDefault();
-    //     const obj = {
-    //         Name_Build: this.state.Name_Build
-    //     };
-    //     axios.post('http://206.189.94.192:5000/build/update/' + this.props.obj._id, obj)
-    //         .then((res) => {
-    //             if (res.data === 'Updated!') {
-    //                 // console.log(res.data);
-    //                 console.log(this.state.path);
-    //                 window.location.replace('/setbuild/' + this.props.obj.Id_Loca)
-    //             } else {
-    //                 console.log('error');
-    //             }
-    //         })
-    // }
-
     sentidmap = (e) => {
         window.location.replace('/setdetail/' + this.props.obj.Id_Build + '/' + e.target.value)
     }
@@ -92,7 +69,7 @@ class TabRowMap extends Component {
                     <Card style={{ width: '15rem' }} id="card">
                         <CardImg width="35px" height="200px" src={require('../../../img/Map.png')} />
                         <hr />
-                        <CardTitle id="b">{this.props.obj._id}</CardTitle>
+                        {/* <CardTitle id="b">{this.props.obj._id}</CardTitle> */}
                         {/* เรียกส่งค่า */}
                         <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentidmap(e)}>เพิ่มอุปกรณ์</Button>
                         <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
@@ -110,7 +87,6 @@ class TabRowMap extends Component {
 
                         </ModalBody>
                         <ModalFooter>
-                            {/* <Button color="info" onClick={this.Updatebuild}>แก้ไขข้อมูล</Button> */}
                             <Button color="danger" onClick={() => { if (window.confirm('คุณต้องการลบ ใช่ไหม ? ถ้าคุณกดตกลง ')) { this.Deletemap() } }}>ลบข้อมูล</Button>
                             <Button color="secondary" onClick={this.toggle}>ยกเลิก</Button>
                         </ModalFooter>
