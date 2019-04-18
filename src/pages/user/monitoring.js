@@ -175,48 +175,51 @@ export default class monitoring extends React.Component {
       //console.log("No deil")
       for (let i = 0; i < show_num; i++) {
         if (_mac === show[i].Macaddress) {
-          return <Table>
-            <Row>
-              <Col>
-                <div>ข้อมูลตั้งค่า</div>
+          return <section style={{ width: '80%' }} >
+            <Table>
+              <Row align='center' >
+                <Col id='b'>
+                  ข้อมูลตั้งค่า
               </Col>
-              <Col>
-                <div>ข้อมูลเซนเซอร์ </div>
+                <Col id='b'>
+                  ข้อมูลเซนเซอร์
               </Col>
-            </Row>
-            <Row>
-              <Col>
-                <div>สถานที่ : {show[i].Name_Lo}</div>
-              </Col>
-              <Col>
-                <div>อุณหภูมิสูงสุด : {show[i].Temp_Hight} </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <div>อาคาร : {show[i].Name_Build}</div>
-              </Col>
-              <Col>
-                <div>อุณหภูมิตำสุด : {show[i].Temp_Low} </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <div>ห้องติดตั้งเซนเซอร์ : {show[i].Position}</div>
-              </Col>
-              <Col>
-                <div>ความชื้นสูงสุด : {show[i].Humdi_Hight} </div>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <div>รหัสเครื่อง : {show[i].Macaddress}</div>
-              </Col>
-              <Col>
-                <div>ความชื้นต่ำสุด : {show[i].Humdi_Low} </div>
-              </Col>
-            </Row>
-          </Table>
+              </Row>
+              <Row>
+                <Col>
+                  สถานที่ : {show[i].Name_Lo}
+                </Col>
+                <Col align='center'>
+                  อุณหภูมิสูงสุด : {show[i].Temp_Hight}
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  อาคาร : {show[i].Name_Build}
+                </Col>
+                <Col align='center'>
+                  อุณหภูมิตำสุด : {show[i].Temp_Low}
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  ห้องติดตั้งเซนเซอร์ : {show[i].Position}
+                </Col>
+                <Col align='center'>
+                  ความชื้นสูงสุด : {show[i].Humdi_Hight}
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  รหัสเครื่อง : {show[i].Macaddress}
+                </Col>
+                <Col align='center'>
+                  ความชื้นต่ำสุด : {show[i].Humdi_Low}
+                </Col>
+              </Row>
+            </Table>
+          </section>
+
         }
       }
     }
@@ -358,12 +361,16 @@ export default class monitoring extends React.Component {
             </Row>
             <br />
           </Table>
-          {this.showData()}
-          <Table >
-            <Row align="right"><Col> {this.dateNow()} </Col></Row>
-          </Table>
         </Container>
 
+        <center>
+          {this.showData()}
+        </center>
+        <br />
+        <section style={{ fontSize: '48px' }} align='center'>
+          <b>แผนที่</b>
+        </section>
+        <br />
         <Table style={{ width: '80%' }} bordered="2" align="center">
           <center>
             {this.showMap()}
@@ -372,23 +379,25 @@ export default class monitoring extends React.Component {
         <br />
         <div className="bg-mid-low" align="center" >สถานะปัจจุบัน</div>
         <br />
-
+        <section style={{ fontSize: '48px' }} align='center'>
+          <b>เวลาปัจจุบัน : {this.dateNow()}</b>
+        </section>
+        <br/>
         <Row >
-          <Col md={11} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
+          <Col md={5} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
             {/* <Chart /> */}
             {this.showbar()}
             {/* กราฟที่โชว์ */}
           </div>
           </Col>
-        </Row>
 
-        <Row >
-          <Col md={11} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
+          <Col md={5} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
             {/* <Chart /> */}
             {this.showbar1()}
             {/* กราฟที่โชว์ */}
           </div>
           </Col>
+
         </Row>
       </div>
     );
