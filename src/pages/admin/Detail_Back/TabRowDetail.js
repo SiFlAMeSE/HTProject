@@ -134,22 +134,56 @@ class TabRowBuild extends Component {
         return (
             <div>
                 <section style={{ paddingRight: '16px', paddingBottom: '25px' }} >
-                    <Card style={{ width: '15rem' }} id="card">
-                        <CardImg width="50px" height="250px" src={require('../../../img/sensor.gif')} />
-                        <hr />
-                        <CardTitle id="b">{this.props.obj.Position}</CardTitle>
-                        <CardText>MAC : {this.props.obj.Macaddress}</CardText>
-                        <hr/>
-                        <CardText id="b">Temparature</CardText>
-                        <CardText>Low : {this.props.obj.Temp_Low} Hight : {this.props.obj.Temp_Hight}</CardText>
-                        <CardText id="b">Humidity</CardText>
-                        <CardText>Low : {this.props.obj.Humdi_Low} Hight : {this.props.obj.Humdi_Hight}</CardText>
-                        <CardText id="b">Key Room</CardText>
-                        <CardText>Key : {this.props.obj.Key_Room}</CardText>
-                        {/* เรียกส่งค่า */}
-                        <Button href="/monitoring/undefined" color="primary">ตรวจสอบ</Button>
-                        <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
+                    <Card style={{ width: 'auto', height: 'auto',paddingBottom:'10px'}} id="card">
+                        <table>
+                            <tr>
+                                <td rowspan="3" width="30%">
+                                    <CardImg height="150px" src={require('../../../img/sensor.gif')} />
+                                </td>
+                                <td xs="5">
+                                    <CardTitle id="b">ตำแหน่ง : {this.props.obj.Position}</CardTitle>
+                                </td>
+                                <td xs="5">
+                                    <CardText>MAC : {this.props.obj.Macaddress}</CardText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <CardText id="b">Temparature</CardText>
+                                </td>
+                                <td>
+                                    <CardText id="b">Humidity</CardText>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <tr>
+                                        <td>Low : {this.props.obj.Temp_Low}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hight : {this.props.obj.Temp_Hight}</td>
+                                    </tr>
+                                </td>
+                                <td>
+                                    <tr>
+                                        <td>Low : {this.props.obj.Humdi_Low}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Hight : {this.props.obj.Humdi_Hight}</td>
+                                    </tr>
+                                </td>
+                            </tr>
+                            <tr >
+                                <td align='center'>
+                                    <CardText id="b">Key Room</CardText>
+                                </td>
+                                <td colspan='2' style={{color:'#f00'}}>{this.props.obj.Key_Room}</td>
+                            </tr>
+                        </table>
                     </Card>
+                    <hr />
+                    <Button href="/monitoring/undefined" color="primary">ตรวจสอบ</Button>
+                    <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
                 </section>
 
 

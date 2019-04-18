@@ -118,7 +118,6 @@ export default class set_map extends React.Component {
                     </div>
                     </div>
                 </section>
-
                 <center>
                     <Table style={{ width: '95%' }}>
                         <Row>
