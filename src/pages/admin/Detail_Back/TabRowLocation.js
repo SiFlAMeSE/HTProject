@@ -127,15 +127,16 @@ class TabRowLocation extends Component {
     return (
       <div>
         <section style={{ paddingRight: '16px', paddingBottom: '25px' }} >
-          <Card style={{ width: '16rem',height:'22rem' }} id="card">
+          <Card style={{ width: '16rem', height: 'auto' }} id="card">
             <CardImg width="40px" height="185px" src={require('../../../img/location.gif')} />
             <hr />
             <CardTitle id="b">{this.props.obj.Name_Lo}</CardTitle>
             <CardText>{this.props.obj.Address}</CardText>
             <CardText id="co3">ID : {this.props.obj._id}</CardText>
             {/* เรียกส่งค่า */}
+            <hr/>
             <center>
-              <Row>
+              <Row style={{paddingBottom:'5px'}}>
                 <Col>
                   <Button color="primary" style={{ fontSize: '12px' }} value={this.props.obj._id} onClick={(e) => this.sentid(e)}>เพิ่มอาคาร</Button>
                 </Col>

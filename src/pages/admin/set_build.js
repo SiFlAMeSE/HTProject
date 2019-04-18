@@ -77,7 +77,7 @@ export default class set_build extends React.Component {
                 console.log(error);
             })
     }
-    
+
     createcardBuild() {
         return this.state.Build.map(function (object, i) {
             if (_id === object.Id_Loca) {
@@ -97,6 +97,29 @@ export default class set_build extends React.Component {
                     </div>
                     </div>
                 </section>
+
+                <center>
+                    <Table style={{ width: '95%' }}>
+                        <Row>
+                            <Col style={{ fontSize: '48px', paddingTop: '20px', }} align='center' >
+                                เพิ่มอาคาร
+                            </Col>
+                            <Col align='center'>
+                                <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > คลิ๊ก </button>
+                            </Col>
+                        </Row>
+                        <br />
+                        <hr />
+                    </Table>
+                    <Row>
+                        <Col xl={12}>
+                            <div className="container row" >
+                                {this.createcardBuild()}
+                            </div>
+                        </Col>
+                    </Row>
+                </center>
+
                 <Modal isOpen={this.state.modal}
                     toggle={this.toggle}>
 
@@ -122,17 +145,7 @@ export default class set_build extends React.Component {
                     </form>
                 </Modal>
 
-                <Row style={{ paddingLeft: '160px', paddingRight: '250px' }}>
-                    <Col sm={8}>
-                        <div className="container row" >
-                            {this.createcardBuild()}
-                        </div>
-                    </Col>
-                    <Col sm={4} align="center" >
-                        <img src={require('../../img/arrow.gif')} height="120" style={{ paddingBottom: '20px' }} alt="arrow" /><br />
-                        <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มอาคาร </button>
-                    </Col>
-                </Row>
+
 
             </div>
 

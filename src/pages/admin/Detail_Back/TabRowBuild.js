@@ -83,10 +83,6 @@ class TabRowBuild extends Component {
             })
     }
 
-    // sentidlo = (e) => {
-    //     window.location.replace('/setdetail/' + e.target.value)
-    // }
-
     sentidbuild = (e) => {
         window.location.replace('/setmap/' + e.target.value )
     }

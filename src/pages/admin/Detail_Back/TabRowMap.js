@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardTitle, CardImg } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardImg, Row } from 'reactstrap';
 var data_ss
 
 class TabRowMap extends Component {
@@ -66,13 +66,17 @@ class TabRowMap extends Component {
         return (
             <div>
                 <section style={{ paddingRight: '16px', paddingBottom: '25px' }} >
-                    <Card style={{ width: '15rem' }} id="card">
-                        <CardImg width="35px" height="200px" src={require('../../../img/Map.png')} />
+                    <Card style={{ width: '15rem'}} id="card">
+                        <CardImg width="35px" height="200px" src={require('../../../img/Map.png')} style={{ paddingBottom: '5px' }} />
                         <hr />
                         {/* <CardTitle id="b">{this.props.obj._id}</CardTitle> */}
                         {/* เรียกส่งค่า */}
+
+
                         <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentidmap(e)}>เพิ่มอุปกรณ์</Button>
                         <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
+                        
+
                     </Card>
                 </section>
 
