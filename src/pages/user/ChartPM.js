@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 var dataPM = []
 var data_set, data_num;
 
@@ -55,24 +55,28 @@ class ChartPM extends Component {
         return (
             <div>
                 {this.dataGraph()}
-                
-                <Bar
+
+                <Line height="550px"
                     data={this.state.chartData}
-                    // width={100}
-                    height="550px"
                     options={{
                         animation: {
                             duration: 0,
                             lazy: false,
                         },
                         responsive: true,
+                        legend: {
+                            display: false,
+                            labels: {
+                                boxWidth: 50
+                            }
+                        },
                         maintainAspectRatio: false,
                         scales: {
                             yAxes: [{
                                 ticks: {
-                                    max: 330,
-                                    min: 0,
-                                    stepSize: 10
+                                    max: 100,
+                                    min: -60,
+                                    stepSize: 20
                                 }
                             }]
                         }

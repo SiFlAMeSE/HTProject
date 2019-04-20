@@ -367,9 +367,12 @@ export default class monitoring extends React.Component {
           {this.showData()}
         </center>
         <br />
-        <section style={{ fontSize: '48px' }} align='center'>
-          <b>แผนที่</b>
-        </section>
+        <center>
+          <section style={{ fontSize: '48px' }} >
+            <b>แผนที่</b>
+          </section>
+        </center>
+
         <br />
         <Table style={{ width: '80%' }} bordered="2" align="center">
           <center>
@@ -379,10 +382,12 @@ export default class monitoring extends React.Component {
         <br />
         <div className="bg-mid-low" align="center" >สถานะปัจจุบัน</div>
         <br />
-        <section style={{ fontSize: '48px' }} align='center'>
+        <center>
+        <section style={{ fontSize: '48px' }}>
           <b>เวลาปัจจุบัน : {this.dateNow()}</b>
         </section>
-        <br/>
+        </center>
+        <br />
         <Row >
           <Col md={5} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
             {/* <Chart /> */}
