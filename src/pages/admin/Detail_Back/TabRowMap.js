@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardImg, Row } from 'reactstrap';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardImg } from 'reactstrap';
 var data_ss
 
 class TabRowMap extends Component {
