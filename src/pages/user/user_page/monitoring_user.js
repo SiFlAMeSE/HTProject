@@ -383,35 +383,51 @@ export default class monitoring_user extends React.Component {
             </Row>
             <br />
           </Table>
-          {this.showData()}
-          <Table>
-            <Row align="right"><Col> {this.dateNow()} </Col></Row>
-          </Table>
         </Container>
+
+        <center>
+          {this.showData()}
+        </center>
+        <br />
+        <center>
+          <section style={{ fontSize: '48px' }} >
+            <b>แผนที่</b>
+          </section>
+        </center>
+
+        <br />
         <Table style={{ width: '80%' }} bordered="2" align="center">
           <center>
             {this.showMap()}
           </center>
         </Table>
+
         <br />
         <div className="bg-mid-low" align="center" >สถานะปัจจุบัน</div>
         <br />
+        <center>
+          <section style={{ fontSize: '48px' }}>
+            <b>เวลาปัจจุบัน : {this.dateNow()}</b>
+          </section>
+        </center>
+        <br />
+
+
         <Row >
-          <Col md={11} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
+          <Col md={5} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
             {/* <Chart /> */}
             {this.showbar()}
             {/* กราฟที่โชว์ */}
           </div>
           </Col>
-        </Row>
 
-        <Row >
-          <Col md={11} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
+          <Col md={5} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
             {/* <Chart /> */}
             {this.showbar1()}
             {/* กราฟที่โชว์ */}
           </div>
           </Col>
+
         </Row>
       </div>
     );

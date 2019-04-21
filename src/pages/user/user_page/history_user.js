@@ -10,8 +10,8 @@ import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import { formatDate, parseDate } from 'react-day-picker/moment';
 
-var _mac, _datePf, _datePt, mac,  Build, Location, Senser, Authorize, date_Next, dateS = [], History;
-var  bu_num, Loca_num, aut_num, date_num, his_num;
+var _mac, _datePf, _datePt, mac, Build, Location, Senser, Authorize, date_Next, dateS = [], History;
+var bu_num, Loca_num, aut_num, date_num, his_num;
 var data_ss, csv_num = 0;
 const headers = [
     { label: "ID", key: "_id" },
@@ -416,21 +416,28 @@ class history_user extends Component {
                     </div>
                         </div>
                     </section>
-                    <Container>
-                        <Form>
-                            <Row>
-                                <Col style={{ paddingTop: '25px', paddingLeft: '70px' }}>
+                    <center>
+                        <table >
+                            <tr>
+                                <td style={{ width: '100px' }}>
+                                    <b>เซนเซอร์</b>
+                                </td>
+                                <td colSpan='2'>
                                     <Input type="select" name="select" onChange={this.onchangeMAC}>
                                         <option value="undefined">เลือกเซนเซอร์</option>
                                         {this.choice()}
                                     </Input>
-                                </Col>
-
-                                <Col style={{ paddingTop: '25px' }}>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <b>วันเวลา</b>
+                                </td>
+                                <td>
                                     <span className="InputFromTo">
                                         <DayPickerInput
                                             value={from}
-                                            placeholder="From"
+                                            placeholder="จาก"
                                             // format="LL"
                                             formatDate={formatDate}
                                             parseDate={parseDate}
@@ -439,47 +446,42 @@ class history_user extends Component {
                                                 disabledDays: { after: to },
                                                 toMonth: to,
                                                 modifiers: { start: from, end: to },
-                                                numberOfMonths: 2,
+                                                numberOfMonths: 1,
                                                 onDayClick: () => this.to.getInput().focus(),
                                             }}
                                             onDayChange={this.handleFromChange}
-                                        />{' '}
-                                        —{' '}
-                                        <span className="InputFromTo-to">
-                                            <DayPickerInput
-                                                ref={el => (this.to = el)}
-                                                value={to}
-                                                placeholder="To"
-                                                // format="LL"
-                                                formatDate={formatDate}
-                                                parseDate={parseDate}
-                                                dayPickerProps={{
-                                                    selectedDays: [from, { from, to }],
-                                                    disabledDays: { before: from },
-                                                    modifiers: { start: from, end: to },
-                                                    month: from,
-                                                    fromMonth: from,
-                                                    numberOfMonths: 2,
-                                                }}
-                                                onDayChange={this.handleToChange}
-                                            />
-                                        </span>
+                                        />{' '}</span>
+                                </td>
+                                <td>
+                                    —{' '}<span className="InputFromTo-to">
+                                        <DayPickerInput
+                                            ref={el => (this.to = el)}
+                                            value={to}
+                                            placeholder="ถึง"
+                                            // format="LL"
+                                            formatDate={formatDate}
+                                            parseDate={parseDate}
+                                            dayPickerProps={{
+                                                selectedDays: [from, { from, to }],
+                                                disabledDays: { before: from },
+                                                modifiers: { start: from, end: to },
+                                                month: from,
+                                                fromMonth: from,
+                                                numberOfMonths: 1,
+                                            }}
+                                            onDayChange={this.handleToChange}
+                                        />
                                     </span>
-                                    {/* <Input
-                                        type="date"
-                                        name="date"
-                                        id="exampleDate"
-                                        placeholder="ระบุวันเดือนปี"
-                                        onChange={this.onchangeDate}
-                                    /> */}
-                                </Col>
-                                <Col>
-                                    <Button color="primary" onClick={(e) => this.sentid(e)}>ค้นหา</Button>
-                                    {this.sentEx()}
-                                </Col>
-
-                            </Row>
-                        </Form>
+                                </td>
+                            </tr>
+                            <tr align='center'>
+                                <td colSpan='2'><Button style={{ width: '200px' }} color="primary" onClick={(e) => this.sentid(e)}>ค้นหา</Button></td>
+                                <td>{this.sentEx()}</td>
+                            </tr>
+                        </table>
+                    </center>
+                    <hr/>
+                    <Container>
                         {this.showData()}
                     </Container>
                     <Form id="spacetop">
