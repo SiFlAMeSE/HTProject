@@ -388,9 +388,9 @@ class history extends Component {
                     <center>
                         <table >
                             <tr>
-                                <td style={{width:'100px'}}>
-                                   <b>เซนเซอร์</b>  
-                            </td>
+                                <td style={{ width: '100px' }}>
+                                    <b>เซนเซอร์</b>
+                                </td>
                                 <td colSpan='2'>
                                     <Input type="select" name="select" onChange={this.onchangeMAC}>
                                         <option value="undefined">เลือกเซนเซอร์</option>
@@ -400,8 +400,8 @@ class history extends Component {
                             </tr>
                             <tr>
                                 <td>
-                                   <b>วันเวลา</b> 
-                            </td>
+                                    <b>วันเวลา</b>
+                                </td>
                                 <td>
                                     <span className="InputFromTo">
                                         <DayPickerInput
@@ -449,7 +449,7 @@ class history extends Component {
                             </tr>
                         </table>
                     </center>
-
+                    <hr />
                     <Container>
                         {this.showData()}
                     </Container>
