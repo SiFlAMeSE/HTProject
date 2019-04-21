@@ -122,7 +122,7 @@ export default class set_map extends React.Component {
                     <Table style={{ width: '95%' }}>
                         <Row>
                             <Col style={{ fontSize: '48px', paddingTop: '20px', }} align='center' >
-                                เพิ่มอาคาร
+                                เพิ่มแผนที่
                             </Col>
                             <Col align='center'>
                                 <button type="button" onClick={this.toggle} className="btn btn-info btn-lg" > เพิ่มรูปตำแหน่ง </button>

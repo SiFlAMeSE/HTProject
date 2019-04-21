@@ -205,12 +205,13 @@ export default class monitoring_user extends React.Component {
       console.log("No deil")
       for (let i = 0; i < show_num; i++) {
         if (_mac === show[i].Macaddress) {
-          return <Table>
-            <Row>
-              <Col>
+          return <section style={{ width: '80%' }} >
+          <Table>
+            <Row align='center' >
+              <Col id='b'>
                 <div>ข้อมูลตั้งค่า</div>
               </Col>
-              <Col>
+              <Col id='b'>
                 <div>ข้อมูลเซนเซอร์ </div>
               </Col>
             </Row>
@@ -218,7 +219,7 @@ export default class monitoring_user extends React.Component {
               <Col>
                 <div>สถานที่ : {show[i].Name_Lo}</div>
               </Col>
-              <Col>
+              <Col align='center' >
                 <div>อุณหภูมิสูงสุด : {show[i].Temp_Hight} </div>
               </Col>
             </Row>
@@ -226,7 +227,7 @@ export default class monitoring_user extends React.Component {
               <Col>
                 <div>อาคาร : {show[i].Name_Build}</div>
               </Col>
-              <Col>
+              <Col align='center' >
                 <div>อุณหภูมิตำสุด : {show[i].Temp_Low} </div>
               </Col>
             </Row>
@@ -234,7 +235,7 @@ export default class monitoring_user extends React.Component {
               <Col>
                 <div>ห้องติดตั้งเซนเซอร์ : {show[i].Position}</div>
               </Col>
-              <Col>
+              <Col align='center' >
                 <div>ความชื้นสูงสุด : {show[i].Humdi_Hight} </div>
               </Col>
             </Row>
@@ -242,11 +243,12 @@ export default class monitoring_user extends React.Component {
               <Col>
                 <div>รหัสเครื่อง : {show[i].Macaddress}</div>
               </Col>
-              <Col>
+              <Col align='center' >
                 <div>ความชื้นต่ำสุด : {show[i].Humdi_Low} </div>
               </Col>
             </Row>
           </Table>
+          </section>
         }
       }
     }
