@@ -12,7 +12,6 @@ export default class testHTPPSget extends Component {
   //check login
   componentWillMount() {
     if (sessionStorage.getItem('Login_add')) {
-      // alert('ยินดีตอนรับ ผู้ดูแลระบบ'+ res.data.data.Fname)
       this.props.history.push('/test')
     }
     else {

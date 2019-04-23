@@ -21,7 +21,6 @@ export default class header extends Component {
             data_ss = JSON.parse(sessionStorage.getItem("Login_user"))
             this.setState({ data: data_ss })
         }
-        // console.log(data_ss);
     }
 
     logOut = (e) => {
@@ -106,7 +105,6 @@ export default class header extends Component {
                             <NavLink to="/user/history/undefined/undefined/undefined/" className="fonthead">ประวัติย้อนหลัง</NavLink>
                         </NavItem>
 
-                        {/* <div className="fonthead">|</div> */}
                         <UncontrolledDropdown nav inNavbar>
                             <DropdownToggle nav caret>
                                 <this.sh_profile />

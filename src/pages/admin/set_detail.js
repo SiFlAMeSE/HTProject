@@ -146,7 +146,6 @@ export default class set_detail extends React.Component {
             .then(response => {
                 const Senser = response.data;
                 this.setState({ Senser });
-                //console.log(Senser);
             })
             .catch(function (error) {
                 console.log(error);
@@ -193,7 +192,6 @@ export default class set_detail extends React.Component {
     }
 
     fileUploadHandler = () => {
-        // console.log(this.state.Pictures)
 
         let data = {
             img: this.state.file,
@@ -216,9 +214,7 @@ export default class set_detail extends React.Component {
         reader.onloadend = () => {
             console.log(this.state.Picturemap)
         };
-        // reader.readAsDataURL(this.state.Picturemap)
 
-        // <img src={this.state.Picturemap.Id_Map} />
 
     }
 
@@ -238,7 +234,6 @@ export default class set_detail extends React.Component {
                 <center>
                     <Table style={{ width: '80%' }} >
                         <center>
-                            {/* {this.previewFile()} */}
                             {
                                 this.state.Picturemap !== undefined &&
                                 <img src={this.state.Picturemap.Id_Map} alt="ok" />

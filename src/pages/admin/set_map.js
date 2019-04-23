@@ -52,7 +52,6 @@ export default class set_map extends React.Component {
             .then(response => {
                 const Image = response.data;
                 this.setState({ Image });
-                //console.log(Senser);
             })
             .catch(function (error) {
                 console.log(error);
@@ -91,7 +90,6 @@ export default class set_map extends React.Component {
     }
 
     fileUploadHandler = () => {
-        // console.log(this.state.Pictures)
         this.setState({
             modal: !this.state.modal
         })
@@ -148,7 +146,6 @@ export default class set_map extends React.Component {
                     <ModalBody>
                         <Container>
                             <input type="file" onChange={this.fileSelectedHandler} name="image" />
-                            {/* <button type="button" onClick={this.fileUploadHandler}>Upload</button> */}
                             <br />
                             {
                                 this.state.file !== '' &&

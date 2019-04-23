@@ -53,8 +53,6 @@ export default class testCount extends Component {
     }
 
     render() {
-        // if (this.state.seconds === 0)
-        //     window.location.reload();
         if (this.state.down === 1) { 
             this.showbar()
           }else if(this.state.seconds === 0){
@@ -62,8 +60,6 @@ export default class testCount extends Component {
                 seconds : 1,
                 count : 0 
               })
-            // this.state.seconds = 1;
-            // this.state.count = 0;
             window.location.reload();
 
           }

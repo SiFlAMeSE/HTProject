@@ -9,7 +9,6 @@ import { Map, Marker, GoogleApiWrapper } from 'google-maps-react';
 var _id, loca, Build, Location, mapLocation;
 var bu_num, Loca_num, Pointlat, Pointlng;
 var data_ss;
-// var set = "undefined"
 
 class dashboard extends Component {
     constructor(props) {
@@ -25,7 +24,6 @@ class dashboard extends Component {
 
     componentWillMount() {
         _id = this.props.match.params.id
-        //console.log(_id)
         data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
     }
 
@@ -33,9 +31,7 @@ class dashboard extends Component {
         axios.get('http://206.189.94.192:5000/sensers/senser_list')
             .then(response => {
                 const Senser = response.data;
-                //sen_num = response.data.length;
                 this.setState({ Senser: Senser });
-                //console.log(Senser);
             })
             .catch(function (error) {
                 console.log(error);
@@ -45,7 +41,6 @@ class dashboard extends Component {
             .then(response => {
                 Build = response.data;
                 bu_num = response.data.length;
-                //this.setState({ Build: Build});
                 console.log(Build);
                 console.log(bu_num);
             })
@@ -57,8 +52,6 @@ class dashboard extends Component {
             .then(response => {
                 Location = response.data;
                 Loca_num = response.data.length;
-                // Pointlat = response.data.Location.lat
-                // Pointlng = response.data.Location.lng
                 console.log(Location)
                 this.setState({ Location: Location });
             })
@@ -70,7 +63,6 @@ class dashboard extends Component {
             .then(response => {
                 mapLocation = response.data;
                 this.setState({ mapLocation: mapLocation });
-                // console.log(Location);
             })
             .catch(function (error) {
                 console.log(error);
@@ -103,8 +95,6 @@ class dashboard extends Component {
                                     Humdi_Hight: object.Humdi_Hight,
                                     Macaddress: object.Macaddress
                                 }
-                                // console.log("test")
-                                // console.log(show)
                                 if (_id === Location[y]._id) {
                                     return <DashboardTable obj={show} />
                                 }
@@ -120,9 +110,6 @@ class dashboard extends Component {
             }
             return true
         });
-        // return this.state.Location.map(function (object, i){
-        //     return <TableDashboard obj={object} bu={Build} key={i} />
-        // })
 
     }
 
@@ -170,7 +157,6 @@ class dashboard extends Component {
                             <FormGroup>
                                 <Label for="selectlocation">เลือกสถานที่</Label>
                                 <Input type="select" name="selectMulti" id="selectlocation" onChange={this.onchangeLocatioin} multiple>
-                                    {/* <option value="undefined">สถานที่</option> */}
                                     {this.choice()}
                                 </Input>
                                 <br />
@@ -213,4 +199,3 @@ class dashboard extends Component {
 export default GoogleApiWrapper({
     apiKey: ("AIzaSyAFHTcbUykLDkXfK19GoXmm8EltWUbq9dM")
 })(dashboard)
-// export default dashboard;

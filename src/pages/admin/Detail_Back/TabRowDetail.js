@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Table, Button, Input, Container, Row, Col, Label, Modal, ModalHeader, ModalBody, ModalFooter, Card, CardTitle, CardText, CardImg } from 'reactstrap';
 var data_ss
-// const uuidv1 = require('uuid/v1');
 
 class TabRowBuild extends Component {
     constructor(props) {
@@ -98,8 +97,6 @@ class TabRowBuild extends Component {
         axios.post('http://206.189.94.192:5000/sensers/Removesenser/' + this.props.obj._id)
             .then((res) => {
                 if (res.data === 'Senser has been Deleted') {
-                    // window.location = "/setdetail"
-                    //window.location.replace('/setdetail/' + this.props.obj.Id_Build + this.props.match.params.idmap)
                     window.location.reload()
                     console.log('OK');
                 } else {
@@ -122,7 +119,6 @@ class TabRowBuild extends Component {
             .then((res) => {
                 if (res.data === 'Updated!') {
                     console.log(res.data);
-                    //window.location.replace('/setdetail/' + this.props.obj.Id_Build + this.props.match.params.idmap)
                     window.location.reload()
                 } else {
                     console.log('error');

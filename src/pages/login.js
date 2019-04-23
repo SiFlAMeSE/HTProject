@@ -4,7 +4,6 @@ import axios from 'axios';
 var stylebg = {
     backgroundImage: `url(${require('../img/BGlog.png')})`,
     backgroundSize: 'cover',
-    // backgroundRepeat: 'repeat'
 }
 class loginp extends Component {
     constructor() {
@@ -30,16 +29,10 @@ class loginp extends Component {
             Password: this.state.Password,
             Positions: this.state.Positions
         }
-        // const { data } = this.state
         axios.post('http://206.189.94.192:5000/users/login', UserGen)
             .then(function (res) {
                 const data = res.data.data
                 if (res.data.status === 'Success') {
-                    // console.log('Ok', data);
-                    // console.log(data.Positions);
-                    // alert(data.Fname)
-                    //console.log('kkkk');
-                    //console.log(data._id)
                     if (data.Positions === 'admin') {
                         sessionStorage.clear();
                         sessionStorage.setItem('Login_add', JSON.stringify(res.data.data))
@@ -54,7 +47,6 @@ class loginp extends Component {
                 else {
                     alert("ไม่มีชื่อผู้ใช้งาน : " + UserGen.User_g + " ในระบบ")
                     console.log('relogin', res.data.data);
-                    // window.location = "/signup_user"
                 }
             })
     }
@@ -72,11 +64,9 @@ class loginp extends Component {
 				</span>
 
                             <div className="wrap-input100 validate-input m-b-20">
-                                {/* <input className="input100" id="inputl" type="text" name="username" placeholder="ชื่อผู้ใช้งาน" /> */}
                                 <input type="text"
                                     className="input100"
                                     name="User_g"
-                                    // type="text"
                                     id="inputl"
                                     placeholder="ชื่อผู้ใช้งาน"
                                     value={this.state.User_g}
@@ -86,11 +76,9 @@ class loginp extends Component {
                             </div>
 
                             <div className="wrap-input100 validate-input m-b-25">
-                                {/* <input className="input100" id="inputl" type="password" name="pass" placeholder="รหัสผ่าน" /> */}
                                 <input type="password"
                                     className="input100"
                                     name="Password"
-                                    // type="Password"
                                     id="inputl"
                                     placeholder="รหัสเข้าใช้งาน"
                                     value={this.state.Password}

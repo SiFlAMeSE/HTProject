@@ -49,17 +49,13 @@ export default class monitoring extends React.Component {
     _mac = this.props.match.params.id
     data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
 
-    //console.log(_mac)
   }
 
   componentDidMount() {
-    // let timeLeftVar = this.secondsToTime(seconds);
-    // this.setState({ time: timeLeftVar });
     axios.get('http://206.189.94.192:5000/sensers/senser_list')
       .then(response => {
         const Senser = response.data;
         this.setState({ Senser: Senser });
-        //console.log(Senser);
       })
       .catch(function (error) {
         console.log(error);
@@ -69,9 +65,6 @@ export default class monitoring extends React.Component {
       .then(response => {
         Build = response.data;
         bu_num = response.data.length;
-        //this.setState({ Build: Build});
-        // console.log(Build);
-        // console.log(bu_num);
       })
       .catch(function (error) {
         console.log(error);
@@ -82,7 +75,6 @@ export default class monitoring extends React.Component {
         Location = response.data;
         Loca_num = response.data.length;
         this.setState({ Location: Location });
-        // console.log(Location);
       })
       .catch(function (error) {
         console.log(error);
@@ -93,7 +85,6 @@ export default class monitoring extends React.Component {
         Dht = response.data;
         dht_num = response.data.length;
         this.setState({ Dht: Dht });
-        //console.log(Dht)
       })
       .catch(function (error) {
         console.log(error);
@@ -104,7 +95,6 @@ export default class monitoring extends React.Component {
         MapI = response.data;
         map_num = response.data.length;
         this.setState({ MapI: MapI });
-        // console.log(Dht)
       })
       .catch(function (error) {
         console.log(error);
@@ -118,7 +108,6 @@ export default class monitoring extends React.Component {
         Dht = response.data;
         dht_num = response.data.length;
         this.setState({ Dht: Dht });
-        //console.log(Dht)
       })
       .catch(function (error) {
         console.log(error);
@@ -172,7 +161,6 @@ export default class monitoring extends React.Component {
 
   showData() {
     if (_mac !== "undefined") {
-      //console.log("No deil")
       for (let i = 0; i < show_num; i++) {
         if (_mac === show[i].Macaddress) {
           return <section style={{ width: '80%' }} >
@@ -227,7 +215,6 @@ export default class monitoring extends React.Component {
 
   showMap() {
     if (_mac !== "undefined") {
-      //console.log("No deil")
       for (let i = 0; i < show_num; i++) {
         if (_mac === show[i].Macaddress) {
           return <img src={show[i].Id_Map} alt="ok" style={{ height: "560px" }} />
@@ -244,27 +231,13 @@ export default class monitoring extends React.Component {
 
   showbar() {
     if (_mac !== "undefined") {
-      //data = []
-      //num -= num
-      //console.log(this.state.Dht)
-      //console.log(num)
       return this.state.Dht.map((object, i) => {
-        // console.log(i)
-        // console.log(dht_num-1)
         if (object.mac === _mac) {
-          // console.log(i)
-          // console.log(num)
           data[num] = object
-          // console.log(data[num])
           num = num + 1
         }
         if (i === (dht_num - 1)) {
-          //console.log(data)
-          //console.log(num)
-          //num = 0 
           return <Chart obj={data} key={num} />
-          //return 
-          //return <MonitorChoice obj={data} key={num} />; 
         } return false
 
       });
@@ -273,29 +246,15 @@ export default class monitoring extends React.Component {
 
   showbar1() {
     if (_mac !== "undefined") {
-      //data = []
-      //num -= num
-      //console.log(this.state.Dht)
-      //console.log(num)
       return this.state.Dht.map((object, i) => {
-        // console.log(i)
-        // console.log(dht_num-1)
         if (object.mac === _mac) {
-          // console.log(i)
-          // console.log(num)
           data[num] = object
-          // console.log(data[num])
           num = num + 1
         }
         if (i === (dht_num - 1)) {
-          //console.log(data)
-          //console.log(num)
-          //num = 0 
           if (data[num - 1].nc10 !== 0) {
             return <Bar1 obj={data} key={num} />
           }
-          //return 
-          //return <MonitorChoice obj={data} key={num} />; 
         } return false
       });
     }
@@ -303,12 +262,9 @@ export default class monitoring extends React.Component {
   }
 
   startTimer() {
-    //console.log('start');
     if (this.timer === 0 && seconds > 0) {
       this.timer = setInterval(this.countDown, 1000);
-      // this.state.down = 1;
     }
-    // this.showbar()
   }
 
   countDown() {
@@ -329,11 +285,9 @@ export default class monitoring extends React.Component {
 
   render() {
     if (seconds === 1) {
-      //console.log('render 1')
       this.startTimer()
 
     } if (count === 1) {
-      //console.log('render 2')
       this.loopdht()
     }
 
@@ -390,14 +344,12 @@ export default class monitoring extends React.Component {
         <br />
         <Row >
           <Col md={5} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
-            {/* <Chart /> */}
             {this.showbar()}
             {/* กราฟที่โชว์ */}
           </div>
           </Col>
 
           <Col md={5} style={{ paddingLeft: '150px', paddingBottom: '20px' }}> <div className="chart">
-            {/* <Chart /> */}
             {this.showbar1()}
             {/* กราฟที่โชว์ */}
           </div>

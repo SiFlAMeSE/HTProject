@@ -27,7 +27,6 @@ class showmap extends Component {
             .then(response => {
                 const Location = response.data;
                 this.setState({ Location: Location });
-                // console.log(Location);
             })
             .catch(function (error) {
                 console.log(error);
@@ -36,9 +35,6 @@ class showmap extends Component {
 
 
     render() {
-        // console.log(_id)
-        // console.log(this.state.Location.Name_Lo)
-        // console.log(this.state.Location.lat)
         const Pointlat = this.state.Location.lat
         const Pointlng = this.state.Location.lng
 

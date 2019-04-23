@@ -29,8 +29,6 @@ export default class set_build extends React.Component {
             reload: this.props.match.params.id
         })
         _id = this.props.match.params.id
-        // console.log(this.state.reload);
-        // console.log(this.state.path);
     }
 
     toggle() {
@@ -71,7 +69,6 @@ export default class set_build extends React.Component {
             .then(response => {
                 const Build = response.data;
                 this.setState({ Build });
-                // console.log(Build);
             })
             .catch(function (error) {
                 console.log(error);

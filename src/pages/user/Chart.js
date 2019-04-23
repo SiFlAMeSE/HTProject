@@ -1,10 +1,8 @@
 import React from 'react';
-//import axios from 'axios';
 import { Line } from 'react-chartjs-2';
 
 import moment from 'moment';
 
-// var data_ss, Dht;
 var label_X =  []
 var label_temp = 'อุณหภูมิ'
 var label_humdi = 'ความชื้น'
@@ -51,14 +49,8 @@ export default class Chart extends React.Component {
         }
     }
 
-    // displayName: 'BarExample',
 
     render() {
-        // console.log(label_X)
-        // console.log(data_temp)
-        // console.log(data_humdi)
-        // console.log(data_set)
-        // console.log(data_num)
         return (
             <div>
                 {this.dataGraph()}

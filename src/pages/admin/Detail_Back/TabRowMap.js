@@ -51,7 +51,6 @@ class TabRowMap extends Component {
             .then((res) => {
                 if (res.data === 'Map has been Deleted') {
                     window.location.reload()
-                    // console.log(this.state.reload);
                 } else {
                     console.log("error");
                 }
@@ -69,7 +68,6 @@ class TabRowMap extends Component {
                     <Card style={{ width: '15rem'}} id="card">
                         <CardImg width="35px" height="200px" src={require('../../../img/Map.png')} style={{ paddingBottom: '5px' }} />
                         <hr />
-                        {/* <CardTitle id="b">{this.props.obj._id}</CardTitle> */}
                         {/* เรียกส่งค่า */}
 
 

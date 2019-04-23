@@ -112,8 +112,6 @@ class TabRowLocation extends Component {
 
   sentid = (e) => {
     window.location.replace('/setbuild/' + e.target.value)
-    // console.log(e.target.value)
-    // console.log("go build" + this.state._id);
   }
 
   openMap = (e) => {
@@ -122,8 +120,6 @@ class TabRowLocation extends Component {
 
 
   render() {
-    // console.log(this.state._id)
-    // console.log(this.props.obj.Address)
     return (
       <div>
         <section style={{ paddingRight: '16px', paddingBottom: '25px' }} >

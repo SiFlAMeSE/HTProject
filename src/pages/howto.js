@@ -10,32 +10,26 @@ import classnames from 'classnames';
 
 import '../css/howto.css'
 
-// var loopback = 0;
 const items = [
     {
         src: require('../img/Howto/U1.jpg'),
         altText: 'ข้อที่ 1'
-        // caption: 'Slide 1',
     },
     {
         src: require('../img/Howto/U2.jpg'),
         altText: 'ข้อที่ 2'
-        // caption: 'Slide 2'
     },
     {
         src: require('../img/Howto/U3.jpg'),
         altText: 'ข้อที่ 3'
-        // caption: 'Slide 3'
     },
     {
         src: require('../img/Howto/U4.jpg'),
         altText: 'ข้อที่ 4'
-        // caption: 'Slide 3'
     },
     {
         src: require('../img/Howto/U5.jpg'),
         altText: 'ข้อที่ 5'
-        // caption: 'Slide 3'
     }
 ];
 
@@ -43,27 +37,22 @@ const items2 = [
     {
         src: require('../img/Howto/A1.jpg'),
         altText: 'ข้อที่ 1'
-        // caption: 'Slide 1',
     },
     {
         src: require('../img/Howto/A2.jpg'),
         altText: 'ข้อที่ 2'
-        // caption: 'Slide 2'
     },
     {
         src: require('../img/Howto/A3.jpg'),
         altText: 'ข้อที่ 3'
-        // caption: 'Slide 3'
     },
     {
         src: require('../img/Howto/A4.jpg'),
         altText: 'ข้อที่ 4'
-        // caption: 'Slide 3'
     },
     {
         src: require('../img/Howto/A5.jpg'),
         altText: 'ข้อที่ 5'
-        // caption: 'Slide 3'
     }
 ];
 

@@ -62,8 +62,6 @@ class authorize extends Component {
             .then(response => {
                 Authorize = response.data;
                 aut_num = response.data.length;
-                // this.setState({ Authorize });
-                // console.log(Authorize);
             })
             .catch(function (error) {
                 console.log(error);
@@ -74,7 +72,6 @@ class authorize extends Component {
                 Senser = response.data;
                 sen_num = response.data.length;
                 this.setState({ Senser: Senser });
-                //console.log(Senser);
             })
             .catch(function (error) {
                 console.log(error);
@@ -85,7 +82,6 @@ class authorize extends Component {
                 Build = response.data;
                 bu_num = response.data.length;
                 this.setState({ Build: Build });
-                //console.log(Build);
             })
             .catch(function (error) {
                 console.log(error);
@@ -96,7 +92,6 @@ class authorize extends Component {
                 Location = response.data;
                 Loca_num = response.data.length;
                 this.setState({ Location: Location });
-                //console.log(Locatio);
             })
             .catch(function (error) {
                 console.log(error);
@@ -170,9 +165,6 @@ class authorize extends Component {
                  
             }return true
         });
-        // return this.state.Location.map(function (object, i){
-        //     return <TableDashboard obj={object} bu={Build} key={i} />
-        // })
 
     }
 

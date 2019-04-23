@@ -59,7 +59,6 @@ class notification extends Component {
             .then(response => {
                 Senser = response.data;
                 this.setState({ Senser: Senser });
-                //console.log(Senser);
             })
             .catch(function (error) {
                 console.log(error);
@@ -70,7 +69,6 @@ class notification extends Component {
                 Build = response.data;
                 bu_num = response.data.length;
                 this.setState({ Build: Build });
-                //console.log(Build);
             })
             .catch(function (error) {
                 console.log(error);
@@ -81,7 +79,6 @@ class notification extends Component {
                 Location = response.data;
                 Loca_num = response.data.length;
                 this.setState({ Location: Location });
-                //console.log(Locatio);
             })
             .catch(function (error) {
                 console.log(error);
@@ -106,7 +103,6 @@ class notification extends Component {
 
     onchangeDate(e) {
         date = e.target.value
-        //console.log(date)
     }
 
     sentid = (e) => {
@@ -437,7 +433,6 @@ class notification extends Component {
     }
 
     render() {
-        //console.log(loca)
         return (
             <div>
                 <section id="space">

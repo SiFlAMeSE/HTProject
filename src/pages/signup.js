@@ -49,7 +49,6 @@ export default class signup extends Component {
             Id_line: this.state.Id_line
         }
         axios.post('http://206.189.94.192:5000/users/add', UserGen)
-            // .then(res => console.log(res.data));
             .then(function (res) {
                 if (res.data === 'Server added successfully') {
                     window.location = "/login"
@@ -95,8 +94,6 @@ export default class signup extends Component {
                                                     className="form-control"
                                                     name="Password"
                                                     placeholder="รหัสผ่าน"
-                                                    // pattern="(\d).{8,}"
-                                                    // required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
                                                     value={this.state.Password}
                                                     onChange={this.onChange} />
                                             </div>
@@ -109,8 +106,6 @@ export default class signup extends Component {
                                                     className="form-control"
                                                     name="Fname"
                                                     placeholder="ชื่อ"
-                                                    // pattern="([a-z]).{3,}"
-                                                    // required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
                                                     value={this.state.Fname}
                                                     onChange={this.onChange} />
                                             </div>
@@ -123,8 +118,6 @@ export default class signup extends Component {
                                                     className="form-control"
                                                     name="Lname"
                                                     placeholder="นามสกุล"
-                                                    // pattern="([a-z]).{3,}"
-                                                    // required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
                                                     value={this.state.Lname}
                                                     onChange={this.onChange} />
                                             </div>
@@ -136,8 +129,6 @@ export default class signup extends Component {
                                             className="form-control"
                                             name="Phonenumber"
                                             placeholder="เบอร์โทรศัพท์"
-                                            // pattern="(/d.{3,}"
-                                            // required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
                                             value={this.state.Phonenumber}
                                             onChange={this.onChange} />
                                     </div>
@@ -202,8 +193,6 @@ export default class signup extends Component {
                                             className="form-control"
                                             name="Id_line"
                                             placeholder="รหัสไลน์"
-                                            // pattern="(/d.{3,}"
-                                            // required title="ตัวเลขมากกว่า 8 ตัวขึ้นไป"
                                             value={this.state.Id_line}
                                             onChange={this.onChange} />
                                     </div>

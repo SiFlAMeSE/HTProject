@@ -59,8 +59,6 @@ class notification extends Component {
             .then(response => {
                 Authorize = response.data;
                 aut_num = response.data.length;
-                // this.setState({ Authorize });
-                // console.log(Authorize);
             })
             .catch(function (error) {
                 console.log(error);
@@ -69,9 +67,7 @@ class notification extends Component {
         axios.get('http://206.189.94.192:5000/sensers/senser_list')
             .then(response => {
                 Senser = response.data;
-                // sen_num = response.data.length;
                 this.setState({ Senser: Senser });
-                //console.log(Senser);
             })
             .catch(function (error) {
                 console.log(error);
@@ -82,7 +78,6 @@ class notification extends Component {
                 Build = response.data;
                 bu_num = response.data.length;
                 this.setState({ Build: Build });
-                //console.log(Build);
             })
             .catch(function (error) {
                 console.log(error);
@@ -93,7 +88,6 @@ class notification extends Component {
                 Location = response.data;
                 Loca_num = response.data.length;
                 this.setState({ Location: Location });
-                //console.log(Locatio);
             })
             .catch(function (error) {
                 console.log(error);
@@ -118,7 +112,6 @@ class notification extends Component {
 
     onchangeDate(e) {
         date = e.target.value
-        //console.log(date)
     }
 
     sentid = (e) => {
@@ -419,31 +412,6 @@ class notification extends Component {
     }
 
     choice() {
-        // return this.state.Senser.map(function (object, i) {
-        //     for (let z = 0; z < bu_num; z++) {
-        //         if (object.Id_Build === Build[z]._id) {
-        //             for (let y = 0; y < Loca_num; y++) {
-        //                 if (Build[z].Id_Loca === Location[y]._id) {
-        //                     if (data_ss._id === Location[y].Id_Admin) {
-        //                         loca[num] = {
-        //                             Name_Lo : Location[y].Name_Lo,
-        //                             Name_Build: Build[z].Name_Build,
-        //                             Position: object.Position,
-        //                             Macaddress: object.Macaddress,
-        //                             Temp_Low: object.Temp_Low,
-        //                             Temp_Hight: object.Temp_Hight,
-        //                             Humdi_Low: object.Humdi_Low,
-        //                             Humdi_Hight: object.Humdi_Hight
-        //                         }
-        //                         num = num + 1
-        //                         return <SenserChoice obj={object} key={i} />;
-        //                     }
-        //                 }
-        //             }
-        //         }
-        //     }
-        //     return true
-        // });
 
         return this.state.Senser.map(function (object, i) {
             for (let z = 0; z < bu_num; z++) {
@@ -476,7 +444,6 @@ class notification extends Component {
     }
 
     render() {
-        //console.log(loca)
         return (
             <div>
                 <section id="space">

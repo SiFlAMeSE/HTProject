@@ -4,22 +4,7 @@ import {  Col, Row, Table } from 'reactstrap';
 import '../css/home.css';
 
 class home extends Component {
-    // constructor(props) {
-    //   super(props);
-    //   this.state = {
-    //     data: {}
-    //   }
-    //   // const save = sessionStorage
-    //   // alert("Login_user, " + sessionStorage.getItem("Fname"))
-    //   // console.log(save)
-    // }
 
-    // componentWillMount() {
-    //   var ss = JSON.parse(sessionStorage.getItem('Login_user'))
-    //   this.setState({ data: ss })
-    //   // console.log('first')
-
-    // }
 
     render() {
         return (

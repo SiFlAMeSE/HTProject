@@ -59,7 +59,6 @@ class TabRowBuild extends Component {
             .then((res) => {
                 if (res.data === 'Build has been Deleted') {
                     window.location.replace('/setbuild/' + this.props.obj.Id_Loca)
-                    // console.log(this.state.reload);
                 } else {
                     console.log("error");
                 }
@@ -74,7 +73,6 @@ class TabRowBuild extends Component {
         axios.post('http://206.189.94.192:5000/build/update/' + this.props.obj._id, obj)
             .then((res) => {
                 if (res.data === 'Updated!') {
-                    // console.log(res.data);
                     console.log(this.state.path);
                     window.location.replace('/setbuild/' + this.props.obj.Id_Loca)
                 } else {
@@ -97,7 +95,6 @@ class TabRowBuild extends Component {
                         <CardTitle id="b">{this.props.obj.Name_Build}</CardTitle>
                         {/* เรียกส่งค่า */}
                         <Button color="warning" value={this.props.obj._id} onClick={(e) => this.sentidbuild(e)}>เพิ่มแผนที่</Button>
-                        {/* <Button color="primary" value={this.props.obj._id} onClick={(e) => this.sentidlo(e)}>เพิ่มอุปกรณ์</Button> */}
                         <Button onClick={this.toggle} color="secondary">การจัดการ</Button>
                     </Card>
                 </section>

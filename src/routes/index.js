@@ -21,7 +21,6 @@ import monitoring from "../pages/user/monitoring";
 import notification from "../pages/user/notification";
 
 import test from "../pages/testHTPPSget";
-import testcode from "../testcode";
 import testcount from "../pages/testCount";
 
 import authorize from "../pages/user/user_page/authorize";
@@ -58,7 +57,6 @@ export default () => (
 
 
         <Route exact path="/test" component={test} />
-        <Route exact path="/testcode" component={testcode} />
         <Route exact path="/testcount" component={testcount} />
 
         {/* page user */}

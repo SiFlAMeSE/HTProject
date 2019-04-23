@@ -62,9 +62,6 @@ class Dashboard_Table extends React.Component {
   }
 
   componentWillMount() {
-    // data_set = this.props.obj
-    // data_num = this.props.obj.length - 1
-    // data_ss = JSON.parse(sessionStorage.getItem('Login_add'))
     JSON.parse(sessionStorage.getItem('Login_add'))
 
 
@@ -75,10 +72,7 @@ class Dashboard_Table extends React.Component {
     axios.get('http://206.189.94.192:5000/dht/dht_list')
       .then(response => {
         Dht = response.data;
-        // data_num = response.data.length - 1;
         this.setState({ Dht: Dht });
-        // console.log(Dht)
-        // console.log(Dht[0].date)
       })
       .catch(function (error) {
         console.log(error);
@@ -90,9 +84,7 @@ class Dashboard_Table extends React.Component {
     axios.get('http://206.189.94.192:5000/dht/dht_list')
       .then(response => {
         Dht = response.data;
-        // data_num = response.data.length - 1;
         this.setState({ Dht: Dht });
-        // console.log(Dht)
       })
       .catch(function (error) {
         console.log(error);
@@ -104,17 +96,10 @@ class Dashboard_Table extends React.Component {
     console.log(_mac)
     num = 0
     data = []
-    //console.log(data)
     if (_mac !== "undefined") {
-      //console.log("test")
       return this.state.Dht.map((object, i) => {
-        //  console.log(i)
-        //  console.log(data_num-1)
         if (object.mac === _mac) {
-          //  console.log(i)
-          //  console.log(num)
           data[num] = object
-          //  console.log(data[num])
           num = num + 1
         } return false
       });
@@ -135,9 +120,6 @@ class Dashboard_Table extends React.Component {
       data_humdi[i] = data[num].h
 
       console.log(data[i].mac)
-      // console.log(label_X[i])
-      // console.log(data_set[data_num].t)
-      // console.log(moment(data_set[data_num].date).format('LTS'))
 
     }
   }
@@ -151,7 +133,6 @@ class Dashboard_Table extends React.Component {
   }
 
   startTimer() {
-    // console.log('start');
     if (this.timer === 0 && seconds > 0) {
       this.timer = setInterval(this.countDown, 10000);
     }

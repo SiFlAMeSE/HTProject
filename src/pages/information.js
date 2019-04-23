@@ -13,18 +13,12 @@ import '../css/information.css';
 const items = [
     {
         src: require('../img/Headware/1.jpg'),
-        // altText: 'Slide 1',
-        // caption: 'Slide 1',
     },
     {
         src: require('../img/Headware/2.jpg'),
-        // altText: 'Slide 2',
-        // caption: 'Slide 2'
     },
     {
         src: require('../img/Headware/3.jpg'),
-        // altText: 'Slide 3',
-        // caption: 'Slide 3'
     }
 ];
 
